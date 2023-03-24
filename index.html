@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<header>
+    <button target="menuA">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">
+        <span>Letra</span>
+    </button>
+    <button target="menuB">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="search">
+        <a>Pesquisa</a>
+    </button>
+    <button target="menuC">
+        <span>Lista</span>
+    </button>
+</header>
+
+<main>
+    <menu id="menuA">
+        <div id="scroll-container">
+            <pre id="scroll-text"></pre>
+        </div>
+    </menu>  
+        
+    <menu id="menuB">
+        <fieldset>
+            <legend>Pesquisa</legend>
+            <div class="box-pesquisa">
+                <input target = 'listaArtistas' class="inputPesquisa" type="text" placeholder="artista">
+                <input hidden class="inputPesquisa" id="musica" type="text" placeholder="musica"> 
+                <button class="btnToggle"target="listaDiscos" id="discog">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">
+                </button>
+                <button class="btnToggle" target="listaMus" id="listaMus">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
+                </button>
+            </div>
+
+            <fieldset class="wrapper">
+                <legend id="infoMus" class="typing">Musicas</legend>
+                
+                <div id="musicas">
+                </div>
+
+                <fieldset id="listaDiscos">
+                    <legend id="labelDiscos"></legend>
+                    <div id="discos">
+                    </div>
+                </fieldset>
+
+            </fieldset>
+
+            <ul id="listaArtistas">
+
+            </ul>
+        </fieldset>   
+    </menu>
+    
+    <menu id="menuC">
+        <div class="lista">
+            <fieldset >
+                <legend>Listas</legend>
+               
+                <div id="newList">
+                    <a>Nova Lista</a>
+                    <img class="icon new" >
+                </div>
+               
+                <ul>
+                    <li>
+                        <img class="icon">
+                        <a>Duo</a>
+                    </li>
+                    
+                    <li>
+                        <img class="icon">
+                        <a>Vedders</a>
+                    </li>
+                   
+                    <li>
+                        <img class="icon">
+                        <a>Trio</a>
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+    </menu>
+</main>
+
+<footer>
+
+    <div id="fonteContainer">
+        <label for="fonte">Fonte</label>
+        <input target='scroll-text' type="range" class="" id='fonte' step="1" min='10'  max="25" value="18">      
+    </div>
+    <div id="rolagem">
+        <label for="tempo">Rolagem</label>
+        <input target="scroll-text" type="range" class="" id='velocidade' step="0.1" min='0.1'  max="10" value="0.1">
+    </div>
+    
+</footer>
+    <script type='module' src="js/index.mjs"></script>      
+</body>
+</html>

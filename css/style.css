@@ -1,0 +1,53 @@
+
+@import url(animation.css);
+@import url(elements.css);
+@import url(letra.css);
+@import url(tema.css);
+
+body{
+    margin:0; 
+    padding: 0;
+    background-color: #1a1e21e0;
+}
+
+header{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+     justify-items: center;
+   
+     padding: 2vh;
+     text-align: center;
+}
+
+main > menu{
+    display: none;
+    padding: 0;
+    margin: 0;
+    background-color: #1a1e21;
+    color: white;
+}
+
+footer{
+    bottom: 0;
+    position: fixed; 
+    /* width: 100%; */
+    color: white;
+    display: flex;
+    /* grid-template-columns: 1fr 1fr; */
+    justify-content: inherit;
+    padding: 4vh;
+}
+
+footer > div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1vh;
+    text-align: center;
+}
+
+fieldset{
+    border-radius: 4px;
+    border-color: #000000;
+    border-style: outset;
+}

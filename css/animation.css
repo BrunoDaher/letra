@@ -1,0 +1,55 @@
+#scroll-container {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .scroll-text  {
+    /* animation properties */
+    transform: translateY(1%);
+    /* espcialmente pro pre*/
+    height: 100%;
+    overflow: hidden;
+    animation: my-animation 200s linear infinite;
+    transition: all 0.3s;
+  }
+
+
+  /* for Chrome */
+  @-webkit-keyframes my-animation {
+    from { -webkit-transform: translateY(1%); }
+    to { -webkit-transform: translateY(-100%); }
+  }
+  
+  @keyframes my-animation {
+    from {
+      -moz-transform: translateY(1%);
+      -webkit-transform: translateY(1%);
+      transform: translateY(1%);
+    }
+    to {
+      -moz-transform: translateY(-100%);
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%);
+    }
+  }
+
+    /* for Chrome */
+    @-webkit-keyframes my-carroussel {
+      from { -webkit-transform: translateX(1%); }
+      to { -webkit-transform: translateX(-100%); }
+    }
+    
+    @keyframes my-carroussel {
+      from {
+        -moz-transform: translateX(1%);
+        -webkit-transform: translateX(1%);
+        transform: translateX(1%);
+      }
+      to {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+      }
+    }
+
+   

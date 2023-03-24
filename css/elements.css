@@ -1,0 +1,50 @@
+.musica , li > img{
+    background-image: url(https://www.pngrepo.com/download/315158/music.png);
+    background-size: 25px;
+}
+
+.new{
+    background-image: url(https://www.pngrepo.com/download/348205/new.png);
+    background-size: 25px ;
+}
+
+.search{
+    background-image: url(https://www.pngrepo.com/download/135623/search.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+    filter: invert(1);
+}
+
+.doc{
+    background-image: url(https://www.pngrepo.com/download/7840/document.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+}
+
+.disc{
+    background-image: url(https://www.pngrepo.com/download/101744/long-play-record-cover.png);
+    background-size: 31px ;
+    width:31px;
+    height: 31px;
+    filter: invert(1);
+}
+
+.list{
+    background-image: url(https://www.pngrepo.com/download/90806/papyrus.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+    filter: invert(1);
+}
+
+.btnToggle{
+  cursor: pointer;
+}
+.btnToggle.active{
+    border-width: 1px;
+    border-style: inset;
+    border-color: #4d4d4d;
+    border-radius: 3px;
+}

@@ -1,0 +1,159 @@
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(62, 138, 182);
+}
+
+/*Elementos internos do botao*/
+button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border:none;
+    background: none;
+    color: white;
+}
+
+.active{
+    display: grid;
+   
+}
+
+header > button.active{
+
+    color: #ffffff;
+    display: flex;
+    border-style: ridge;
+    border-radius: 4px;
+    border-width: 0px 0px 2px 0px;
+    transition: all 0.3s;
+  
+    font-style: italic;
+
+    transition: all 0.3s;
+}
+
+header > button{
+       /* background-color: azure; */
+       cursor: pointer;
+       /* width: 100%; */
+       /* margin: 1vh; */
+       /* border-radius: 7px; */
+       border: none;
+       background: none
+}
+
+#newList , li {
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+   
+}
+
+#newList:hover, li:hover, li .active, #newList:active{
+    color: rgb(92, 181, 229);
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2), 
+                 1px 1px 1px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+}
+
+ul{
+    display: grid;
+    margin: 2vh;
+    padding: 0;
+}
+
+#listaArtistas{
+   
+  position:absolute;
+  left: -100vh;
+  top: 20vh;
+  background-color: #000000cf;
+  width: 0px;
+  
+  transition: all 0.8s;
+
+}
+
+#listaArtistas.active{
+    left:0vh;
+   
+    width: revert; 
+
+    border-radius: 4px;
+    right: 0;
+    display: grid;
+    border-style: inset;
+    width: revert;
+    padding: 2vh;
+    line-height: 6vh;
+
+    transition: all 0.8 s;
+}
+
+#musicas{
+    height: 55vh;
+    overflow-y: scroll;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    height: 80vh;
+}
+
+#listaDiscos > legend{
+    background: #133753a8;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    text-shadow: 3px -2px 1px rgb(49 44 44 / 73%);
+}
+
+#listaDiscos{
+    background-color: #35393b;
+    width: fit-content;
+    position: fixed;
+    top: 14vh;
+    right: -30vw;
+    transition: all 0.3s;
+}
+
+#listaDiscos.active{
+    right: 2vw;
+    transition: all 0.3s;
+}
+
+#discos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1vh;
+    overflow-y: scroll;
+    height: 60vh;
+}
+
+#discos > div{
+    width: 64px;
+    height: 64px;
+}
+
+
+@media (max-width:400px){
+
+ .lista {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr 1fr; 
+ }
+
+}

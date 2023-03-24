@@ -1,0 +1,40 @@
+pre{
+    text-align: center;
+    padding: 4vh;
+    margin: 0;
+    font-size: 16px;
+    max-height: 70vh;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+}
+
+.box-pesquisa{
+    display: flex;
+    text-align: center;
+    /*place-content: center;*/  
+    gap: 1vh;
+    padding: 2vh;
+}
+
+.box-pesquisa > input{
+    height: 5vh;
+    width: 50%;
+}
+
+.inputPesquisa{
+    border-width: 0px 0px 2px 0px;
+    background-color: #ffffff14;
+    color: white;
+    outline: none;
+}
+
+
+#rolagem{
+    background-color: transparent;   
+}
+
+#musicas > li{
+    align-items: center;
+    cursor: pointer;
+    gap: 2vh;
+}
