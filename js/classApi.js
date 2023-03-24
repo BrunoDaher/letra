@@ -12,7 +12,7 @@ export class Api {
        art = art.replaceAll('-',' '); 
        album =  album.replaceAll('-',' ');
        
-       let path = `http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2651bc07e2240e60ef358c833cc84169&artist=${art}&album=${album}&format=json`;
+       let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2651bc07e2240e60ef358c833cc84169&artist=${art}&album=${album}&format=json`;
 
         console.log(path)
 
