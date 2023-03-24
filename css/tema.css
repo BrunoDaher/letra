@@ -43,7 +43,8 @@ header > button{
        /* margin: 1vh; */
        /* border-radius: 7px; */
        border: none;
-       background: none
+       background: none;
+       font-size: 2.4vh;
 }
 
 #newList , li {
@@ -102,7 +103,7 @@ ul{
 }
 
 #musicas{
-    height: 55vh;
+    height: 62vh;
     overflow-y: scroll;
 }
 
