@@ -36,7 +36,7 @@ footer{
     display: flex;
     /* grid-template-columns: 1fr 1fr; */
     justify-content: inherit;
-    padding: 4vh;
+    padding: 2vh;
 }
 
 footer > div{

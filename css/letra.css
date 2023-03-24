@@ -3,7 +3,7 @@ pre{
     padding: 4vh;
     margin: 0;
     font-size: 16px;
-    max-height: 70vh;
+    max-height: 75vh;
     overflow-y: scroll;
     white-space: pre-wrap;
 }
