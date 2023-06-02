@@ -5,9 +5,9 @@
   
   .scroll-text  {
     /* animation properties */
-    transform: translateY(1%);
-    /* espcialmente pro pre*/
-    height: 100%;
+    transform: translateY(100%);
+    /* espcialmente pro pre
+    height: 100%;*/
     overflow: hidden;
     animation: my-animation 200s linear infinite;
     transition: all 0.3s;

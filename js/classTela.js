@@ -12,14 +12,14 @@ class Tela {
     });
 }
 
-actBtn(targ){
+ actBtn(targ){
    let isActive =  targ.classList.contains("active") ? true:false;
    
    if(!isActive){
     targ.click();
    }
 
-}
+ }
 
 //exibe modal
  modal(){

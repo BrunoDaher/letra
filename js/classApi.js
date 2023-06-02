@@ -3,8 +3,8 @@ const url =  "https://api.vagalume.com.br";
 export class Api {
 
     constructor(){
-        //this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa';
-        this.apiKey = '2651bc07e2240e60ef358c833cc84169';
+        this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa';
+        //this.apiKey = '2651bc07e2240e60ef358c833cc84169';
       //  this.dao = _dao;
     }
 
@@ -14,8 +14,6 @@ export class Api {
        
        let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2651bc07e2240e60ef358c833cc84169&artist=${art}&album=${album}&format=json`;
 
-        console.log(path)
-
        return fetch(path);  
     }
 
@@ -24,13 +22,10 @@ export class Api {
 
         art = art.replaceAll('-','%20'); 
 
-
         //album =  album.replaceAll('-',' ');
         let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2651bc07e2240e60ef358c833cc84169&artist=${art}&album=${alb}&format=json`;
  
-            path = path.replaceAll('-','%20');
-
-  
+        path = path.replaceAll('-','%20');
  
         return fetch(path);  
      }
@@ -60,6 +55,15 @@ export class Api {
         return slim;        
     }
 
+    //vagalume
+    searchTrack(string){
+         string = string.replaceAll('-',' '); 
+        let path = `https://api.vagalume.com.br/search.excerpt?apikey=${this.apiKey}&q=${string}`;
+ 
+         //console.log(path)
+ 
+        return fetch(path);  
+    }
 
     checkUrl(string) {
             

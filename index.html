@@ -20,6 +20,7 @@
         <a>Pesquisa</a>
     </button>
     <button target="menuC">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
         <span>Lista</span>
     </button>
 </header>
@@ -40,9 +41,7 @@
                 <button class="btnToggle"target="listaDiscos" id="discog">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">
                 </button>
-                <button class="btnToggle" target="listaMus" id="listaMus">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
-                </button>
+             
             </div>
 
             <fieldset class="wrapper">
@@ -91,6 +90,19 @@
                         <a>Trio</a>
                     </li>
                 </ul>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Busca Avançada</legend>
+                    <div class="box-pesquisa">
+                        <input target="trackSugestions" class="pesquisa" id="trackMus" type="text" placeholder="musica"> 
+                        <button class="btnToggle" target="trackSugestions" id="btnTrack">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
+                        </button>   
+                    </div>
+                    <ul id="trackSugestions">
+
+                    </ul>
             </fieldset>
         </div>
     </menu>

@@ -11,6 +11,8 @@ const tela = new Tela();
 const h = document.querySelector("header");
 const discos = document.getElementById('discog')
 const listaArtistas = document.getElementById('listaArtistas')
+const trackMus = document.getElementById('trackMus');
+const trackSugestion = document.getElementById('trackSugestions')
 
 tela.nodeMenu(h);
 
@@ -26,19 +28,27 @@ function pesquisa(){
     arrPesq.forEach(element => {
         element.addEventListener('keypress',searchArtist);        
     });
+    
+
+    trackMus.addEventListener('keypress',searchTrackInfo);
+    trackMus.addEventListener('change',searchTrackInfo);
+
     //monta lista de bandas
     //event - evento gerador - neste caso keypress
     //this = input de pesquisa
     function searchArtist(){
 
+    //exibe lista
     listaArtistas.classList.add('active');
-    let returnArt = document.getElementById('listaArtistas');
+   //let returnArt = document.getElementById('listaArtistas');
 
+    //busca na api
         api.getArt(this.value).then((response) => response.json())
             .then((data) => {                              
             let artistas = data.response.docs;
           
-            returnArt.innerText = '';
+            //returnArt.innerText = '';
+            listaArtistas.innerText = '';
             
             artistas.forEach(element => {
                 let el = document.createElement('li');
@@ -48,11 +58,45 @@ function pesquisa(){
                 el.addEventListener('click',getArtInfo); 
                 el.addEventListener('click',()=>{tela.actBtn(discos)});
                 
-                returnArt.append(el);
+                listaArtistas.append(el);
             });
         }); 
     }
 
+    function searchTrackInfo(){
+
+
+        //exibe lista
+        trackSugestion.classList.add('active');
+       //let returnArt = document.getElementById('listaArtistas');
+    
+        //busca na api
+            api.searchTrack(this.value).then((response) => response.json())
+                .then((data) => {                        
+                   // console.log(data.response.docs);      
+                let dados = data.response.docs;
+              
+                
+               //limpa container destino
+                trackSugestion.innerText = '';
+                
+                //itera array de resposta  -- loop
+                dados.forEach(element => {
+                    let el = document.createElement('li');
+                    el.id = element.id;
+                    el.classList.add('banda');
+                    el.innerText = `${element.band} ${element.title}`;
+
+                    //busca por id
+                    el.addEventListener('click',getMusById); 
+                    
+                    //el.addEventListener('click',()=>{tela.actBtn(discos)});
+                    //preenche destino
+                    trackSugestion.append(el);
+                });
+                
+            }); 
+        }
 }
 
 function getArtInfo(event) {
@@ -126,6 +170,8 @@ function getTracks(){
     api.getTracks(this.name,this.id).then((response) => response.json())
             .then((data) => {   
 
+                console.log(data)
+
             let msg = data.message ? true : false    
 
             if(msg){
@@ -135,7 +181,6 @@ function getTracks(){
 
             try {
                 let tracks = data.album.tracks.track;
-
                 let div = document.getElementById('musicas');
                     div.setAttribute('alb',this.id);
                     div.setAttribute('band',this.name);
@@ -143,6 +188,7 @@ function getTracks(){
                 tracks.forEach(element => {
                     let li = document.createElement('li');
                         li.innerText = element.name;
+                        li.id= element.id
                         li.addEventListener('click',getArtMusic);
                     div.append(li);
                     });
@@ -154,14 +200,28 @@ function getTracks(){
 }
 
 //api last fm
+//clicados no menu pesquisa
 function getArtMusic(){
 
     let band = this.parentNode.getAttribute('band');
     let mus = this.innerText;
 
     api.getArtMusic(band,mus).then((response) => response.json())
-    .then((data) => {                              
+    .then((data) => {       
+                        
         let texto = data.mus[0].text;  
+        document.getElementById('scroll-text').innerText = texto;
+    });  
+
+    //document.getElementById('scroll-text').innerText = texto;
+}
+
+function getMusById(){
+
+    api.getMusicById(this.id).then((response) => response.json())
+    .then((data) => {       
+                        
+    let texto = data.mus[0].text;  
         document.getElementById('scroll-text').innerText = texto;
     });  
 

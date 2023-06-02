@@ -30,19 +30,19 @@ main > menu{
 
 footer{
     bottom: 0;
-    position: fixed; 
+    /* position: fixed; */
     /* width: 100%; */
     color: white;
-    display: flex;
-    /* grid-template-columns: 1fr 1fr; */
-    justify-content: inherit;
-    padding: 2vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    padding: 1vh;
 }
 
 footer > div{
-        /* display: grid; */
-    /* grid-template-columns: 1fr 1fr; */
+    display: flex;
     gap: 1vh;
+    justify-self: center;
     text-align: center;
 }
 
@@ -50,4 +50,25 @@ fieldset{
     border-radius: 4px;
     border-color: #000000;
     border-style: outset;
+}
+
+@media (max-width:400px){
+
+    footer > div{
+        display: grid;
+        /* grid-template-columns: 1fr 1fr; */
+        /* gap: 1vh; */
+        justify-self: center;
+        text-align: center;
+        padding: 1vh;
+    }
+
+    footer{
+        bottom: 0;
+         color: white;
+        display: grid;
+        justify-content: center;
+        padding: 1vh;
+    }
+
 }
