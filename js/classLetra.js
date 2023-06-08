@@ -29,7 +29,8 @@ class Letra{
 
     setFontSize(){
         let elem = document.getElementById(this.getAttribute('target'));
-        elem.style.fontSize = this.value + 'px'; 
+        console.log(elem.style.zoom)
+        elem.style.zoom = this.value
     }
 
 }

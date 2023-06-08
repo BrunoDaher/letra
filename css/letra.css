@@ -2,9 +2,10 @@ pre{
     text-align: center;
     padding: 4vh;
     margin: 0;
+    zoom: 1;
     font-size: 16px;
-    height: 75vh;
-    max-height: 75vh;
+    height: 100%;
+    max-height: 200%;
     overflow-y: scroll;
     white-space: break-spaces;
 }
