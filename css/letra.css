@@ -10,12 +10,13 @@ pre{
     white-space: break-spaces;
 }
 
-
+#scroll-container{
+    display: contents;
+}
 
 pre.rollOff{
     max-height: 80%;
 }
-
 
 .box-pesquisa{
     display: flex;
@@ -54,10 +55,8 @@ pre.rollOff{
 #titulo{
     align-items: center;
     justify-self: center;
-    padding: 1vh;
+    padding-top: 1vh;
     justify-self: center;
-    padding: 1vh;
-    padding: 1em;
     font-size: 2em;
     text-shadow: #FC0 1px 0;
 }

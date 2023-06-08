@@ -131,7 +131,7 @@ ul{
     left: -100vh;
     width: 90%;
   
-    background-color: #000000cf;
+   
     width: 0px;
     
     transition: all 0.8s;
@@ -269,8 +269,8 @@ input{
 
 .banda{
     border-style: inset;
-    /* padding: 2px; */
-    background-color: #6795ac8a;
+    /* padding: 2px; 
+    background-color: #6795ac8a;*/
 }
 
 .banda:hover{

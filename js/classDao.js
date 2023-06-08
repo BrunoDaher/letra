@@ -17,6 +17,11 @@ export class Dao{
         return JSON.parse(sessionStorage.getItem(id));
     }
 
+    exportFile(){
+        
+        
+    
+    }
     
 
 }

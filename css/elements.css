@@ -16,6 +16,23 @@
     filter: invert(1);
 }
 
+.discog{
+    background-image: url(https://www.pngrepo.com/download/294609/music-album-album.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+    filter: invert(1);
+    
+}
+
+.advSearch{
+    background-image: url(https://www.pngrepo.com/download/2797/search.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+    filter: invert(1);
+}
+
 .doc{
     background-image: url(https://www.pngrepo.com/download/7840/document.png);
     background-size: 29px ;
