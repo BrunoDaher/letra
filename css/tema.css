@@ -167,8 +167,6 @@ ul{
     left: -30em;
     margin: 0;
     padding: 9px;
-
-    grid-row: 9 / span 1;
     
     background-color: rgba(0, 0, 0, 0.998);
    
