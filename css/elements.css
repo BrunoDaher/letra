@@ -58,15 +58,15 @@
 
 .trash{
     background-image: url(https://www.pngrepo.com/download/57739/delete-song-interface-symbol.png);
-    background-size: 29px ;
-    width:29px;
-    height: 29px;
+    background-size: 15px ;
+    width:15px;
+    height: 15px;
     filter: invert(1);
 }
 
 .trash:hover{
     
-    filter: drop-shadow(2px 4px 6px rgb(173, 20, 20));
+    zoom: 1.1;
 }
 
 @media (max-width:400px){

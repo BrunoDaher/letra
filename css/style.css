@@ -13,11 +13,15 @@ body{
 header{
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
      justify-items: center;
+
+     background-color: #130606;
    
      padding: 2vh;
      text-align: center;
+
+     z-index: 2;
+     position: relative;
 }
 
 main > menu{
