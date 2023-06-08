@@ -2,17 +2,21 @@
 import Api from "./classApi.js";
 import Letra from "./classLetra.js";
 import Tela from "./classTela.js";
+import Dao from "./classDao.js";
 
 const letra = new Letra();
 const api = new Api();
 const tela = new Tela();
+const dao = new Dao();
 
 
 const h = document.querySelector("header");
 const discos = document.getElementById('discog')
 const listaArtistas = document.getElementById('listaArtistas')
 const trackMus = document.getElementById('trackMus');
-const trackSugestion = document.getElementById('trackSugestions')
+const trackSugestion = document.getElementById('trackSugestions');
+const listaMusicas = document.getElementById('listaMusicas');
+const btnSetList = document.getElementById('btnSetList');
 
 tela.nodeMenu(h);
 
@@ -21,6 +25,29 @@ pesquisa();
 discos.addEventListener('click',tela.modal);
 discos.addEventListener('click',tela.Parents);
 
+    
+btnSetList.addEventListener('click',tela.modal)
+
+montaLista()
+
+function montaLista(){
+    if(dao.getLocalJSON('listaLocal')){
+        let listaLocal = dao.getLocalJSON('listaLocal'); 
+        
+        //limpa lista;
+        listaMusicas.innerHTML = '';
+        //verifica se existe
+            listaLocal.forEach(element => {
+                let obj = Object.keys(element);
+                let value = Object.values(element)
+
+                let el =  {name:value, id:obj}
+
+                //listaMusicas.append(element);
+                tela.addToDiv('li',el,listaMusicas,getMusById)
+            });
+    }
+}
 
 function pesquisa(){
     let arrPesq = document.querySelectorAll('.inputPesquisa');
@@ -28,7 +55,7 @@ function pesquisa(){
     arrPesq.forEach(element => {
         element.addEventListener('keypress',searchArtist);        
     });
-    
+
 
     trackMus.addEventListener('keypress',searchTrackInfo);
     trackMus.addEventListener('change',searchTrackInfo);
@@ -89,6 +116,7 @@ function pesquisa(){
 
                     //busca por id
                     el.addEventListener('click',getMusById); 
+                    el.addEventListener('click',addToList); 
                     
                     //el.addEventListener('click',()=>{tela.actBtn(discos)});
                     //preenche destino
@@ -170,8 +198,7 @@ function getTracks(){
     api.getTracks(this.name,this.id).then((response) => response.json())
             .then((data) => {   
 
-                console.log(data)
-
+    
             let msg = data.message ? true : false    
 
             if(msg){
@@ -186,12 +213,9 @@ function getTracks(){
                     div.setAttribute('band',this.name);
                     div.innerHTML = '';
                 tracks.forEach(element => {
-                    let li = document.createElement('li');
-                        li.innerText = element.name;
-                        li.id= element.id
-                        li.addEventListener('click',getArtMusic);
-                    div.append(li);
-                    });
+                    tela.addToDiv('li',element,div,getArtMusic);
+                }
+                );
             } catch (error) {
                 console.log('Album nao encontrado')
             }
@@ -226,4 +250,66 @@ function getMusById(){
     });  
 
     //document.getElementById('scroll-text').innerText = texto;
+}
+
+function addToList(){
+    //append to ul left collumn
+
+    //cria chave e obj
+    let obj = {[this.id]:this.innerText}
+    
+    //persistencia
+    let listaLocal = new Array();
+
+    // 2 cria array caso não exista no Dao
+    if(dao.getLocalJSON('listaLocal')){
+        listaLocal = dao.getLocalJSON('listaLocal'); 
+        
+        let cont = 0;
+
+        //verifica se existe
+            listaLocal.forEach(element => {
+                if( Object.keys(element) == this.id) {
+                    console.log(0 +  ' ja existe' )
+                    cont++;
+                }
+            });
+
+            console.log(cont)
+            if(cont == 0){
+                addMusica(obj)
+            }
+    }
+    else{
+        console.log(2 + ' banco vazio')
+         addMusica(obj)
+    }
+
+    
+    function addMusica(elem){
+        
+        console.log('salva array')
+        listaLocal.push(elem);
+        
+        console.log('add HTML')
+
+        let obj = Object.keys(elem);
+        let value = Object.values(elem)
+
+        let el =  {name:value, id:obj}
+
+        tela.addToDiv('li',el,listaMusicas,getMusById)
+        
+        //tela.addToDiv('li',el,listaMusicas,getMusById)
+
+        console.log('salva LocalStorage')
+        dao.saveLocalJSON('listaLocal',listaLocal);
+    }
+  
+
+
+
+   
+
+   
 }

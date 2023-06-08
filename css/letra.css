@@ -12,14 +12,16 @@ pre{
 .box-pesquisa{
     display: flex;
     text-align: center;
-    /*place-content: center;*/  
+    /* place-content: center; */
     gap: 1vh;
+    justify-content: center;
     padding: 2vh;
 }
 
 .box-pesquisa > input{
     height: 5vh;
-    width: 50%;
+    width: 90%;
+    text-align: center;
 }
 
 .inputPesquisa{

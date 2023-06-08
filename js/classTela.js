@@ -76,8 +76,14 @@ menuTree(){
         }
     }
 }
-    
-    
+
+addToDiv(type,element,div,fn){
+    let li = document.createElement(type);
+        li.innerText = element.name;
+        li.id= element.id
+        li.addEventListener('click',fn);
+    div.append(li);
+    }
 }
 
 export default Tela

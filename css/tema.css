@@ -7,6 +7,17 @@
     background: rgb(62, 138, 182);
 }
 
+
+.box{
+    display: flex;
+    padding: 3vh;
+    align-items: center;
+}
+
+#menuC.active{
+    display: grid;
+}
+
 /*Elementos internos do botao*/
 button{
     cursor: pointer;
@@ -18,7 +29,7 @@ button{
 }
 
 .active{
-    display: grid;
+    display: grid !important;
    
 }
 
@@ -52,6 +63,8 @@ header > button{
     align-items: center;
     border-radius: 3px;
     cursor: pointer;
+    text-align: center;
+    place-content: center;
    
 }
 
@@ -90,6 +103,7 @@ ul{
    
     position:absolute;
     left: -100vh;
+    width: 90%;
   
     background-color: #000000cf;
     width: 0px;
@@ -98,6 +112,21 @@ ul{
   
   }
 
+  #listaMusicas {
+    padding: 2vh;
+    display: none;
+    gap: 2vh;
+    color: rgb(57, 155, 185);
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+
+  #listaMusicas > li{
+    background-color: #000000cf;
+    border-bottom: wheat;
+    border-style: groove;
+    border-width: 0px 0px 1px 0px;
+  }
 
   #trackSugestions.active{
    
@@ -137,9 +166,11 @@ ul{
 }
 
 .lista {
+
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    /*grid-template-columns: 1fr 2fr 2fr;*/
     height: 80vh;
+    width: 100%;
 }
 
 #listaDiscos > legend{
@@ -157,6 +188,16 @@ ul{
     top: 22vh;
     right: -50vw;
     transition: all 0.3s;
+}
+
+.banda{
+    border-style: inset;
+    padding: 2px;
+    background-color: #35393b;
+}
+
+.banda:hover{
+    background-color: #000000cf;
 }
 
 #listaDiscos.active{

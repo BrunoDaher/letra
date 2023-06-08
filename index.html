@@ -15,26 +15,64 @@
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">
         <span>Letra</span>
     </button>
-    <button target="menuB">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="search">
-        <a>Pesquisa</a>
-    </button>
+    
+   
     <button target="menuC">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
-        <span>Lista</span>
+        <span>Busca Avançada</span>
+    </button>
+
+    <button target="menuB">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="search">
+        <a>Discografia</a>
     </button>
 </header>
 
 <main>
     <menu id="menuA">
+
+        <div class="painel">
+            
+            <div class="box">
+               
+                <button class="btnToggle" target="listaMusicas" id="btnSetList">
+                    <a>SetList</a>
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
+                </button> 
+            </div>  
+        
+        </div>
+
+            <ul id="listaMusicas">
+            </ul>
+
+
         <div id="scroll-container">
             <pre id="scroll-text"></pre>
         </div>
     </menu>  
+
+    <menu id="menuC">
+        <div class="lista">
         
+            
+            <fieldset>
+                <legend>Busca Avançada</legend>
+                    <div class="box-pesquisa">
+                        <input target="trackSugestions" class="pesquisa" id="trackMus" type="text" placeholder="musica"> 
+                      
+                    </div>
+                    <ul id="trackSugestions">
+
+                    </ul>
+            </fieldset>
+        </div>
+    </menu>
+
     <menu id="menuB">
+      
         <fieldset>
-            <legend>Pesquisa</legend>
+            <legend>Discografia</legend>
             <div class="box-pesquisa">
                 <input target = 'listaArtistas' class="inputPesquisa" type="text" placeholder="artista">
                 <input hidden class="inputPesquisa" id="musica" type="text" placeholder="musica"> 
@@ -64,48 +102,7 @@
         </fieldset>   
     </menu>
     
-    <menu id="menuC">
-        <div class="lista">
-            <fieldset >
-                <legend>Listas</legend>
-               
-                <div id="newList">
-                    <a>Nova Lista</a>
-                    <img class="icon new" >
-                </div>
-               
-                <ul>
-                    <li>
-                        <img class="icon">
-                        <a>Duo</a>
-                    </li>
-                    
-                    <li>
-                        <img class="icon">
-                        <a>Vedders</a>
-                    </li>
-                   
-                    <li>
-                        <img class="icon">
-                        <a>Trio</a>
-                    </li>
-                </ul>
-            </fieldset>
-            
-            <fieldset>
-                <legend>Busca Avançada</legend>
-                    <div class="box-pesquisa">
-                        <input target="trackSugestions" class="pesquisa" id="trackMus" type="text" placeholder="musica"> 
-                        <button class="btnToggle" target="trackSugestions" id="btnTrack">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
-                        </button>   
-                    </div>
-                    <ul id="trackSugestions">
-
-                    </ul>
-            </fieldset>
-        </div>
-    </menu>
+   
 </main>
 
 <footer>
