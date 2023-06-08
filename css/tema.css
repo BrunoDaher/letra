@@ -171,7 +171,7 @@ ul{
     background-color: rgba(0, 0, 0, 0.998);
    
     width: fit-content;
-    height: fit-content;
+    /*height: fit-content;*/
     color: rgb(255, 255, 255);
 
     border-radius: 4px;
@@ -215,7 +215,7 @@ input{
      background-color: rgba(88, 91, 95, 0.851);
     
      width: fit-content;
-     height: fit-content;
+     /*height: fit-content;*/
      color: rgb(232, 235, 236);
      
      transition: all 0.3s;
