@@ -11,7 +11,9 @@
 .box{
     display: flex;
     padding: 3vh;
+    gap: 12vh;
     align-items: center;
+    justify-content: center;
 }
 
 #menuC.active{
@@ -29,13 +31,13 @@ button{
 }
 
 .active{
-    display: grid !important;
-   
+    display: grid;
 }
 
 header > button.active{
 
-    color: #ffffff;
+    color: #a1f3e9;
+    text-shadow: #0c617a 6px -4px 10px;
     display: flex;
     border-style: ridge;
     border-radius: 4px;
@@ -120,12 +122,17 @@ ul{
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  #listaMusicas.active{
+    display: grid;
+} 
 
   #listaMusicas > li{
-    background-color: #000000cf;
+    background-color: #2b2b2bcf;
     border-bottom: wheat;
     border-style: groove;
     border-width: 0px 0px 1px 0px;
+    padding:1.5vh;
+    transition: all 0.3s;
   }
 
   #trackSugestions.active{
@@ -233,5 +240,7 @@ ul{
     grid-template-columns: none;
     grid-template-rows: 1fr 1fr 1fr; 
  }
+
+
 
 }

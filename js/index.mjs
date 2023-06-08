@@ -44,21 +44,27 @@ function montaLista(){
                 let el =  {name:value, id:obj}
 
                 //listaMusicas.append(element);
-                tela.addToDiv('li',el,listaMusicas,getMusById)
+                tela.addToDiv('li',el,listaMusicas,getMusById);
             });
     }
+}
+
+function inputClean(event){
+    event.target.value = ''
 }
 
 function pesquisa(){
     let arrPesq = document.querySelectorAll('.inputPesquisa');
    
     arrPesq.forEach(element => {
-        element.addEventListener('keypress',searchArtist);        
+        element.addEventListener('keypress',searchArtist);   
+        element.addEventListener('click',inputClean);     
     });
 
 
     trackMus.addEventListener('keypress',searchTrackInfo);
     trackMus.addEventListener('change',searchTrackInfo);
+    trackMus.addEventListener('click',inputClean);
 
     //monta lista de bandas
     //event - evento gerador - neste caso keypress
