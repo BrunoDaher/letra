@@ -9,14 +9,34 @@
 
 .fonteContainer{
     display: flex;
-    font-size: 3em;
+    font-size: 1.2rem;
     padding: 1rem;
 }
 
+.painel{
+    background-color: #5f9ea02b;
+    padding: 1vh;
+}
+
+.grid1{
+    display: grid;
+}
+
+.grid2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+.grid3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+}
 
 .box{
     padding: 1vh;
-    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     display: grid;
     /* gap: 12vh; */
     font-size: 1.5vh;
@@ -42,7 +62,7 @@ button{
     display: grid;
 }
 
-header > button.active{
+header > button.active, button.active{
 
     color: #a1f3e9;
     text-shadow: #0c617a 6px -4px 10px;
@@ -58,11 +78,7 @@ header > button.active{
 }
 
 header > button{
-       /* background-color: azure; */
        cursor: pointer;
-       /* width: 100%; */
-       /* margin: 1vh; */
-       /* border-radius: 7px; */
        border: none;
        background: none;
        font-size: 2.4vh;
@@ -131,41 +147,78 @@ ul{
         right: 0;
         border-style: inset;
         width: auto;
-        padding: 1vh;
+       
         line-height: 4vh;
         margin-top: 0;
         transition: all 0.8s;
     }
 
-#titulo{
-    align-items: center;
-    justify-self: center;
-    padding: 1vh;
-}
+
 
   #listaMusicas {
     /* padding: 2vh; */
-    display: none;
-    gap: 1vh;
-    color: rgb(57, 155, 185);
-    grid-template-columns: 1fr 1fr 1fr;
-    overflow: auto;
-    overflow-x: scroll;
-  }
+    position: fixed;
+    top:8em;
+    left: -25em;
+    margin: 0;
+    padding: 9px;
+    
+    background-color: rgb(29 6 88 / 67%);
+   
+    width: fit-content;
+    height: fit-content;
+    color: rgb(255, 255, 255);
+
+    border-radius: 4px;
+    transition: all 0.8s;
+}
 
   #listaMusicas.active{
-    display: grid;
+    left: 0em;
+    z-index: 1;
+    transition: all 0.3s;
 } 
 
-  #listaMusicas > li{
+#listaMusicas > li{
     background-color: #2b2b2bcf;
-    border-bottom: wheat;
+    border-bottom: rgb(0, 0, 0);
     border-style: groove;
+    gap: 7vh;
+    font-size: 3.4vh;
     border-width: 0px 0px 1px 0px;
-    padding:1.5vh;
+    padding: 1vh;
     transition: all 0.3s;
   }
 
+input{
+    accent-color: rgba(214, 214, 204, 0.698);
+    
+}
+
+  #config {
+     /* padding: 2vh; */
+     position: fixed;
+     top:8em;
+     right: -25em;
+     margin: 0;
+     padding: 9px;
+     
+     background-color: rgba(88, 91, 95, 0.851);
+    
+     width: fit-content;
+     height: fit-content;
+     color: rgb(232, 235, 236);
+     
+     transition: all 0.3s;
+  }
+
+#config.active{
+    right: 0em;
+    z-index: 1;
+    transition: all 0.3s;
+}
+
+ 
 
 
 #listaArtistas.active{
@@ -216,8 +269,8 @@ ul{
 
 .banda{
     border-style: inset;
-    padding: 2px;
-    background-color: #35393b;
+    /* padding: 2px; */
+    background-color: #6795ac8a;
 }
 
 .banda:hover{
@@ -259,12 +312,20 @@ ul{
  }
 
  .fonteContainer{
-    display: grid;
+
     font-size: 1em;
     width: fit-content;
     accent-color: white;
  }
 
+
+ header > button{
+    font-size: 1.8vh;
+   
+    }
+ .painel{
+    font-size:1.2em
+ }
 
 
 }

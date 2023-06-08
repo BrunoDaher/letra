@@ -39,35 +39,19 @@
     filter: invert(1);
 }
 
-.painel{
-    background-color: #5f9ea02b;
+.trash{
+    background-image: url(https://www.pngrepo.com/download/57739/delete-song-interface-symbol.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+    filter: invert(1);
 }
 
-.btnToggle{
-  cursor: pointer;
-  width: fit-content;
-
-  border-color: black;
-  
-  transition: all 0.3s;
-}
-.btnToggle.active{
+.trash:hover{
     
-    border-width: 1px;
-
-    border-color: #4d4d4d;
-    border-radius: 3px;
-    display: flex;
-    background-color: forestgreen;
-   
-    padding: 1vh;
-    transition: all 0.3s;
+    filter: drop-shadow(2px 4px 6px rgb(173, 20, 20));
 }
 
 @media (max-width:400px){
-
-    .btnToggle , .btnToggle.active{ 
-        display: grid;
-    }
 
 }

@@ -1,14 +1,21 @@
 pre{
     text-align: center;
-    padding: 4vh;
+    padding: 2vh;
     margin: 0;
     zoom: 1;
     font-size: 16px;
     height: 100%;
-    max-height: 200%;
+    max-height: 100%;
     overflow-y: scroll;
     white-space: break-spaces;
 }
+
+
+
+pre.rollOff{
+    max-height: 80%;
+}
+
 
 .box-pesquisa{
     display: flex;
@@ -42,4 +49,15 @@ pre{
     cursor: pointer;
     gap: 2vh;
     font-size: 3vh;
+}
+
+#titulo{
+    align-items: center;
+    justify-self: center;
+    padding: 1vh;
+    justify-self: center;
+    padding: 1vh;
+    padding: 1em;
+    font-size: 2em;
+    text-shadow: #FC0 1px 0;
 }

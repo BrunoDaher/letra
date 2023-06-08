@@ -9,12 +9,15 @@ class Letra{
     }
 
     setTime(){
+
+
         let t = this.getAttribute('target');
         let elem = document.getElementById(t);
     
         if(this.value == 0.1){
             console.log('stop')
-            elem.classList.remove('scroll-text')
+            elem.classList.remove('scroll-text');
+            elem.classList.toggle('rollOff');
         }
         else{
 

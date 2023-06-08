@@ -17,6 +17,7 @@ const trackMus = document.getElementById('trackMus');
 const trackSugestion = document.getElementById('trackSugestions');
 const listaMusicas = document.getElementById('listaMusicas');
 const btnSetList = document.getElementById('btnSetList');
+const btnConfig = document.getElementById('btnConfig');
 
 tela.nodeMenu(h);
 
@@ -24,9 +25,11 @@ pesquisa();
 
 discos.addEventListener('click',tela.modal);
 discos.addEventListener('click',tela.Parents);
-
     
 btnSetList.addEventListener('click',tela.modal)
+btnConfig.addEventListener('click',tela.modal)
+
+
 
 montaLista()
 
@@ -38,13 +41,14 @@ function montaLista(){
         listaMusicas.innerHTML = '';
         //verifica se existe
             listaLocal.forEach(element => {
-                let obj = Object.keys(element);
-                let value = Object.values(element)
+                
+                element = element[Object.keys(element)];
 
-                let el =  {name:value, id:obj}
+                let el =  {name:element.musica, id:element.id}
 
                 //listaMusicas.append(element);
-                tela.addToDiv('li',el,listaMusicas,getMusById);
+                
+                tela.addToDiv('li',el,listaMusicas,getLocalMusic);
             });
     }
 }
@@ -60,7 +64,6 @@ function pesquisa(){
         element.addEventListener('keypress',searchArtist);   
         element.addEventListener('click',inputClean);     
     });
-
 
     trackMus.addEventListener('keypress',searchTrackInfo);
     trackMus.addEventListener('change',searchTrackInfo);
@@ -97,8 +100,6 @@ function pesquisa(){
     }
 
     function searchTrackInfo(){
-
-
         //exibe lista
         trackSugestion.classList.add('active');
        //let returnArt = document.getElementById('listaArtistas');
@@ -109,7 +110,6 @@ function pesquisa(){
                    // console.log(data.response.docs);      
                 let dados = data.response.docs;
               
-                
                //limpa container destino
                 trackSugestion.innerText = '';
                 
@@ -241,30 +241,62 @@ function getArtMusic(){
                         
         let texto = data.mus[0].text;  
         document.getElementById('scroll-text').innerText = texto;
+
+        console.log(data)
+
     });  
 
     //document.getElementById('scroll-text').innerText = texto;
 }
 
+function getLocalMusic(){
+
+
+let listaLocal = dao.getLocalJSON('listaLocal');
+
+    let arr = new Array();
+    listaLocal.forEach(element => {
+        let values = Object.values(element);
+        arr[values[0].id] = values;
+        
+    });
+
+ 
+    let letra =  arr[this.id][0].letra;
+
+    document.getElementById("scroll-text").innerText = letra;
+    document.getElementById('titulo').innerText = this.innerText
+
+}
+
 function getMusById(){
-
     console.log(2)
-
     api.getMusicById(this.id).then((response) => response.json())
     .then((data) => {       
-                 
-    let title = data.mus[0].name;  
-    document.getElementById('titulo').innerText = title;  
-    
-    let texto = data.mus[0].text;  
-    document.getElementById('scroll-text').innerText = texto;
-    
-});  
+       
+        let title = data.mus[0].name;  
+        document.getElementById('titulo').innerText = title;  
+       
+        let texto = data.mus[0].text;  
+        document.getElementById('scroll-text').innerText = texto;
 
+        let artista = data.art.name;
 
-    
-    
-    //document.getElementById('scroll-text').innerText = texto;
+        //salva letra no storage
+        //console.log(localStorage.getItem('listaLocal'));
+
+        let ls = JSON.parse(localStorage.getItem('listaLocal'));
+
+        ls.forEach(element => {
+          if( Object.keys(element) == this.id ){
+            element[this.id] = {
+                id:this.id, 'letra':texto,'musica':title, 'artista':artista};
+          }
+        }
+        );
+
+        dao.saveLocalJSON('listaLocal',ls);
+    });  
 }
 
 function addToList(){

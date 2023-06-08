@@ -82,8 +82,24 @@ addToDiv(type,element,div,fn){
         li.innerText = element.name;
         li.id= element.id
         li.addEventListener('click',fn);
+    
+        let trash = document.createElement('button');
+        trash.className = 'trash';
+
+        trash.addEventListener('click',this.removeIt);
+
+
     div.append(li);
+    li.append(trash)
     }
+
+
+removeIt(){
+    //div irmã
+    let musId = this.parentNode;
+    musId.remove();
 }
+}
+
 
 export default Tela
