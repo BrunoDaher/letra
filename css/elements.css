@@ -45,16 +45,29 @@
 
 .btnToggle{
   cursor: pointer;
+  width: fit-content;
+
+  border-color: black;
+  
   transition: all 0.3s;
 }
 .btnToggle.active{
+    
     border-width: 1px;
-    border-style: inset;
+
     border-color: #4d4d4d;
     border-radius: 3px;
     display: flex;
     background-color: forestgreen;
-    width: fit-content;
+   
     padding: 1vh;
     transition: all 0.3s;
+}
+
+@media (max-width:400px){
+
+    .btnToggle , .btnToggle.active{ 
+        display: grid;
+    }
+
 }

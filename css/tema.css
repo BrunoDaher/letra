@@ -7,11 +7,19 @@
     background: rgb(62, 138, 182);
 }
 
+.fonteContainer{
+    display: flex;
+    font-size: 3em;
+    padding: 1rem;
+}
+
 
 .box{
-    display: flex;
-    padding: 3vh;
-    gap: 12vh;
+    padding: 1vh;
+    grid-template-columns: 3fr 1fr 1fr;
+    display: grid;
+    /* gap: 12vh; */
+    font-size: 1.5vh;
     align-items: center;
     justify-content: center;
 }
@@ -114,12 +122,35 @@ ul{
   
   }
 
+
+  #trackSugestions.active{
+   
+        position: relative;
+        left: 0vh;
+        border-radius: 4px;
+        right: 0;
+        border-style: inset;
+        width: auto;
+        padding: 1vh;
+        line-height: 4vh;
+        margin-top: 0;
+        transition: all 0.8s;
+    }
+
+#titulo{
+    align-items: center;
+    justify-self: center;
+    padding: 1vh;
+}
+
   #listaMusicas {
-    padding: 2vh;
+    /* padding: 2vh; */
     display: none;
-    gap: 2vh;
+    gap: 1vh;
     color: rgb(57, 155, 185);
     grid-template-columns: 1fr 1fr 1fr;
+    overflow: auto;
+    overflow-x: scroll;
   }
 
   #listaMusicas.active{
@@ -135,20 +166,6 @@ ul{
     transition: all 0.3s;
   }
 
-  #trackSugestions.active{
-   
-  position: relative;
-    left: 0vh;
-    border-radius: 4px;
-    right: 0;
-    border-style: inset;
-    width: fit-content;
-    padding: 1vh;
-    line-height: 4vh;
-    margin-top: 0;
-    transition: all 0.8s;
-  
-  }
 
 
 #listaArtistas.active{
@@ -239,6 +256,13 @@ ul{
     display: grid;
     grid-template-columns: none;
     grid-template-rows: 1fr 1fr 1fr; 
+ }
+
+ .fonteContainer{
+    display: grid;
+    font-size: 1em;
+    width: fit-content;
+    accent-color: white;
  }
 
 

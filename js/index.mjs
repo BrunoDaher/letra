@@ -248,13 +248,22 @@ function getArtMusic(){
 
 function getMusById(){
 
+    console.log(2)
+
     api.getMusicById(this.id).then((response) => response.json())
     .then((data) => {       
-                        
+                 
+    let title = data.mus[0].name;  
+    document.getElementById('titulo').innerText = title;  
+    
     let texto = data.mus[0].text;  
-        document.getElementById('scroll-text').innerText = texto;
-    });  
+    document.getElementById('scroll-text').innerText = texto;
+    
+});  
 
+
+    
+    
     //document.getElementById('scroll-text').innerText = texto;
 }
 
