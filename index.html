@@ -11,7 +11,7 @@
 <body>
 
 <header class="grid3">
-    <button target="menuA">
+    <button id="btnMenuA" target="menuA">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">
         <span>Letra</span>
     </button>
@@ -38,7 +38,12 @@
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
                 </button> 
 
-                <label id="titulo" for="scroll-container"></label>
+                <div class="grid3">
+                 <button id="btnLastSong" class="back" value="Back"></button>
+                 <label id="titulo" for="scroll-container"></label>
+                 <button id="btnNextSong" class="forward" value="Go"></button>
+                </div>
+
                 <button class="btn" target="config" id="btnConfig">
                     <a>Fonte</a>
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">

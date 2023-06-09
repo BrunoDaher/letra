@@ -64,6 +64,24 @@
     filter: invert(1);
 }
 
+.forward{
+    
+    background-image: url(https://www.pngrepo.com/download/42258/fast-forward.png);
+    background-size: 25px ;
+    width:25px;
+    height: 25px;
+    filter: invert(1);
+}
+
+.back{
+
+    background-image: url(https://www.pngrepo.com/download/123553/backward-arrows-couple.png);
+    background-size: 25px ;
+    width:25px;
+    height: 25px;
+    filter: invert(1);
+}
+
 .trash:hover{
     
     zoom: 1.1;

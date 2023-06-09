@@ -35,14 +35,32 @@ menuTree(){
     let btn =  (event.target)
     let target = btn.parentNode.getAttribute('target');    
     let targetMenu = document.getElementById(target);
+
+    //console.log(target)
+
+    if(!targetMenu){
+        target = event.target.getAttribute('target');
+        targetMenu = document.getElementById(target);
+    }
+
     this.hideParents(targetMenu);
    //targetMenu.classList.add('active')
 }
 
 //oculta menus irmãos
  hideParents(menu){
+
         //get the other menus in the same group
+    
+
+        if(!menu){
+            menu = event.target.parentNode
+        }
+
+        //console.log(menu)
         let nodes = menu.parentNode.childNodes;
+
+        //console.log(menu)
 
         //hide the parents
         nodes.forEach(element => {
@@ -55,8 +73,6 @@ menuTree(){
         //show current menu
         menu.classList.add('active')
     }
-
-
     
     typing (string,div) {
 
@@ -77,10 +93,11 @@ menuTree(){
     }
 }
 
-addToDiv(type,element,div,fn){
+addToDiv(type,element,div,fn){  
+    //console.log(element)
     let li = document.createElement(type);
         li.innerText = element.name;
-        li.id= element.id
+        li.id= element.id 
         li.addEventListener('click',fn);
     
         let trash = document.createElement('button');
@@ -88,10 +105,12 @@ addToDiv(type,element,div,fn){
 
         trash.addEventListener('click',this.removeIt);
 
-
     div.append(li);
     li.append(trash)
-    }
+
+    //correcao de volta para o menu
+   
+}
 
 
 removeIt(){

@@ -52,10 +52,15 @@ pre.rollOff{
     font-size: 3vh;
 }
 
+
+
 #titulo{
     align-items: center;
+    font-size: 1.1em;
+    text-wrap: nowrap;
+    padding: 0 10px;
     /* justify-self: center; */
     /* padding-top: 1vh; */
-    font-size: 1em;
+    font-size: 2em;
     text-shadow: #FC0 1px 0;
 }

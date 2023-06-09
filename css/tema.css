@@ -17,6 +17,15 @@
     background-color: #9d3e38;
     padding: 1vh;
     z-index: 2;
+    
+}
+
+#listaMusicas > li.selected{
+color: red;
+}
+
+.btn{
+    font-size: 1.2rem;
 }
 
 .grid1{
@@ -158,7 +167,7 @@ ul{
 
 
   #listaMusicas {
-    /* padding: 2vh; */
+ 
     max-height: 80%;
     overflow-y: scroll;
     position: fixed;
@@ -171,7 +180,7 @@ ul{
     background-color: rgba(0, 0, 0, 0.998);
    
     width: fit-content;
-    /*height: fit-content;*/
+   
     color: rgb(255, 255, 255);
 
     border-radius: 4px;
