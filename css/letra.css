@@ -56,11 +56,11 @@ pre.rollOff{
 
 #titulo{
     align-items: center;
-    font-size: 1.1em;
-    text-wrap: nowrap;
+    font-size: 1.5vh;
+    text-wrap: balance;
     padding: 0 10px;
     /* justify-self: center; */
     /* padding-top: 1vh; */
-    font-size: 2em;
+ 
     text-shadow: #FC0 1px 0;
 }
