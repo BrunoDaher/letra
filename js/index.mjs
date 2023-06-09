@@ -256,14 +256,23 @@ function getArtMusic(){
     api.getArtMusic(band,mus).then((response) => response.json())
     .then((data) => {       
                
-    
         let texto = data.mus[0].text;
         let id = data.mus[0].id;  
 
         //corrigindo dado q nao vem na api
         this.id = id;
 
+       // addMusica
+       
+        let el = {id: mus};
+
+        addMusica(el);
+
         document.getElementById('scroll-text').innerText = texto;
+        titulo.innerText = mus;
+        titulo.idSong = id;
+
+        document.getElementById('btnMenuA').click()        
 
     });  
 
@@ -335,8 +344,6 @@ function getMusById(){
     });  
 
     document.getElementById('btnMenuA').click()
-
-    document.getElementById('btnMenuA').click()
 }
 
 function addToList(){
@@ -373,23 +380,28 @@ function addToList(){
     }
 
     
-    function addMusica(elem){
-        
-        console.log('salva array')
-        listaLocal.push(elem);
-        
-        console.log('add HTML')
-        let obj = Object.keys(elem);
-        let value = Object.values(elem)
-
-        let el =  {name:value, id:obj}
-
-        tela.addToDiv('li',el,listaMusicas,getMusById)
-        
-        //tela.addToDiv('li',el,listaMusicas,getMusById)
-
-        console.log('salva LocalStorage')
-        dao.saveLocalJSON('listaLocal',listaLocal);
-    }
+    
   
+}
+
+function addMusica(elem){
+        
+
+
+    let listaLocal = dao.getLocalJSON('listaLocal'); 
+    console.log('salva array')
+    listaLocal.push(elem);
+    
+    console.log('add HTML')
+    let obj = Object.keys(elem);
+    let value = Object.values(elem)
+
+    let el =  {name:value, id:obj}
+
+    tela.addToDiv('li',el,listaMusicas,getMusById)
+    
+    //tela.addToDiv('li',el,listaMusicas,getMusById)
+
+    console.log('salva LocalStorage')
+    dao.saveLocalJSON('listaLocal',listaLocal);
 }
