@@ -1,3 +1,7 @@
+import Dao from "./classDao.js";
+
+const dao = new Dao();
+
 class Tela {
 
 //cadastra funcoes nos elementos do menu
@@ -109,7 +113,6 @@ addToDiv(type,element,div,fn){
     li.append(trash)
 
     //correcao de volta para o menu
-   
 }
 
 
@@ -117,7 +120,20 @@ removeIt(){
     //div irmã
     let musId = this.parentNode;
     musId.remove();
-}
+
+    let lista = dao.getLocalJSON('listaLocal');
+
+    Object.values(lista).forEach(element => {
+        let id = Object.keys(element)[0];
+        if(musId.id == id){
+            delete lista[0];
+            lista.shift();
+        }
+    });
+
+    dao.saveLocalJSON('listaLocal',lista);
+
+    }
 }
 
 

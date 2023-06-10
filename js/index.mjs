@@ -159,6 +159,8 @@ function pesquisa(){
 function getArtInfo(event) {
     //console.log(this.id)
 
+   console.log("API artInfo - vagalume")
+
     listaArtistas.classList.remove('active');
     let returnDisco = document.getElementById('listaDiscos');
    
@@ -250,27 +252,45 @@ function getTracks(){
 function getArtMusic(){
 
     
-    let band = this.parentNode.getAttribute('band');
-    let mus = this.innerText;
+    console.log("trilhoA")
 
-    api.getArtMusic(band,mus).then((response) => response.json())
+    let artista = this.parentNode.getAttribute('band');
+    let musica = this.innerText;
+
+    api.getArtMusic(artista,musica).then((response) => response.json())
     .then((data) => {       
                
         let texto = data.mus[0].text;
-        let id = data.mus[0].id;  
+        let id = 'l' + data.mus[0].id;  
 
         //corrigindo dado q nao vem na api
         this.id = id;
 
        // addMusica
-       
-        let el = {id: mus};
 
-        addMusica(el);
+        let obj = {[id]:{'letra':texto,'musica':musica, 'artista':artista}};
+
+        console.log(obj)
+
+        let el = {[id]: musica};
+
+        appendMusica(el);
 
         document.getElementById('scroll-text').innerText = texto;
-        titulo.innerText = mus;
-        titulo.idSong = id;
+        titulo.innerText = musica;
+        titulo.setAttribute('idSong',id);
+
+        //falta salvar no DAO
+        let ls = dao.getLocalJSON('listaLocal');
+
+        if(!ls){
+            ls = new Array();
+        }
+
+         ls.push(obj);
+  
+        dao.saveLocalJSON('listaLocal',ls);
+
 
         document.getElementById('btnMenuA').click()        
 
@@ -332,10 +352,13 @@ function getMusById(){
 
         let ls = JSON.parse(localStorage.getItem('listaLocal'));
 
+        if(!ls){
+        ls = new Array();
+        }
+
         ls.forEach(element => {
           if( Object.keys(element) == this.id ){
-            element[this.id] = {
-                id:this.id, 'letra':texto,'musica':title, 'artista':artista};
+            element[this.id] = {id:this.id, 'letra':texto,'musica':title, 'artista':artista};
           }
         }
         );
@@ -371,12 +394,12 @@ function addToList(){
 
             console.log(cont)
             if(cont == 0){
-                addMusica(obj)
+                appendMusica(obj)
             }
     }
     else{
         console.log(2 + ' banco vazio')
-         addMusica(obj)
+         appendMusica(obj)
     }
 
     
@@ -384,24 +407,28 @@ function addToList(){
   
 }
 
-function addMusica(elem){
+function appendMusica(elem){
         
-
-
+  //console.log(elem)
     let listaLocal = dao.getLocalJSON('listaLocal'); 
+
+    if(!listaLocal){
+        listaLocal = new Array();
+    }
+
     console.log('salva array')
     listaLocal.push(elem);
     
     console.log('add HTML')
-    let obj = Object.keys(elem);
-    let value = Object.values(elem)
+    let key = Object.keys(elem);
+    let value = Object.values(elem);
 
-    let el =  {name:value, id:obj}
+    let el =  {name:value, id:key}
 
     tela.addToDiv('li',el,listaMusicas,getMusById)
     
     //tela.addToDiv('li',el,listaMusicas,getMusById)
 
     console.log('salva LocalStorage')
-    dao.saveLocalJSON('listaLocal',listaLocal);
+    //dao.saveLocalJSON('listaLocal',listaLocal);
 }
