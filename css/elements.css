@@ -40,6 +40,18 @@
     height: 29px;
 }
 
+.bolt{
+    background-image: url(https://www.pngrepo.com/download/400010/bolt.png);
+    background-size: 31px ;
+    width:31px;
+    height: 31px;
+    filter: invert(1);
+}
+
+.bolt.active, .bolt:hover{
+    filter: invert(0);
+}
+
 .disc{
     background-image: url(https://www.pngrepo.com/download/101744/long-play-record-cover.png);
     background-size: 31px ;

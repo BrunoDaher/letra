@@ -21,6 +21,7 @@ const btnConfig = document.getElementById('btnConfig');
 const btnNextSong = document.getElementById("btnNextSong");
 const btnLastSong = document.getElementById("btnLastSong");
 const titulo = document.getElementById('titulo')
+const btnBolt = document.getElementById('btnBolt');
 
 tela.nodeMenu(h);
 
@@ -34,6 +35,20 @@ btnConfig.addEventListener('click',tela.modal)
 
 btnLastSong.addEventListener('click',changeSong);
 btnNextSong.addEventListener('click',changeSong);
+
+btnBolt.addEventListener('click',toggleLogic);
+
+
+function toggleLogic(){
+    let valor =  this.value;
+    
+    this.value = valor == 0 ? 1:0;
+
+
+
+    this.childNodes[1].classList.toggle('active')
+
+}
 
 
 function changeSong(){
@@ -66,7 +81,9 @@ function montaLista(){
                 
                 element = element[Object.keys(element)];
 
-                let el =  {name:element.musica, id:element.id}
+                console.log(element)
+
+                let el =  {name:element.artista + ' ' + element.musica, id:element.id}
 
                 //listaMusicas.append(element);
                 
@@ -291,8 +308,12 @@ function getArtMusic(){
   
         dao.saveLocalJSON('listaLocal',ls);
 
-
-        document.getElementById('btnMenuA').click()        
+        //se opção tiver ativada
+        //busca rapida
+        if(btnBolt.value == 1){
+            document.getElementById('btnMenuA').click()    
+        }
+        
 
     });  
 
@@ -365,8 +386,10 @@ function getMusById(){
 
         dao.saveLocalJSON('listaLocal',ls);
     });  
-
-    document.getElementById('btnMenuA').click()
+    
+    if(btnBolt.value == 1){
+        document.getElementById('btnMenuA').click()
+    }
 }
 
 function addToList(){
@@ -430,5 +453,5 @@ function appendMusica(elem){
     //tela.addToDiv('li',el,listaMusicas,getMusById)
 
     console.log('salva LocalStorage')
-    //dao.saveLocalJSON('listaLocal',listaLocal);
+    dao.saveLocalJSON('listaLocal',listaLocal);
 }

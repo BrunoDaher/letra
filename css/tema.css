@@ -134,7 +134,6 @@ ul{
   position:absolute;
   left: -100vh;
   top: 20vh;
-  background-color: #000000cf;
   width: 0px;
   
   transition: all 0.8s;
@@ -242,21 +241,17 @@ input{
 }
 
 
-
 #listaArtistas.active{
-    left:0vh;
-   
-    width: revert; 
-
+    left: 0vh;
+    width: revert;
     border-radius: 4px;
     right: 0;
-    display: grid;
-    border-style: inset;
-    width: revert;
-    padding: 2vh;
-    line-height: 6vh;
-
-    transition: all 0.8 s;
+    /* display: grid; */
+    /* border-style: inset; */
+    /* width: revert; */
+    /* padding: 2vh; */
+    line-height: 4vh;
+    transition: all 0.8s;
 }
 
 #musicas{
@@ -290,13 +285,13 @@ input{
 }
 
 .banda{
-    border-style: inset;
+    border-style: outset;
     /* padding: 2px; 
     background-color: #6795ac8a;*/
 }
 
 .banda:hover{
-    background-color: #000000cf;
+    background-color: dimgrey;;
 }
 
 #listaDiscos.active{
