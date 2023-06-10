@@ -6,6 +6,10 @@ class Letra{
 
         const fonte = document.getElementById('fonte');
         fonte.addEventListener('change',this.setFontSize);
+
+        const colunas = document.getElementById('colunas');
+        colunas.addEventListener('change',this.setColunas);
+    
     }
 
     setTime(){
@@ -35,6 +39,13 @@ class Letra{
         console.log(elem.style.zoom)
         elem.style.zoom = this.value
     }
+
+    setColunas(){
+        let elem = document.getElementById(this.getAttribute('target'));
+        console.log(elem)
+        elem.style.columnCount = this.value
+    }
+
 
 }
 

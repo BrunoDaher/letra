@@ -10,12 +10,17 @@ body{
     background-color: #1a1e21e0;
 }
 
+
+legend{
+    font-size: 1.5rem;
+}
+
 header{
 
     display: grid;
      justify-items: center;
 
-     background-color: #130606;
+     background-color: #4a4c50;
    
      padding: 2vh;
      text-align: center;
@@ -78,6 +83,10 @@ fieldset{
         display: grid;
         justify-content: center;
         padding: 1vh;
+    }
+
+    legend{
+        font-size: 1.1rem;
     }
 
 }

@@ -14,7 +14,7 @@
 }
 
 .painel{
-    background-color: #9d3e38;
+    background-color: #167c71;
     padding: 1vh;
     z-index: 2;
     
@@ -24,9 +24,6 @@
 color: red;
 }
 
-.btn{
-    font-size: 1.2rem;
-}
 
 .grid1{
     display: grid;
@@ -87,6 +84,7 @@ header > button.active, button.active{
     border-radius: 4px;
     border-width: 0px 0px 2px 0px;
     transition: all 0.3s;
+    padding: 4px;
   
     font-style: italic;
 
@@ -138,6 +136,21 @@ ul{
   
   transition: all 0.8s;
 
+}
+
+#listaArtistas.active{
+    left: 0vh;
+    /* width: fit-content; */
+    border-radius: 4px;
+    right: 0;
+    /* display: grid; */
+    /* border-style: inset; */
+    background-color: black;
+    width: revert;
+    padding: 2vh;
+    top:10vh;
+    line-height: 5vh;
+    transition: all 0.8s;
 }
 
 #trackSugestions{
@@ -241,18 +254,7 @@ input{
 }
 
 
-#listaArtistas.active{
-    left: 0vh;
-    width: revert;
-    border-radius: 4px;
-    right: 0;
-    /* display: grid; */
-    /* border-style: inset; */
-    /* width: revert; */
-    /* padding: 2vh; */
-    line-height: 4vh;
-    transition: all 0.8s;
-}
+
 
 #musicas{
     height: 62vh;
@@ -266,6 +268,7 @@ input{
     height: 80vh;
     width: 100%;
 }
+
 
 #listaDiscos > legend{
     background: #133753a8;
