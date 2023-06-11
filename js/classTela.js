@@ -78,7 +78,7 @@ menuTree(){
         menu.classList.add('active')
     }
     
-    typing (string,div) {
+typing (string,div) {
 
     let array = string.split("");
     let timer = setInterval(fn,70);
@@ -97,41 +97,73 @@ menuTree(){
     }
 }
 
-addToDiv(type,element,div,fn){  
-    //console.log(element)
-    let li = document.createElement(type);
-        li.innerText = element.name;
-        li.id= element.id 
-        li.addEventListener('click',fn);
+addToDiv(type,element,container,fn){  
     
-        let trash = document.createElement('button');
-        trash.className = 'trash';
+    console.log('plotandoNa lista lateral')
 
-        trash.addEventListener('click',this.removeIt);
+    console.log(element)
+    
+    let li = document.createElement('li');
+        li.innerText = element.name;
+        
+        //pra musicas listadas na busca mista - barra lateral esquerda
+        if(container.id != 'musicas'){ 
+            let div = document.createElement(type);
+            div.className = 'grid2';
+            
+            let btnTrash = document.createElement('button');
+                btnTrash.className = 'trash';
+            btnTrash.addEventListener('click',this.removeIt);
 
-    div.append(li);
-    li.append(trash)
+            div.id = "div" + element.id;    
+            
+            li.id= element.id 
+            li.addEventListener('click',hideParents);
 
-    //correcao de volta para o menu
+            div.append(li);
+            div.append(btnTrash);
+            container.append(div);
+        }
+        
+        else{
+            container.append(li);
+        }
+
+        li.addEventListener('click',fn);
+
+    function hideParents(){
+       let arrAvo = this.parentNode.parentNode;
+
+       let nodes = arrAvo.childNodes;
+
+       nodes.forEach(element => {
+           element.childNodes[0].classList.remove('active');
+       });
+
+       this.classList.add('active')
+
+    }
 }
 
 
 removeIt(){
     //div irmã
-    let musId = this.parentNode;
-    musId.remove();
+    let musId = (this.parentNode.id).replaceAll('div','');
+    
+    this.parentNode.remove();
 
     let lista = dao.getLocalJSON('listaLocal');
 
     Object.values(lista).forEach(element => {
         let id = Object.keys(element)[0];
-        if(musId.id == id){
+        
+        if(musId == id){
             delete lista[0];
             lista.shift();
         }
     });
 
-    dao.saveLocalJSON('listaLocal',lista);
+        dao.saveLocalJSON('listaLocal',lista);
 
     }
 }

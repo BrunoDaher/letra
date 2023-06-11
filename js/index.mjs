@@ -52,30 +52,36 @@ btnBolt.addEventListener('click',toggleLogic);
 
 function toggleLogic(){
     let valor =  this.value;
-    
     this.value = valor == 0 ? 1:0;
-
-
-
-    this.childNodes[1].classList.toggle('active')
-
+    this.childNodes[1].classList.toggle('active');
 }
-
 
 function changeSong(){
 
     let t = titulo.getAttribute('idSong').replace("_","");
-    let tLoc = document.getElementById(t);
+    let tLoc = document.getElementById('div'+t);
+      //  tLoc = tLoc.parentNode;
 
-    tela.nodeMenu(listaMusicas)
+    //tela.nodeMenu(listaMusicas)
+
+    let nodes = listaMusicas.childNodes;
+
+    nodes.forEach(element => {
+        element.childNodes[0].classList.remove('active')
+    });
+
+    let no ;
 
     if(this.value == "Go"){
-        tLoc.nextElementSibling.click();
+        no = tLoc.nextElementSibling.childNodes[0];
     }
    
     if(this.value == "Back"){
-        tLoc.previousElementSibling.click();
+        no = tLoc.previousElementSibling.childNodes[0];
     }
+
+    no.click();
+    no.classList.add('active')
     
 }
 
@@ -91,14 +97,13 @@ function montaLista(){
             listaLocal.forEach(element => {
                 
                 element = element[Object.keys(element)];
+              //  console.log(element)
 
-                console.log(element)
-
-                let el =  {name:element.artista.toUpperCase() + ' ' + element.musica, id:element.id}
+                let el =  {name:element.artista + ' ' + element.musica, id:element.id}
 
                 //listaMusicas.append(element);
                 
-                tela.addToDiv('li',el,listaMusicas,getLocalMusic);
+                tela.addToDiv('div',el,listaMusicas,getLocalMusic);
                 
             });
     }
@@ -138,7 +143,7 @@ function pesquisa(){
             listaArtistas.innerText = '';
             
             artistas.forEach(element => {
-                let el = document.createElement('li');
+                let el = document.createElement('div');
                 el.id = element.band;
                 el.classList.add('banda');
                 el.innerText = el.id;
@@ -266,8 +271,9 @@ function getTracks(){
                     div.setAttribute('alb',this.id);
                     div.setAttribute('band',this.name);
                     div.innerHTML = '';
+                    
                         tracks.forEach(element => {
-                            tela.addToDiv('li',element,div,getArtMusic);
+                            tela.addToDiv('div',element,div,getArtMusic);
                         }
                 );
             } catch (error) {
@@ -288,13 +294,12 @@ function getArtMusic(){
     api.getArtMusic(artista,musica).then((response) => response.json())
     .then((data) => {       
                
+       
         let texto = data.mus[0].text;
         let id = 'l' + data.mus[0].id;  
 
         //corrigindo dado q nao vem na api
-        this.id = id;
-
-       
+        this.id = id; 
 
         let ls = dao.getLocalJSON('listaLocal');
 
@@ -450,7 +455,6 @@ function addToList(){
   
 }
 
-
 //nao valida existencia no banco
 function appendMusica(elem){
         
@@ -469,11 +473,13 @@ function appendMusica(elem){
     let value = Object.values(elem);
 
     let el =  {name:value, id:key}
-
-    tela.addToDiv('li',el,listaMusicas,getMusById)
-    
     //tela.addToDiv('li',el,listaMusicas,getMusById)
 
     console.log('salva LocalStorage')
     dao.saveLocalJSON('listaLocal',listaLocal);
+
+    //tela.addToDiv('div',el,listaMusicas,getMusById)
+
+   setTimeout(montaLista,800);
+    
 }

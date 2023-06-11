@@ -20,7 +20,7 @@
     
 }
 
-#listaMusicas > li.selected{
+#listaMusicas > div.selected{
 color: red;
 }
 
@@ -31,8 +31,9 @@ color: red;
 
 .grid2{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     place-items: center;
+   
 }
 
 .grid3{
@@ -108,7 +109,7 @@ header > button{
    
 }
 
-#newList:hover, li:hover, li .active, #newList:active{
+#newList:hover, li:hover, li.active, #newList:active{
     color: rgb(92, 181, 229);
     text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2), 
                  1px 1px 1px rgba(0, 0, 0, 0.6);
@@ -133,9 +134,9 @@ ul{
    
   position:absolute;
   left: -100vh;
-
+  line-height: 5vh;
   top:10rem;
-  
+  width: 40%;
   transition: all 0.8s;
 
 }
@@ -144,14 +145,14 @@ ul{
     left: 0vh;
     /* width: fit-content; */
     border-radius: 4px;
-    right: 0;
+    
     /* display: grid; */
     /* border-style: inset; */
     background-color: black;
-    width: revert;
+  
     padding: 2vh;
 
-    line-height: 5vh;
+   
     transition: all 0.8s;
 }
 
@@ -187,21 +188,15 @@ ul{
 
   #listaMusicas {
  
-    max-height: 80%;
     overflow-y: scroll;
     position: fixed;
-    height: 100%;
-    top:7em;
+    width: 56%;
+    top: 7em;
     left: -40em;
-    margin: 0;
-    padding: 9px;
-    
+    padding: 2vh;
+    margin-top: 3vh;
     background-color: rgba(0, 0, 0, 0.998);
-   
-    width: fit-content;
-   
     color: rgb(255, 255, 255);
-
     border-radius: 4px;
     transition: all 0.8s;
 }
@@ -212,18 +207,15 @@ ul{
     transition: all 0.3s;
 } 
 
-#listaMusicas > li{
-    width: 90%;
+#listaMusicas > div{
   
     background-color: #2b2b2bcf;
-    border-bottom: rgb(0, 0, 0);
-    border-style: groove;
-    /* gap: 7vh; */
-    font-size: 2.4vh;
-    justify-content: space-between;
     border-width: 0px 0px 1px 0px;
-     padding: 1vh; 
-     text-align: left;
+    
+    /* align-self: center; */
+    /* gap: 1vh; */
+    padding: 1vh;
+    justify-content: space-between;
     transition: all 0.3s;
   }
 
