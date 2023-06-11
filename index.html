@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Novo</title>
+    <title>Set List Pro</title>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -47,7 +47,7 @@
                 </div>
 
                 <button class="btn" target="config" id="btnConfig">
-                    <a>Fonte</a>
+                    <a>Config</a>
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="config">
                 </button>
 
@@ -73,6 +73,22 @@
                 <label for="colunas">Colunas</label>
                 <input target="scroll-text" type="range" class="" id='colunas' step="1" min='1'  max="3" value="0.1">
             </div>  
+
+            <div class="grid2">
+            <div id="save" class="fonteContainer">
+                <label for="save">Save</label>
+                <button target="" type="button" class="download" id='btnDownload' >
+            </div>  
+
+            <div id="load" class="fonteContainer">
+                <label for="save">Load</label>
+                <button target="dataLoad" type="button" class="upload" id='btnUpload'>
+                    <div hidden> 
+                        <input  id='inputFile' type="file">
+                    </div>
+            </div>  
+        </div>
+
         </fieldset>
 
         <div id="scroll-container">

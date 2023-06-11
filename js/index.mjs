@@ -23,9 +23,20 @@ const btnLastSong = document.getElementById("btnLastSong");
 const titulo = document.getElementById('titulo')
 const btnBolt = document.getElementById('btnBolt');
 
+const btnDownload = document.getElementById('btnDownload');
+const btnUpload = document.getElementById('btnUpload');
+const inputFile = document.getElementById('inputFile');
+
+
+
 tela.nodeMenu(h);
 
 pesquisa();
+
+btnDownload.addEventListener('click', ()=> {dao.download()});
+btnUpload.addEventListener('click',()=> {inputFile.click()});
+
+inputFile.addEventListener('change',dao.upload);
 
 discos.addEventListener('click',tela.modal);
 discos.addEventListener('click',tela.Parents);
@@ -83,7 +94,7 @@ function montaLista(){
 
                 console.log(element)
 
-                let el =  {name:element.artista + ' ' + element.musica, id:element.id}
+                let el =  {name:element.artista.toUpperCase() + ' ' + element.musica, id:element.id}
 
                 //listaMusicas.append(element);
                 
@@ -283,38 +294,50 @@ function getArtMusic(){
         //corrigindo dado q nao vem na api
         this.id = id;
 
-       // addMusica
+       
 
-        let obj = {[id]:{'letra':texto,'musica':musica, 'artista':artista}};
-
-        console.log(obj)
-
-        let el = {[id]: musica};
-
-        appendMusica(el);
-
-        document.getElementById('scroll-text').innerText = texto;
-        titulo.innerText = musica;
-        titulo.setAttribute('idSong',id);
-
-        //falta salvar no DAO
         let ls = dao.getLocalJSON('listaLocal');
 
         if(!ls){
             ls = new Array();
         }
+    
+            let cont = 0;
+            //verifica se existe
+                ls.forEach(element => {
+                    if( Object.keys(element) == this.id) {
+                        console.log(0 +  ' ja existe' )
+                        cont++;
+                    }
+                });
+    
+                console.log(cont)
+                if(cont == 0){
+                
+                    //
+                    // addMusica
 
-         ls.push(obj);
-  
-        dao.saveLocalJSON('listaLocal',ls);
+                    let obj = {[id]:{'letra':texto,"id":id,'musica':musica, 'artista':artista}};
 
+                    let el = {[id]: musica};
+
+                    ls.push(obj);
+                
+                //plota a musica
+                    document.getElementById('scroll-text').innerText = texto;
+                    titulo.innerText = musica;
+                    titulo.setAttribute('idSong',id);
+
+                    appendMusica(el);
+
+                //
+                    dao.saveLocalJSON('listaLocal',ls);
+                }        
         //se opção tiver ativada
         //busca rapida
         if(btnBolt.value == 1){
             document.getElementById('btnMenuA').click()    
         }
-        
-
     });  
 
     //document.getElementById('scroll-text').innerText = texto;
@@ -424,12 +447,11 @@ function addToList(){
         console.log(2 + ' banco vazio')
          appendMusica(obj)
     }
-
-    
-    
   
 }
 
+
+//nao valida existencia no banco
 function appendMusica(elem){
         
   //console.log(elem)

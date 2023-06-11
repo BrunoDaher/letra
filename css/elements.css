@@ -48,6 +48,22 @@
   
 }
 
+.download{
+   
+    background-image: url(https://www.pngrepo.com/download/56196/download.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+}
+
+.upload{
+   
+    background-image: url(https://www.pngrepo.com/download/18898/upload.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
+}
+
 .bolt{
     background-image: url(https://www.pngrepo.com/download/400010/bolt.png);
     background-size: 31px ;
