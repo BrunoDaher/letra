@@ -121,6 +121,8 @@ header > button{
     margin: 2px;
 }
 
+
+
 ul{
     display: grid;
     margin: 2vh;
@@ -131,8 +133,8 @@ ul{
    
   position:absolute;
   left: -100vh;
-  top: 20vh;
-  width: 0px;
+
+  top:10rem;
   
   transition: all 0.8s;
 
@@ -148,7 +150,7 @@ ul{
     background-color: black;
     width: revert;
     padding: 2vh;
-    top:10vh;
+
     line-height: 5vh;
     transition: all 0.8s;
 }
@@ -338,6 +340,9 @@ input{
     accent-color: white;
  }
 
+ .lbl {
+    display: none;
+ }
 
  header > button{
     font-size: 1.8vh;
