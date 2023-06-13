@@ -21,7 +21,7 @@
 }
 
 #listaMusicas > div.selected{
-color: red;
+    color: red;
 }
 
 
@@ -191,6 +191,7 @@ ul{
     overflow-y: scroll;
     position: fixed;
     width: 56%;
+    max-height: 75%;
     top: 7em;
     left: -40em;
     padding: 2vh;
@@ -209,6 +210,7 @@ ul{
 
 #listaMusicas > div{
   
+    cursor: pointer;
     background-color: #2b2b2bcf;
     border-width: 0px 0px 1px 0px;
     
@@ -289,6 +291,8 @@ input{
 
 .banda:hover{
     background-color: dimgrey;;
+    cursor: pointer;
+    zoom: 1.1;
 }
 
 #listaDiscos.active{

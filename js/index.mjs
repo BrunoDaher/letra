@@ -350,6 +350,8 @@ function getArtMusic(){
 
 function getLocalMusic(){
 
+
+    console.log(this)
     /* seleção de item dentro de menu */
     let node = this.parentNode;
     let collection = node.getElementsByTagName("li");
@@ -366,11 +368,15 @@ function getLocalMusic(){
 
     let arr = new Array();
     listaLocal.forEach(element => {
+        console.log(element)
         let values = Object.values(element);
-        arr[values[0].id] = values;
+        arr[values[0].id] = values[0];
     });
 
-    let letra =  arr[this.id][0].letra;
+    console.log(arr)
+
+    
+    let letra =  arr[this.id].letra;
 
     //view
     document.getElementById("scroll-text").innerText = letra;

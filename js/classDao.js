@@ -76,8 +76,10 @@ export class Dao{
   
           }, false);
   
+          setTimeout( ()=>{location.reload()} ,1000);
+
          // setTimeout(start,1000);
-  ß
+  
     }
 
 }

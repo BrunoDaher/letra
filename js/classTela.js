@@ -147,23 +147,27 @@ addToDiv(type,element,container,fn){
 
 
 removeIt(){
+    console.log('addListenerTrash to: ')
+    console.log(this)
     //div irmã
-    let musId = (this.parentNode.id).replaceAll('div','');
-    
-    this.parentNode.remove();
-
+    let musId = (this.parentNode.id).replaceAll('div','');  
     let lista = dao.getLocalJSON('listaLocal');
+
+    console.log(musId)
 
     Object.values(lista).forEach(element => {
         let id = Object.keys(element)[0];
         
         if(musId == id){
+            //console.log(musId + ' ' + id );
             delete lista[0];
             lista.shift();
+            dao.saveLocalJSON('listaLocal',lista);
+            this.parentNode.remove();
         }
     });
 
-        dao.saveLocalJSON('listaLocal',lista);
+//        dao.saveLocalJSON('listaLocal',lista);
 
     }
 }
