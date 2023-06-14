@@ -101,7 +101,7 @@ addToDiv(type,element,container,fn){
     
     console.log('plotandoNa lista lateral')
 
-    console.log(element)
+   // console.log(element)
     
     let li = document.createElement('li');
         li.innerText = element.name;
@@ -147,21 +147,27 @@ addToDiv(type,element,container,fn){
 
 
 removeIt(){
-    console.log('addListenerTrash to: ')
-    console.log(this)
+
+    console.log('Removendo: ')
+    console.log(this.parentNode.id)
+    console.log(event.target.parentNode.id);
+
+    
     //div irmã
     let musId = (this.parentNode.id).replaceAll('div','');  
     let lista = dao.getLocalJSON('listaLocal');
 
-    console.log(musId)
+    console.log(musId + '-> '+ this.innerText)
+    console.log(this.parentNode.childNodes[0])
 
     Object.values(lista).forEach(element => {
         let id = Object.keys(element)[0];
         
         if(musId == id){
             //console.log(musId + ' ' + id );
-            delete lista[0];
-            lista.shift();
+            lista.splice(lista.indexOf(element),1)
+            console.log(lista)
+            //lista.shift();
             dao.saveLocalJSON('listaLocal',lista);
             this.parentNode.remove();
         }

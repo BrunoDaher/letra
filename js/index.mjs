@@ -351,7 +351,7 @@ function getArtMusic(){
 function getLocalMusic(){
 
 
-    console.log(this)
+    //console.log(this)
     /* seleção de item dentro de menu */
     let node = this.parentNode;
     let collection = node.getElementsByTagName("li");
@@ -368,18 +368,19 @@ function getLocalMusic(){
 
     let arr = new Array();
     listaLocal.forEach(element => {
-        console.log(element)
+      //  console.log(element)
         let values = Object.values(element);
         arr[values[0].id] = values[0];
     });
 
     console.log(arr)
-
+    console.log(this.id)
     
-    let letra =  arr[this.id].letra;
+
+    let song =  arr[this.id]['letra'];
 
     //view
-    document.getElementById("scroll-text").innerText = letra;
+    document.getElementById("scroll-text").innerText = song;
     
     titulo.innerText = this.innerText
     titulo.setAttribute('idSong','_' + this.id);
