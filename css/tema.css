@@ -8,15 +8,25 @@
 }
 
 .fonteContainer{
-    display: flex;
     font-size: 1.2rem;
-    padding: 1rem;
+    
+}
+
+#save{
+    display: none;
+}
+
+.flex{
+    display: flex;
 }
 
 .painel{
     background-color: #167c71;
     padding: 1vh;
     z-index: 2;
+    border-width: 1px;
+    border-color: grey;
+    border-style: inset;
     
 }
 
@@ -48,6 +58,17 @@
     place-items: center;
 }
 
+.central{
+    justify-content: center;
+}
+
+.iconText{
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+    padding: 4px;
+}
+
 .box{
     padding: 1vh;
     grid-template-columns: 1fr 1fr;
@@ -60,6 +81,10 @@
 
 #menuC.active{
     display: grid;
+}
+
+.painel{
+
 }
 
 /*Elementos internos do botao*/
@@ -209,7 +234,6 @@ ul{
 } 
 
 #listaMusicas > div{
-  
     cursor: pointer;
     background-color: #2b2b2bcf;
     border-width: 0px 0px 1px 0px;
@@ -223,15 +247,15 @@ ul{
 
 input{
     accent-color: rgba(214, 214, 204, 0.698);
-    
 }
 
   #config {
      /* padding: 2vh; */
      position: fixed;
      top:8em;
-     right: -25em;
-     margin: 0;
+     gap:3vh;
+     right: -40em;
+     margin: 1vh;
      padding: 9px;
      
      background-color: rgba(88, 91, 95, 0.851);

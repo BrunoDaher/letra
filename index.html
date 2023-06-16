@@ -74,20 +74,34 @@
                 <input target="scroll-text" type="range" class="" id='colunas' step="1" min='1'  max="3" value="0.1">
             </div>  
 
-            <div class="grid2">
-            <div id="save" class="fonteContainer">
-                <label for="save">Save</label>
-                <button target="" type="button" class="download" id='btnDownload' >
-            </div>  
+          
 
-            <div id="load" class="fonteContainer">
-                <label for="save">Load</label>
-                <button target="dataLoad" type="button" class="upload" id='btnUpload'>
-                    <div hidden> 
-                        <input id='inputFile' type="file">
-                    </div>
-            </div>  
-        </div>
+            <fildset  id="painelDao" class="grid painel">
+
+                
+                <div hidden id="save" class="iconText">
+                    <input type="text" id="nomeArquivo">
+                    <button target="" type="button" class="uploadCloud" id='btnSaveCloud'></button>
+                    <label for="saveCloud">Save</label>
+                </div>              
+
+                <div class="flex central">
+                    <div id="export" class="iconText">
+                        <button type="button" class="download" id='btnExport'></button>
+                        <label for="export">Export</label>
+                    </div>  
+                    <div id="load" class="iconText">
+                   
+                        <button target="dataLoad" type="button" class="upload" id='btnUpload'></button>
+                            <div hidden> 
+                                <input id='inputFile' type="file">
+                            </div>
+                        <label for="save">Load</label>    
+                    </div>  
+                </div>
+
+             
+            </fieldset>
 
         </fieldset>
 

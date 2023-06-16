@@ -23,17 +23,17 @@ const btnLastSong = document.getElementById("btnLastSong");
 const titulo = document.getElementById('titulo')
 const btnBolt = document.getElementById('btnBolt');
 
-const btnDownload = document.getElementById('btnDownload');
+const btnExport = document.getElementById('btnExport');
 const btnUpload = document.getElementById('btnUpload');
 const inputFile = document.getElementById('inputFile');
-
+const btnSaveCloud = document.getElementById('btnSaveCloud');
 
 
 tela.nodeMenu(h);
 
 pesquisa();
 
-btnDownload.addEventListener('click', ()=> {dao.download()});
+btnExport.addEventListener('click', ()=> {dao.export()});
 btnUpload.addEventListener('click',()=> {inputFile.click()});
 
 inputFile.addEventListener('change',dao.upload);
@@ -48,7 +48,22 @@ btnLastSong.addEventListener('click',changeSong);
 btnNextSong.addEventListener('click',changeSong);
 
 btnBolt.addEventListener('click',toggleLogic);
+btnSaveCloud.addEventListener('click',saveCloud);
 
+
+function saveCloud(){
+
+console.log('saveCloud');
+ let nome =  document.getElementById('nomeArquivo').value;
+
+ if(!nome){
+    alert('Insira um nome no arquivo');
+ }
+ else{
+  dao.saveCloud(nome);
+ }
+
+}
 
 function toggleLogic(){
     let valor =  this.value;

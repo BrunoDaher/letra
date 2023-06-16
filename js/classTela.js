@@ -149,16 +149,16 @@ addToDiv(type,element,container,fn){
 removeIt(){
 
     console.log('Removendo: ')
-    console.log(this.parentNode.id)
-    console.log(event.target.parentNode.id);
+    //console.log(this.parentNode.id)
+    //console.log(event.target.parentNode.id);
 
     
     //div irmã
     let musId = (this.parentNode.id).replaceAll('div','');  
     let lista = dao.getLocalJSON('listaLocal');
 
-    console.log(musId + '-> '+ this.innerText)
-    console.log(this.parentNode.childNodes[0])
+    //console.log(musId + '-> '+ this.innerText)
+    //console.log(this.parentNode.childNodes[0])
 
     Object.values(lista).forEach(element => {
         let id = Object.keys(element)[0];
@@ -166,7 +166,7 @@ removeIt(){
         if(musId == id){
             //console.log(musId + ' ' + id );
             lista.splice(lista.indexOf(element),1)
-            console.log(lista)
+           // console.log(lista)
             //lista.shift();
             dao.saveLocalJSON('listaLocal',lista);
             this.parentNode.remove();

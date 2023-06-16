@@ -1,5 +1,25 @@
+import ApiCloud from "./classApiCloud.js";
+
 export class Dao{
 
+  apiCloud = new ApiCloud();
+   
+  constructor(){
+    //this.readCloud();
+  }
+
+    saveCloud(nome){
+      console.log(nome)
+      let conteudo =  this.getLocalJSON('listaLocal');
+
+      //console.log(conteudo)
+    
+     this.apiCloud.createBin(nome, conteudo);
+    }
+
+    readCloud(){
+      this.apiCloud.readBin();
+    }
 
     saveLocalJSON (id,item){
         localStorage.setItem(id,JSON.stringify(item));
@@ -18,7 +38,7 @@ export class Dao{
         return JSON.parse(sessionStorage.getItem(id));
     }
 
-    download() {
+    export() {
         let l =  this.getLocalJSON('listaLocal');
         console.log(l)
       

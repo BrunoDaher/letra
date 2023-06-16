@@ -107,6 +107,34 @@
   
 }
 
+
+
+
+#nomeArquivo { 
+    margin: 1vh;
+    border-width: 1px 1px 1px 1px;
+    background: none;
+    border-style: inset;
+    border-color: black black grey;
+    color: grey;
+    padding: 1vh;
+
+    transition: all 0.3s;
+}
+
+input{
+    outline: none;
+}
+
+#nomeArquivo:focus {
+
+    border-color: black black white;
+    color:white;
+    transition: all 0.1s;
+}
+
+
+
 .forward{
     
     background-image: url(https://www.pngrepo.com/download/42258/fast-forward.png);
@@ -143,8 +171,12 @@ button:hover{
     filter: drop-shadow(2px 4px 6px black);
 }
 
-.config{
-
+.uploadCloud{
+    
+    background-image: url(https://www.pngrepo.com/download/209303/upload.png);
+    background-size: 29px ;
+    width:29px;
+    height: 29px;
 }
 
 @media (max-width:400px){
