@@ -27,6 +27,7 @@ const btnExport = document.getElementById('btnExport');
 const btnUpload = document.getElementById('btnUpload');
 const inputFile = document.getElementById('inputFile');
 const btnSaveCloud = document.getElementById('btnSaveCloud');
+const btnLoadCloud = document.getElementById('btnLoadCloud');
 
 
 tela.nodeMenu(h);
@@ -48,10 +49,17 @@ btnLastSong.addEventListener('click',changeSong);
 btnNextSong.addEventListener('click',changeSong);
 
 btnBolt.addEventListener('click',toggleLogic);
-btnSaveCloud.addEventListener('click',saveCloud);
+btnSaveCloud.addEventListener('click',updateCloud);
+btnLoadCloud.addEventListener('click',loadCloud);
 
 
-function saveCloud(){
+function loadCloud(){
+    console.log("LoadCloud")
+    dao.loadCloud();
+
+}
+
+function updateCloud(){
 
 console.log('saveCloud');
  let nome =  document.getElementById('nomeArquivo').value;
@@ -60,7 +68,7 @@ console.log('saveCloud');
     alert('Insira um nome no arquivo');
  }
  else{
-  dao.saveCloud(nome);
+  dao.updateCloud();
  }
 
 }

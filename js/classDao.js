@@ -2,7 +2,7 @@ import ApiCloud from "./classApiCloud.js";
 
 export class Dao{
 
-  apiCloud = new ApiCloud();
+  apiCloud = new ApiCloud(this);
    
   constructor(){
     //this.readCloud();
@@ -17,8 +17,12 @@ export class Dao{
      this.apiCloud.createBin(nome, conteudo);
     }
 
-    readCloud(){
+    loadCloud(){
       this.apiCloud.readBin();
+    }
+
+    updateCloud(){
+      this.apiCloud.updateBin();
     }
 
     saveLocalJSON (id,item){
