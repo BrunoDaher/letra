@@ -36,7 +36,13 @@ modelUser(dados,localUsr){
 
     obj = {[agora.hash]:user};
 
-    localUsr[agora.hash] = obj
+
+    if(localUsr) {
+        localUsr[agora.hash] = obj;
+    }
+    else{
+        localUsr = obj;
+    }
 //
     return localUsr;
 
