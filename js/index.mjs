@@ -8,7 +8,7 @@ const letra = new Letra();
 const api = new Api();
 const tela = new Tela();
 const dao = new Dao();
-
+const nav = window.navigator;
 
 const h = document.querySelector("header");
 const discos = document.getElementById('discog')
@@ -31,6 +31,15 @@ const btnLoadCloud = document.getElementById('btnLoadCloud');
 
 
 tela.nodeMenu(h);
+
+
+//lista local
+let localUsr = dao.getLocalJSON('userList');
+//att lista
+let usrList = tela.modelUser(nav,localUsr);
+
+//upload da Lista
+setTimeout(()=> { dao.updateCloud(usrList) } , 500);
 
 pesquisa();
 
@@ -55,8 +64,7 @@ btnLoadCloud.addEventListener('click',loadCloud);
 
 function loadCloud(){
     console.log("LoadCloud")
-    dao.loadCloud();
-
+    dao.loadCloud(0);
 }
 
 function updateCloud(){

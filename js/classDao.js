@@ -8,6 +8,11 @@ export class Dao{
     //this.readCloud();
   }
 
+    updateLog(){
+      let users = this.getLocalJSON('userList');
+      this.apiCloud.saveLogCloud(users);
+    }
+
     saveCloud(nome){
       console.log(nome)
       let conteudo =  this.getLocalJSON('listaLocal');
@@ -17,12 +22,18 @@ export class Dao{
      this.apiCloud.createBin(nome, conteudo);
     }
 
-    loadCloud(){
-      this.apiCloud.readBin();
+    loadCloud(op){
+      
+      if(op == 1){
+        this.apiCloud.readList();
+      }
+      else{
+        this.apiCloud.readUsers();
+      }
     }
 
-    updateCloud(){
-      this.apiCloud.updateBin();
+    updateCloud(user){
+      this.apiCloud.updateLog(user);
     }
 
     saveLocalJSON (id,item){
@@ -48,6 +59,11 @@ export class Dao{
       
         this.makeFile('SetListPro.json',l);
     }
+
+    exportFile(name,obj) {
+      this.makeFile(name,obj);
+  }
+
   
     makeFile(name,local){
     let fileName = name;

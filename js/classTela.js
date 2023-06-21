@@ -4,6 +4,44 @@ const dao = new Dao();
 
 class Tela {
 
+modelUser(dados,localUsr){
+
+    let dataAtual = new Date();
+
+    let agora = {
+         "hash" : dataAtual.getTime(),
+         "dia" : dataAtual.getDate(),
+         "mes" : (dataAtual.getMonth() + 1),
+         "ano" : dataAtual.getFullYear(),
+         "horas" : dataAtual.getHours(),
+         "minutos" : dataAtual.getMinutes()
+    }
+
+
+
+    let user = {
+        "horario":[agora],
+        "appCodeName":[dados.appCodeName],
+        "appVersion":[dados.appVersion],
+        "connection":[dados.connection],
+        "geolocaation":[dados.geolocation],
+        "language":[dados.language],
+        "platform":[dados.language],
+        "plugins":[dados.plugins],
+        "userAgentData":[dados.userAgentData],
+        "vendor":[dados.vendor]
+    }
+
+    let obj = {};
+
+    obj = {[agora.hash]:user};
+
+    localUsr[agora.hash] = obj
+//
+    return localUsr;
+
+}    
+
 //cadastra funcoes nos elementos do menu
  nodeMenu(h){
     let nodes = h.childNodes;
