@@ -30,16 +30,17 @@ const btnSaveCloud = document.getElementById('btnSaveCloud');
 const btnLoadCloud = document.getElementById('btnLoadCloud');
 
 
+
 tela.nodeMenu(h);
 
 
 //lista local
-let localUsr = dao.getLocalJSON('userList');
-//att lista
-let usrList = tela.modelUser(nav,localUsr);
+    //let localUsr = dao.getLocalJSON('userList');
+    //att lista
+    //let usrList = tela.modelUser(nav,localUsr);
 
-//upload da Lista
-setTimeout(()=> { dao.updateCloud(usrList) } , 500);
+    //upload da Lista
+    //setTimeout(()=> { dao.updateCloud(usrList) } , 500);
 
 pesquisa();
 
@@ -64,7 +65,7 @@ btnLoadCloud.addEventListener('click',loadCloud);
 
 function loadCloud(){
     console.log("LoadCloud")
-    dao.loadCloud(0);
+    dao.loadCloud(1);
 }
 
 function updateCloud(){
