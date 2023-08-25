@@ -143,7 +143,7 @@ typing (string,div) {
 
 addToDiv(type,element,container,fn){  
     
-    console.log('plotandoNa lista lateral')
+   // console.log('plotandoNa ' + element.name +  'lista lateral')
 
    // console.log(element)
     

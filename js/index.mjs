@@ -348,7 +348,7 @@ function getArtMusic(){
                     }
                 });
     
-                console.log(cont)
+                //console.log(cont)
                 if(cont == 0){
                 
                     //
@@ -405,8 +405,8 @@ function getLocalMusic(){
         arr[values[0].id] = values[0];
     });
 
-    console.log(arr)
-    console.log(this.id)
+    //console.log(arr)
+    //console.log(this.id)
     
 
     let song =  arr[this.id]['letra'];
