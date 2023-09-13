@@ -1,15 +1,18 @@
 .musica , li > img{
-    background-image: url(https://www.pngrepo.com/download/315158/music.png);
+    /*background-image: url(https://www.pngrepo.com/download/315158/music.png);*/
+    background-image: url(../css/imgs/music-pngrepo-com.png);
     background-size: 25px;
 }
 
 .new{
-    background-image: url(https://www.pngrepo.com/download/348205/new.png);
+    /*background-image: url(https://www.pngrepo.com/download/348205/new.png);*/
+    background-image: url(../css/imgs/new-pngrepo-com.png);
     background-size: 25px ;
 }
 
 .search{
-    background-image: url(https://www.pngrepo.com/download/135623/search.png);
+    /*background-image: url(https://www.pngrepo.com/download/135623/search.png);*/
+    background-image: url(../css/imgs/search-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
@@ -27,7 +30,9 @@
 }
 
 .advSearch{
-    background-image: url(https://www.pngrepo.com/download/2797/search.png);
+    /*background-image: url(https://www.pngrepo.com/download/2797/search.png);*/
+    background-image: url(../css/imgs/searchMusic.png);
+    
     background-size: 29px ;
     width:29px;
     height: 29px;
@@ -35,14 +40,16 @@
 }
 
 .doc{
-    background-image: url(https://www.pngrepo.com/download/7840/document.png);
+    /*background-image: url(https://www.pngrepo.com/download/7840/document.png);*/
+    background-image: url(../css/imgs/document-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
 }
 
 .setList{
-    background-image: url(https://www.pngrepo.com/download/88237/list.png);
+    /*background-image: url(https://www.pngrepo.com/download/88237/list.png);*/
+    background-image: url(../css/imgs/list-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
@@ -52,7 +59,8 @@
 
 .download{
    
-    background-image: url(https://www.pngrepo.com/download/56196/download.png);
+    /*background-image: url(https://www.pngrepo.com/download/56196/download.png);
+    */background-image: url(../css/imgs/download-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
@@ -60,14 +68,16 @@
 
 .upload{
    
-    background-image: url(https://www.pngrepo.com/download/18898/upload.png);
+    /*background-image: url(https://www.pngrepo.com/download/18898/upload.png);
+    */background-image: url(../css/imgs/upload-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
 }
 
 .bolt{
-    background-image: url(https://www.pngrepo.com/download/400010/bolt.png);
+    /*background-image: url(https://www.pngrepo.com/download/400010/bolt.png);
+    */background-image: url(../css/imgs/bolt-pngrepo-com.png);
     background-size: 31px ;
     width:31px;
     height: 31px;
@@ -85,7 +95,8 @@
 
 
 .disc{
-    background-image: url(https://www.pngrepo.com/download/101744/long-play-record-cover.png);
+    /*background-image: url(https://www.pngrepo.com/download/101744/long-play-record-cover.png);
+    */background-image: url(../css/imgs/long-play-record-cover-pngrepo-com.png);
     background-size: 31px ;
     width:31px;
     height: 31px;
@@ -93,7 +104,8 @@
 }
 
 .list{
-    background-image: url(https://www.pngrepo.com/download/90806/papyrus.png);
+    /*background-image: url(https://www.pngrepo.com/download/90806/papyrus.png);
+    */background-image: url(../css/imgs/papyrus-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
@@ -102,6 +114,7 @@
 
 .trash{
     background-image: url(https://www.pngrepo.com/download/226116/file-remove.png);
+    background-image: url(../css/imgs/file-remove-pngrepo-com.png);
     background-size: 20px ;
     width:20px;
     height: 20px;
@@ -138,7 +151,8 @@ input{
 
 .forward{
     
-    background-image: url(https://www.pngrepo.com/download/42258/fast-forward.png);
+    /*background-image: url(https://www.pngrepo.com/download/42258/fast-forward.png);
+    */background-image: url(../css/imgs/fast-forward-pngrepo-com.png);
     background-size: 25px ;
     width:25px;
     height: 25px;
@@ -147,7 +161,8 @@ input{
 
 .back{
 
-    background-image: url(https://www.pngrepo.com/download/123553/backward-arrows-couple.png);
+    /*background-image: url(https://www.pngrepo.com/download/123553/backward-arrows-couple.png);
+    */background-image: url(../css/imgs/backward-arrows-couple-pngrepo-com.png);
     background-size: 25px ;
     width:25px;
     height: 25px;
@@ -156,7 +171,8 @@ input{
 
 .config{
 
-    background-image: url(https://www.pngrepo.com/download/373522/config.png);
+    /*background-image: url(https://www.pngrepo.com/download/373522/config.png);
+   */background-image: url(../css/imgs/config-pngrepo-com.png);
     background-size: 25px ;
     width:25px;
     height: 25px;
@@ -174,7 +190,8 @@ button:hover{
 
 .uploadCloud{
     
-    background-image: url(https://www.pngrepo.com/download/209303/upload.png);
+    /*background-image: url(https://www.pngrepo.com/download/209303/upload.png);
+    */background-image: url(../css/imgs/uploadCloud.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
@@ -182,7 +199,8 @@ button:hover{
 
 .downCloud{
     
-    background-image: url(https://www.pngrepo.com/download/209303/upload.png);
+    /*background-image: url(https://www.pngrepo.com/download/209303/upload.png);
+    */background-image: url(../css/imgs/uploadCloud.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
