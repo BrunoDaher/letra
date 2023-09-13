@@ -66,6 +66,22 @@ fieldset{
 
 }
 
+#myProgress {
+    display: none;
+    width: 100%;
+    background-color: grey;
+  }
+  
+  #myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #f7f8f4;
+  }
+
+  #myProgress.on{
+    display: block;
+  }
+
 @media (max-width:400px){
 
     footer > div{

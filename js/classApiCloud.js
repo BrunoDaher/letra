@@ -40,7 +40,6 @@ export class ApiCloud {
           
             }
           };
-      
             
           req.open("POST", "https://api.jsonbin.io/v3/b", true);
           req.setRequestHeader("Content-Type", "application/json");
@@ -59,7 +58,9 @@ export class ApiCloud {
             let dados  = JSON.parse(req.responseText);
             //console.log(dados)
               this.dao.saveLocalJSON('listaLocal',dados.record);
-              alert('Dados carregados com sucesso');
+              console.log('Dados carregados com sucesso');
+              //mostrar uma imagem de carga //
+              //return(true);
               setTimeout(()=>{location.reload()},400)
           }
           else{

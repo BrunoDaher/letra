@@ -65,7 +65,9 @@ btnLoadCloud.addEventListener('click',loadCloud);
 
 function loadCloud(){
     console.log("LoadCloud")
+    tela.animateBar();
     dao.loadCloud(1);
+
 }
 
 function updateCloud(){
@@ -74,7 +76,7 @@ console.log('saveCloud');
  let nome =  document.getElementById('nomeArquivo').value;
 
  if(!nome){
-    alert('Insira um nome no arquivo');
+    console.log('Insira um nome no arquivo');
  }
  else{
   dao.updateCloud();
