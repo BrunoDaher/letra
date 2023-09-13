@@ -76,8 +76,17 @@ fieldset{
     width: 1%;
     height: 30px;
     background-color: #f7f8f4;
+    text-align: center;
   }
 
+  #myBar > a{
+    text-align: center;
+    place-items: center;
+    vertical-align: -webkit-baseline-middle;
+    color:#1f3762;
+    filter: drop-shadow(2px 4px 6px #f7f8f4);
+
+  }
   #myProgress.on{
     display: block;
   }

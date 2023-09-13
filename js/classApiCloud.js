@@ -58,10 +58,12 @@ export class ApiCloud {
             let dados  = JSON.parse(req.responseText);
             //console.log(dados)
               this.dao.saveLocalJSON('listaLocal',dados.record);
-              console.log('Dados carregados com sucesso');
-              //mostrar uma imagem de carga //
+              let a = document.createElement('a');
+              a.innerText = 'Dados carregados com sucesso';
+              document.getElementById('myBar').append(a);
+                            //mostrar uma imagem de carga //
               //return(true);
-              setTimeout(()=>{location.reload()},400)
+              //setTimeout(()=>{location.reload()},400)
           }
           else{
             return false
