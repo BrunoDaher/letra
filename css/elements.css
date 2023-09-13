@@ -17,7 +17,8 @@
 }
 
 .discog{
-    background-image: url(https://www.pngrepo.com/download/294609/music-album-album.png);
+    /*background-image: url(https://www.pngrepo.com/download/294609/music-album-album.png);*/
+    background-image: url(../css/imgs/music-album-album-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
