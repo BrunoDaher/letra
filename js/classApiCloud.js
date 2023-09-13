@@ -63,7 +63,7 @@ export class ApiCloud {
               document.getElementById('myBar').append(a);
                             //mostrar uma imagem de carga //
               //return(true);
-              //setTimeout(()=>{location.reload()},400)
+              setTimeout(()=>{location.reload()},400)
           }
           else{
             return false
