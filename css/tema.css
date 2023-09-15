@@ -13,7 +13,11 @@
 }
 
 #save{
-    display: none;
+    
+}
+
+.off{
+    display: none !important;
 }
 
 .flex{

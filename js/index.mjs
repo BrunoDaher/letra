@@ -55,6 +55,8 @@ discos.addEventListener('click',tela.Parents);
 btnSetList.addEventListener('click',tela.modal)
 btnConfig.addEventListener('click',tela.modal)
 
+btnConfig.addEventListener('dblclick',adm)
+
 btnLastSong.addEventListener('click',changeSong);
 btnNextSong.addEventListener('click',changeSong);
 
@@ -70,17 +72,29 @@ function loadCloud(){
 
 }
 
+
+function adm(){
+ document.getElementById('save').classList.toggle('off')
+}
+
 function updateCloud(){
 
 console.log('saveCloud');
- let nome =  document.getElementById('nomeArquivo').value;
+ //let nome =  document.getElementById('nomeArquivo').value;
 
+ dao.updateCloud();
+/*
  if(!nome){
-    console.log('Insira um nome no arquivo');
+    //toDO
+    //verificar registro de sessao
+    //console.log('Insira um nome no arquivo');
+    dao.updateCloud();
  }
  else{
-  dao.updateCloud();
+  //dao.updateCloud();
+  dao.updateBin();
  }
+ */
 
 }
 

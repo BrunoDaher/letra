@@ -32,8 +32,9 @@ export class Dao{
       }
     }
 
-    updateCloud(user){
-      this.apiCloud.updateLog(user);
+    updateCloud(){
+     // this.apiCloud.updateLog(user);
+     this.apiCloud.updateBin();
     }
 
     saveLocalJSON (id,item){
