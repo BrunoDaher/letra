@@ -1,8 +1,15 @@
 import Dao from "./classDao.js";
 
 const dao = new Dao();
+let classe = null;
 
 class Tela {
+   
+    constructor(){
+       classe = this;
+       //console.log(classe)
+        //console.log(this)
+    }
 
     modelUser(dados,localUsr){
 
@@ -51,8 +58,8 @@ class Tela {
 
         nodes.forEach(function(element)  {
             if(element.type == 'submit' ){
-                element.addEventListener("click",function(){this.menuTree(event)});
-                element.addEventListener("click",function(){this.hideParents(element)});
+                element.addEventListener("click",function(){classe.menuTree()});
+               element.addEventListener("click",function(){classe.hideParents(element)});
             }
         });
     }
