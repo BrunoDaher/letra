@@ -1,53 +1,42 @@
-const url =  "https://api.vagalume.com.br";
+import ApiLastFM from "./classApiLastFM.js";
+import ApiVagalume from "./classApiVagalume.js";
+
+const apiLastFM = new ApiLastFM();
+const apiVagalume = new ApiVagalume();
+
 //const url = 
 export class Api {
 
-    constructor(){
-        this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa';
-   
-        //this.apiKey = '2651bc07e2240e60ef358c833cc84169';
-      //  this.dao = _dao;
-    }
-
-    getTracks(art,album){
-       art = art.replaceAll('-',' '); 
-       album =  album.replaceAll('-',' ');
-       
-       let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2651bc07e2240e60ef358c833cc84169&artist=${art}&album=${album}&format=json`;
-
-       return fetch(path);  
-    }
-
-    //last fm
-    getAlmbum(art,alb){
-
-        art = art.replaceAll('-','%20'); 
-
-        //album =  album.replaceAll('-',' ');
-        let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=2651bc07e2240e60ef358c833cc84169&artist=${art}&album=${alb}&format=json`;
- 
-        path = path.replaceAll('-','%20');
- 
-        return fetch(path);  
-     }
-     
+    //toDo
     
+    constructor(){
+        this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa'; // Vagalume
+    }
+
+    //api last//
+    getTracks(art,album){
+      return apiLastFM.getTracks(art,album);
+    }
+
+     //api last//
+    getAlbum(art,alb){
+       return apiLastFM.getAlbum(art,alb);
+    }
+     
      //vagalume
     getArtMusic(art,mus){       
         art = this.normalizeInput(art);
         mus = this.normalizeInput(mus);
         mus = mus.replace('-live','');
-        let path = `${url}/search.php?${this.apiKey}&art=${art}&mus=${mus}`;
      
-        return fetch(path);
+        return apiVagalume.getArtMusic(art,mus);
     }
-
 
     getMusLocal(busca){
         let mus = this.dao.getSessionJSON('artist').lyrics.item;   
         let slim = [];
         
-        mus.forEach(element => {                                                
+        mus.forEach(function (element) {                                                
             if(element.desc.toLowerCase().startsWith(busca.toLowerCase()))
             {                                
                 slim.push(element);                
@@ -58,14 +47,11 @@ export class Api {
 
     //vagalume
     searchTrack(string){
-         string = string.replaceAll('-',' '); 
-        let path = `https://api.vagalume.com.br/search.excerpt?apikey=${this.apiKey}&q=${string}`;
- 
-         //console.log(path)
- 
-        return fetch(path);  
+        string = string.replaceAll('-',' '); 
+        return apiVagalume.searchTrack(string);  
     }
 
+    //aux
     checkUrl(string) {
             
              let img = new Image();
@@ -74,79 +60,79 @@ export class Api {
              return img.height > 0? true:false;
     }
 
+    //vagalume
     getFoto(band){
         band = this.normalizeInput(band);
-     //   console.log(`${url}/${band}/images/profile.jpg`);
-        return `${url}/${band}/images/profile.jpg`
+        return apiVagalume.getFoto(band);
     }
 
-   getCurrentFoto(){
+    //vagalume
+    getCurrentFoto(){
        //console.log(this.dao.getSessionJSON('artist').pic_small)
-        return  `${url}${this.dao.getSessionJSON('artist').pic_small}`;
+        return  apiVagalume.getCurrentFoto();
     }
-  
+
+    //vagalume
     getMusicById(musId){          
-        const path = `${url}/search.php?${this.apiKey}&musid=${musId}&extra=alb`;       
-        return fetch(path);
+        return apiVagalume.getMusicById(musId);
      }
     
+     //vagalume
      getArt(art){        
         art = this.normalizeInput(art);      
-        let path = `${url}/search.art?${this.apiKey}&q=${art}%20&limit=10`;
-        return fetch(path);  
+        return apiVagalume.getArt(art);
     }
-
+    //vagalume
     getArtSync(art){        
         art = this.normalizeInput(art);      
-        let path = `${url}/search.art?${this.apiKey}&q=${art}%20&limit=10`;      
-        return fetch(path);  
+        return apiVagalume.getArtSync(art);
     }
-    
-    normalizeInput(str){
-        str = str.toLowerCase();
-        str = str.replaceAll(':',''); 
-        str = str.replaceAll(' ','-');  
-        str = str.replaceAll('/','-');  
-        str = str.replaceAll('!','');
-        //str = str.replaceAll('.','');
-        str = str.replaceAll('--','*');
-        str = str.replaceAll('*','');
-        str = str.replaceAll('+','');
-        str = str.replaceAll(',','');
-        str = str.replaceAll('?','');
-        str = str.replaceAll("'s",'s');
-        str = str.replaceAll("'m",'m');
-        str = str.replaceAll("&",'');
-
-        //removeacentos
-        str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-       
-        return str;
-    }
-
+  
+    //vagalume
     getArtInfo(art){                
         art = this.normalizeInput(art);
-        
         art = art.replaceAll('.','-');
         art = art.replace('-/','/');
-        
-        let path = `https://www.vagalume.com.br/${art}/index.js`; 
-        
-        path = path.replace('-/','/');
-        
-        //console.log(path);          
-        return fetch(path);        
+
+        return apiVagalume.getArtInfo(art);       
     }
- 
+    
+   //aux
+    normalizeInput(str){
+    str = str.toLowerCase();
+    str = str.replaceAll(':',''); 
+    str = str.replaceAll(' ','-');  
+    str = str.replaceAll('/','-');  
+    str = str.replaceAll('!','');
+    //str = str.replaceAll('.','');
+    str = str.replaceAll('--','*');
+    str = str.replaceAll('*','');
+    str = str.replaceAll('+','');
+    str = str.replaceAll(',','');
+    str = str.replaceAll('?','');
+    str = str.replaceAll("'s",'s');
+    str = str.replaceAll("'m",'m');
+    str = str.replaceAll("&",'');
+
+    //removeacentos
+    str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+   
+    return str;
+    }
+
+    //aux
     fetchApi(path){            
         fetch(path)
-        .then( response =>   {        
+        .then( function(response)   {        
             return response.ok ? response.text() : false; 
          })
         .then( function response(responseHtml)
             { 
               let key = Object.keys(JSON.parse(responseHtml))[0];              
               let r = JSON.parse(responseHtml)[key];
+              //verifica retorno da promisse
+              //caso positivo grava na sessão - em formato string
+              //caso contrario nao faz nada
               key ? sessionStorage.setItem(key,JSON.stringify(r)):"";    
             } )
         .catch(function (e) {       

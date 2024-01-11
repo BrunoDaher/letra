@@ -1,0 +1,49 @@
+export class ApiLastFM {
+
+    constructor(){
+        this.apiKey = '2651bc07e2240e60ef358c833cc84169'; // LastFM
+    }
+
+    getTracks(art,album){
+       art = art.replaceAll('-',' '); 
+       album =  album.replaceAll('-',' ');
+       let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${this.apiKey}&artist=${art}&album=${album}&format=json`;
+       return path;  
+    }
+
+    getTrackInfo(art,mus){
+        let path = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${this.apiKey}&artist=${art}&track=${mus}&format=json`;
+        return path;  
+     }
+
+    getAlbum(art,alb){
+
+        art = art.replaceAll('-','%20'); 
+        let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${this.apiKey}&artist=${art}&album=${alb}&format=json`;
+        path = path.replaceAll('-','%20');
+        //usar patch local
+        return path;  
+     }
+  
+    getMusLocal(busca){
+        let mus = this.dao.getSessionJSON('artist').lyrics.item;   
+        let slim = [];
+        
+        mus.forEach(function(element) {                                                
+            if(element.desc.toLowerCase().startsWith(busca.toLowerCase()))
+            {                                
+                slim.push(element);                
+            }
+        });        
+        return slim;        
+    }
+
+    getCurrentFoto(){
+       //console.log(this.dao.getSessionJSON('artist').pic_small)
+        return  `${url}${this.dao.getSessionJSON('artist').pic_small}`;
+    }
+
+
+ }
+
+export default ApiLastFM;

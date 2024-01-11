@@ -17,8 +17,6 @@ class Tela {
             "minutos" : dataAtual.getMinutes()
         }
 
-
-
         let user = {
             "horario":[agora],
             "appCodeName":[dados.appCodeName],
@@ -47,14 +45,14 @@ class Tela {
         return localUsr;
 
     }    
-    //cadastra funcoes nos elementos do menu
+    //elemento menu
     nodeMenu(h){
         let nodes = h.childNodes;
 
-        nodes.forEach(element => {
+        nodes.forEach(function(element)  {
             if(element.type == 'submit' ){
-                element.addEventListener("click",()=>{this.menuTree(event)});
-                element.addEventListener("click",()=>{this.hideParents(element)});
+                element.addEventListener("click",function(){this.menuTree(event)});
+                element.addEventListener("click",function(){this.hideParents(element)});
             }
         });
     }
@@ -62,17 +60,16 @@ class Tela {
     actBtn(targ){
     let isActive =  targ.classList.contains("active") ? true:false;
     
-    if(!isActive){
-        targ.click();
-    }
+        if(!isActive){
+            targ.click();
+         }
 
     }
 
     //exibe modal
     modal(){
-        
         let div = document.getElementById(this.getAttribute('target'));
-        div.classList.toggle('active');
+            div.classList.toggle('active');
         this.classList.toggle('active')  
     }
 
@@ -110,7 +107,7 @@ class Tela {
             //console.log(menu)
 
             //hide the parents
-            nodes.forEach(element => {
+            nodes.forEach(function(element) {
                 if(element.nodeName == 'MENU' || element.nodeName == 'BUTTON'){
                     //console.log(element.getAttribute('target') + ' <-')
                     element.classList.remove('active');
@@ -119,7 +116,7 @@ class Tela {
 
             //show current menu
             menu.classList.add('active')
-        }
+    }
         
     typing (string,div) {
 
@@ -142,32 +139,27 @@ class Tela {
 
     addToDiv(type,element,container,fn){  
         
-    // console.log('plotandoNa ' + element.name +  'lista lateral')
-
-    // console.log(element)
-        
         let li = document.createElement('li');
             li.innerText = element.name;
             
-            //pra musicas listadas na busca mista - barra lateral esquerda
+            //pra musicas listadas na busca  - barra lateral esquerda
             if(container.id != 'musicas'){ 
                 let div = document.createElement(type);
-                div.className = 'grid2';
+                    div.className = 'grid2 dropSource dropOut';
+                    div.id = "div" + element.id;
+                    div.draggable = true;
                 
                 let btnTrash = document.createElement('button');
                     btnTrash.className = 'trash';
-                btnTrash.addEventListener('click',this.removeIt);
-
-                div.id = "div" + element.id;    
+                    btnTrash.addEventListener('click',this.removeIt);
                 
-                li.id= element.id 
-                li.addEventListener('click',hideParents);
+                    li.id= element.id 
+                    li.addEventListener('click',hideParents);
 
-                div.append(li);
-                div.append(btnTrash);
-                container.append(div);
+                    div.append(li);
+                    div.append(btnTrash);
+                    container.append(div);
             }
-            
             else{
                 container.append(li);
             }
@@ -175,16 +167,12 @@ class Tela {
             li.addEventListener('click',fn);
 
         function hideParents(){
-        let arrAvo = this.parentNode.parentNode;
-
-        let nodes = arrAvo.childNodes;
-
-        nodes.forEach(element => {
-            element.childNodes[0].classList.remove('active');
-        });
-
-        this.classList.add('active')
-
+            let arrAvo = this.parentNode.parentNode;
+            let nodes = arrAvo.childNodes;
+                nodes.forEach(function(element) {
+                    element.childNodes[0].classList.remove('active');
+                });
+            this.classList.add('active')
         }
     }
 
@@ -202,7 +190,7 @@ class Tela {
         //console.log(musId + '-> '+ this.innerText)
         //console.log(this.parentNode.childNodes[0])
 
-        Object.values(lista).forEach(element => {
+        Object.values(lista).forEach(function(element) {
             let id = Object.keys(element)[0];
             
             if(musId == id){

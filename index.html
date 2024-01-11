@@ -15,12 +15,10 @@
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">
         <span>Letra</span>
     </button>
-    
    
     <button target="menuC">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="advSearch">
         <span>Busca Avançada</span>
-      
     </button>
 
     <button target="menuB">
@@ -32,21 +30,21 @@
 <main>
     <div id="myProgress" >
         <div id="myBar"></div>
-      </div>
+    </div>
+    
     <menu id="menuA">
         <div class="painel">
             <div class="grid3">
-               
+            
                 <button class="btn" target="listaMusicas" id="btnSetList">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="setList">
                     <a class="lbl">SetList</a>
-                   
                 </button> 
-
+                <input hidden type="button" id="listObserver">
                 <div class="centroGrid3">
-                 <button id="btnLastSong" class="back" value="Back"></button>
-                 <label id="titulo" for="scroll-container"></label>
-                 <button id="btnNextSong" class="forward" value="Go"></button>
+                    <button id="btnLastSong" class="back" value="Back"></button>
+                    <label id="titulo" for="scroll-container"></label>
+                    <button id="btnNextSong" class="forward" value="Go"></button>
                 </div>
 
                 <button class="btn" target="config" id="btnConfig">
@@ -58,7 +56,6 @@
         </div>
 
         <div id="listaMusicas" class="grid1">
-
         </div>
 
         <fieldset class="grid1" id="config" >
@@ -77,63 +74,38 @@
                 <input target="scroll-text" type="range" class="" id='colunas' step="1" min='1'  max="3" value="0.1">
             </div>  
 
-          
-
             <fildset  id="painelDao" class="grid painel">
                 
-                 
-                
-                <div id="loadCloud" class="iconText central">
-                    <div id="save" class="iconText off">
-                        <input type="text" id="nomeArquivo" class="off">
-                        <button target="" type="button" class="uploadCloud" id='btnSaveCloud'></button>
-                        <label for="saveCloud">Save</label>
-                    </div>  
-                    <label>Load</label>
-                    <button target="" type="button" class="downCloud" id='btnLoadCloud'></button>
-                </div>
+            <div id="loadCloud" class="iconText central">
+                <div id="save" class="iconText off">
+                    <input type="text" id="nomeArquivo" class="off">
+                    <button target="" type="button" class="uploadCloud" id='btnSaveCloud'></button>
+                    <label for="saveCloud">Save</label>
+                </div>  
+                <label>Load</label>
+                <button target="" type="button" class="downCloud" id='btnLoadCloud'></button>
+            </div>
 
-                <div class="flex central">
-                    <div id="export" class="iconText">
-                        <button type="button" class="download" id='btnExport'></button>
-                        <label for="export">Export</label>
-                    </div>  
+            <div class="flex central">
+                <div id="export" class="iconText">
+                    <button type="button" class="download" id='btnExport'></button>
+                    <label for="export">Export</label>
+                </div>  
                     
-                    <div id="load" class="iconText">
-                        <button target="dataLoad" type="button" class="upload" id='btnUpload'></button>
-                            <div hidden> 
-                                <input id='inputFile' type="file">
-                            </div>
-                        <label for="save">Load File</label>    
-                    </div>  
-                </div>
-
-             
-            </fieldset>
-
+                <div id="load" class="iconText">
+                    <button target="dataLoad" type="button" class="upload" id='btnUpload'></button>
+                        <div hidden> 
+                            <input id='inputFile' type="file">
+                        </div>
+                    <label for="save">Load File</label>    
+                </div>  
+            </div>
         </fieldset>
 
         <div id="scroll-container">
-        
             <pre id="scroll-text" style="zoom: 1;"></pre>
         </div>
     </menu>  
-
-    <menu id="menuC">
-        <div class="lista">
-          <fieldset>
-            <legend>Busca Avançada</legend>
-                <div class="box-pesquisa">
-                
-                    <input target="trackSugestions" class="pesquisa" id="trackMus" type="text" placeholder="musica"> 
-                    <button id="btnBolt" value=0 target="menuB">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="bolt">
-                    </button>
-                </div>
-            <ul id="trackSugestions"></ul>
-         </fieldset>
-        </div>
-    </menu>
 
     <menu id="menuB">
       
@@ -167,14 +139,25 @@
             </ul>
         </fieldset>   
     </menu>
-    
-   
+
+    <menu id="menuC">
+        <div class="lista">
+          <fieldset>
+            <legend>Busca Avançada</legend>
+                <div class="box-pesquisa">
+                
+                    <input target="trackSugestions" class="pesquisa" id="trackMus" type="text" placeholder="musica"> 
+                    <button id="btnBolt" value=0 target="menuB">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="bolt">
+                    </button>
+                </div>
+            <ul id="trackSugestions"></ul>
+         </fieldset>
+        </div>
+    </menu>
 </main>
 
 <footer>
-
-   
-    
 </footer>
     <script type='module' src="js/index.mjs"></script>      
 </body>

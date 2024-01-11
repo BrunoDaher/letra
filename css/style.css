@@ -3,6 +3,7 @@
 @import url(elements.css);
 @import url(letra.css);
 @import url(tema.css);
+@import url(drag.css);
 
 body{
     margin:0; 

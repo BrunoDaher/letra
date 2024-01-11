@@ -1,11 +1,13 @@
+
+
 import ApiCloud from "./classApiCloud.js";
 
-export class Dao{
+class Dao extends ApiCloud{
 
-  apiCloud = new ApiCloud(this);
+
    
   constructor(){
-    //this.readCloud();
+    super();
   }
 
     updateLog(){
@@ -25,16 +27,20 @@ export class Dao{
     loadCloud(op){
       
       if(op == 1){
-        this.apiCloud.readList();
+        //from super()
+        this.readList();
+        
       }
       else{
-        this.apiCloud.readUsers();
+        //from super
+        this.readUsers();
       }
     }
 
     updateCloud(){
      // this.apiCloud.updateLog(user);
-     this.apiCloud.updateBin();
+     //from super()
+     this.updateBin();
     }
 
     saveLocalJSON (id,item){
@@ -65,7 +71,6 @@ export class Dao{
       this.makeFile(name,obj);
   }
 
-  
     makeFile(name,local){
     let fileName = name;
 
@@ -110,14 +115,14 @@ export class Dao{
             localStorage.setItem('listaLocal',JSON.stringify(lista));
 
             //salva item por item
-            Object.keys(lista).forEach(chave => {
+            Object.keys(lista).forEach(function(chave) {
               //sem ser stringfy
               sessionStorage.setItem(chave,lista[chave]);    
             });
   
           }, false);
   
-          setTimeout( ()=>{location.reload()} ,1000);
+          setTimeout(function (){location.reload()} ,1000);
 
          // setTimeout(start,1000);
   

@@ -13,8 +13,6 @@ class Letra{
     }
 
     setTime(){
-
-
         let t = this.getAttribute('target');
         let elem = document.getElementById(t);
     
@@ -36,13 +34,13 @@ class Letra{
 
     setFontSize(){
         let elem = document.getElementById(this.getAttribute('target'));
-        console.log(elem.style.zoom)
+      //  console.log(elem.style.zoom)
         elem.style.zoom = this.value
     }
 
     setColunas(){
         let elem = document.getElementById(this.getAttribute('target'));
-        console.log(elem)
+       // console.log(elem)
         elem.style.columnCount = this.value
     }
 

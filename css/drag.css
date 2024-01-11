@@ -1,0 +1,13 @@
+.dropSource , .dropTarget{
+  }
+
+  .dropSource:hover, .dropTarget:hover{
+    background-color: rgb(110, 148, 205);
+  }
+
+  .drop{
+   
+    height: 40vh;
+    position: relative;
+    top: 8vh;
+}

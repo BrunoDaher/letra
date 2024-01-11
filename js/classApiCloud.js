@@ -1,25 +1,29 @@
-export class ApiCloud {
-    
+//import Dao from "./classDao.js"
+
+class ApiCloud { //extends Dao{
+
+
     apiKey = "$2b$10$pl4q33prdidrF1ECS4BFKeClGFGT8wrQR3kjdQgMjTWTDAv8kGJgK";
-    binId = "648e2cc4b89b1e2299b0ae51";
-    binUsers =  "6492524e8e4aa6225eb1b6c2";
 
+    binId = "648e2cc4b89b1e2299b0ae51"; //<-setlist 
+    
+    binUsers =  "6492524e8e4aa6225eb1b6c2"; //<-usuarios
 
-    constructor(dao){
-       this.dao = dao;
-    }
-
+  
+      getUserId(){
+        return this.binId;
+      }
 
       updateLog(user){
         let req = new XMLHttpRequest();
 
   
-        req.onreadystatechange = () => {
+        req.onreadystatechange = function () {
         if (req.readyState == XMLHttpRequest.DONE) {
           let dados  = JSON.parse(req.responseText);
             
           // console.log(JSON.parse(dados.record));
-           this.dao.saveLocalJSON('userList',dados.record);
+        //   this.dao.saveLocalJSON('userList',dados.record);
         }
         };
 
@@ -32,7 +36,7 @@ export class ApiCloud {
       createBin(nome,conteudo){
           let req = new XMLHttpRequest();
     
-          req.onreadystatechange = () => {
+          req.onreadystatechange = function ()  {
             if (req.readyState == XMLHttpRequest.DONE) {
               //console.log(req.getRequestHEader("X-Bin-Name"));
             //console.log('listaGravada');
@@ -53,17 +57,17 @@ export class ApiCloud {
     
         let req = new XMLHttpRequest();
 
-        req.onreadystatechange = () => {
+        req.onreadystatechange = function () {
           if (req.readyState == XMLHttpRequest.DONE) {
             let dados  = JSON.parse(req.responseText);
             //console.log(dados)
-              this.dao.saveLocalJSON('listaLocal',dados.record);
-              let a = document.createElement('a');
+             // this.dao.saveLocalJSON('listaLocal',dados.record);
+             
+             localStorage.setItem('listaLocal',JSON.stringify(dados.record));
+             
+             let a = document.createElement('a');
               a.innerText = 'Dados carregados com sucesso';
               document.getElementById('myBar').append(a);
-                            //mostrar uma imagem de carga //
-              //return(true);
-              setTimeout(()=>{location.reload()},400)
           }
           else{
             return false
@@ -71,20 +75,26 @@ export class ApiCloud {
         };
         
         req.open("GET", "https://api.jsonbin.io/v3/b/"+ this.binId, true);
+        req.setRequestHeader("X-Bin-Private", "true");
         req.setRequestHeader("X-Access-Key", this.apiKey);
         req.send();  
       }
 
-      readUsers() {
+      readUsers(binId) {
         
         let req = new XMLHttpRequest();
 
-        req.onreadystatechange = () => {
+        req.onreadystatechange = function () {
           if (req.readyState == XMLHttpRequest.DONE) {
             let dados  = JSON.parse(req.responseText);
             
-          // console.log(JSON.parse(dados.record));
-           this.dao.saveLocalJSON('userList',dados.record);
+            console.log(dados);
+
+          //  console.log(this.dao)
+           //console.log(JSON.parse(dados.record));
+          
+         //  this.dao.saveLocalJSON('userList','teste');
+           return dados.record
             
           }
           else{
@@ -92,17 +102,18 @@ export class ApiCloud {
           }
         };
         
-        req.open("GET", "https://api.jsonbin.io/v3/b/"+ this.binUsers, true);
+        req.open("GET", "https://api.jsonbin.io/v3/b/"+ binId, true);
         req.setRequestHeader("X-Access-Key", this.apiKey);
+        req.setRequestHeader("X-Bin-Private", "true");
         req.send();  
       }
 
       updateBin(){
             let req = new XMLHttpRequest();
 
-            let listaLocal = this.dao.getLocalJSON('listaLocal');
+            let listaLocal = JSON.parse(localStorage.getItem('listaLocal'));
 
-            req.onreadystatechange = () => {
+            req.onreadystatechange = function () {
             if (req.readyState == XMLHttpRequest.DONE) {
                 //console.log(req.responseText);
             }
@@ -110,6 +121,7 @@ export class ApiCloud {
 
             req.open("PUT", "https://api.jsonbin.io/v3/b/" + this.binId, true);
             req.setRequestHeader("Content-Type", "application/json");
+            req.setRequestHeader("X-Bin-Private", "true");
             req.setRequestHeader("X-Access-Key", this.apiKey);
             req.send(JSON.stringify(listaLocal));
       }
@@ -117,7 +129,7 @@ export class ApiCloud {
       deleteBin(){
         let req = new XMLHttpRequest();
 
-        req.onreadystatechange = () => {
+        req.onreadystatechange = function () {
         if (req.readyState == XMLHttpRequest.DONE) {
             console.log(req.responseText);
         }
@@ -131,7 +143,7 @@ export class ApiCloud {
       getCollection(idCollection){
         let req = new XMLHttpRequest();
 
-        req.onreadystatechange = () => {
+        req.onreadystatechange = function () {
         if (req.readyState == XMLHttpRequest.DONE) {
             console.log(req.responseText);
         }
@@ -145,7 +157,7 @@ export class ApiCloud {
       addBinToCollection(){
         let req = new XMLHttpRequest();
 
-        req.onreadystatechange = () => {
+        req.onreadystatechange = function () {
         if (req.readyState == XMLHttpRequest.DONE) {
             console.log(req.responseText);
         }
