@@ -17,10 +17,10 @@ export class ApiLastFM {
      }
 
     getAlbum(art,alb){
-
         art = art.replaceAll('-','%20'); 
-        let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${this.apiKey}&artist=${art}&album=${alb}&format=json`;
-        path = path.replaceAll('-','%20');
+        let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${this.apiKey}&artist=${art}&${alb.tipo}=${alb.info}&format=json`;
+        //path = path.replaceAll('-','%20');
+       
         //usar patch local
         return path;  
      }
@@ -36,6 +36,12 @@ export class ApiLastFM {
             }
         });        
         return slim;        
+    }
+
+    getArtInfo(art){
+        art = art.replaceAll('-',' '); 
+        let path = `https://ws.audioscrobbler.com//2.0/?method=artist.gettopalbums&artist=${art}&api_key=${this.apiKey}&format=json`;
+        return path;  
     }
 
     getCurrentFoto(){

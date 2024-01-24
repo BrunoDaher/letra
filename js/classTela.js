@@ -130,8 +130,7 @@ class Tela {
         let array = string.split("");
         let timer = setInterval(fn,70);
     
-        div.innerText = ``;
-
+        div.innerText = "";
 
         function fn(){
 
@@ -183,34 +182,25 @@ class Tela {
         }
     }
 
-    removeIt(){
-
+    removeIt(e){
+        let item = this?this: e.target;
         console.log('Removendo: ')
-        //console.log(this.parentNode.id)
-        //console.log(event.target.parentNode.id);
-
-        
-        //div irmã
+     
         let musId = (this.parentNode.id).replaceAll('div','');  
         let lista = dao.getLocalJSON('listaLocal');
 
-        //console.log(musId + '-> '+ this.innerText)
-        //console.log(this.parentNode.childNodes[0])
+        console.log(lista)
 
         Object.values(lista).forEach(function(element) {
             let id = Object.keys(element)[0];
             
             if(musId == id){
-                //console.log(musId + ' ' + id );
+                console.log(id)
                 lista.splice(lista.indexOf(element),1)
-            // console.log(lista)
-                //lista.shift();
                 dao.saveLocalJSON('listaLocal',lista);
-                this.parentNode.remove();
+                    item.parentNode.remove();
             }
         });
-
-    //        dao.saveLocalJSON('listaLocal',lista);
 
         }
 

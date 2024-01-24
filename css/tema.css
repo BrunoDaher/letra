@@ -339,7 +339,7 @@ input{
 
 #listaDiscos.active{
     right: 2vw;
-    transition: all 0.3s;
+    transition: all 0.1s;
 }
 
 #discos{
@@ -350,7 +350,7 @@ input{
     height: 60vh;
 }
 
-#discos > div{
+#discos > div > img{
     width: 64px;
     height: 64px;
     border-radius: 2px;
@@ -358,9 +358,7 @@ input{
 }
 
 #discos > div:hover{
-    box-shadow: 1px 1px 0px 0px rgb(255, 255, 255);
-    filter: grayscale(1) brightness(1.5);
-    cursor: pointer;
+    
 }
 
 @media (max-width:400px){

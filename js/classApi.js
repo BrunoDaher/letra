@@ -18,13 +18,15 @@ export class Api {
       return apiLastFM.getTracks(art,album);
     }
 
-     //api last//
+     //api lastFM
     getAlbum(art,alb){
        return apiLastFM.getAlbum(art,alb);
     }
-     
+    
      //vagalume
     getArtMusic(art,mus){       
+
+       // console.log(art)
         art = this.normalizeInput(art);
         mus = this.normalizeInput(mus);
         mus = mus.replace('-live','');
@@ -89,12 +91,12 @@ export class Api {
     }
   
     //vagalume
-    getArtInfo(art){                
+        getArtInfo(art){                
         art = this.normalizeInput(art);
         art = art.replaceAll('.','-');
         art = art.replace('-/','/');
 
-        return apiVagalume.getArtInfo(art);       
+        return apiLastFM.getArtInfo(art);       
     }
     
    //aux

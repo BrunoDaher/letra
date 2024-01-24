@@ -89,7 +89,7 @@ import Slider from "./classSlider.js";
     }
 
     function adm(){
-    document.getElementById('save').classList.toggle('off')
+     document.getElementById('save').classList.toggle('off')
     }
 
     function updateCloud(){
@@ -157,8 +157,12 @@ import Slider from "./classSlider.js";
             //verifica se existe
                 listaLocal.forEach(function(element) {
                     
+
+                   // console.log(element);
+
                     element = element[Object.keys(element)];
                 //  console.log(element)
+
 
                     let el =  {name:element.artista + ' ' + element.musica, id:element.id}
 
@@ -219,18 +223,9 @@ import Slider from "./classSlider.js";
                             //plot
                             listaArtistas.append(el);
                         });
-                            /*verifica retorno da promisse
-                            let key = Object.keys(data)[0];              
-                            let r = data[key];
-                            console.log(key ? true:false)
-                    
-                            //caso positivo grava na sessão - em formato string
-                            //caso contrario nao faz nada
-                            key ? sessionStorage.setItem(key,JSON.stringify(r)):"";  */  
                     } )
                 .catch(function (e) {       
                     return 'erro' ;
-                    console.log(e);                
                 });
             }   
 
@@ -268,7 +263,7 @@ import Slider from "./classSlider.js";
                             trackSugestion.append(el);
                         });
                         
-                    }); 
+            }); 
         }
     }
 
@@ -278,85 +273,75 @@ import Slider from "./classSlider.js";
 
         listaArtistas.classList.remove('active');
         let returnDisco = document.getElementById('listaDiscos');  
-        //conversao  pra JSON
-        
+       
+        //lastFM - busca pelo nome do artista
         fetch(api.getArtInfo(this.id))
-        .then( function(response)   {     
-            return response.ok ? response.text() : false; 
-        })//retorna HTML
-        .then( function(responseHtml) 
-            { 
-                //modela Json
-                let data = JSON.parse(responseHtml);
-           
-                //discos    
-                let lps = data.artist.albums.item;
-                let cont = document.getElementById('discos');
+            .then( function(response)   {     
+                return response.ok ? response.text() : false; 
+            })//retorna HTML
+            .then( function(responseHtml) 
+                {  
+                    let data = JSON.parse(responseHtml);
+                    let lps = data.topalbums.album;
+                    let cont = document.getElementById('discos');
+                    let leg = document.getElementById('labelDiscos');
 
-                //rotulo da banda 
-                let leg = document.getElementById('labelDiscos');
-                    leg.innerText = this.id;    
-
-                cont.innerText = '';
-                //Itera lista de albums
-                lps.forEach(function(element) {
                     
-                    this.id = api.normalizeInput(this.id);
 
-                    //eliminando o que vem depois de :
-                    let pv = element.desc.lastIndexOf(":");
-                    let alb = pv < 0 ? element.desc : element.desc.slice(0,pv)
-                    
-                    fetch(api.getAlbum(this.id,alb))
-                    .then( function(response)   {     
-                        return response.ok ? response.text() : false; 
-                    })
-                    .then(function(responseHtml) {//retorna HTML
+                    let art = (data.topalbums["@attr"].artist);
 
-                        data = JSON.parse(responseHtml);
-                        let url = data.album.image[1]['#text'];
-                        //modela thumbnail
-                        cont.append(getThumb(url,alb,this.id))
-                      
+                    document.getElementById('musicas').setAttribute('band',art);
+                    leg.innerText = art;    
+
+                    cont.innerText = '';
+
+                    lps.forEach( function(jsonLp) {
+                        let alb = jsonLp.mbid ? {'tipo':'mbid','info':jsonLp.mbid} : {'tipo':'album','info':jsonLp.name};
+                        fetchLP(api.getAlbum(art,alb))
                     });
-                });
 
-                returnDisco.append(cont);
-            });   
+                    returnDisco.append(cont);
+                });   
     }
 
-    function getTracks(){
-        
-        fetch(api.getTracks(this.name,this.id))
-        .then( function(response)   {     
-            return response.ok ? response.text() : false; 
-        })//retorna HTML
-        .then(function(responseHtml)
-            { 
-                let data = JSON.parse(responseHtml);
-                let msg = data.message ? true : false    
-                if(msg){
-                    let img = this.childNodes[0];
-                    img.src = data.album.image[3]['#text'];  
-                }
-                try {
-                    let tracks = data.album.tracks.track;
-                    let div = document.getElementById('musicas');
-                        div.setAttribute('alb',this.id);
-                        div.setAttribute('band',this.name);
-                        div.innerHTML = '';
-                            tracks.forEach(function(element) {
-                                tela.addToDiv('div',element,div,getArtMusic);
-                            }
-                    );
-                } catch (error) {
-                    console.log('Album nao encontrado')
-                }
-        });   
-    }
-    //api last fm
+    //to DO, tentar buscar tudo na Last
 
-    function getArtMusic(){
+    function fetchLP(url){
+                 fetch(url)
+                    .then( function(response){
+                        let contentType = response.headers.get('Content-Type');
+                        if (contentType && contentType.includes('application/json')) {
+                            return response.json();
+                        }
+                        else {
+                            return {message:'erro'};
+                        }
+                    })
+                    .then(function(dados) {//retorna HTML
+                       if(!dados.message){
+                        let alb = dados.album;
+
+                       
+                        let getLyric = document.querySelectorAll('.getLyric');
+                       
+                        getLyric.forEach(track => {
+                            track.removeEventListener('click',getArtMusic);
+                        });
+
+                        if(alb.tracks){
+                            let faixas = alb.tracks.track;
+                            let urlImg = alb.image[0]['#text'];
+                            let cont = document.getElementById('discos');
+                            cont.append(getThumb(urlImg,alb,faixas));
+                        }
+                        else{
+                            //console.log('noTracks ' + alb.name )
+                        }
+                       }
+                    })
+    }
+
+    function getArtMusic(e){
 
         console.log("trilhoA Buscando pela Discografia")
 
@@ -364,54 +349,51 @@ import Slider from "./classSlider.js";
         let musica = this.innerText; //titulo da musica
 
         fetch(api.getArtMusic(artista,musica))
-        .then( function(response)    {     
-            return response.ok ? response.text() : false; 
-        })//retorna HTML
-        .then( function(responseHtml)
-       {
-            //tabulando dados
-            let data = JSON.parse(responseHtml);
+                .then(function(response){  
+                    return response.ok ? response.text() : false; 
+                })//retorna HTML
+                .then(function(responseHtml){
+                    //tabulando dados
 
-            let letra = data.mus[0].text;
-            //correcao
-            let id = 'l' + data.mus[0].id;  
-            this.id = id; 
-            artista = data.art.name;
-          
-             // modelagem
-             let obj = {
-                [id]:{'letra':letra,"id":id,'musica':musica,'artista':artista}
-            };
-          
-            let listaLocal = dao.getLocalJSON('listaLocal');
-
-            //pra caso de lista zerada
-            if(!listaLocal){
-                listaLocal = new Array();
-            }
-            else{
-                    if(!intoArray(listaLocal,id)){
-                    //plota e persiste
-                    setTimeout(
-                        function(){
-                            appendMusica(obj,listaLocal);
-                        }
-                        ,
-                    400);
-                } 
-            }
-
-             //plotagem
-             infoLetra.innerText = letra;
-             titulo.innerText = musica;
-             titulo.setAttribute('idSong',id);
+                  //  console.log(responseHtml)
+                    
+                    let data = JSON.parse(responseHtml);
+                    let letra = data.mus[0].text;
+                    let id = 'l' + data.mus[0].id;
+                 
+                    e.target.id = id; 
+                    artista = data.art.name;
                 
-            //se opção tiver ativada
-            //busca rapida
-            if(btnBolt.value == 1){
-                document.getElementById('btnMenuA').click()    
-            }
-        });  
+                    // modelagem
+                    let obj = {
+                        [id]:{'letra':letra,"id":id,'musica':musica,'artista':artista}
+                    };
+                
+                    let listaLocal = dao.getLocalJSON('listaLocal');
+
+                    //pra caso de lista zerada
+                    if(!listaLocal){
+                        listaLocal = new Array();
+                    }
+                    else{
+                            if(!intoArray(listaLocal,id)){
+                            //plota e persiste
+                            setTimeout(
+                                function(){ appendMusica(obj,listaLocal);},400);
+                        } 
+                    }
+
+                    //plotagem
+                    infoLetra.innerText = letra;
+                    titulo.innerText = musica;
+                    titulo.setAttribute('idSong',id);
+                        
+                    //se opção tiver ativada
+                    //busca rapida
+                    if(btnBolt.value == 1){
+                        document.getElementById('btnMenuA').click()    
+                    }
+                });  
     }
 
     function getLocalMusic(){
@@ -449,9 +431,11 @@ import Slider from "./classSlider.js";
 
     }
 
-    function getMusById(){
+    function getMusById(e){
+        let item = this?this : e.target;
+
        // console.log('get by Id')
-        fetch(api.getMusicById(this.id))
+        fetch(api.getMusicById(item.id))
         .then( function(response)   {     
             return response.ok ? response.text() : false; 
         })//retorna HTML
@@ -474,18 +458,25 @@ import Slider from "./classSlider.js";
                 ls = new Array();
             }
             
+           
+
             //modelagem de elemento - populator
             ls.forEach(function(element)  {
-                if( Object.keys(element) == this.id ){
-                    
+                if( Object.keys(element) == item.id ){
+                
+              //      console.log(element)
                     //modelagem
-                    element[this.id] = 
+                    element[item.id] = 
                     {
-                        id:this.id, 
+                        id:item.id, 
                         'letra':letra,
                         'musica':title, 
-                        'artista':artista};
-                    }
+                        'artista':artista
+                    };
+                }
+                else{
+                   // console.log(item.id)
+                }
             }
             );
 
@@ -517,7 +508,7 @@ import Slider from "./classSlider.js";
             
         }
         else{
-            console.log(2 + ' lista vazia')
+           // console.log(2 + ' lista vazia')
             appendMusica(obj,listaLocal)
         }
     
@@ -526,7 +517,7 @@ import Slider from "./classSlider.js";
     function appendMusica(obj, lista){
 
         lista.push(obj);
-        console.log(obj)
+     
         dao.saveLocalJSON('listaLocal',lista);
         //refreash lista
         setTimeout(montaLista,800);
@@ -549,32 +540,49 @@ import Slider from "./classSlider.js";
     
     }
 
-    function getThumb(url,alb,id){
-                    
+    function getThumb(url,alb,faixas){
+               
                     let img = document.createElement('img');
                         img.src = url;
                         img.style.width = '64px';
                     
                     let thumbDiv = document.createElement('div');
-                        thumbDiv.name = id;  
-                        thumbDiv.id = alb;
-               
-                        //eventos
-                        thumbDiv.addEventListener('click',getTracks);
+                        thumbDiv.name = alb.artist;  
+                        thumbDiv.id = alb.name;
+                        let musContainer = document.getElementById('musicas');
+                        
+                       //eventos
                         thumbDiv.addEventListener('click',function(){
-                            //document.getElementById('infoMus').innerText = alb;
+                            if(faixas.name){
+                               musContainer.innerHTML = `<li class="getLyric">${faixas.name}</li>`;
+                            }
+                            else{
+                                musContainer.innerHTML = "";
+                                faixas.forEach(function(faixa) {
+                                     musContainer.innerHTML += `<li class="getLyric">${faixa.name}</li>`;
+                                });
+                            }
+                           
                             let infoDiv = document.getElementById('infoMus');
-                            tela.typing(alb,infoDiv)
+                          
+
+                                infoDiv.innerText = alb.name;
+                            tela.typing(alb.name,infoDiv);
+
+
+                         
+                            triggers();
+
+                            function triggers(){
+                                let getLyric = document.querySelectorAll('.getLyric');
+                                getLyric.forEach(function(track) {
+                                    track.addEventListener('click',getArtMusic);
+                                });
+                            }
                         });
                         
                         thumbDiv.append(img);
 
+
         return thumbDiv;
     }
-
-        // string 
-                        /* let _div = `<div name='${this.id}' id='${alb}'><img src='${url}'></div>`;
-                         //console.log(_div);
-                         let d = document.createElement('div');
-                         d.innerHTML = _div;*/
-                        //eventos
