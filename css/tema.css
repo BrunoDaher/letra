@@ -9,7 +9,8 @@
 
 .fonteContainer{
     font-size: 2vh;
-    padding: 1rem;
+    margin: 2vw;
+    background-color: color(srgb 0.1737 0.1887 0.1885);
 }
 
 
@@ -27,7 +28,7 @@
 
 .painel{
     background-color: #167c71;
-    padding: 1vh;
+   padding: 1vw;
     border-width: 1px;
     border-color: grey;
     border-style: inset;
@@ -78,7 +79,7 @@
     display: flex;
     gap: 1vh;
     align-items: center;
-    padding: 4px;
+    font-size: 4vw;
 }
 
 .box{
@@ -98,6 +99,7 @@
 
 .painel{
 
+    font-size: 4vw;
 }
 
 /*Elementos internos do botao*/
@@ -165,17 +167,12 @@ header > button{
 
 ul{
     display: grid;
-    margin: 2vh;
     padding: 0;
 }
 
 #trackSugestions{
-    top: calc(var(--top) + 8%);
-    padding: 3vw;
-   
+    top: calc(var(--top) + 10vh);
     justify-items: center;
-    width: -webkit-fill-available;
-   
 }
 
 #listaArtistas{
@@ -185,14 +182,13 @@ ul{
 
   background-color: #1c1e1e;
 
- gap: 2vh;
- font-size: 4vw;
-
+    gap: 1vh;
+    font-size: 5vw;
+ 
+    top: calc(var(--top) + 8%);
 
   justify-items: center;
-    width: -webkit-fill-available;
   
-    top: calc(var(--top) + 12%);
 
 }
 
@@ -210,15 +206,14 @@ ul{
     background-color: #3e4f4e1c;
 
     overflow-y: scroll;
-    position: absolute;
 
-    top: var(--top);
+    position: fixed;
 
+    top: var(--top) + 2vh;
     gap: 1vh;
+    width: calc(100% - 8vw);
 
-   
-
-    font-size: 3vw;
+    font-size: 3.5vw;
     
     max-height: 70%;
 
@@ -255,6 +250,7 @@ ul{
 
     background-color: black;
     padding: 1.5vh 2vh;
+ 
     top: var(--top);
 }
 
@@ -281,7 +277,8 @@ input{
 }
 
   #config {
-    padding: 3vh;
+    top: var(--top);
+    width: fit-content;
      position: fixed;
      background-color: black;
      transition: all 0.3s;
