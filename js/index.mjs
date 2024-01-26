@@ -542,7 +542,7 @@ import Slider from "./classSlider.js";
                         img.src = url;
                         img.style.width = '64px';
                     
-                    let thumbDiv = document.createElement('div');
+                    let thumbDiv = document.createElement('li');
                         thumbDiv.name = alb.artist;  
                         thumbDiv.id = alb.name;
                         let musContainer = document.getElementById('musicas');

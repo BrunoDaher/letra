@@ -6,7 +6,7 @@
 @import url(drag.css);
 
 :root{
-    --top:12%;
+    --top: calc(15vh + 3vw);
 }
 
 body{
