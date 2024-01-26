@@ -11,9 +11,8 @@ body{
     background-color: #1a1e21e0;
 }
 
-
 legend{
-    font-size: 1.5rem;
+    font-size: 3vh;
 }
 
 header{
@@ -111,8 +110,5 @@ fieldset{
         padding: 1vh;
     }
 
-    legend{
-        font-size: 1.1rem;
-    }
 
 }

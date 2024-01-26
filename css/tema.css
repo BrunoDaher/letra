@@ -303,9 +303,11 @@ input{
 }
 
 
+
 #listaDiscos > legend{
     background: #133753a8;
-    padding: 4px;
+    padding: 1vh;
+    font-size: 3vh;
     border-radius: 4px;
     color: white;
     text-shadow: 3px -2px 1px rgb(49 44 44 / 73%);
@@ -353,6 +355,7 @@ input{
     width: 64px;
     height: 64px;
     border-radius: 2px;
+    zoom:2;
    
 }
 
@@ -366,13 +369,15 @@ input{
         top:20%;
     }
 
-
-
-
     header > button{
         font-size: 1.4vh;
     }
+}
 
+@media (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape){
+    #config,#listaArtistas{
+        top:24%;
+    }
 }
 
 /*" href="ipad-portrait.css" />
