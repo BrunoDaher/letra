@@ -35,7 +35,7 @@ class Letra{
     setFontSize(){
         let elem = document.getElementById(this.getAttribute('target'));
       //  console.log(elem.style.zoom)
-        elem.style.zoom = this.value
+        elem.style.fontSize = this.value + 'vh'
     }
 
     setColunas(){
