@@ -10,6 +10,7 @@
     background-size: 25px ;
 }
 
+
 .search{
     /*background-image: url(https://www.pngrepo.com/download/135623/search.png);*/
     background-image: url(../css/imgs/search-pngrepo-com.png);
@@ -26,7 +27,6 @@
     width:29px;
     height: 29px;
     filter: invert(1);
-    
 }
 
 .advSearch{
@@ -147,9 +147,7 @@ input{
 }
 
 
-
 .forward{
-    
     /*background-image: url(https://www.pngrepo.com/download/42258/fast-forward.png);
     */background-image: url(../css/imgs/fast-forward-pngrepo-com.png);
     background-size: 25px ;
@@ -159,7 +157,6 @@ input{
 }
 
 .back{
-
     /*background-image: url(https://www.pngrepo.com/download/123553/backward-arrows-couple.png);
     */background-image: url(../css/imgs/backward-arrows-couple-pngrepo-com.png);
     background-size: 25px ;
@@ -169,7 +166,6 @@ input{
 }
 
 .config{
-
     /*background-image: url(https://www.pngrepo.com/download/373522/config.png);
    */background-image: url(../css/imgs/config-pngrepo-com.png);
     background-size: 25px ;
@@ -204,41 +200,4 @@ button:hover{
     width:29px;
     height: 29px;
     rotate: 180deg;
-}
-
-@media (max-width:400px){
-
-    .btn{
-        font-size: 1vh;
-    }
-
-}
-
-@media (device-width: 1024px) and (device-height: 1366px) and (orientation:portrait){
-
-    button, .banda{
-        zoom:2;
-    }
-
-    .btn{
-        zoom: 2;
-        font-size: 3vh;
-    }
-
-    #listaMusicas > div, .fonteContainer{
-        font-size: 2vh;
-    }
-
-}
-
-@media (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape){
-
-    button, .banda{
-        zoom:2;
-    }
-
-    #listaMusicas > div , .fonteContainer{
-        font-size: 2vh;
-    }
-
 }

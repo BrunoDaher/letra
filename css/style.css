@@ -5,6 +5,10 @@
 @import url(tema.css);
 @import url(drag.css);
 
+:root{
+    --top:12%;
+}
+
 body{
     margin:0; 
     padding: 0;
@@ -12,7 +16,8 @@ body{
 }
 
 legend{
-    font-size: 3vh;
+    font-size: 2vh;
+    padding: 1vh;
 }
 
 header{

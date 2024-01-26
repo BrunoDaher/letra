@@ -28,12 +28,15 @@ import Slider from "./classSlider.js";
 
     //Discografia
     const discos = document.getElementById('discog')
+    const btnListaArt = document.getElementById('btnListaArt');
     const listaArtistas = document.getElementById('listaArtistas')
     const trackMus = document.getElementById('trackMus');
     //triggers
     discos.addEventListener('click',tela.modal);
     discos.addEventListener('click',tela.Parents);
-
+  
+    btnListaArt.addEventListener('click',tela.modal);
+    btnListaArt.addEventListener('click',tela.Parents);
 
     //busca avançada
     const trackSugestion = document.getElementById('trackSugestions');
@@ -250,7 +253,7 @@ import Slider from "./classSlider.js";
                         
                         //itera array de resposta  -- loop
                         dados.forEach(function(element)  {
-                            let el = document.createElement('li');
+                            let el = document.createElement('div');
                             el.id = element.id;
                             el.classList.add('banda');
                             el.innerText = `${element.band} ${element.title}`;
@@ -330,7 +333,7 @@ import Slider from "./classSlider.js";
 
                         if(alb.tracks){
                             let faixas = alb.tracks.track;
-                            let urlImg = alb.image[0]['#text'];
+                            let urlImg = alb.image[1]['#text'];
                             let cont = document.getElementById('discos');
                             cont.append(getThumb(urlImg,alb,faixas));
                         }
@@ -354,9 +357,6 @@ import Slider from "./classSlider.js";
                 })//retorna HTML
                 .then(function(responseHtml){
                     //tabulando dados
-
-                  //  console.log(responseHtml)
-                    
                     let data = JSON.parse(responseHtml);
                     let letra = data.mus[0].text;
                     let id = 'l' + data.mus[0].id;
@@ -401,7 +401,7 @@ import Slider from "./classSlider.js";
         //console.log(this)
         /* seleção de item dentro de menu */
         let div = this.parentNode;
-        let collection = div.getElementsByTagName("li");
+        let collection = div.getElementsByTagName("div");
 
         //node menu
         for (let item of collection) {
@@ -412,7 +412,6 @@ import Slider from "./classSlider.js";
         this.classList.add('selected')
 
         /* --------- */
-    
         let listaLocal = dao.getLocalJSON('listaLocal');
 
         let arr = new Array();
@@ -428,7 +427,6 @@ import Slider from "./classSlider.js";
         
         //logica
         titulo.setAttribute('idSong','_' + this.id);
-
     }
 
     function getMusById(e){
@@ -458,8 +456,6 @@ import Slider from "./classSlider.js";
                 ls = new Array();
             }
             
-           
-
             //modelagem de elemento - populator
             ls.forEach(function(element)  {
                 if( Object.keys(element) == item.id ){

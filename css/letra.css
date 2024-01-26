@@ -2,8 +2,7 @@ pre{
     text-align: center;
     padding: 2vh;
     margin: 0;
-    zoom: 1;
-    font-size: 16px;
+    font-size: 2.5vh;
     height: 100%;
     max-height: 100%;
     overflow-y: scroll;
@@ -31,7 +30,7 @@ pre.rollOff{
     height: 5vh;
     width: 90%;
     text-align: center;
-    font-size: 2vh;
+    font-size: 2.5vw;
 }
 
 .inputPesquisa{
@@ -40,7 +39,7 @@ pre.rollOff{
     color: white;
     outline: none;
 
-    font-size: 2vh;
+    font-size: 5vw;
 }
 
 
@@ -48,19 +47,14 @@ pre.rollOff{
     background-color: transparent;   
 }
 
-#musicas > li{
-    align-items: center;
-    cursor: pointer;
-    gap: 2vh;
-    font-size: 3vh;
-}
+
 
 
 
 #titulo{
     align-items: center;
     text-align: center;
-    font-size: 2.5vh;
+    font-size: 2.5vw;
     text-wrap: balance;
     padding: 0 10px;
     /* justify-self: center; */

@@ -55,13 +55,13 @@
             </div>  
         </div>
 
-        <div id="listaMusicas" class="grid1">
+        <div id="listaMusicas" class="grid1 sideBox left">
         </div>
 
-        <fieldset class="grid1" id="config" >
+        <div class="grid1 sideBox right rad3vh" id="config" >
             <div id="fonteContainer" class="fonteContainer">
                 <label for="fonte">Fonte</label>
-                <input target='scroll-text' type="range" class="" id='fonte' step="0.1" min='0.4'  max="3" value="1">      
+                <input target='scroll-text' type="range" class="" id='fonte' step="0.1" min='1'  max="5" value="1">      
             </div>
             
             <div id="rolagem" class="fonteContainer">
@@ -74,7 +74,7 @@
                 <input target="scroll-text" type="range" class="" id='colunas' step="1" min='1'  max="3" value="0.1">
             </div>  
 
-            <fildset  id="painelDao" class="grid painel">
+            <fildset  id="painelDao" class="grid painel rad1">
                 
             <div id="loadCloud" class="iconText central">
                 <div id="save" class="iconText off">
@@ -100,10 +100,10 @@
                     <label for="save">Load File</label>    
                 </div>  
             </div>
-        </fieldset>
+        </div>
 
         <div id="scroll-container">
-            <pre id="scroll-text" style="zoom: 1;"></pre>
+            <pre id="scroll-text"></pre>
         </div>
     </menu>  
 
@@ -117,26 +117,29 @@
                 <button class="btnToggle"target="listaDiscos" id="discog">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">
                 </button>
+                <button class="btnToggle"target="listaArtistas" id="btnListaArt">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
+                </button>
              
             </div>
 
-            <fieldset class="wrapper">
+            <div class="wrapper">
                 <legend id="infoMus" class="typing">Musicas</legend>
                 
-                <div id="musicas">
-                </div>
+                <div id="musicas"></div>
+
+                <ul id="listaArtistas" class="sideBox rad3vh">
+
+                </ul>
 
                 <fieldset id="listaDiscos">
                     <legend id="labelDiscos"></legend>
                     <div id="discos">
                     </div>
                 </fieldset>
+            </div>
 
-            </fieldset>
-
-            <ul id="listaArtistas">
-
-            </ul>
+           
         </fieldset>   
     </menu>
 
@@ -151,7 +154,7 @@
                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="bolt">
                     </button>
                 </div>
-            <ul id="trackSugestions"></ul>
+            <ul id="trackSugestions" class="sideBox center rad3vh"></ul>
          </fieldset>
         </div>
     </menu>

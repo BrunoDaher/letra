@@ -8,8 +8,10 @@
 }
 
 .fonteContainer{
-    font-size: 2.5vw;
+    font-size: 2vh;
+    padding: 1rem;
 }
+
 
 #save{
     
@@ -26,11 +28,9 @@
 .painel{
     background-color: #167c71;
     padding: 1vh;
-    z-index: 2;
     border-width: 1px;
     border-color: grey;
     border-style: inset;
-    
 }
 
 #listaMusicas > div.selected{
@@ -139,10 +139,13 @@ header > button{
 
 #newList , li {
     display: flex;
-    align-items: center;
+    padding: 0.5vh;
+   
     border-radius: 3px;
     cursor: pointer;
+    
     text-align: center;
+    align-items: center;
     place-content: center;
    
 }
@@ -160,101 +163,116 @@ header > button{
     margin: 2px;
 }
 
-
-
 ul{
     display: grid;
     margin: 2vh;
     padding: 0;
 }
 
+#trackSugestions{
+    top: calc(var(--top) + 8%);
+    padding: 3vw;
+   
+    justify-items: center;
+    width: -webkit-fill-available;
+   
+}
+
 #listaArtistas{
    
-  position:absolute;
-  left: -100vh;
-  line-height: 5vh;
-  top:21vh;
-  width: 40%;
-  transition: all 0.8s;
+  position:fixed;
+  opacity: 0;
+
+  background-color: #1c1e1e;
+
+ gap: 2vh;
+ font-size: 4vw;
+
+
+  justify-items: center;
+    width: -webkit-fill-available;
+  
+    top: calc(var(--top) + 12%);
 
 }
 
 #listaArtistas.active{
-    left: 0vh;
-    /* width: fit-content; */
-    border-radius: 4px;
-    
-    /* display: grid; */
-    /* border-style: inset; */
-    background-color: black;
-  
-    padding: 2vh;
-
-   
-    transition: all 0.8s;
-}
-
-#trackSugestions{
-   
-    position:absolute;
-    left: -100vh;
-    width: 90%;
-  
-   
-    width: 0px;
-    
-    transition: all 0.8s;
-  
-  }
-
-
-  #trackSugestions.active{
-   
-        position: relative;
-        left: 0vh;
-        border-radius: 4px;
-        right: 0;
-        border-style: inset;
-        width: auto;
-       
-        line-height: 4vh;
-        margin-top: 0;
-        transition: all 0.8s;
-    }
-
-
-
-  #listaMusicas {
- 
-    overflow-y: scroll;
-    position: fixed;
-    width: 56%;
-    max-height: 75%;
-    top: 7em;
-    left: -100em;
-    padding: 2vh;
-    margin-top: 3vh;
-    background-color: rgba(0, 0, 0, 0.998);
-    color: rgb(255, 255, 255);
-    border-radius: 4px;
-    transition: all 0.8s;
-}
-
-#listaMusicas.active{
-    left: 0em;
     z-index: 1;
-    transition: all 0.3s;
-} 
+    opacity: 1;
+  
+    transition: all 0.5s;
+
+}
+
+
+.sideBox{
+  
+    background-color: #3e4f4e1c;
+
+    overflow-y: scroll;
+    position: absolute;
+
+    top: var(--top);
+
+    gap: 1vh;
+
+   
+
+    font-size: 3vw;
+    
+    max-height: 70%;
+
+    padding: auto;
+
+    transition: all 0.8s;
+}
+
+        .sideBox.active{
+            z-index: 1;
+        }
+
+        .left{
+            left: -100vw;
+        }
+
+        .right{
+            right: -100vw;
+        }
+
+        .sideBox.left.active{
+            left: 0em;
+            transition: left 0.3s;
+        }
+
+        .sideBox.right.active{
+            right: 0em;
+            transition: right 0.3s;
+        }
+       
+
+
+#listaMusicas{
+
+    background-color: black;
+    padding: 1.5vh 2vh;
+    top: var(--top);
+}
+
+#musicas > li{
+    align-items: center;
+    cursor: pointer;
+    gap: 2vh;
+    font-size: 3vw;
+}
 
 #listaMusicas > div{
     cursor: pointer;
     background-color: #2b2b2bcf;
     border-width: 0px 0px 1px 0px;
-    
-    /* align-self: center; */
-    /* gap: 1vh; */
-    padding: 1vh;
-    justify-content: space-between;
+
+    width: auto;
+    font-size: 1.5vh;
+   
     transition: all 0.3s;
   }
 
@@ -263,30 +281,11 @@ input{
 }
 
   #config {
-     /* padding: 2vh; */
+    padding: 3vh;
      position: fixed;
-     top:14%;
-     gap:3vh;
-     right: -40em;
-     margin: 1vh;
-     padding: 9px;
-     
-     background-color: rgba(88, 91, 95, 0.851);
-    
-     width: fit-content;
-     /*height: fit-content;*/
-     color: rgb(232, 235, 236);
-     
+     background-color: black;
      transition: all 0.3s;
   }
-
-#config.active{
-    right: 0em;
-    z-index: 1;
-    transition: all 0.3s;
-}
-
-
 
 
 #musicas{
@@ -295,7 +294,6 @@ input{
 }
 
 .lista {
-
     display: grid;
     /*grid-template-columns: 1fr 2fr 2fr;*/
     height: 80vh;
@@ -304,14 +302,6 @@ input{
 
 
 
-#listaDiscos > legend{
-    background: #133753a8;
-    padding: 1vh;
-    font-size: 3vh;
-    border-radius: 4px;
-    color: white;
-    text-shadow: 3px -2px 1px rgb(49 44 44 / 73%);
-}
 
 #listaDiscos{
     background-color: #35393b;
@@ -322,21 +312,29 @@ input{
     transition: all 0.3s;
 }
 
+    #listaDiscos > legend{
+        background: #133753a8;
+        padding: 1vh;
+        font-size: 3vh;
+        color: white;
+        text-shadow: 3px -2px 1px rgb(49 44 44 / 73%);
+    }
+
 .banda{
-    border-style: outset;
-    /* padding: 2px; 
-    background-color: #6795ac8a;*/
+    
 }
 
 .banda:hover{
     background-color: dimgrey;;
     cursor: pointer;
-    /*nao funciona em ios*/
-    zoom: 1.1;
 }
 
 .rad1{
     border-radius: 7px;
+}
+
+.rad3vh{
+    border-radius: 3vh;
 }
 
 #listaDiscos.active{
@@ -356,55 +354,4 @@ input{
     width: 64px;
     height: 64px;
     border-radius: 2px;
-     /*nao funciona em ios*/
-    zoom:2;
-   
-}
-
-#discos > div:hover{
-    
-}
-
-
-@media (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape){
-    #config, #listaArtistas, #listaMusicas{
-        top:28%;
-    }
-
-  
-}
-
-/*" href="ipad-portrait.css" />
-    <link rel="stylesheet" media="all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape)" href="ipad-landscape.css" />
-*/
-@media (max-width:400px){
-
-  
- .lista {
-    display: grid;
-    grid-template-columns: none;
-    grid-template-rows: 1fr 1fr 1fr; 
- }
-
-    
- .fonteContainer{
-
-    font-size: 1em;
-    width: fit-content;
-    accent-color: white;
- }
-
- .lbl {
-    display: none;
- }
-
- header > button{
-    font-size: 2vw;
-   
-    }
- .painel{
-    font-size:1.2em
- }
-
-
 }
