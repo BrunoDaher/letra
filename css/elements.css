@@ -210,3 +210,27 @@ button:hover{
 @media (max-width:400px){
 
 }
+
+@media (device-width: 1024px) and (device-height: 1366px) and (orientation:portrait){
+
+    button, .banda{
+        zoom:2;
+    }
+
+    #listaMusicas > div, .fonteContainer{
+        font-size: 2vh;
+    }
+
+}
+
+@media (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape){
+
+    button, .banda{
+        zoom:2;
+    }
+
+    #listaMusicas > div , .fonteContainer{
+        font-size: 2vh;
+    }
+
+}
