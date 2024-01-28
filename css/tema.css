@@ -8,9 +8,11 @@
 }
 
 .fonteContainer{
-    font-size: 2vh;
-    margin: 2vw;
-    background-color: color(srgb 0.1737 0.1887 0.1885);
+    font-size: 3vw;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
 }
 
 .off{
@@ -264,6 +266,8 @@ input{
     width: fit-content;
      position: fixed;
      background-color: black;
+     display: grid;
+grid-template-rows: 1fr 1fr 2fr;    
      transition: all 0.3s;
   }
 

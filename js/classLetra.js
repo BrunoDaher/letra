@@ -1,8 +1,8 @@
 class Letra{
 
     constructor(){
-        const tempo = document.getElementById('velocidade');
-        tempo.addEventListener('change',this.setTime);
+       // const tempo = document.getElementById('velocidade');
+       // tempo.addEventListener('change',this.setTime);
 
         const fonte = document.getElementById('fonte');
         fonte.addEventListener('change',this.setFontSize);
