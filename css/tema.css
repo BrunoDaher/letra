@@ -13,11 +13,6 @@
     background-color: color(srgb 0.1737 0.1887 0.1885);
 }
 
-
-#save{
-    
-}
-
 .off{
     display: none !important;
 }
@@ -38,7 +33,6 @@
     color: red;
 }
 
-
 .grid1{
     display: grid;
 }
@@ -55,6 +49,7 @@
     grid-template-columns: 1fr 3fr 1fr;
     place-items: center;
 }
+
 .grid3one{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -96,12 +91,9 @@
     display: grid;
 }
 
-
 .painel{
-
     font-size: 4vw;
 }
-
 /*Elementos internos do botao*/
 button{
     cursor: pointer;
@@ -120,10 +112,12 @@ header > button.active, button.active{
 
     color: #a1f3e9;
     text-shadow: #0c617a 6px -4px 10px;
+    
     display: flex;
     border-style: ridge;
     border-radius: 4px;
     border-width: 0px 0px 2px 0px;
+
     transition: all 0.3s;
     padding: 4px;
   
@@ -177,62 +171,51 @@ ul{
 
 #listaArtistas{
    
-  position:fixed;
-  opacity: 0;
-  z-index: 0;
+    position:fixed;
+    opacity: 0;
+    z-index: 0;
+    right:-100vh;
 
-  background-color: #1c1e1e;
+    background-color: #1c1e1e;
 
     gap: 1vh;
-    font-size: 5vw;
- 
     top: calc(var(--top) + 8%);
 
-  justify-items: center;
-  
-
+    justify-items: center;
 }
 
 #listaArtistas.active{
     z-index: 1;
     opacity: 1;
+    right: 2vh;
   
     transition: all 0.5s;
-
 }
-
 
 .sideBox{
   
     background-color: #3e4f4e1c;
 
     overflow-y: scroll;
-
+   
     position: fixed;
-
     top: var(--top) + 2vh;
     gap: 1vh;
     width: calc(100% - 8vw);
 
-    font-size: 3.5vw;
-    
+    font-size: 4vw;
     max-height: 70%;
 
     padding: auto;
 
     transition: all 0.8s;
 }
-
-        .sideBox.active{
-            z-index: 1;
-        }
-
         .left{
             left: -100vw;
         }
 
         .right{
-            right: -100vw;
+            right: -100vh;
         }
 
         .sideBox.left.active{
@@ -245,7 +228,6 @@ ul{
             transition: right 0.3s;
         }
        
-
 
 #listaMusicas{
 
@@ -297,9 +279,6 @@ input{
     height: 80vh;
     width: 100%;
 }
-
-
-
 
 #listaDiscos{
     background-color: #35393b;
