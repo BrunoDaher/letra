@@ -2,19 +2,20 @@ pre{
     text-align: center;
     padding: 2vh;
     margin: 0;
-    font-size: 2.5vh;
+    font-size: 1.7vh;
     height: 100%;
     max-height: 100%;
     overflow-y: scroll;
     white-space: break-spaces;
 }
 
+
+    pre.rollOff{
+        max-height: 80%;
+    }
+
 #scroll-container{
     display: contents;
-}
-
-pre.rollOff{
-    max-height: 80%;
 }
 
 .box-pesquisa{
@@ -26,14 +27,14 @@ pre.rollOff{
     padding: 2vh;
 }
 
-.box-pesquisa > input{
-    height: 5vh;
-    background-color: var(--fundoA);
-    color: var(--colorB);
-    width: 100%;
-    text-align: center;
-    font-size: 1em;
-}
+    .box-pesquisa > input{
+        height: 5vh;
+        background-color: var(--fundoA);
+        color: var(--colorB);
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+    }
 
 .inputPesquisa{
     border-width: 0px 0px 2px 0px;

@@ -40,9 +40,6 @@
     justify-content: center;
 }
 
-#menuC.active{
-    display: grid;
-}
 
 /*Elementos internos do botao*/
 button{
@@ -119,8 +116,13 @@ ul{
     /* padding: 1vh 0; */
     height: calc(60vh - 5vw);
     padding: 2vh;
+    opacity: 0;
     /* justify-items: center; */
     width: fit-content;
+}
+
+#trackSugestions.active{
+    opacity: 1;
 }
 
 #listaArtistas{
@@ -233,8 +235,6 @@ ul{
 #listaDiscos{
  
 }
-
-
 
 .banda:hover{
     background-color: dimgrey;
