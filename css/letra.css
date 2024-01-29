@@ -35,7 +35,7 @@ pre.rollOff{
 
 .inputPesquisa{
     border-width: 0px 0px 2px 0px;
-    background-color: #ffffff14;
+    background-color: var(--fundoC);
     color: white;
     outline: none;
 

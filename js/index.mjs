@@ -6,6 +6,10 @@ import Dao from "./classDao.js";
 import User from "./classUser.js"
 
 
+document.addEventListener('dblclick', function(event) {
+    event.preventDefault();
+});
+
 // Variaveis
     const objLetra = new Letra();
     const api = new Api();
@@ -163,7 +167,7 @@ import User from "./classUser.js"
                 //  console.log(element)
 
 
-                    let el =  {name:element.artista + ' ' + element.musica, id:element.id}
+                    let el =  {name:element.artista + ' ' + element.musica, id:element.id,'song':element.musica}
 
                     //listaMusicas.append(element);
                     
@@ -253,7 +257,7 @@ import User from "./classUser.js"
                             el.id = element.id;
                             el.classList.add('banda');
                             el.innerText = `${element.band} ${element.title}`;
-
+                            
                             //busca por id
                             el.addEventListener('click',getMusById); 
                             el.addEventListener('click',addToList); 
@@ -483,6 +487,7 @@ import User from "./classUser.js"
     }
 
     function addToList(){
+        
     
     //cria chave e obj
         let obj = {[this.id]:this.innerText}

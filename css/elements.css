@@ -113,8 +113,10 @@
 
 .trash{
     /*background-image: url(https://www.pngrepo.com/download/226116/file-remove.png);
-    */background-image: url(../css/imgs/file-remove-pngrepo-com.png);
+    */background-image: url(../css/imgs/remove-pngrepo-com.png);
     background-size: 20px ;
+    
+        filter: drop-shadow(2px 4px 6px black) brightness(0.9);;
     width:20px;
     height: 20px;
   

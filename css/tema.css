@@ -41,8 +41,11 @@
 
 .grid2{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-auto-flow: column;
+    gap: 1vh;
+    /* grid-template-columns: auto; */
     place-items: center;
+
    
 }
 
@@ -112,8 +115,8 @@ button{
 
 header > button.active, button.active{
 
-    color: #a1f3e9;
-    text-shadow: #0c617a 6px -4px 10px;
+    color: var(--colorA);
+    text-shadow: var(--shadowA) 6px -4px 10px;
     
     display: flex;
     border-style: ridge;
@@ -178,6 +181,8 @@ ul{
     z-index: 0;
     right:-100vh;
 
+    width: calc(100% - 8vw);
+
     padding-top: 1vh;
     height: 60%;
 
@@ -207,7 +212,6 @@ ul{
     position: fixed;
     top: var(--top) + 2vh;
     gap: 1vh;
-    width: calc(100% - 8vw);
 
     font-size: 4vw;
     max-height: 70%;
@@ -236,7 +240,8 @@ ul{
        
 
 #listaMusicas{
-    padding: 1.5vh 2vh;
+    padding: 1.5vh 2vh;    
+    place-items: center;
  
     top: var(--top);
 }
@@ -251,11 +256,8 @@ ul{
 #listaMusicas > div{
     cursor: pointer;
     border-width: 0px 0px 1px 0px;
-
-    width: auto;
-    /*em relacao a largura*/
+    width: fit-content;
     font-size: 3.5vw;
-   
     transition: all 0.3s;
   }
 
