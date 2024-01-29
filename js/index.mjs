@@ -4,6 +4,7 @@ import Letra from "./classLetra.js";
 import Tela from "./classTela.js";
 import Dao from "./classDao.js";
 import User from "./classUser.js"
+import Aux from "./classAux.js"
 
 
 //previne o zoom com dois touchs ou dois cliques
@@ -16,36 +17,35 @@ document.addEventListener('dblclick', function(event) {
     const api = new Api();
     const tela = new Tela();
     const dao = new Dao();
+    const aux = new Aux();
     const nav = window.navigator;
     const user = new User(1);
-    //login
-    //let person = prompt("Digite a senha");
-    //seg.log(person);
 
-    //painéis do header
-    const h = document.querySelector("header");
+    const header = document.querySelector("header");
 
     //Discografia
     const discos = document.getElementById('discog')
-          discos.addEventListener('click',tela.newModalGroup);
-
-         // discos.addEventListener('click',tela.modal);
-         // discos.addEventListener('click',tela.hideParents);
-    
-            
     const btnAlbSongsA = document.getElementById('btnAlbSongs');
-          btnAlbSongsA.addEventListener('click',tela.newModalGroup);
-   
     const btnListaArt = document.getElementById('btnListaArt');
-          btnListaArt.addEventListener('click',tela.newModalGroup);
-       //   btnListaArt.addEventListener('click',tela.Parents);
-   
-    const listaArtistas = document.getElementById('listaArtistas')
-   
-    const trackMus = document.getElementById('trackMus');
-    //triggers
-   
 
+        //Letra
+    const btnSetList = document.getElementById('btnSetList');
+    const btnConfig = document.getElementById('btnConfig');
+            btnConfig.addEventListener('dblclick',adm);   
+     
+    const btnMenuA = document.getElementById('btnMenuA');
+    const btnMenuB = document.getElementById('btnMenuB');
+    const btnMenuC = document.getElementById('btnMenuC');
+
+
+    //trigger de menu modal
+     [btnMenuA,btnMenuB,btnMenuC,discos,btnAlbSongsA,btnListaArt,btnSetList,btnConfig].forEach(function(item) {
+        item.addEventListener('click',tela.newModalGroup);
+     });
+
+    const listaArtistas = document.getElementById('listaArtistas');
+    const trackMus = document.getElementById('trackMus');
+    
     //busca avançada
     const trackSugestion = document.getElementById('trackSugestions');
     const listaMusicas = document.getElementById('listaMusicas');
@@ -54,27 +54,16 @@ document.addEventListener('dblclick', function(event) {
     //triggers
     btnBolt.addEventListener('click',toggleLogic);
 
-    //Letra
-    const btnSetList = document.getElementById('btnSetList');
-          btnSetList.addEventListener('click',tela.modal);
-    
-    const btnConfig = document.getElementById('btnConfig');
-          btnConfig.addEventListener('click',tela.modal)
-          btnConfig.addEventListener('dblclick',adm)   
-
+    //navegacao
     const btnNextSong = document.getElementById("btnNextSong");
-          btnNextSong.addEventListener('click',changeSong);
-  
     const btnLastSong = document.getElementById("btnLastSong");
-          btnLastSong.addEventListener('click',changeSong);
+
+        [btnLastSong,btnNextSong].forEach(function(item) {
+            item.addEventListener('click',changeSong);
+        });
+          
     const titulo = document.getElementById('titulo')
-    //triggers
- 
-
-    //config
-    const btnExport = document.getElementById('btnExport');
-    const btnUpload = document.getElementById('btnUpload');
-
+    
     const inputFile = document.getElementById('inputFile');
           inputFile.addEventListener('change',dao.upload);
 
@@ -86,10 +75,10 @@ document.addEventListener('dblclick', function(event) {
   
 
     //----------------Buildings---------------
-    tela.nodeMenu(h);
+    //tela.nodeMenu(header);
+  
     pesquisa();
     montaLista()
-
 
     function loadCloud(){
         console.log("LoadCloud")
@@ -129,12 +118,11 @@ document.addEventListener('dblclick', function(event) {
 
     function changeSong(){
 
+        console.log(this)
+
         let t = titulo.getAttribute('idSong').replace("_","");
         let tLoc = document.getElementById('div'+t);
-        //  tLoc = tLoc.parentNode;
-
-        //tela.nodeMenu(listaMusicas)
-
+       
         let nodes = listaMusicas.childNodes;
 
         nodes.forEach(function(element) {
@@ -301,13 +289,10 @@ document.addEventListener('dblclick', function(event) {
                     let cont = document.getElementById('discos');
                     let leg = document.getElementById('labelDiscos');
 
-                    
-
                     let art = (data.topalbums["@attr"].artist);
 
                     document.getElementById('albSongs').setAttribute('band',art);
                     leg.innerText = art;    
-
                     cont.innerText = '';
 
                     lps.forEach( function(jsonLp) {
@@ -333,12 +318,11 @@ document.addEventListener('dblclick', function(event) {
                         }
                     })
                     .then(function(dados) {//retorna HTML
+                       
                        if(!dados.message){
                         let alb = dados.album;
-
-                       
                         let getLyric = document.querySelectorAll('.getLyric');
-                       
+
                         getLyric.forEach(track => {
                             track.removeEventListener('click',getArtMusic);
                         });
@@ -388,7 +372,7 @@ document.addEventListener('dblclick', function(event) {
                         listaLocal = new Array();
                     }
                     else{
-                            if(!intoArray(listaLocal,id)){
+                            if(!aux.intoArray(listaLocal,id)){
                             //plota e persiste
                             setTimeout(
                                 function(){ appendMusica(obj,listaLocal);},400);
@@ -503,21 +487,17 @@ document.addEventListener('dblclick', function(event) {
     
     //cria chave e obj
         let obj = {[this.id]:this.innerText}
-        
         let listaLocal = new Array();
 
         // 2 cria array caso não exista no Dao
         if(dao.getLocalJSON('listaLocal')){
             listaLocal = dao.getLocalJSON('listaLocal'); 
-
-            if(!intoArray(listaLocal,this.id))
+            if(!aux.intoArray(listaLocal,this.id))
               {
                 appendMusica(obj,listaLocal);
               }
-            
         }
         else{
-           // console.log(2 + ' lista vazia')
             appendMusica(obj,listaLocal)
         }
     
@@ -533,27 +513,12 @@ document.addEventListener('dblclick', function(event) {
         
     }
 
-    function intoArray(array,elemento){
-        let cont = 0;
-
-        //verifica se existe
-             array.forEach(function(element) {
-                if( Object.keys(element) == elemento) {
-                    //console.log(0 +  ' ja existe' )
-                    cont++;
-                }
-            });
-        
-           cont = cont > 0 ? true:false
-           return cont 
     
-    }
-
     function getThumb(url,alb,faixas){
                
                     let img = document.createElement('img');
                         img.src = url;
-                        img.style.width = '64px';
+                        img.style.width = '18vw';
                     
                     let thumbDiv = document.createElement('li');
                         thumbDiv.name = alb.artist;  
@@ -574,7 +539,6 @@ document.addEventListener('dblclick', function(event) {
                            
                             let infoDiv = document.getElementById('infoMus');
                           
-
                                 infoDiv.innerText = alb.name;
                             tela.typing(alb.name,infoDiv);
 
@@ -589,7 +553,6 @@ document.addEventListener('dblclick', function(event) {
                         });
                         
                         thumbDiv.append(img);
-
 
         return thumbDiv;
     }

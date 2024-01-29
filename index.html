@@ -16,12 +16,12 @@
         <span>Letra</span>
     </button>
    
-    <button target="menuC"  class="btn">
+    <button  id="btnMenuC" target="menuC"  class="btn">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="advSearch">
         <span>Busca Avançada</span>
     </button>
 
-    <button target="menuB"  class="btn">
+    <button  id="btnMenuB" target="menuB"  class="btn">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">
         <a>Discografia</a>
     </button>
@@ -78,17 +78,18 @@
 
             <fildset  id="painelDao" class="grid painel rad1">
                 
-            <div id="loadCloud" class="iconText central">
-                <div id="save" class="iconText off">
-                    <input type="text" id="nomeArquivo" class="off">
-                    <button target="" type="button" class="uploadCloud" id='btnSaveCloud'></button>
-                    <label for="saveCloud">Save</label>
-                </div>  
-                <label>Load</label>
-                <button target="" type="button" class="downCloud" id='btnLoadCloud'></button>
-            </div>
+                <div id="loadCloud" class="iconText central">
+                    <div id="save" class="iconText off">
+                        <input type="text" id="nomeArquivo" class="off">
+                        <button target="" type="button" class="uploadCloud" id='btnSaveCloud'></button>
+                        <label for="saveCloud">Save</label>
+                    </div>  
+                    <button target="" type="button" class="downCloud" id='btnLoadCloud'></button>
+                    <label>Load</label>
+                   
+                </div>
 
-            <div class="flex central">
+            <div class="grid central">
                 <div id="export" class="iconText">
                     <button type="button" class="download" id='btnExport'></button>
                     <label for="export">Export</label>
@@ -133,7 +134,7 @@
                         </button>
                     </div>
             <!-- -->
-                <fieldset id="listaArtistas" class="grid rad1 accord">
+                <fieldset id="listaArtistas" class="rad1 accord">
                    <legend>Artistas</legend>
                 </fieldset>
 

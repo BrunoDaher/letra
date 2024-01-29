@@ -40,28 +40,14 @@ pre.rollOff{
     background-color: var(--fundoD);
     color: var(--colorB);
     outline: none;
-
     font-size: 5vw;
 }
 
 
-#rolagem{
-    background-color: transparent;   
-}
-
-
-
-
-
 #titulo{
-    align-items: center;
-    text-align: center;
     font-size: 2.5vw;
     text-wrap: balance;
     padding: 0 10px;
-    /* justify-self: center; */
-    /* padding-top: 1vh; */
- 
     text-shadow: #FC0 1px 0;
 }
 

@@ -13,6 +13,9 @@ class Tela {
     
     newModal(elem){
 
+        //ternario
+        elem = elem.type == 'click' ? this:elem;
+
         let target = elem.getAttribute('target');
             target = document.getElementById(target)
 

@@ -7,66 +7,21 @@
     background: var(--fundoC);
 }
 
-
-
 .off{
     display: none !important;
 }
 
-.flex{
-    display: flex;
-}
+
 
 .painel{
-  
-        background-color: var(--fundoA);
-        padding: 1vw 0 1vw;
-        border-width: 1px;
-        border-color: grey;
-        border-style: inset;
+    background-color: var(--fundoA);
+    padding: 1vh 0 1vh;
+    border-width: 1px;
+    border-color: var(--colorA);
+    border-style: inset;
+    zoom: 110%;
 }
 
-
-.grid1{
-    display: grid;
-    gap: 1em;
-}
-
-.grid2{
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1vh;
-    /* grid-template-columns: auto; */
-    place-items: center;
-
-   
-}
-
-.grid3{
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    place-items: center;
-}
-
-.grid3one{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
-}
-
-.centroGrid3{
-    display: grid;
-    grid-template-columns: 1fr 14fr 1fr;
-    place-items: center;
-}
-
-.m1{
-    margin: 1em;
-}
-
-.central{
-    justify-content: center;
-}
 
 .iconText{
     display: flex;
@@ -160,9 +115,12 @@ ul{
 }
 
 #trackSugestions{
-    top: calc(var(--top) + 14vh);
-    padding: 1vh 0;
-    justify-items: center;
+     /* top: calc(var(--top) + 14vh); */
+    /* padding: 1vh 0; */
+    height: calc(60vh - 5vw);
+    padding: 2vh;
+    /* justify-items: center; */
+    width: fit-content;
 }
 
 #listaArtistas{
@@ -226,26 +184,16 @@ ul{
                 color: red;
             }
         
-    
-#albSongs > li{
-    align-items: center;
-    cursor: pointer;
-    gap: 2vh;
-    font-size: 1em;
-}
-
-
-
-input{
-    accent-color: rgba(214, 214, 204, 0.698);
-}
+        
+    #albSongs > li{
+        align-items: center;
+        cursor: pointer;
+        gap: 2vh;
+        font-size: 1em;
+    }
 
     #config {
-        width: fit-content;
-        position: fixed;
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;    
-        transition: all 0.3s;
+       
         top: var(--topSides);
     }
 
@@ -253,9 +201,7 @@ input{
         padding: 0.7em;
         font-size: 1.2rem;
         justify-self: center;
-        display: flex;
-        align-items: center;
-        gap: 1vh;
+        display: grid;
     }
 
     #albSongs{
