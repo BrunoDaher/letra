@@ -144,6 +144,8 @@ class Tela {
     }
 
     addToDiv(type,element,container,fn){  
+
+        console.log(fn)
         
         let li = document.createElement('li');
             li.innerText = element.name;
@@ -151,7 +153,7 @@ class Tela {
             //pra musicas listadas na busca  - barra lateral esquerda
             if(container.id != 'musicas'){ 
                 let div = document.createElement(type);
-                    div.className = 'grid2 dropSource dropOut';
+                    div.className = 'grid2';
                     div.id = "div" + element.id;
                     div.draggable = true;
                 

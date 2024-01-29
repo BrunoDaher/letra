@@ -4,11 +4,6 @@ import Letra from "./classLetra.js";
 import Tela from "./classTela.js";
 import Dao from "./classDao.js";
 import User from "./classUser.js"
-import Drop from "./classDrop.js"
-import Slider from "./classSlider.js";
-
-//inicio
-
 
 
 // Variaveis
@@ -18,7 +13,6 @@ import Slider from "./classSlider.js";
     const dao = new Dao();
     const nav = window.navigator;
     const user = new User(1);
-    const drop = new Drop();
     //login
     //let person = prompt("Digite a senha");
     //seg.log(person);
@@ -28,15 +22,18 @@ import Slider from "./classSlider.js";
 
     //Discografia
     const discos = document.getElementById('discog')
+          discos.addEventListener('click',tela.modal);
+          discos.addEventListener('click',tela.Parents);
+   
     const btnListaArt = document.getElementById('btnListaArt');
+          btnListaArt.addEventListener('click',tela.modal);
+          btnListaArt.addEventListener('click',tela.Parents);
+   
     const listaArtistas = document.getElementById('listaArtistas')
+   
     const trackMus = document.getElementById('trackMus');
     //triggers
-    discos.addEventListener('click',tela.modal);
-    discos.addEventListener('click',tela.Parents);
-  
-    btnListaArt.addEventListener('click',tela.modal);
-    btnListaArt.addEventListener('click',tela.Parents);
+   
 
     //busca avançada
     const trackSugestion = document.getElementById('trackSugestions');
@@ -48,42 +45,42 @@ import Slider from "./classSlider.js";
 
     //Letra
     const btnSetList = document.getElementById('btnSetList');
+          btnSetList.addEventListener('click',tela.modal);
+    
     const btnConfig = document.getElementById('btnConfig');
+          btnConfig.addEventListener('click',tela.modal)
+          btnConfig.addEventListener('dblclick',adm)   
+
     const btnNextSong = document.getElementById("btnNextSong");
+          btnNextSong.addEventListener('click',changeSong);
+  
     const btnLastSong = document.getElementById("btnLastSong");
+          btnLastSong.addEventListener('click',changeSong);
     const titulo = document.getElementById('titulo')
     //triggers
-    btnSetList.addEventListener('click',tela.modal);
-    btnLastSong.addEventListener('click',changeSong);
-    btnNextSong.addEventListener('click',changeSong);
+  
+    
+   
 
     //config
     const btnExport = document.getElementById('btnExport');
     const btnUpload = document.getElementById('btnUpload');
+
     const inputFile = document.getElementById('inputFile');
+          inputFile.addEventListener('change',dao.upload);
+
     const btnSaveCloud = document.getElementById('btnSaveCloud');
+          btnSaveCloud.addEventListener('click',updateCloud);
+   
     const btnLoadCloud = document.getElementById('btnLoadCloud');
-    //triggers
-    inputFile.addEventListener('change',dao.upload);
-    btnConfig.addEventListener('click',tela.modal)
-    btnConfig.addEventListener('dblclick',adm)   
-    btnSaveCloud.addEventListener('click',updateCloud);
-    btnLoadCloud.addEventListener('click',loadCloud);
+          btnLoadCloud.addEventListener('click',loadCloud);
+  
 
     //----------------Buildings---------------
     tela.nodeMenu(h);
     pesquisa();
     montaLista()
 
-    drop.init(drop);
-
-    let listObserver = document.getElementById('listObserver');
-        listObserver.addEventListener('click',function ()
-        {
-            //montaLista();
-            drop.init(drop,getMusById,tela.removeIt)
-        });
-        //console.log(listObserver)
 
     function loadCloud(){
         console.log("LoadCloud")
@@ -91,29 +88,28 @@ import Slider from "./classSlider.js";
         dao.loadCloud(1);
     }
 
+    function updateCloud(){
+            //console.log('saveCloud');
+        //let nome =  document.getElementById('nomeArquivo').value;
+
+         dao.updateCloud();
+        /*
+        if(!nome){
+            //toDO
+            //verificar registro de sessao
+            //console.log('Insira um nome no arquivo');
+            dao.updateCloud();
+        }
+        else{
+        //dao.updateCloud();
+        dao.updateBin();
+        }
+        */
+
+    }
+
     function adm(){
      document.getElementById('save').classList.toggle('off')
-    }
-
-    function updateCloud(){
-
-        //console.log('saveCloud');
-    //let nome =  document.getElementById('nomeArquivo').value;
-
-    dao.updateCloud();
-    /*
-    if(!nome){
-        //toDO
-        //verificar registro de sessao
-        //console.log('Insira um nome no arquivo');
-        dao.updateCloud();
-    }
-    else{
-    //dao.updateCloud();
-    dao.updateBin();
-    }
-    */
-
     }
 
     function toggleLogic(){
@@ -565,8 +561,6 @@ import Slider from "./classSlider.js";
                                 infoDiv.innerText = alb.name;
                             tela.typing(alb.name,infoDiv);
 
-
-                         
                             triggers();
 
                             function triggers(){

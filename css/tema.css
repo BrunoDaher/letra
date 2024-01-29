@@ -4,7 +4,7 @@
     height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-    background: rgb(62, 138, 182);
+    background: var(--fundoC);
 }
 
 .fonteContainer{
@@ -24,7 +24,7 @@
 }
 
 .painel{
-    background-color: #167c71;
+    background-color: var(--fundoA);
    padding: 1vw;
     border-width: 1px;
     border-color: grey;
@@ -167,7 +167,7 @@ ul{
 }
 
 #trackSugestions{
-    top: calc(var(--top) + 10vh);
+    top: calc(var(--top) + 10%);
     justify-items: center;
 }
 
@@ -178,7 +178,11 @@ ul{
     z-index: 0;
     right:-100vh;
 
-    background-color: #1c1e1e;
+    padding-top: 1vh;
+    height: 60%;
+
+    background: var(--fundoB);
+    background: linear-gradient(27deg, var(--fundoB) 0%, var(--fundoA));
 
     gap: 1vh;
     top: calc(var(--top) + 8%);
@@ -196,7 +200,7 @@ ul{
 
 .sideBox{
   
-    background-color: #3e4f4e1c;
+    background-color: var(--fundoC);
 
     overflow-y: scroll;
    
@@ -232,8 +236,6 @@ ul{
        
 
 #listaMusicas{
-
-    background-color: black;
     padding: 1.5vh 2vh;
  
     top: var(--top);
@@ -243,16 +245,16 @@ ul{
     align-items: center;
     cursor: pointer;
     gap: 2vh;
-    font-size: 3vw;
+    font-size: 1em;
 }
 
 #listaMusicas > div{
     cursor: pointer;
-    background-color: #2b2b2bcf;
     border-width: 0px 0px 1px 0px;
 
     width: auto;
-    font-size: 1.5vh;
+    /*em relacao a largura*/
+    font-size: 3.5vw;
    
     transition: all 0.3s;
   }
@@ -265,9 +267,8 @@ input{
     top: var(--top);
     width: fit-content;
      position: fixed;
-     background-color: black;
      display: grid;
-grid-template-rows: 1fr 1fr 2fr;    
+     grid-template-rows: 1fr 1fr 2fr;    
      transition: all 0.3s;
   }
 
@@ -285,7 +286,7 @@ grid-template-rows: 1fr 1fr 2fr;
 }
 
 #listaDiscos{
-    background-color: #35393b;
+    background-color: var(--fundoC);
     width: fit-content;
     position: fixed;
     top: 22vh;
@@ -293,20 +294,12 @@ grid-template-rows: 1fr 1fr 2fr;
     transition: all 0.3s;
 }
 
-    #listaDiscos > legend{
-        background: #133753a8;
-        padding: 1vh;
-        font-size: 3vh;
-        color: white;
-        text-shadow: 3px -2px 1px rgb(49 44 44 / 73%);
-    }
-
 .banda{
     
 }
 
 .banda:hover{
-    background-color: dimgrey;;
+    background-color: dimgrey;
     cursor: pointer;
 }
 
