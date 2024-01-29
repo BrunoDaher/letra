@@ -1,6 +1,6 @@
 
   .dropSource:hover, .dropTarget:hover{
-    background-color: rgb(110, 148, 205);
+    background-color: var(--fundoB)
   }
 
   .drop{

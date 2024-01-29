@@ -47,10 +47,11 @@ export class Api {
         return slim;        
     }
 
-    //vagalume
+    //lastFM
     searchTrack(string){
         string = string.replaceAll('-',' '); 
-        return apiVagalume.searchTrack(string);  
+
+        return  apiVagalume.searchTrack(string);  
     }
 
     //aux

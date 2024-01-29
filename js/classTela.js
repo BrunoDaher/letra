@@ -10,6 +10,38 @@ class Tela {
        //console.log(classe)
         //console.log(this)
     }
+    
+    newModal(elem){
+
+        let target = elem.getAttribute('target');
+            target = document.getElementById(target)
+
+        elem.classList.toggle('active');
+        target.classList.toggle('active');
+    }
+
+    newModalGroup(){
+        let acestral = this.parentNode;
+    
+        let nodes = Array.from(acestral.childNodes).filter(function(elemento) {
+            return elemento.nodeName.toLowerCase() === 'button';
+        });
+
+        let btn = this;
+
+        //inativa botoes do mesmo container
+        //inativa os respectivos targets
+            nodes.forEach(function(elem) {
+                if(elem != btn){
+                    elem.classList.remove('active');
+                    let targetView = elem.getAttribute('target');
+                        targetView = document.getElementById(targetView);
+                        targetView.classList.remove('active');
+                }
+            });
+        //toggle de si e do seu target
+        classe.newModal(this)
+    }
 
     modelUser(dados,localUsr){
 
@@ -102,17 +134,24 @@ class Tela {
     hideParents(menu){
 
             //get the other menus in the same group
-        
+        let nodes = '';
+            //quando clicado
+         if(menu.target){
+           
+            nodes = menu.target.parentNode.parentNode.childNodes;
 
-            if(!menu){
-                menu = event.target.parentNode
-            }
-
-            //console.log(menu)
-            let nodes = menu.parentNode.childNodes;
-
-            //console.log(menu)
-
+            //
+            menu = menu.target.parentNode;
+           
+            
+            nodes = Array.from(nodes).filter(function(elemento) {
+                return elemento.nodeName.toLowerCase() === 'button';
+            });
+          }
+          else{
+            nodes = menu.parentNode.childNodes;
+          }
+           
             //hide the parents
             nodes.forEach(function(element) {
                 if(element.nodeName == 'MENU' || element.nodeName == 'BUTTON'){
@@ -149,7 +188,7 @@ class Tela {
             li.innerText = element.song;
             
             //pra musicas listadas na busca  - barra lateral esquerda
-            if(container.id != 'musicas'){ 
+            if(container.id != 'albSongs'){ 
                 let div = document.createElement(type);
                     div.className = 'grid2';
                     div.id = "div" + element.id;

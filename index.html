@@ -116,31 +116,39 @@
             <div class="box-pesquisa">
                 <input target = 'listaArtistas' class="inputPesquisa" type="text" placeholder="artista">
                 <input hidden class="inputPesquisa" id="musica" type="text" placeholder="musica"> 
-                <button class="btnToggle"target="listaDiscos" id="discog">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">
-                </button>
-                <button class="btnToggle"target="listaArtistas" id="btnListaArt">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
-                </button>
              
             </div>
 
-            <div class="wrapper">
-                <legend id="infoMus" class="typing">Musicas</legend>
-                
-                <div id="musicas"></div>
+            <div class="wrapper grid1">
+                  <!--pesquisa e botoes-->
+                  <div id="painelDiscog" class="flex central">
+                        <button class="btnToggle"target="listaArtistas" id="btnListaArt">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
+                        </button> 
+                        <button class="btnToggle"target="listaDiscos" id="discog">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">
+                        </button>
+                        <button class="btnToggle"target="discoBox" id="btnAlbSongs">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">
+                        </button>
+                    </div>
+            <!-- -->
+                <fieldset id="listaArtistas" class="grid rad1 accord">
+                   <legend>Artistas</legend>
+                </fieldset>
 
-                <ul id="listaArtistas" class="sideBox rad1">
-
-                </ul>
-
-                <fieldset id="listaDiscos">
-                    <legend id="labelDiscos"></legend>
-                    <div id="discos">
+                <fieldset id="discoBox" class="discoBox accord">
+                    <legend id="infoMus" class="typing">Musicas</legend>
+                    <div id="albSongs" class="discoBox"></div>
+                </fieldset>
+              
+                <fieldset id="listaDiscos" class="accord" >
+                    <legend id="labelDiscos">Discos</legend>
+                    <div id="discos" class="accord rad1">
                     </div>
                 </fieldset>
-            </div>
 
+            </div>
            
         </fieldset>   
     </menu>

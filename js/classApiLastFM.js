@@ -4,12 +4,26 @@ export class ApiLastFM {
         this.apiKey = '2651bc07e2240e60ef358c833cc84169'; // LastFM
     }
 
+    searchTrack(string){
+        string = string.replaceAll('-',' '); 
+       let path = `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${string}&api_key=${this.apiKey}&limit=7&format=json`
+       return path;  
+    }
+
     getTracks(art,album){
        art = art.replaceAll('-',' '); 
        album =  album.replaceAll('-',' ');
        let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${this.apiKey}&artist=${art}&album=${album}&format=json`;
        return path;  
     }
+
+    getTrackById(mbid){
+        art = art.replaceAll('-',' '); 
+        album =  album.replaceAll('-',' ');
+        let path = ` https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${this.apiKey}&mbid=${mbid}format=json`;
+        return path;  
+     }
+ 
 
     getTrackInfo(art,mus){
         let path = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${this.apiKey}&artist=${art}&track=${mus}&format=json`;

@@ -2,6 +2,7 @@
     /*background-image: url(https://www.pngrepo.com/download/315158/music.png);*/
     background-image: url(../css/imgs/music-pngrepo-com.png);
     background-size: 25px;
+    border-radius: 0.5em;
 }
 
 .new{
@@ -81,7 +82,7 @@
     background-size: 31px ;
     width:31px;
     height: 31px;
-    filter: invert(1);
+    filter: hue-rotate(234deg) brightness(1.5) contrast(0.5);
 }
 
 .bolt.active{

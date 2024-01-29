@@ -6,6 +6,7 @@ import Dao from "./classDao.js";
 import User from "./classUser.js"
 
 
+//previne o zoom com dois touchs ou dois cliques
 document.addEventListener('dblclick', function(event) {
     event.preventDefault();
 });
@@ -26,12 +27,18 @@ document.addEventListener('dblclick', function(event) {
 
     //Discografia
     const discos = document.getElementById('discog')
-          discos.addEventListener('click',tela.modal);
-          discos.addEventListener('click',tela.Parents);
+          discos.addEventListener('click',tela.newModalGroup);
+
+         // discos.addEventListener('click',tela.modal);
+         // discos.addEventListener('click',tela.hideParents);
+    
+            
+    const btnAlbSongsA = document.getElementById('btnAlbSongs');
+          btnAlbSongsA.addEventListener('click',tela.newModalGroup);
    
     const btnListaArt = document.getElementById('btnListaArt');
-          btnListaArt.addEventListener('click',tela.modal);
-          btnListaArt.addEventListener('click',tela.Parents);
+          btnListaArt.addEventListener('click',tela.newModalGroup);
+       //   btnListaArt.addEventListener('click',tela.Parents);
    
     const listaArtistas = document.getElementById('listaArtistas')
    
@@ -62,9 +69,7 @@ document.addEventListener('dblclick', function(event) {
           btnLastSong.addEventListener('click',changeSong);
     const titulo = document.getElementById('titulo')
     //triggers
-  
-    
-   
+ 
 
     //config
     const btnExport = document.getElementById('btnExport');
@@ -245,14 +250,19 @@ document.addEventListener('dblclick', function(event) {
             .then( function(responseHtml)
                 { 
                     //modela Json
-                    let data = JSON.parse(responseHtml);
-                        let dados = data.response.docs;
-                    
+                    let data = JSON.parse(responseHtml).response;
+                   
+                    if(data){
+    
+
+                        console.log(data)
                     //limpa container destino
                         trackSugestion.innerText = '';
                         
                         //itera array de resposta  -- loop
-                        dados.forEach(function(element)  {
+                      data.docs.forEach(function(element)  {
+                            //verificar se é o mesmo artista de antes
+
                             let el = document.createElement('div');
                             el.id = element.id;
                             el.classList.add('banda');
@@ -265,6 +275,8 @@ document.addEventListener('dblclick', function(event) {
                             //preenche destino
                             trackSugestion.append(el);
                         });
+
+                    }
                         
             }); 
         }
@@ -293,7 +305,7 @@ document.addEventListener('dblclick', function(event) {
 
                     let art = (data.topalbums["@attr"].artist);
 
-                    document.getElementById('musicas').setAttribute('band',art);
+                    document.getElementById('albSongs').setAttribute('band',art);
                     leg.innerText = art;    
 
                     cont.innerText = '';
@@ -546,7 +558,7 @@ document.addEventListener('dblclick', function(event) {
                     let thumbDiv = document.createElement('li');
                         thumbDiv.name = alb.artist;  
                         thumbDiv.id = alb.name;
-                        let musContainer = document.getElementById('musicas');
+                        let musContainer = document.getElementById('albSongs');
                         
                        //eventos
                         thumbDiv.addEventListener('click',function(){

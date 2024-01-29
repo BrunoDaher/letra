@@ -7,13 +7,7 @@
     background: var(--fundoC);
 }
 
-.fonteContainer{
-    font-size: 3vw;
-    justify-self: center;
-    display: flex;
-    align-items: center;
-    gap: 1vh;
-}
+
 
 .off{
     display: none !important;
@@ -24,19 +18,18 @@
 }
 
 .painel{
-    background-color: var(--fundoA);
-   padding: 1vw;
-    border-width: 1px;
-    border-color: grey;
-    border-style: inset;
+  
+        background-color: var(--fundoA);
+        padding: 1vw 0 1vw;
+        border-width: 1px;
+        border-color: grey;
+        border-style: inset;
 }
 
-#listaMusicas > div.selected{
-    color: red;
-}
 
 .grid1{
     display: grid;
+    gap: 1em;
 }
 
 .grid2{
@@ -79,7 +72,7 @@
     display: flex;
     gap: 1vh;
     align-items: center;
-    font-size: 4vw;
+    font-size: 1.2rem;
 }
 
 .box{
@@ -96,9 +89,6 @@
     display: grid;
 }
 
-.painel{
-    font-size: 4vw;
-}
 /*Elementos internos do botao*/
 button{
     cursor: pointer;
@@ -170,42 +160,23 @@ ul{
 }
 
 #trackSugestions{
-    top: calc(var(--top) + 10%);
+    top: calc(var(--top) + 14vh);
+    padding: 1vh 0;
     justify-items: center;
 }
 
 #listaArtistas{
-   
-    position:fixed;
-    opacity: 0;
-    z-index: 0;
-    right:-100vh;
-
-    width: calc(100% - 8vw);
-
-    padding-top: 1vh;
-    height: 60%;
-
-    background: var(--fundoB);
-    background: linear-gradient(27deg, var(--fundoB) 0%, var(--fundoA));
-
     gap: 1vh;
-    top: calc(var(--top) + 8%);
-
     justify-items: center;
 }
 
-#listaArtistas.active{
-    z-index: 1;
-    opacity: 1;
-    right: 2vh;
-  
-    transition: all 0.5s;
-}
+    #listaArtistas.active{
+        transition: all 0.5s;
+    }
 
 .sideBox{
   
-    background-color: var(--fundoC);
+    background-color: var(--fundoD);
 
     overflow-y: scroll;
    
@@ -213,7 +184,7 @@ ul{
     top: var(--top) + 2vh;
     gap: 1vh;
 
-    font-size: 4vw;
+    font-size: 1rem;
     max-height: 70%;
 
     padding: auto;
@@ -239,46 +210,58 @@ ul{
         }
        
 
-#listaMusicas{
-    padding: 1.5vh 2vh;    
-    place-items: center;
- 
-    top: var(--top);
-}
+    #listaMusicas{
+        top: var(--topSides);
+        place-items: center;
+    }
 
-#musicas > li{
+        #listaMusicas > div{
+            cursor: pointer;
+            border-width: 0px 0px 1px 0px;
+            width: fit-content;
+            transition: all 0.3s;
+        }
+
+            #listaMusicas > div.selected{
+                color: red;
+            }
+        
+    
+#albSongs > li{
     align-items: center;
     cursor: pointer;
     gap: 2vh;
     font-size: 1em;
 }
 
-#listaMusicas > div{
-    cursor: pointer;
-    border-width: 0px 0px 1px 0px;
-    width: fit-content;
-    font-size: 3.5vw;
-    transition: all 0.3s;
-  }
+
 
 input{
     accent-color: rgba(214, 214, 204, 0.698);
 }
 
-  #config {
-    top: var(--top);
-    width: fit-content;
-     position: fixed;
-     display: grid;
-     grid-template-rows: 1fr 1fr 2fr;    
-     transition: all 0.3s;
-  }
+    #config {
+        width: fit-content;
+        position: fixed;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;    
+        transition: all 0.3s;
+        top: var(--topSides);
+    }
 
+   .fonteContainer{
+        padding: 0.7em;
+        font-size: 1.2rem;
+        justify-self: center;
+        display: flex;
+        align-items: center;
+        gap: 1vh;
+    }
 
-#musicas{
-    height: 62vh;
-    overflow-y: scroll;
-}
+    #albSongs{
+        height: 62vh;
+        overflow-y: scroll;
+    }
 
 .lista {
     display: grid;
@@ -287,18 +270,25 @@ input{
     width: 100%;
 }
 
-#listaDiscos{
+.discoBox{
+    position: relative;
     background-color: var(--fundoC);
-    width: fit-content;
-    position: fixed;
-    top: 22vh;
-    right: -50vw;
     transition: all 0.3s;
 }
 
-.banda{
-    
+.accord{
+    display:none;
 }
+
+.accord.active{
+   display: grid;
+}
+
+#listaDiscos{
+ 
+}
+
+
 
 .banda:hover{
     background-color: dimgrey;
@@ -320,8 +310,7 @@ input{
 
 #discos{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
     overflow-y: scroll;
     height: 60vh;
 }
