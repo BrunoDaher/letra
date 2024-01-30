@@ -133,14 +133,10 @@ export class Api {
             { 
               let key = Object.keys(JSON.parse(responseHtml))[0];              
               let r = JSON.parse(responseHtml)[key];
-              //verifica retorno da promisse
-              //caso positivo grava na sessão - em formato string
-              //caso contrario nao faz nada
               key ? sessionStorage.setItem(key,JSON.stringify(r)):"";    
             } )
         .catch(function (e) {       
-            return 'erro' ;
-            console.log(e);                
+            return 'erro' ;   
         });
     }
 

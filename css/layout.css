@@ -30,7 +30,7 @@
 
 .centroGrid3{
     display: grid;
-    grid-template-columns: 1fr 14fr 1fr;
+    grid-template-columns: 1fr 8fr 1fr;
     place-items: center;
 }
 

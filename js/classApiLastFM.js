@@ -32,6 +32,7 @@ export class ApiLastFM {
 
     getAlbum(art,alb){
         art = art.replaceAll('-','%20'); 
+        //console.log(alb)
         let path = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${this.apiKey}&artist=${art}&${alb.tipo}=${alb.info}&format=json`;
         //path = path.replaceAll('-','%20');
        

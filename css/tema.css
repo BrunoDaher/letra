@@ -11,14 +11,24 @@
     display: none !important;
 }
 
+.sel{
+    filter: drop-shadow(2px 4px 6px var(--fundoA));
+}
+
+.fundoGradiente, legend{
+    background: linear-gradient(27deg, var(--fundoC), var(--fundoA));
+}
+
+#scroll-container {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+
 
 
 .painel{
-    background-color: var(--fundoA);
     padding: 1vh 0 1vh;
-    border-width: 1px;
-    border-color: var(--colorA);
-    border-style: inset;
     zoom: 110%;
 }
 
@@ -91,6 +101,32 @@ header > button{
     align-items: center;
     place-content: center;
    
+}
+
+
+.box-pesquisa{
+    display: flex;
+    text-align: center;
+    /* place-content: center; */
+    gap: 1vh;
+    justify-content: center;
+    padding: 2vh;
+}
+
+    .box-pesquisa > input{
+        height: 5vh;
+        color: var(--colorB);
+        width: 100%;
+        text-align: center;
+        font-size: 1em;
+    }
+
+.inputPesquisa{
+    border-width: 0px 0px 2px 0px;
+    background-color: var(--fundoD);
+    color: var(--colorB);
+    outline: none;
+    font-size: 5vw;
 }
 
 #newList:hover, li:hover, li.active, #newList:active{

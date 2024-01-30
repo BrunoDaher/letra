@@ -9,21 +9,19 @@
     --top: calc(12vh + 3vw);
     --topSides: calc(var(--top) + 8vw);
     --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
-    --fundoA: #916b29ad;
+    --fundoA: #4d7a8d;
     --fundoB:black;
    --fundoC: #35393b;
    --fundoD:#4a4c50;
-   --shadowA:#846e2c;
-   --colorA:#cfcf74;
+   --shadowA:#71aac381;
+   --colorA:var(--fundoA);
    --colorB:white;
    --width:90%;
-
 }
 
 input{
     accent-color: rgba(214, 214, 204, 0.698);
 }
-
 
 ::-webkit-input-placeholder{
     color: var(--colorB);
@@ -35,7 +33,7 @@ input{
     color: var(--colorB);
     filter: brightness(0.8);
     font-style: italic;
-  }
+}
 
 body{
     margin:0; 
@@ -67,7 +65,7 @@ header{
 }
 
 main > menu{
-    margin: 0;
+    margin: 1vh;
     display: none;
     padding: 0;
     background-color: var(--fundoC);
@@ -99,7 +97,6 @@ input{
 fieldset{
     border-radius: 4px;
     border-color: var(--fundoD);
-
 }
 
 #myProgress {
@@ -121,8 +118,8 @@ fieldset{
     vertical-align: -webkit-baseline-middle;
     color:var(--colorA);
     filter: drop-shadow(2px 4px 6px #f7f8f4);
-
   }
+
   #myProgress.on{
     display: block;
   }
@@ -145,8 +142,6 @@ fieldset{
         justify-content: center;
         padding: 1vh;
     }
-
-
 }
 
 @media (width:1024) and (height:1366){

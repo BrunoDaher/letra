@@ -18,38 +18,14 @@ pre{
     display: contents;
 }
 
-.box-pesquisa{
-    display: flex;
-    text-align: center;
-    /* place-content: center; */
-    gap: 1vh;
-    justify-content: center;
-    padding: 2vh;
-}
-
-    .box-pesquisa > input{
-        height: 5vh;
-        background-color: var(--fundoA);
-        color: var(--colorB);
-        width: 100%;
-        text-align: center;
-        font-size: 1em;
-    }
-
-.inputPesquisa{
-    border-width: 0px 0px 2px 0px;
-    background-color: var(--fundoD);
-    color: var(--colorB);
-    outline: none;
-    font-size: 5vw;
-}
 
 
 #titulo{
+    filter: drop-shadow(2px 4px 6px black) contrast(6.5);
     font-size: 2.5vw;
+    text-align: center;
     text-wrap: balance;
     padding: 0 10px;
-    text-shadow: #FC0 1px 0;
 }
 
 

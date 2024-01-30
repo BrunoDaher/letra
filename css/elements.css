@@ -154,7 +154,7 @@ input{
     /*background-image: url(https://www.pngrepo.com/download/42258/fast-forward.png);
     */background-image: url(../css/imgs/fast-forward-pngrepo-com.png);
     background-size: 25px ;
-    width:25px;
+    width:12px;
     height: 25px;
     filter: invert(1);
 }
@@ -163,7 +163,7 @@ input{
     /*background-image: url(https://www.pngrepo.com/download/123553/backward-arrows-couple.png);
     */background-image: url(../css/imgs/backward-arrows-couple-pngrepo-com.png);
     background-size: 25px ;
-    width:25px;
+    width:14px;
     height: 25px;
     filter: invert(1);
 }
