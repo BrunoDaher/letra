@@ -55,11 +55,11 @@
             </div>  
         </div>
 
-        <div id="listaMusicas" class="grid1 sideBox left rad1">
+        <div id="listaMusicas" class="grid1 fundoGradiente sideBox left rad1">
         </div>
 
         <div class="grid1 sideBox right rad1" id="config" >
-            <div id="fonteContainer" class="fonteContainer">
+            <div id="fonteContainer" class="fonteContainer configContainer">
                 <label for="fonte">Fonte</label>
                 <input target='scroll-text' type="range" class="" id='fonte' step="0.1" min='1.5'  max="5" value="1.5">      
             </div>
@@ -71,15 +71,15 @@
             </div>
             -->
 
-            <div id="tabulacao" class="fonteContainer">
+            <div id="tabulacao" class="fonteContainer configContainer">
                 <label for="colunas">Colunas</label>
                 <input target="scroll-text" type="range" class="" id='colunas' step="1" min='1'  max="3" value="0.1">
             </div>  
 
-            <fildset  id="painelDao" class="grid painel rad1">
+            <fildset  id="painelDao" class="painel rad1">
                 
-                <div id="loadCloud" class="iconText central">
-                    <div id="save" class="iconText off">
+                <div id="loadCloud" class="iconText configContainer">
+                    <div id="save" class="iconText configContainer off">
                         <input type="text" id="nomeArquivo" class="off">
                         <button target="" type="button" class="uploadCloud" id='btnSaveCloud'></button>
                         <label for="saveCloud">Save</label>
@@ -89,20 +89,19 @@
                    
                 </div>
 
-            <div class="grid central">
-                <div id="export" class="iconText">
+                <div id="export" class="iconText configContainer">
                     <button type="button" class="download" id='btnExport'></button>
                     <label for="export">Export</label>
                 </div>  
                     
-                <div id="load" class="iconText">
+                <div id="load" class="iconText configContainer">
                     <button target="dataLoad" type="button" class="upload" id='btnUpload'></button>
                         <div hidden> 
                             <input id='inputFile' type="file">
                         </div>
                     <label for="save">Load File</label>    
                 </div>  
-            </div>
+            
         </div>
 
         <div id="scroll-container">
@@ -116,6 +115,9 @@
             <legend>Discografia</legend>
             <div class="box-pesquisa">
                 <input target = 'listaArtistas' class="inputPesquisa fundoGradiente" type="text" placeholder="artista">
+                <button id="btnBolt2" value=0 target="menuB">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="bolt">
+                </button>
                 <input hidden class="inputPesquisa" id="musica" type="text" placeholder="musica"> 
             </div>
 
@@ -138,7 +140,7 @@
                 </fieldset>
 
                 <fieldset id="discoBox" class="discoBox accord">
-                    <legend id="infoMus" class="typing">Musicas</legend>
+                    <legend id="infoMus" class="typing">Faixas</legend>
                     <div id="albSongs" class="discoBox"></div>
                 </fieldset>
               

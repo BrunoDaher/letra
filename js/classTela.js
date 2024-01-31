@@ -10,6 +10,10 @@ class Tela {
        //console.log(classe)
         //console.log(this)
     }
+
+    getInfoMus(){
+        return document.getElementById('infoMus');
+    }
     
     newModal(elem){
 
@@ -71,6 +75,9 @@ class Tela {
             "userAgentData":[dados.userAgentData],
             "vendor":[dados.vendor]
         }
+
+
+       
 
         let obj = {};
 

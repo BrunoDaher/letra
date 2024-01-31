@@ -4,6 +4,7 @@ class Aux{
 
     }
 
+
      intoArray(array,elemento){
         let cont = 0;
 

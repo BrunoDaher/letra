@@ -20,6 +20,7 @@ document.addEventListener('dblclick', function(event) {
     const aux = new Aux();
     const nav = window.navigator;
     const user = new User(1);
+    const infoMus = document.getElementById('infoMus');
 
     const header = document.querySelector("header");
 
@@ -49,12 +50,20 @@ document.addEventListener('dblclick', function(event) {
     //busca avançada
     const trackSugestion = document.getElementById('trackSugestions');
     const listaMusicas = document.getElementById('listaMusicas');
+    
+    //em breve fazer um select all
     const btnBolt = document.getElementById('btnBolt');
+    const btnBolt2 = document.getElementById('btnBolt2');
+    
     const infoLetra = document.getElementById('scroll-text');
     //triggers
-    btnBolt.addEventListener('click',toggleLogic);
 
-    //navegacao
+
+    [btnBolt,btnBolt2].forEach(function(btn) {
+        btn.addEventListener('click',toggleLogic);
+    });
+
+    //navegacao - cabe selectAll
     const btnNextSong = document.getElementById("btnNextSong");
     const btnLastSong = document.getElementById("btnLastSong");
 
@@ -242,8 +251,6 @@ document.addEventListener('dblclick', function(event) {
                    
                     if(data){
     
-
-                        console.log(data)
                     //limpa container destino
                         trackSugestion.innerText = '';
                         
@@ -286,21 +293,30 @@ document.addEventListener('dblclick', function(event) {
                 {  
                     let data = JSON.parse(responseHtml);
                     let lps = data.topalbums.album;
-                    let cont = document.getElementById('discos');
+                    let divDiscos = document.getElementById('discos');
                     let leg = document.getElementById('labelDiscos');
 
                     let art = (data.topalbums["@attr"].artist);
 
                     document.getElementById('albSongs').setAttribute('band',art);
                         leg.innerText = art;    
-                        cont.innerText = '';
+                        divDiscos.innerText = '';
 
-                    lps.forEach( function(jsonLp) {
-                        let alb = jsonLp.mbid ? {'tipo':'mbid','info':jsonLp.mbid} : {'tipo':'album','info':jsonLp.name};
-                        fetchLP(api.getAlbum(art,alb));
+                    let map = new Map(); 
+
+                    lps.forEach( function(key) {
+                        map.set([key.name+ key.mbid ?key.mbid:''],key);
                     });
+                  
+                    for (const [chave, valor] of map.entries()) {
+                       //filtra os singles
+                       //cds de edicao especial e etc
+                        if(valor.mbid){
+                            fetchLP(api.getAlbum(art,{'tipo':'mbid','info':valor.mbid}));
+                        }
+                    }
 
-                    returnDisco.append(cont);
+                    returnDisco.append(divDiscos);
                 });   
     }
 
@@ -317,14 +333,16 @@ document.addEventListener('dblclick', function(event) {
             })
 
             function success(response){
+               
                 if(response != null && !response.message){
-                   
+                  
                     let alb = response.album;
+                    
                     let getLyric = document.querySelectorAll('.getLyric');
     
-                    getLyric.forEach(function(track) {
-                        track.removeEventListener('click',getArtMusic);
-                    });
+                        getLyric.forEach(function(track) {
+                            track.removeEventListener('click',getArtMusic);
+                        });
 
                     if(alb.tracks){
                         let faixas = alb.tracks.track;
@@ -395,7 +413,7 @@ document.addEventListener('dblclick', function(event) {
                         
                     //se opção tiver ativada
                     //busca rapida
-                    if(btnBolt.value == 1){
+                    if(btnBolt.value == 1 || btnBolt2.value == 1){
                         document.getElementById('btnMenuA').click()    
                     }
                 });  
@@ -522,8 +540,10 @@ document.addEventListener('dblclick', function(event) {
         
     }
 
-    
+    //apenas itera e plota o item, e associa a funcao de buscar as tracks
     function getThumb(url,alb,faixas){
+
+         
                
                     let img = document.createElement('img');
                         img.src = url;
@@ -534,6 +554,7 @@ document.addEventListener('dblclick', function(event) {
                         thumbDiv.id = alb.name;
                         let musContainer = document.getElementById('albSongs');
                         
+
                        //eventos
                         thumbDiv.addEventListener('click',function(){
                             if(faixas.name){
@@ -545,23 +566,19 @@ document.addEventListener('dblclick', function(event) {
                                      musContainer.innerHTML += `<li class="getLyric">${faixa.name}</li>`;
                                 });
                             }
-                           
-                            let infoDiv = document.getElementById('infoMus');
-                          
-                                infoDiv.innerText = alb.name;
-                            tela.typing(alb.name,infoDiv);
+                        
+                                infoMus.innerText = alb.name;
+                            tela.typing(alb.name,infoMus);
 
                             albSongEvent();
 
                             function cback(){
                                 btnAlbSongsA.click();
                             }
-                            
+
                             function albSongEvent(){
                                 let getLyric = document.querySelectorAll('.getLyric');
-                                
                                 setTimeout(cback,200);
-                                
                                 //pra cada letra
                                 getLyric.forEach(function(track) {
                                     track.addEventListener('click',getArtMusic);
