@@ -3,7 +3,6 @@ import ApiVagalume from "./classApiVagalume.js";
 
 const apiLastFM = new ApiLastFM();
 const apiVagalume = new ApiVagalume();
-
 //const url = 
 export class Api {
 
