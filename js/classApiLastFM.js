@@ -39,6 +39,8 @@ export class ApiLastFM {
         //usar patch local
         return path;  
      }
+
+ 
   
     getMusLocal(busca){
         let mus = this.dao.getSessionJSON('artist').lyrics.item;   

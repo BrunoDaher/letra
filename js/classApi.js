@@ -22,7 +22,7 @@ export class Api {
     getAlbum(art,alb){
        return apiLastFM.getAlbum(art,alb);
     }
-    
+
      //vagalume
     getArtMusic(art,mus){       
 

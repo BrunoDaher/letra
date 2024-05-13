@@ -314,6 +314,9 @@ document.addEventListener('dblclick', function(event) {
                         if(valor.mbid){
                             fetchLP(api.getAlbum(art,{'tipo':'mbid','info':valor.mbid}));
                         }
+                        else{
+                            fetchLP(api.getAlbum(art,{'tipo':'album','info':valor.name}));
+                        }
                     }
 
                     returnDisco.append(divDiscos);
