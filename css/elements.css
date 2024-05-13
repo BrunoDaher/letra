@@ -204,3 +204,13 @@ button:hover{
     height: 29px;
     rotate: 180deg;
 }
+
+@media (min-width:520px) {
+    .musica, li > img {
+        width: 12vh;
+    }
+
+    .btn{
+        zoom:1.4;
+    }
+}

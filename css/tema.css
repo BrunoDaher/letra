@@ -305,13 +305,49 @@ ul{
 
 #discos{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;    
+    grid-template-columns: 1fr 1fr 1fr;
     overflow-y: scroll;
-    height: 60vh;
+    max-height: 60vh;
+    /* height: fit-content; */
+    /* width: max-content; */
+    gap: 1vh;
+    justify-content: space-between;
 }
 
 #discos > div > img{
     width: 64px;
     height: 64px;
     border-radius: 2px;
+}
+
+@media (min-width:620px){
+ 
+    #discos{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+ 
+}
+
+@media (max-width:320px){
+ 
+    #discos{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+ 
+}
+
+@media (max-width:260px){
+ 
+    #discos{
+        grid-template-columns: 1fr 1fr;
+    }
+ 
+}
+
+@media (min-width:420px) and (max-width:620px){
+ 
+    #discos{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+ 
 }

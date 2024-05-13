@@ -550,7 +550,7 @@ document.addEventListener('dblclick', function(event) {
                
                     let img = document.createElement('img');
                         img.src = url;
-                        img.style.width = '18vw';
+                        img.style.width = "calc(12vw + 4vh)";
                     
                     let thumbDiv = document.createElement('li');
                         thumbDiv.name = alb.artist;  
