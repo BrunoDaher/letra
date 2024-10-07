@@ -6,6 +6,10 @@
     transition: all 0.3s;
   }
 
+  .infoLetra{
+    
+  }
+
 
   /* for Chrome */
   @-webkit-keyframes my-animation {

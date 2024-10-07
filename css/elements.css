@@ -181,8 +181,8 @@ input{
     width:12px;
     height: 25px;
     */
-    padding-right: 4em;
-    color: var(--active);
+    padding-right: 2em;
+    color: #64bbe057;
 }
 
 .back{
@@ -192,9 +192,9 @@ input{
     width:14px;
     height: 25px;
     */
-    padding-left: 4em;
+    padding-left: 2em;
 
-    color: var(--active);
+    color: #64bbe057;
 }
 
 

@@ -51,12 +51,12 @@
                 </div>
 
                 <div class="slideControll">
-                <button id="btnLastSong" class="back" value="Back">
-                    <i class="bi bi-caret-left-fill a4"></i>
-                </button>
-                <button id="btnNextSong" class="forward" value="Go">
-                    <i class="bi bi-caret-right-fill a4"></i>
-                </button>
+                    <button id="btnLastSong" class="back" value="Back">
+                        <i class="bi bi-caret-left-fill a4"></i>
+                    </button>
+                    <button id="btnNextSong" class="forward" value="Go">
+                        <i class="bi bi-caret-right-fill a4"></i>
+                    </button>
                  </div>
 
                 <button class="btn flex gap1" target="config" id="btnConfig">
@@ -74,7 +74,7 @@
         <div class="grid1 sideBox right rad1" id="config" >
             <div id="fonteContainer" class="fonteContainer configContainer">
                 <label for="fonte">Fonte</label>
-                <input target='scroll-text' type="range" class="" id='fonte' step="0.1" min='1.5'  max="5" value="1.5">      
+                <input target='infoLetra' type="range" class="" id='fonte' step="0.1" min='1.5'  max="5" value="1.5">      
             </div>
             
             <!--
@@ -130,7 +130,8 @@
         </div>
 
         <div id="scroll-container">
-            <pre id="scroll-text"></pre>
+            <pre id="infoLetra"></pre>
+            <pre id="letraAtual"></pre>
         </div>
     </menu>  
 

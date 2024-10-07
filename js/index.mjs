@@ -55,7 +55,7 @@ document.addEventListener('dblclick', function(event) {
     const btnBolt = document.getElementById('btnBolt');
     const btnBolt2 = document.getElementById('btnBolt2');
     
-    const infoLetra = document.getElementById('scroll-text');
+    const infoLetra = document.getElementById('infoLetra');
     //triggers
 
 
@@ -275,7 +275,7 @@ document.addEventListener('dblclick', function(event) {
                             el.classList.add('banda');
                             el.innerText = `${element.artist} ${element.name}`;
                             
-                            //busca por id
+                            //busca info das letras
                             el.addEventListener('click',getMusicInfo); 
                             el.addEventListener('click',addToList); 
                           
@@ -423,6 +423,10 @@ document.addEventListener('dblclick', function(event) {
 
                     //plotagem
                     infoLetra.innerText = letra;
+
+                    
+
+
                     titulo.innerText = musica;
                     titulo.setAttribute('idSong',id);
                         
@@ -488,11 +492,10 @@ document.addEventListener('dblclick', function(event) {
         })//retorna HTML
         .then( function(responseHtml)
         {
-          //  console.log(responseHtml)
+       
             //tabula os dados
             let data = JSON.parse(responseHtml); 
 
-          //  console.log(data);
             //console.log(api.getMatch())
          
             let title = data.mus[0].name;  
@@ -501,6 +504,7 @@ document.addEventListener('dblclick', function(event) {
 
             //plota titulo
             titulo.innerText = title;  
+           
             //plota a letra
             infoLetra.innerText = letra;
 
