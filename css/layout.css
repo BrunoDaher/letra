@@ -32,6 +32,10 @@ body{
     place-items: center;
 }
 
+.alignCenter{
+    align-items: center;
+}
+
 .evenly{
     justify-content: space-evenly;
 }
