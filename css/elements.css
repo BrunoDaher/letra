@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 .musica , li > img{
     /*background-image: url(https://www.pngrepo.com/download/315158/music.png);*/
     background-image: url(../css/imgs/music-pngrepo-com.png);
@@ -90,8 +92,8 @@
 }
 
 .btn{
-    zoom: 1;
-    font-size: 2vh;
+   
+    
 }
 
 .disc{
@@ -105,11 +107,33 @@
 
 .list{
     /*background-image: url(https://www.pngrepo.com/download/90806/papyrus.png);
-    */background-image: url(../css/imgs/papyrus-pngrepo-com.png);
+    background-image: url(../css/imgs/papyrus-pngrepo-com.png);
     background-size: 29px ;
     width:29px;
     height: 29px;
+    */
+    font-size: 5vh;
     filter: invert(1);
+}
+
+i{ 
+    &.a1{
+        font-size: 0.7em;
+    }
+
+    &.a2{
+        font-size: 1.4em;
+    }
+
+    &.a3{
+        font-size: 2.1em;
+    }
+
+    &.a4{
+        font-size: 2.8em;
+    }
+  
+
 }
 
 .trash{
@@ -152,19 +176,27 @@ input{
 
 .forward{
     /*background-image: url(https://www.pngrepo.com/download/42258/fast-forward.png);
-    */background-image: url(../css/imgs/fast-forward-pngrepo-com.png);
+    background-image: url(../css/imgs/fast-forward-pngrepo-com.png);
     background-size: 25px ;
     width:12px;
     height: 25px;
+    */
+
+    top: 17em;
+    left: 2em;
     filter: invert(1);
 }
 
 .back{
     /*background-image: url(https://www.pngrepo.com/download/123553/backward-arrows-couple.png);
-    */background-image: url(../css/imgs/backward-arrows-couple-pngrepo-com.png);
+    background-image: url(../css/imgs/backward-arrows-couple-pngrepo-com.png);
     background-size: 25px ;
     width:14px;
     height: 25px;
+    */
+    top: 17em;
+    left: 2em;
+
     filter: invert(1);
 }
 
@@ -205,12 +237,5 @@ button:hover{
     rotate: 180deg;
 }
 
-@media (min-width:520px) {
-    .musica, li > img {
-        width: 12vh;
-    }
 
-    .btn{
-        zoom:1.4;
-    }
-}
+

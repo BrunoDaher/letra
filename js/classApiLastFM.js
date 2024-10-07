@@ -4,9 +4,20 @@ export class ApiLastFM {
         this.apiKey = '2651bc07e2240e60ef358c833cc84169'; // LastFM
     }
 
+    searchArtist(string){
+        string = string.replaceAll('-',' '); 
+        
+        let path = `https://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${string}&api_key=${this.apiKey}&format=json`
+        
+        console.log(path)
+        return path;  
+    }
+
     searchTrack(string){
         string = string.replaceAll('-',' '); 
+        string = string.replaceAll("'",''); 
        let path = `https://ws.audioscrobbler.com/2.0/?method=track.search&track=${string}&api_key=${this.apiKey}&limit=7&format=json`
+       //console.log(path)
        return path;  
     }
 
@@ -17,15 +28,18 @@ export class ApiLastFM {
        return path;  
     }
 
+    //nao funciona
     getTrackById(mbid){
-        art = art.replaceAll('-',' '); 
-        album =  album.replaceAll('-',' ');
+       // art = art.replaceAll('-',' '); 
+        //album =  album.replaceAll('-',' ');
         let path = ` https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${this.apiKey}&mbid=${mbid}format=json`;
         return path;  
      }
  
 
     getTrackInfo(art,mus){
+         art = art.replaceAll('-',' '); 
+         mus =  mus.replaceAll('-',' ');
         let path = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${this.apiKey}&artist=${art}&track=${mus}&format=json`;
         return path;  
      }
@@ -40,7 +54,12 @@ export class ApiLastFM {
         return path;  
      }
 
- 
+     getArtInfo(art){
+        art = art.replaceAll('-',' '); 
+        let path = `https://ws.audioscrobbler.com//2.0/?method=artist.gettopalbums&artist=${art}&api_key=${this.apiKey}&format=json`;
+        return path;  
+    }
+
   
     getMusLocal(busca){
         let mus = this.dao.getSessionJSON('artist').lyrics.item;   
@@ -55,11 +74,6 @@ export class ApiLastFM {
         return slim;        
     }
 
-    getArtInfo(art){
-        art = art.replaceAll('-',' '); 
-        let path = `https://ws.audioscrobbler.com//2.0/?method=artist.gettopalbums&artist=${art}&api_key=${this.apiKey}&format=json`;
-        return path;  
-    }
 
     getCurrentFoto(){
        //console.log(this.dao.getSessionJSON('artist').pic_small)

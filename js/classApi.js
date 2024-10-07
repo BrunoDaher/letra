@@ -1,8 +1,11 @@
 import ApiLastFM from "./classApiLastFM.js";
 import ApiVagalume from "./classApiVagalume.js";
 
+
 const apiLastFM = new ApiLastFM();
 const apiVagalume = new ApiVagalume();
+
+
 //const url = 
 export class Api {
 
@@ -10,6 +13,8 @@ export class Api {
     
     constructor(){
         this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa'; // Vagalume
+
+        //console.log(apiMusixMatch)
     }
 
     //api last//
@@ -17,11 +22,18 @@ export class Api {
       return apiLastFM.getTracks(art,album);
     }
 
+
+    //musicxmatch
+    getTrackById(id)
+    {
+        return apiMusicxMatch.getTrackById(id);
+    }
      //api lastFM
     getAlbum(art,alb){
        return apiLastFM.getAlbum(art,alb);
     }
 
+ 
      //vagalume
     getArtMusic(art,mus){       
 
@@ -49,8 +61,8 @@ export class Api {
     //lastFM
     searchTrack(string){
         string = string.replaceAll('-',' '); 
-
-        return  apiVagalume.searchTrack(string);  
+        return apiLastFM.searchTrack(string);
+        //return  apiVagalume.searchTrack(string);  
     }
 
     //aux
@@ -74,14 +86,22 @@ export class Api {
         return  apiVagalume.getCurrentFoto();
     }
 
+    //lastFM
+    getTrackInfo(art,mus){
+        return apiLastFM.getTrackInfo(art,mus);
+    }
+
     //vagalume
     getMusicById(musId){          
-        return apiVagalume.getMusicById(musId);
+       
+       return apiVagalume.getMusicById(musId);
+        // return apiVagalume.getMusicById(musId);
      }
     
      //vagalume
      getArt(art){        
         art = this.normalizeInput(art);      
+        return apiLastFM.searchArtist(art);
         return apiVagalume.getArt(art);
     }
     //vagalume

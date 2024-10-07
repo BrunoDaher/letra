@@ -127,7 +127,7 @@ document.addEventListener('dblclick', function(event) {
 
     function changeSong(){
 
-        console.log(this)
+     //   console.log(this)
 
         let t = titulo.getAttribute('idSong').replace("_","");
         let tLoc = document.getElementById('div'+t);
@@ -148,6 +148,7 @@ document.addEventListener('dblclick', function(event) {
             no = tLoc.previousElementSibling.childNodes[0];
         }
 
+        //ativa lista
         no.click();
         no.classList.add('active')
         
@@ -161,7 +162,6 @@ document.addEventListener('dblclick', function(event) {
             listaMusicas.innerHTML = '';
             //verifica se existe
                 listaLocal.forEach(function(element) {
-                    
 
                    // console.log(element);
 
@@ -198,21 +198,24 @@ document.addEventListener('dblclick', function(event) {
             element.addEventListener('click',inputClean);     
         });
 
-        //Vagalume
+        //LastFM
         function searchArtist(){
             //exibe lista
             listaArtistas.classList.add('active');
 
             fetch(api.getArt(this.value))
                 .then( function(response)  {        
+                    
                     return response.ok ? response.text() : false; 
                 })//retorna HTML
                 .then( function(responseHtml)
 
                     { 
+                     
                         //modela Json
                         let data = JSON.parse(responseHtml);
-                        let artistas = data.response.docs;
+                       
+                        let artistas = data.results.artistmatches.artist //data.response.docs; <- old vagalume
 
                         //limpa lista
                         listaArtistas.innerText = '';
@@ -220,7 +223,7 @@ document.addEventListener('dblclick', function(event) {
                         artistas.forEach(function(element) {
                             //element build
                             let el = document.createElement('div');
-                            el.id = element.band;
+                            el.id = element.name;
                             el.classList.add('banda');
                             el.innerText = el.id;
                             el.addEventListener('click',getArtInfo); 
@@ -234,6 +237,8 @@ document.addEventListener('dblclick', function(event) {
                 });
             }   
 
+
+
         //Vagalume    
         function searchTrackInfo(){
             //exibe lista
@@ -246,8 +251,11 @@ document.addEventListener('dblclick', function(event) {
             })//retorna HTML
             .then( function(responseHtml)
                 { 
+                    //console.log(responseHtml.length)
                     //modela Json
-                    let data = JSON.parse(responseHtml).response;
+                    let data = responseHtml.length > 2 ? JSON.parse(responseHtml).results.trackmatches.track : false;
+
+                    console.log(data)
                    
                     if(data){
     
@@ -255,16 +263,20 @@ document.addEventListener('dblclick', function(event) {
                         trackSugestion.innerText = '';
                         
                         //itera array de resposta  -- loop
-                      data.docs.forEach(function(element)  {
+                      data.forEach(function(element)  {
                             //verificar se é o mesmo artista de antes
 
+                            console.log(element)
+
                             let el = document.createElement('div');
-                            el.id = element.id;
+                            el.id = element.mbid;
+                            el.setAttribute('artInfo',element.artist);
+                            el.setAttribute('artMus',element.name);
                             el.classList.add('banda');
-                            el.innerText = `${element.band} ${element.title}`;
+                            el.innerText = `${element.artist} ${element.name}`;
                             
                             //busca por id
-                            el.addEventListener('click',getMusById); 
+                            el.addEventListener('click',getMusicInfo); 
                             el.addEventListener('click',addToList); 
                           
                             //preenche destino
@@ -349,7 +361,7 @@ document.addEventListener('dblclick', function(event) {
 
                     if(alb.tracks){
                         let faixas = alb.tracks.track;
-                        let urlImg = alb.image[1]['#text'];
+                        let urlImg = alb.image[2]['#text'];
                         let cont = document.getElementById('discos');
 
                         if(urlImg){
@@ -453,20 +465,36 @@ document.addEventListener('dblclick', function(event) {
         
         //logica
         titulo.setAttribute('idSong','_' + this.id);
+
+        //omitir menu
+        listaMusicas.classList.remove('active');
+      
     }
 
-    function getMusById(e){
+    function getMusicInfo(e){
+
         let item = this?this : e.target;
 
+        //console.log(item)
+
+        let art = item.getAttribute('artInfo');
+        let mus = item.getAttribute('artMus');
+
        // console.log('get by Id')
-        fetch(api.getMusicById(item.id))
-        .then( function(response)   {     
+        //fetch(api.getMusicById(item.id))
+        fetch(api.getArtMusic(art,mus)).then( function(response)   {     
+            //console.log(response)
             return response.ok ? response.text() : false; 
         })//retorna HTML
         .then( function(responseHtml)
         {
+          //  console.log(responseHtml)
             //tabula os dados
             let data = JSON.parse(responseHtml); 
+
+          //  console.log(data);
+            //console.log(api.getMatch())
+         
             let title = data.mus[0].name;  
             let letra = data.mus[0].text;
             let artista = data.art.name;
@@ -512,6 +540,7 @@ document.addEventListener('dblclick', function(event) {
         }
     }
 
+
     function addToList(){
         
     
@@ -546,11 +575,9 @@ document.addEventListener('dblclick', function(event) {
     //apenas itera e plota o item, e associa a funcao de buscar as tracks
     function getThumb(url,alb,faixas){
 
-         
-               
                     let img = document.createElement('img');
                         img.src = url;
-                        img.style.width = "calc(12vw + 4vh)";
+                       // img.style.width = "calc(12vw + 4vh)";
                     
                     let thumbDiv = document.createElement('li');
                         thumbDiv.name = alb.artist;  

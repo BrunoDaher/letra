@@ -6,11 +6,12 @@
 @import url(layout.css);
 
 :root{
-    --top: calc(12vh + 3vw);
+    --top: 110px;
     --topSides: calc(var(--top) + 8vw);
     --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
     --fundoA: #4d7a8d;
     --fundoB:black;
+    --active:#64bbe0;
    --fundoC: #35393b;
    --fundoD:#4a4c50;
    --shadowA:#71aac381;
@@ -65,7 +66,7 @@ header{
 }
 
 main > menu{
-    margin: 1vh;
+    margin:0 ;
     display: none;
     padding: 0;
     background-color: var(--fundoC);
@@ -144,17 +145,4 @@ fieldset{
     }
 }
 
-@media (width:1024) and (height:1366){
-    :root{
-        --topSides: --top;
-    }
 
-}
-
-@media (orientation:landscape){
-    :root{
-        --top: calc(15vh + 2vh);
-        --width:100%;
-    }
-
-}

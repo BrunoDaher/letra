@@ -28,32 +28,24 @@
 
 
 .painel{
-    padding: 1vh 0 1vh;
-    zoom: 110%;
+    align-content: center;
+    width: 100%;
+    height: 40px;
 }
 
 
 .iconText{
-    display: flex;
-    font-size: 1.2rem;
-    
-    justify-content: space-between;
+    display: grid;
+    font-size: 1vh;
+    color:var(--active);
     place-items: center;
-    
-    
    
-    background-color: var(--shadowA);
-
 }
 
 .configContainer{
-    border-style:ridge;
-    border-color: var(--colorB);
-    border-width: 1px;
-    border-radius: 7px;
     
-    margin: 1vh 1vh;
-    padding: 1vh 1vh;
+    justify-content: space-around;
+    font-size: 2vh;
 }
 
 .box{
@@ -83,13 +75,12 @@ button{
 
 header > button.active, button.active{
 
-    color: var(--colorB);
-    text-shadow: var(--shadowA) 6px -4px 10px;
+    color: var(--active);
+    
     
     display: flex;
-    border-style: ridge;
-    border-radius: 4px;
-    border-width: 0px 0px 2px 0px;
+    filter: drop-shadow(2px 4px 6px black);
+
 
     font-style: italic;
 
@@ -100,7 +91,7 @@ header > button{
        cursor: pointer;
        border: none;
        background: none;
-       font-size: 2.4vh;
+       font-size: 0.9em;
 }
 
 #newList , li {
@@ -130,12 +121,13 @@ header > button{
         height: 5vh;
         color: var(--colorB);
         width: 100%;
+        border-color: var(--fundoC);
         text-align: center;
         font-size: 1em;
     }
 
 .inputPesquisa{
-    border-width: 0px 0px 2px 0px;
+
     background-color: var(--fundoD);
     color: var(--colorB);
     outline: none;
@@ -196,9 +188,12 @@ ul{
     font-size: 1rem;
     max-height: 70%;
 
-    padding: auto;
+    padding: 2vh 1vh;
+    margin: 1vh 2vh;
 
     transition: all 0.8s;
+
+    filter: drop-shadow(2px 4px 6px black);
 }
         .left{
             left: -100vw;
@@ -220,21 +215,27 @@ ul{
        
 
     #listaMusicas{
-        top: var(--topSides);
-        place-items: center;
-    }
+        top: var(--top);
+        place-items: baseline;
+        padding: 2vh;
+        filter: drop-shadow(2px 4px 6px black);
+   
+        div {
+            display: flex;
+            flex-direction: row-reverse;
+            gap:4px;
 
-        #listaMusicas > div{
             cursor: pointer;
             border-width: 0px 0px 1px 0px;
             width: fit-content;
             transition: all 0.3s;
-        }
 
-            #listaMusicas > div.selected{
+            &.selected{
                 color: red;
             }
-        
+        }
+    }
+
         
     #albSongs > li{
         align-items: center;
@@ -245,12 +246,15 @@ ul{
 
     #config {
        
-        top: var(--topSides);
+        top: var(--top);
+
+     
     }
 
    .fonteContainer{
-        padding: 0.7em;
-        font-size: 1.2rem;
+      
+        margin-top:1vh;
+        font-size: 1rem;
         justify-self: center;
         display: grid;
     }
@@ -312,42 +316,31 @@ ul{
     /* width: max-content; */
     gap: 1vh;
     justify-content: space-between;
+
+        
+        img{
+            width: 4em;
+            border-radius: 4px !important;
+        }
+
+            @media (min-width:620px){
+                grid-template-columns: repeat(5,1fr);
+             
+                img{
+                    width: 8em;
+                }
+            }
+
+            @media (max-width:320px){
+                grid-template-columns: repeat(3,1fr);
+            }
+
+            @media (max-width:260px){
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            @media (min-width:420px) and (max-width:620px){
+                    grid-template-columns: repeat(4,1fr);
+                }
 }
 
-#discos > div > img{
-    width: 64px;
-    height: 64px;
-    border-radius: 2px;
-}
-
-@media (min-width:620px){
- 
-    #discos{
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
- 
-}
-
-@media (max-width:320px){
- 
-    #discos{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
- 
-}
-
-@media (max-width:260px){
- 
-    #discos{
-        grid-template-columns: 1fr 1fr;
-    }
- 
-}
-
-@media (min-width:420px) and (max-width:620px){
- 
-    #discos{
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
- 
-}

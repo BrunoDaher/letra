@@ -200,7 +200,7 @@ class Tela {
             //pra musicas listadas na busca  - barra lateral esquerda
             if(container.id != 'albSongs'){ 
                 let div = document.createElement(type);
-                    div.className = 'grid2';
+                    //div.className = 'grid2';
                     div.id = "div" + element.id;
                     //div.draggable = true;
                 

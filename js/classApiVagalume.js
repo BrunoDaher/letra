@@ -2,16 +2,19 @@ const urlApi =  "https://api.vagalume.com.br";
 const urlHttp =  "https://www.vagalume.com.br";
 
 //const url = 
-export class apiVagalume {
+export default class apiVagalume {
 
     constructor(){
-        this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa'; // Vagalume
+        this.apiKey = 'apiKey=154b4603a98cc875d8e46606cd2585ba'; // Vagalume
     }
 
     getArtMusic(art,mus){       
         let path = `${urlApi}/search.php?${this.apiKey}&art=${art}&mus=${mus}`;
+        //console.log(path);
         return path;
     }
+
+    
 
     searchTrack(string){
         let path = `${urlApi}/search.excerpt?apikey=${this.apiKey}&q=${string}`;
@@ -23,7 +26,8 @@ export class apiVagalume {
     }
 
     getMusicById(musId){          
-        const path = `${urlApi}/search.php?${this.apiKey}&musid=${musId}&extra=alb`;       
+        const path = `${urlApi}/search.php?${this.apiKey}&musid=${musId}`;    
+       
         return path;
     }
 
@@ -46,4 +50,3 @@ export class apiVagalume {
 
  }
 
-export default apiVagalume;

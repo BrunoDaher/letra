@@ -3,6 +3,10 @@
     display: flex;
 }
 
+.gap1{
+    gap: 0.2em;
+}
+
 .grid1{
     display: grid;
     gap: 1em;
@@ -40,6 +44,10 @@
 
 .m1{
     margin: 1em;
+}
+
+.m2{
+    margin:2em;
 }
 
 .central{

@@ -12,17 +12,20 @@
 
 <header class="grid3">
     <button id="btnMenuA" target="menuA" class="btn">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">
+        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">-->
+        <i class="bi bi-file-text a3"></i>
         <span>Letra</span>
     </button>
    
     <button  id="btnMenuC" target="menuC"  class="btn">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="advSearch">
-        <span>Busca Avançada</span>
+        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="advSearch">-->
+        <i class="bi bi-search a3"></i>
+        <span>Search</span>
     </button>
 
     <button  id="btnMenuB" target="menuB"  class="btn">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">
+       <!-- <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">-->
+       <i class="bi bi-music-note-list a3"></i>
         <a>Discografia</a>
     </button>
 </header>
@@ -36,9 +39,11 @@
         <div class="painel fundoGradiente">
             <div class="grid3">
             
-                <button class="btn" target="listaMusicas" id="btnSetList">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="setList">
-                    <a class="lbl">SetList</a>
+                <button class="btn flex gap1" target="listaMusicas" id="btnSetList">
+                    <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="setList">-->
+               
+                    <i class="bi bi-list-check a2"></i>
+                    <a class="lbl">Lista</a>
                 </button> 
                 <input hidden type="button" id="listObserver">
                 <div class="centroGrid3">
@@ -47,9 +52,10 @@
                     <button id="btnNextSong" class="forward" value="Go"></button>
                 </div>
 
-                <button class="btn" target="config" id="btnConfig">
+                <button class="btn flex gap1" target="config" id="btnConfig">
                     <a class="lbl">Config</a>
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="config">
+                    <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="config">-->
+                    <i class="bi bi-gear a2"></i>
                 </button>
 
             </div>  
@@ -76,26 +82,38 @@
                 <input target="scroll-text" type="range" class="" id='colunas' step="1" min='1'  max="3" value="0.1">
             </div>  
 
-            <fildset  id="painelDao" class="painel rad1">
+            <fildset  id="painelDao" class="painel">
                 
-                <div id="loadCloud" class="iconText configContainer">
-                    <div id="save" class="iconText configContainer off">
+                <div id="loadCloud" class="iconText flex configContainer">
+                   
+                    <div id="save" class="iconText configContainer" style="display: none;">
                         <input type="text" id="nomeArquivo" class="off">
-                        <button target="" type="button" class="uploadCloud" id='btnSaveCloud'></button>
+                        <button target="" type="button"  id='btnSaveCloud'>
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </button>
                         <label for="saveCloud">Save</label>
                     </div>  
-                    <button target="" type="button" class="downCloud" id='btnLoadCloud'></button>
-                    <label>Load</label>
                    
-                </div>
+                    <div class="iconText configContainer">
+                    <button target="" type="button"  id='btnLoadCloud'>
+                        <i class="bi bi-cloud-arrow-down a3"></i>
+                    </button>
+                    <label>Load</label>
+                    </div>
 
-                <div id="export" class="iconText configContainer">
-                    <button type="button" class="download" id='btnExport'></button>
-                    <label for="export">Export</label>
-                </div>  
+                    <div id="export" class="iconText configContainer a2">
+                        <button type="button"  id='btnExport'>
+                            <i class="bi bi-filetype-json a3"></i>
+                        </button>
+                        <label for="export">Export</label>
+                    </div>  
+                </div>
                     
-                <div id="load" class="iconText configContainer">
-                    <button target="dataLoad" type="button" class="upload" id='btnUpload'></button>
+                <div id="load" class="iconText configContainer" style="display: none;">
+                 
+                    <button target="dataLoad" type="button"  id='btnUpload'>
+                        <i class="bi bi-cloud-arrow-up-fill a3"></i>
+                    </button>
                         <div hidden> 
                             <input id='inputFile' type="file">
                         </div>
@@ -112,7 +130,7 @@
     <menu id="menuB">
       
         <fieldset>
-            <legend>Discografia</legend>
+            <legend hidden>Discografia</legend>
             <div class="box-pesquisa">
                 <input target = 'listaArtistas' class="inputPesquisa fundoGradiente" type="text" placeholder="artista">
                 <button id="btnBolt2" value=0 target="menuB">
@@ -125,13 +143,16 @@
                   <!--pesquisa e botoes-->
                   <div id="painelDiscog" class="flex central">
                         <button class="btnToggle"target="listaArtistas" id="btnListaArt">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">
+                        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">-->
+                        <i class="bi bi-list-check a3"></i>
                         </button> 
                         <button class="btnToggle"target="listaDiscos" id="discog">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">
+                        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">-->
+                              <i class="bi bi-vinyl a3"></i>
                         </button>
                         <button class="btnToggle"target="discoBox" id="btnAlbSongs">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">
+                            <i class="bi bi-music-note a3"></i>
+                            <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">-->
                         </button>
                     </div>
             <!-- -->
@@ -158,7 +179,7 @@
     <menu id="menuC">
         <div class="lista">
           <fieldset>
-            <legend>Busca Avançada</legend>
+            <legend hidden>Busca Avançada</legend>
                 <div class="box-pesquisa">
                     <input target="trackSugestions" class="pesquisa fundoGradiente" id="trackMus" type="text" placeholder="musica"> 
                     <button id="btnBolt" value=0 target="menuB">
@@ -174,5 +195,6 @@
 <footer>
 </footer>
     <script type='module' src="js/index.mjs"></script>      
+    <script type='script' src="js/serviceWorker.js"></script>      
 </body>
 </html>
