@@ -30,7 +30,7 @@
 .painel{
     align-content: center;
     width: 100%;
-    height: 40px;
+    padding: 10px 0;
     margin: 0;
 
     button{
@@ -96,7 +96,7 @@ header > button{
        cursor: pointer;
        border: none;
        background: none;
-       font-size: 2vh;
+       font-size: 2.2vh;
 }
 
 #newList , li {
