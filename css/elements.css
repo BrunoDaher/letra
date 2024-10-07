@@ -181,10 +181,8 @@ input{
     width:12px;
     height: 25px;
     */
-
-    top: 17em;
-    left: 2em;
-    filter: invert(1);
+    padding-right: 4em;
+    color: var(--active);
 }
 
 .back{
@@ -194,11 +192,12 @@ input{
     width:14px;
     height: 25px;
     */
-    top: 17em;
-    left: 2em;
+    padding-left: 4em;
 
-    filter: invert(1);
+    color: var(--active);
 }
+
+
 
 .config{
     /*background-image: url(https://www.pngrepo.com/download/373522/config.png);

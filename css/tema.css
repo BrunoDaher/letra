@@ -31,6 +31,7 @@
     align-content: center;
     width: 100%;
     height: 40px;
+    margin: 0;
 }
 
 
@@ -175,6 +176,17 @@ ul{
         transition: all 0.5s;
     }
 
+
+ .slideControll{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 33vh;
+    color: var(--active);
+ }   
+
 .sideBox{
   
     background-color: var(--fundoD);
@@ -185,7 +197,6 @@ ul{
     top: var(--top) + 2vh;
     gap: 1vh;
 
-    font-size: 1rem;
     max-height: 70%;
 
     padding: 2vh 1vh;
