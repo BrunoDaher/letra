@@ -5,6 +5,14 @@ body{
 }
 
 
+.p0{
+    padding:0;
+}
+
+.m0{
+    margin:0;
+}
+
 .flex{
     display: flex;
 }

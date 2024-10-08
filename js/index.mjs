@@ -12,6 +12,20 @@ document.addEventListener('dblclick', function(event) {
     event.preventDefault();
 });
 
+//service worker
+
+// Verifica se o navegador suporta Service Workers
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./js/service-worker.js').then(function(registration) {
+        console.log('ServiceWorker registrado com sucesso: ', registration);
+      }).catch(function(error) {
+        console.log('Falha ao registrar o ServiceWorker: ', error);
+      });
+    });
+  }
+  
+
 // Variaveis
     const objLetra = new Letra();
     const api = new Api();
@@ -38,8 +52,10 @@ document.addEventListener('dblclick', function(event) {
     const btnMenuB = document.getElementById('btnMenuB');
     const btnMenuC = document.getElementById('btnMenuC');
 
+    let slideTarget = true;
 
-    //trigger de menu modal
+
+    //listeners de menu modal
      [btnMenuA,btnMenuB,btnMenuC,discos,btnAlbSongsA,btnListaArt,btnSetList,btnConfig].forEach(function(item) {
         item.addEventListener('click',tela.newModalGroup);
      });
@@ -51,19 +67,17 @@ document.addEventListener('dblclick', function(event) {
     const trackSugestion = document.getElementById('trackSugestions');
     const listaMusicas = document.getElementById('listaMusicas');
     
-    //em breve fazer um select all
+    //listeners logic
     const btnBolt = document.getElementById('btnBolt');
     const btnBolt2 = document.getElementById('btnBolt2');
-    
-    const infoLetra = document.getElementById('infoLetra');
-    //triggers
-
 
     [btnBolt,btnBolt2].forEach(function(btn) {
         btn.addEventListener('click',toggleLogic);
     });
-
-    //navegacao - cabe selectAll
+    
+    const infoLetra = document.getElementById('infoLetra');
+  
+    //listeners navegacao
     const btnNextSong = document.getElementById("btnNextSong");
     const btnLastSong = document.getElementById("btnLastSong");
 
@@ -127,8 +141,6 @@ document.addEventListener('dblclick', function(event) {
 
     function changeSong(){
 
-     //   console.log(this)
-
         let t = titulo.getAttribute('idSong').replace("_","");
         let tLoc = document.getElementById('div'+t);
        
@@ -142,13 +154,14 @@ document.addEventListener('dblclick', function(event) {
 
         if(this.value == "Go"){
             no = tLoc.nextElementSibling.childNodes[0];
+            slideTarget = true;
         }
     
         if(this.value == "Back"){
             no = tLoc.previousElementSibling.childNodes[0];
+            slideTarget = false;
         }
 
-        //ativa lista
         no.click();
         no.classList.add('active')
         
@@ -362,10 +375,11 @@ document.addEventListener('dblclick', function(event) {
                     if(alb.tracks){
                         let faixas = alb.tracks.track;
                         let urlImg = alb.image[2]['#text'];
-                        let cont = document.getElementById('discos');
+                        let albuns = document.getElementById('discos');
 
+                        //monta imagem do album
                         if(urlImg){
-                            cont.append(getThumb(urlImg,alb,faixas));
+                            albuns.append(getThumb(urlImg,alb,faixas));
                         }   
                     }
                 }
@@ -402,6 +416,7 @@ document.addEventListener('dblclick', function(event) {
                     e.target.id = id; 
                     artista = data.art.name;
                 
+                    console.log(data);
                     // modelagem
                     let obj = {
                         [id]:{'letra':letra,"id":id,'musica':musica,'artista':artista}
@@ -422,10 +437,14 @@ document.addEventListener('dblclick', function(event) {
                     }
 
                     //plotagem
-                    infoLetra.innerText = letra;
-
                     
-
+                    setTimeout(function(){
+                        infoLetra.classList.remove('active');
+                        infoLetra.innerText = letra;
+                    },700);
+                
+                    
+                    infoLetra.classList.add('active');
 
                     titulo.innerText = musica;
                     titulo.setAttribute('idSong',id);
@@ -438,16 +457,16 @@ document.addEventListener('dblclick', function(event) {
                 });  
     }
 
-    function getLocalMusic(){
-
-        //console.log(this)
+    function getLocalMusic()
+    {
+      //  console.log(event.target)
         /* seleção de item dentro de menu */
         let div = this.parentNode;
         let collection = div.getElementsByTagName("div");
 
         //node menu
         for (let item of collection) {
-            console.log(item);
+           // console.log(item);
             item.classList.remove('selected')
         }
 
@@ -461,10 +480,48 @@ document.addEventListener('dblclick', function(event) {
         //  console.log(element)
             let values = Object.values(element);
             arr[values[0].id] = values[0];
-        });
-        
+        });  
+
+      console.log(collection)
+
         //view
-        infoLetra.innerText = arr[this.id]['letra'];
+       
+        //som anterior
+        let prevSong = arr[this.id]['letra'];
+        let curSong =  arr[this.id]['letra'];
+
+        //infoLetra.innerText = prevSong;
+
+        let back = slideTarget ? 'goingout':'active';
+        let fwd = slideTarget ? 'active':'goingout';
+
+        //desliza esquerda
+            setTimeout(function(){
+                    infoLetra.classList.add(back);
+            },100);
+
+            setTimeout(function(){
+            //  console.log('remove esquerda')
+                infoLetra.classList.add('off');
+
+                infoLetra.classList.remove(back);
+                infoLetra.innerText = curSong;
+            },150);
+
+            //inativa
+            setTimeout(function(){
+
+                    infoLetra.classList.add(fwd);
+                    infoLetra.classList.remove('off');
+            },200);
+
+            //normaliza
+            setTimeout(function(){
+                infoLetra.classList.remove(fwd);
+            },250);
+
+        //desliza direita
+//        infoLetra.innerText = arr[this.id]['letra'];
         titulo.innerText = this.innerText
         
         //logica
@@ -496,8 +553,6 @@ document.addEventListener('dblclick', function(event) {
             //tabula os dados
             let data = JSON.parse(responseHtml); 
 
-            //console.log(api.getMatch())
-         
             let title = data.mus[0].name;  
             let letra = data.mus[0].text;
             let artista = data.art.name;
@@ -569,6 +624,8 @@ document.addEventListener('dblclick', function(event) {
     function appendMusica(obj, lista){
 
         lista.push(obj);
+
+        console.log(obj)
      
         dao.saveLocalJSON('listaLocal',lista);
         //refreash lista

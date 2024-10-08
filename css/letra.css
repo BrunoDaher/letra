@@ -23,9 +23,25 @@ pre{
 #titulo{
     filter: drop-shadow(2px 4px 6px black) contrast(6.5);
     font-size: 2.5vh;
-    text-align: center;
-    text-wrap: nowrap;
-    padding: 0 10px;
+  
 }
 
 
+.d-none{
+    display: none;
+}
+
+#infoLetra{
+
+    transform:none;
+    transition: transform 0.2s;
+    
+    &.active{
+        transform:translateX(1110px);
+    }
+
+    &.goingout{
+        transform: translateX(-1110px);
+       
+    }
+}

@@ -24,7 +24,9 @@
     overflow: hidden;
   }
   
-
+.red{
+    color: red;
+}
 
 
 .painel{
@@ -324,7 +326,7 @@ ul{
 
 #discos{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     overflow-y: scroll;
     max-height: 60vh;
     /* height: fit-content; */

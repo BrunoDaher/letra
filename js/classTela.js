@@ -194,6 +194,7 @@ class Tela {
 
     addToDiv(type,element,container,fn){  
 
+        
         let li = document.createElement('li');
             li.innerText = element.song;
             
@@ -203,9 +204,13 @@ class Tela {
                     //div.className = 'grid2';
                     div.id = "div" + element.id;
                     //div.draggable = true;
+
+                let imgTrash = document.createElement('h2');
+                    imgTrash.className = 'bi bi-trash a2 m0 p0';
                 
                 let btnTrash = document.createElement('button');
-                    btnTrash.className = 'trash';
+                    btnTrash.className = '';
+                    btnTrash.append(imgTrash);
                     btnTrash.addEventListener('click',this.removeIt);
                 
                     li.id= element.id 
