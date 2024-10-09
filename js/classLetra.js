@@ -40,7 +40,7 @@ class Letra{
 
     setColunas(){
         let elem = document.getElementById(this.getAttribute('target'));
-       // console.log(elem)
+        console.log(this)
         elem.style.columnCount = this.value
     }
 
