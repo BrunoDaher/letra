@@ -107,6 +107,7 @@ if ('serviceWorker' in navigator) {
         console.log("LoadCloud")
         tela.animateBar();
         dao.loadCloud(1);
+        setTimeout(function(){location.reload()},1200)
     }
 
     function updateCloud(){

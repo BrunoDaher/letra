@@ -66,7 +66,7 @@ class ApiCloud { //extends Dao{
              localStorage.setItem('listaLocal',JSON.stringify(dados.record));
              
              let a = document.createElement('a');
-              a.innerText = 'Dados carregados com sucesso';
+              a.innerText = 'Lista Atualizada';
               document.getElementById('myBar').append(a);
           }
           else{

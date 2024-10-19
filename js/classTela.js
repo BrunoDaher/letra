@@ -266,7 +266,7 @@ class Tela {
                 i = 1;
                 let elem = document.getElementById("myBar");
                 let width = 1;
-                let id = setInterval(frame, 12);
+                let id = setInterval(frame, 7);
                 function frame() {
                 if (width >= 100) {
                     clearInterval(id);
