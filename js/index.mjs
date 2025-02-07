@@ -409,33 +409,38 @@ if ('serviceWorker' in navigator) {
                     return response.ok ? response.text() : false; 
                 })//retorna HTML
                 .then(function(responseHtml){
+ 
+                    //para letras de ovh api
+                        let ovh =JSON.parse(responseHtml).lyrics;
+                    
+                        let content = formatLyrics(ovh) //letra.message.body.lyrics;
+                            // Removendo o texto específico
+                      //  let letra  = content.replace(/(\*{7} This Lyrics is NOT for Commercial use \*{7}\s*\(\d+\))/g, '').trim();
+                
+                        let letra = content;
                     //tabulando dados
-                    let data = JSON.parse(responseHtml);
-                    let letra = data.mus[0].text;
-                    let id = 'l' + data.mus[0].id;
+                    //let data = JSON.parse(responseHtml);
+                    //let letra = data.mus[0].text;
+
+                    console.log(e.target)
+
+                    let id = 'l' + e.target.innerText;
                  
                     e.target.id = id; 
-                    artista = data.art.name;
-                
-                    console.log(data);
+                   // artista = data.art.name;
                     // modelagem
                     let obj = {
                         [id]:{'letra':letra,"id":id,'musica':musica,'artista':artista}
                     };
                 
-                    let listaLocal = dao.getLocalJSON('listaLocal');
+                    let listaLocal = dao.getLocalJSON('listaLocal') || new Array();
 
-                    //pra caso de lista zerada
-                    if(!listaLocal){
-                        listaLocal = new Array();
-                    }
-                    else{
-                            if(!aux.intoArray(listaLocal,id)){
+                       if(!aux.intoArray(listaLocal,id)){
                             //plota e persiste
                             setTimeout(
-                                function(){ appendMusica(obj,listaLocal);},400);
+                                function(){ appendMusica(obj,listaLocal);},100);
                         } 
-                    }
+                    
 
                     //plotagem
                     
@@ -453,10 +458,37 @@ if ('serviceWorker' in navigator) {
                     //se opção tiver ativada
                     //busca rapida
                     if(btnBolt.value == 1 || btnBolt2.value == 1){
-                        document.getElementById('btnMenuA').click()    
+                       
+                        setTimeout(function(){
+                            document.getElementById('btnMenuA').click();    
+                        })
+            
                     }
                 });  
     }
+
+
+    // Função para formatar letras
+    function formatLyrics(lyrics) {
+        if (!lyrics) return 'Letra não encontrada';
+          // Remove espaços no início e no fim
+          lyrics = lyrics.trim();
+  
+          // Substitui combinações de quebras de linha múltiplas por uma única quebra de parágrafo (duas quebras de linha)
+          lyrics = lyrics.replace(/(\r\n|\n|\r){3,}/g, '\n strofeNova \n');
+          
+          // Substitui quebras de linha duplas (separação de estrofes) por '\n\n' e quebras de linha simples por '\n'
+          lyrics = lyrics.replace(/(\r\n|\n|\r)/g, '\n').replace(/\n{2,}/g,  '\n');
+          
+  
+          lyrics = lyrics.replace(/strofeNova/g, '');
+          
+          // Substitui quebras de linha duplas (\n\n) por <br><br> para pular uma linha
+  
+          
+  
+        return lyrics;
+      }
 
     function getLocalMusic()
     {
@@ -483,7 +515,7 @@ if ('serviceWorker' in navigator) {
             arr[values[0].id] = values[0];
         });  
 
-      console.log(collection)
+   
 
         //view
        
@@ -552,20 +584,34 @@ if ('serviceWorker' in navigator) {
         {
        
             //tabula os dados
-            let data = JSON.parse(responseHtml); 
+           // let data = JSON.parse(responseHtml); 
 
-            let title = data.mus[0].name;  
-            let letra = data.mus[0].text;
-            let artista = data.art.name;
+           // let title = data.mus[0].name;  
+          //  let letra = data.mus[0].text;
+          //  let artista = data.art.name;
+
+          let ovh =JSON.parse(responseHtml).lyrics;
+                    
+          let content = formatLyrics(ovh) //letra.message.body.lyrics;
+              // Removendo o texto específico
+          let letra  = content.replace(/(\*{7} This Lyrics is NOT for Commercial use \*{7}\s*\(\d+\))/g, '').trim();
+  
+            //tabulando dados
+            //let data = JSON.parse(responseHtml);
+            //let letra = data.mus[0].text;
+            console.log(e.target)
+            let id = 'l' + e.target.id;
 
             //plota titulo
-            titulo.innerText = title;  
+            titulo.innerText = mus;  
            
             //plota a letra
             infoLetra.innerText = letra;
 
             //dao
             let ls = dao.getLocalJSON('listaLocal');
+
+            console.log(ls)
             if(!ls){
                 ls = new Array();
             }
@@ -580,7 +626,7 @@ if ('serviceWorker' in navigator) {
                     {
                         id:item.id, 
                         'letra':letra,
-                        'musica':title, 
+                        'musica':mus, 
                         'artista':artista
                     };
                 }
@@ -589,6 +635,7 @@ if ('serviceWorker' in navigator) {
                 }
             }
             );
+
 
             //persiste
             dao.saveLocalJSON('listaLocal',ls);
@@ -613,6 +660,7 @@ if ('serviceWorker' in navigator) {
             listaLocal = dao.getLocalJSON('listaLocal'); 
             if(!aux.intoArray(listaLocal,this.id))
               {
+                console.log(obj)
                 appendMusica(obj,listaLocal);
               }
         }

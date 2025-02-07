@@ -9,9 +9,14 @@ export default class apiVagalume {
     }
 
     getArtMusic(art,mus){       
-        let path = `${urlApi}/search.php?${this.apiKey}&art=${art}&mus=${mus}`;
+
+        //devido a falha do vagalume
+        let path = `https://api.lyrics.ovh/v1/${encodeURIComponent(art)}/${encodeURIComponent(mus)}`;
+        return path;  
+
+        //let path = `${urlApi}/search.php?${this.apiKey}&art=${art}&mus=${mus}`;
         //console.log(path);
-        return path;
+        //return path;
     }
 
     
@@ -25,7 +30,9 @@ export default class apiVagalume {
         return `${url}/${band}/images/profile.jpg`
     }
 
-    getMusicById(musId){          
+    getMusicById(musId){        
+        
+ 
         const path = `${urlApi}/search.php?${this.apiKey}&musid=${musId}`;    
        
         return path;
