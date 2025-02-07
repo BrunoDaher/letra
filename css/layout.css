@@ -48,6 +48,11 @@ body{
     justify-content: space-evenly;
 }
 
+
+.around{
+    justify-content: space-around;
+}
+
 .between{
     justify-content: space-between;
 }
