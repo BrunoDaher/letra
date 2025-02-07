@@ -130,7 +130,7 @@ header > button{
         width: 100%;
         border-color: var(--fundoC);
         text-align: center;
-        font-size: 1em;
+        font-size: 2.5vh;
     }
 
 .inputPesquisa{
@@ -174,8 +174,10 @@ ul{
 }
 
 #listaArtistas{
-    gap: 1vh;
+    gap: 3vh;
     justify-items: center;
+    padding: 2vh;
+    font-size: 2.5vh;
 }
 
     #listaArtistas.active{
@@ -258,7 +260,8 @@ ul{
         align-items: center;
         cursor: pointer;
         gap: 2vh;
-        font-size: 1em;
+        margin: 2vh;
+        font-size: 2.5vh;
     }
 
     #config {

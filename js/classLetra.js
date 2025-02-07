@@ -10,6 +10,13 @@ class Letra{
         const colunas = document.getElementById('colunas');
         colunas.addEventListener('change',this.setColunas);
     
+
+        const align = document.querySelectorAll('.setAlign');
+
+            align.forEach(element => {
+                element.addEventListener('click',this.setAlign);
+            });
+   
     }
 
     setTime(){
@@ -31,6 +38,13 @@ class Letra{
         }
     }
    
+    setAlign(){
+        console.log(this)
+        let elem = document.getElementById(this.getAttribute('target'));
+      //  console.log(elem.style.zoom)
+        elem.style.textAlign = this.value;
+    }
+
 
     setFontSize(){
         let elem = document.getElementById(this.getAttribute('target'));

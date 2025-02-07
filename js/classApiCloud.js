@@ -115,7 +115,7 @@ class ApiCloud { //extends Dao{
 
             req.onreadystatechange = function () {
             if (req.readyState == XMLHttpRequest.DONE) {
-                //console.log(req.responseText);
+                console.log(req.responseText);
             }
             };
 
