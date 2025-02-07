@@ -267,7 +267,7 @@ ul{
     #config {
        
         top: var(--top);
-
+        width: 28vh;
      
     }
 
