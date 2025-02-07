@@ -142,10 +142,15 @@ if ('serviceWorker' in navigator) {
 
     function changeSong(){
 
+
+        console.log(titulo)
+
         let t = titulo.getAttribute('idSong').replace("_","");
         let tLoc = document.getElementById('div'+t);
        
         let nodes = listaMusicas.childNodes;
+
+        console.log(nodes)
 
         nodes.forEach(function(element) {
             element.childNodes[0].classList.remove('active')
@@ -181,7 +186,6 @@ if ('serviceWorker' in navigator) {
 
                     element = element[Object.keys(element)];
                 //  console.log(element)
-
 
                     let el =  {name:element.artista + ' ' + element.musica, id:element.id,'song':element.musica}
 
@@ -269,8 +273,7 @@ if ('serviceWorker' in navigator) {
                     //modela Json
                     let data = responseHtml.length > 2 ? JSON.parse(responseHtml).results.trackmatches.track : false;
 
-                    console.log(data)
-                   
+               
                     if(data){
     
                     //limpa container destino
@@ -280,7 +283,7 @@ if ('serviceWorker' in navigator) {
                       data.forEach(function(element)  {
                             //verificar se é o mesmo artista de antes
 
-                            console.log(element)
+                        //    console.log(element)
 
                             let el = document.createElement('div');
                             el.id = element.mbid;
@@ -291,7 +294,6 @@ if ('serviceWorker' in navigator) {
                             
                             //busca info das letras
                             el.addEventListener('click',getMusicInfo); 
-                            el.addEventListener('click',addToList); 
                           
                             //preenche destino
                             trackSugestion.append(el);
@@ -424,7 +426,10 @@ if ('serviceWorker' in navigator) {
 
                     console.log(e.target)
 
-                    let id = 'l' + e.target.innerText;
+                    let id = 'l' + artista + musica;
+                        id = id.trim().toLowerCase();
+
+                    console.log(id.trim().toLowerCase());
                  
                     e.target.id = id; 
                    // artista = data.art.name;
@@ -438,7 +443,10 @@ if ('serviceWorker' in navigator) {
                        if(!aux.intoArray(listaLocal,id)){
                             //plota e persiste
                             setTimeout(
-                                function(){ appendMusica(obj,listaLocal);},100);
+                                function(){ 
+                                    console.log('via getArtMusic') 
+                                    appendMusica(obj,listaLocal);},100
+                                );
                         } 
                     
 
@@ -492,6 +500,8 @@ if ('serviceWorker' in navigator) {
 
     function getLocalMusic()
     {
+
+        console.log(this)
       //  console.log(event.target)
         /* seleção de item dentro de menu */
         let div = this.parentNode;
@@ -506,11 +516,19 @@ if ('serviceWorker' in navigator) {
         this.classList.add('selected')
 
         /* --------- */
-        let listaLocal = dao.getLocalJSON('listaLocal');
+    //    let listaLocal = dao.getLocalJSON('listaLocal');
+
+        let listaLocal = dao.getLocalJSON('listaLocal') || new Array();
+
+        if(!aux.intoArray(listaLocal,this.id)){
+             //plota e persiste
+             setTimeout(
+                 function(){ appendMusica(obj,listaLocal);},100);
+         } 
 
         let arr = new Array();
-        listaLocal.forEach(function(element) {
-        //  console.log(element)
+            listaLocal.forEach(function(element) {
+            
             let values = Object.values(element);
             arr[values[0].id] = values[0];
         });  
@@ -569,6 +587,7 @@ if ('serviceWorker' in navigator) {
 
         let item = this?this : e.target;
 
+        
         //console.log(item)
 
         let art = item.getAttribute('artInfo');
@@ -588,7 +607,7 @@ if ('serviceWorker' in navigator) {
 
            // let title = data.mus[0].name;  
           //  let letra = data.mus[0].text;
-          //  let artista = data.art.name;
+            let artista = art;
 
           let ovh =JSON.parse(responseHtml).lyrics;
                     
@@ -600,7 +619,10 @@ if ('serviceWorker' in navigator) {
             //let data = JSON.parse(responseHtml);
             //let letra = data.mus[0].text;
             console.log(e.target)
-            let id = 'l' + e.target.id;
+
+            //define como vai ficar no banco
+            let id = 'l' + art+mus;
+                id = id.trim().toLowerCase();
 
             //plota titulo
             titulo.innerText = mus;  
@@ -608,19 +630,19 @@ if ('serviceWorker' in navigator) {
             //plota a letra
             infoLetra.innerText = letra;
 
+            let obj = {
+                [id]:{'letra':letra,"id":id,'musica':mus,'artista':art}
+            };
+    
+           
             //dao
-            let ls = dao.getLocalJSON('listaLocal');
+            let ls = dao.getLocalJSON('listaLocal') || new Array();
 
-            console.log(ls)
-            if(!ls){
-                ls = new Array();
-            }
-            
             //modelagem de elemento - populator
             ls.forEach(function(element)  {
                 if( Object.keys(element) == item.id ){
                 
-              //      console.log(element)
+                    console.log(element)
                     //modelagem
                     element[item.id] = 
                     {
@@ -630,52 +652,51 @@ if ('serviceWorker' in navigator) {
                         'artista':artista
                     };
                 }
-                else{
-                   // console.log(item.id)
-                }
+            
             }
             );
 
-
-            //persiste
+            //persiste - via discografia
             dao.saveLocalJSON('listaLocal',ls);
+
+            //att lista
+            addToList(obj)
+
+
+       
         });  
         
         //funcao de header
         if(btnBolt.value == 1){
+            //verificar se letra existe
             document.getElementById('btnMenuA').click()
         }
     }
 
 
-    function addToList(){
-        
+    function addToList(obj){
     
-    //cria chave e obj
-        let obj = {[this.id]:this.innerText}
-        let listaLocal = new Array();
+  
+        let listaLocal = dao.getLocalJSON('listaLocal') || new Array();
+       
 
-        // 2 cria array caso não exista no Dao
-        if(dao.getLocalJSON('listaLocal')){
-            listaLocal = dao.getLocalJSON('listaLocal'); 
-            if(!aux.intoArray(listaLocal,this.id))
-              {
-                console.log(obj)
-                appendMusica(obj,listaLocal);
-              }
-        }
-        else{
-            appendMusica(obj,listaLocal)
+        let id = (Object.values(obj)[0].id);   
+
+       // console.log(obj)
+
+        if(!aux.intoArray(listaLocal,id))
+            {
+              appendMusica(obj,listaLocal);
         }
     
     }
  
     function appendMusica(obj, lista){
 
+
         lista.push(obj);
 
-        console.log(obj)
-     
+        //persiste via busca geral
         dao.saveLocalJSON('listaLocal',lista);
         //refreash lista
         setTimeout(montaLista,800);
