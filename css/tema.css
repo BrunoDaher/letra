@@ -46,7 +46,7 @@
 
 .iconText{
     display: grid;
-    font-size: 1vh;
+    font-size: 2vh;
     color:var(--active);
     place-items: center;
    
@@ -54,8 +54,8 @@
 
 .configContainer{
     
-    justify-content: space-around;
-    font-size: 1em;
+    justify-content: space-evenly;
+  
 }
 
 .box{
@@ -106,7 +106,9 @@ header > button{
 
 #newList , li {
     display: flex;
-    padding: 0.5vh;
+    padding:  0.5vh;
+
+    font-size: calc(1vh + 1vw + 0.2em);
    
     border-radius: 3px;
     cursor: pointer;
@@ -204,7 +206,7 @@ ul{
 
     overflow-y: scroll;
    
-    position: fixed;
+    position: absolute;
     top: var(--top) + 2vh;
     gap: 1vh;
 
@@ -239,7 +241,7 @@ ul{
     #listaMusicas{
         top: var(--top);
         place-items: baseline;
-        padding: 2vh;
+       
         filter: drop-shadow(2px 4px 6px black);
    
         div {
@@ -269,16 +271,14 @@ ul{
     #config {
        
         top: var(--top);
-        width: 28vh;
+    
      
     }
 
    .fonteContainer{
       
-        margin-top:1vh;
-        font-size: 1rem;
         justify-self: center;
-        display: grid;
+      
     }
 
     #albSongs{

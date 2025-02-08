@@ -4,9 +4,20 @@ body{
     overflow-x: hidden;
 }
 
+.w100{
+    width: 100%;
+}
+
+.w75{
+    width: 75%;
+}
 
 .p0{
     padding:0;
+}
+
+.p2{
+    padding: 2vh;
 }
 
 .m0{

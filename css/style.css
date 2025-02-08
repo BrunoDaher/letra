@@ -6,7 +6,7 @@
 @import url(layout.css);
 
 :root{
-    --top: calc(130px);
+    --top: calc(10vh + 4em);
     --topSides: calc(var(--top) + 8vw);
     --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
     --fundoA: #4d7a8d;
@@ -65,7 +65,7 @@ header{
     
      background-color: var(--fundoD);
    
-     padding: 15px;
+     padding: 2vh;
      text-align: center;
 
      z-index: 2;
@@ -110,13 +110,13 @@ fieldset{
 #myProgress {
     display: none;
     width: 100%;
-    background-color: grey;
+    background-color: var(--colorA);
   }
   
   #myBar {
     width: 1%;
     height: 30px;
-    background-color: white;
+    background-color: var(--colorB);
     text-align: center;
   }
 
@@ -124,8 +124,8 @@ fieldset{
     text-align: center;
     place-items: center;
     vertical-align: -webkit-baseline-middle;
-    color:var(--colorA);
-    filter: drop-shadow(2px 4px 6px #f7f8f4);
+    color:var(--active);
+    
   }
 
   #myProgress.on{

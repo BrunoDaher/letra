@@ -113,8 +113,12 @@ if ('serviceWorker' in navigator) {
     function updateCloud(){
             //console.log('saveCloud');
         //let nome =  document.getElementById('nomeArquivo').value;
+         
+      
 
+        tela.animateBar();
          dao.updateCloud();
+         setTimeout(function(){location.reload()},1200)
         /*
         if(!nome){
             //toDO

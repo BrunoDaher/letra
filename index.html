@@ -68,13 +68,13 @@
             </div>  
         </div>
 
-        <div id="listaMusicas" class="grid1 configContainer sideBox left rad1">
+        <div id="listaMusicas" class="grid1  sideBox left rad1">
         </div>
 
         <div class="grid1 sideBox right rad1" id="config" >
-            <div id="fonteContainer" class="fonteContainer configContainer">
+            <div id="fonteContainer" class="fonteContainer configContainer w75">
                 <label for="fonte">Fonte</label>
-                <input target='infoLetra' type="range" class="" id='fonte' step="0.1" min='1.5'  max="5" value="1.5">      
+                <input  target='infoLetra' type="range" class="w100" id='fonte' step="0.1" min='1.5'  max="5" value="1.5">      
             </div>
             
             <!--
@@ -84,58 +84,55 @@
             </div>
             -->
 
-            <div id="tabulacao" class="fonteContainer configContainer">
+            <div id="tabulacao" class="fonteContainer configContainer w75">
                 <label for="colunas">Colunas</label>
-                <input target="infoLetra" type="range" class="" id='colunas' step="1" min='1'  max="3" value="0.1">
+                <input target="infoLetra" type="range" class="w100" id='colunas' step="1" min='1'  max="3" value="0.1">
             </div>  
             
-            <div class="fonteContainer configContainer">
+            <div class="fonteContainer configContainer w75">
                
                   <div id="alignTool" class=" flex central">
                       <button target="infoLetra" class="setAlign" value="start" > <i class="bi bi-text-left a2"></i></button> 
                       <button  target="infoLetra" class="setAlign" value="center">  <i class="bi bi-text-center a2"></i></button> 
                       <button target="infoLetra" class="setAlign" value="end">  <i class="bi bi-text-right a2"></i></button> 
                   </div> 
-              </div>
+           </div>
             
- 
- 
+            <div id="loadCloud" class="iconText flex configContainer ">
                 
-                <div id="loadCloud" class="iconText flex configContainer">
-                   
-                    <div id="save" class="iconText configContainer " >
-                        <input type="text" id="nomeArquivo" class="off">
-                        <button target="" type="button"  id='btnSaveCloud'>
-                            <i class="bi bi-cloud-arrow-up a2 colorChroma"></i>
-                        </button>
-                        <label for="saveCloud">Cloud</label>
-                    </div>  
-                   
-                    <div class="iconText configContainer">
-                        <button target="" type="button"  id='btnLoadCloud'>
-                            <i class="bi bi-cloud-arrow-down a2"></i>
-                        </button>
-                        <label>Load</label>
-                    </div>
-
-                    <div id="export" class="iconText configContainer a2">
-                        <button type="button"  id='btnExport'>
-                            <i class="bi bi-filetype-json a2"></i>
-                        </button>
-                        <label for="export">Export</label>
-                    </div>  
-                </div>
-                    
-                <div id="load" class="iconText configContainer" style="display: none;">
-                 
-                    <button target="dataLoad" type="button"  id='btnUpload'>
-                        <i class="bi bi-cloud-arrow-up-fill a3"></i>
+                <div id="save" class="iconText configContainer " >
+                    <input type="text" id="nomeArquivo" class="off">
+                    <button target="" type="button"  id='btnSaveCloud'>
+                        <i class="bi bi-cloud-arrow-up a2 colorChroma"></i>
                     </button>
-                        <div hidden> 
-                            <input id='inputFile' type="file">
-                        </div>
-                    <label for="save">Load File</label>    
+                    <span for="saveCloud" class="">Cloud</span>
                 </div>  
+                
+                <div class="iconText configContainer">
+                    <button target="" type="button"  id='btnLoadCloud'>
+                        <i class="bi bi-cloud-arrow-down a2"></i>
+                    </button>
+                    <span>Load</span>
+                </div>
+
+                <div id="export" class="iconText configContainer a2">
+                    <button type="button"  id='btnExport'>
+                        <i class="bi bi-filetype-json a2"></i>
+                    </button>
+                    <span for="export">Export</span>
+                </div>  
+            </div>
+                
+            <div id="load" class="iconText configContainer" style="display: none;">
+                
+                <button target="dataLoad" type="button"  id='btnUpload'>
+                    <i class="bi bi-cloud-arrow-up-fill a3"></i>
+                </button>
+                    <div hidden> 
+                        <input id='inputFile' type="file">
+                    </div>
+                <label for="save">Load File</label>    
+            </div>  
             
         </div>
 

@@ -40,7 +40,14 @@ class Dao extends ApiCloud{
     updateCloud(){
      // this.apiCloud.updateLog(user);
      //from super()
-     this.updateBin();
+     try {
+      this.updateBin();
+    
+      //alert('salvo')
+     } catch (error) {
+      //alert('erro salvar')
+     }
+  
     }
 
     saveLocalJSON (id,item){

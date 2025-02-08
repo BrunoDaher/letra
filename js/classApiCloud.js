@@ -119,6 +119,10 @@ class ApiCloud { //extends Dao{
             }
             };
 
+            let a = document.createElement('a');
+            a.innerText = 'Lista salva';
+            document.getElementById('myBar').append(a);
+
             req.open("PUT", "https://api.jsonbin.io/v3/b/" + this.binId, true);
             req.setRequestHeader("Content-Type", "application/json");
             req.setRequestHeader("X-Bin-Private", "true");
