@@ -729,6 +729,11 @@ if ('serviceWorker' in navigator) {
                             }
                         
                                 infoMus.innerText = alb.name;
+
+                                document.getElementById('infoAlb').src = alb.image[2]['#text']
+
+                             //   console.log(alb.image[2]['#text'])
+
                             tela.typing(alb.name,infoMus);
 
                             albSongEvent();

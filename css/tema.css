@@ -28,6 +28,9 @@
     color: red;
 }
 
+.corPrimaria{
+    color: var(--active);
+}
 
 .painel{
     align-content: center;
@@ -259,9 +262,8 @@ ul{
     #albSongs > li{
         align-items: center;
         cursor: pointer;
-        gap: 2vh;
-        margin: 2vh;
-        font-size: 2.5vh;
+        margin: 1vh 2vh;
+        font-size: 3vh;
     }
 
     #config {

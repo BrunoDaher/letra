@@ -116,7 +116,7 @@
     filter: invert(1);
 }
 
-i{ 
+i,a,span{ 
     &.a1{
         font-size: 16px;
     }
@@ -212,6 +212,16 @@ input{
     filter: drop-shadow(2px 4px 6px black);
     zoom: 1.1;
 }
+
+.miniEncarte{
+    position: absolute;
+    z-index: 2;
+    width: 12vh;
+    margin: 5px 2vh;
+    border-radius: 4px;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
 
 button:hover{
     filter: drop-shadow(2px 4px 6px black);

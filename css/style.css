@@ -20,6 +20,15 @@
    --width:90%;
 }
 
+.sombra{
+
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.bgNone{
+    background: none !important;
+}
+
 input{
     accent-color: rgba(214, 214, 204, 0.698);
 }
