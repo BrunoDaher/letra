@@ -5,6 +5,7 @@ import Tela from "./classTela.js";
 import Dao from "./classDao.js";
 import User from "./classUser.js"
 import Aux from "./classAux.js"
+import DragAndDrop from "./classDragDrop.js";
 
 
 //previne o zoom com dois touchs ou dois cliques
@@ -25,6 +26,7 @@ if ('serviceWorker' in navigator) {
     });
   }
   
+
 
 // Variaveis
     const objLetra = new Letra();
@@ -103,6 +105,15 @@ if ('serviceWorker' in navigator) {
     pesquisa();
     montaLista()
 
+    new DragAndDrop('listaMusicas', {
+        onDragStart: (event) => {
+          console.log(`Início do drag para o item: ${event.target.textContent}`);
+        },
+        onDrop: (event, item) => {
+          console.log(`Item "${item.textContent}" foi solto.`);
+        },
+      });
+
     function loadCloud(){
         console.log("LoadCloud")
         tela.animateBar();
@@ -111,10 +122,10 @@ if ('serviceWorker' in navigator) {
     }
 
     function updateCloud(){
+
             //console.log('saveCloud');
         //let nome =  document.getElementById('nomeArquivo').value;
-         
-      
+        
 
         tela.animateBar();
          dao.updateCloud();
@@ -154,7 +165,7 @@ if ('serviceWorker' in navigator) {
        
         let nodes = listaMusicas.childNodes;
 
-        console.log(nodes)
+       // console.log(nodes)
 
         nodes.forEach(function(element) {
             element.childNodes[0].classList.remove('active')
@@ -195,7 +206,7 @@ if ('serviceWorker' in navigator) {
 
                     //listaMusicas.append(element);
                     
-                    tela.addToDiv('div',el,listaMusicas,getLocalMusic);
+                    tela.addToDiv('span',el,listaMusicas,getLocalMusic);
                     
                 });
         }

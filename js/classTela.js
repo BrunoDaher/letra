@@ -197,6 +197,7 @@ class Tela {
         
         let li = document.createElement('li');
             li.innerText = element.song;
+            li.className
             
             //pra musicas listadas na busca  - barra lateral esquerda
             if(container.id != 'albSongs'){ 

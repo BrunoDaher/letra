@@ -7,6 +7,10 @@
     background: var(--fundoC);
 }
 
+.dragging{
+    color: red !important;
+}
+
 .off{
     display: none !important;
 }
@@ -167,7 +171,7 @@ ul{
 #trackSugestions{
      /* top: calc(var(--top) + 14vh); */
     /* padding: 1vh 0; */
-    height: calc(60vh - 5vw);
+  /*  height: calc(60vh - 5vw);*/
     padding: 2vh;
     opacity: 0;
     /* justify-items: center; */
@@ -244,7 +248,7 @@ ul{
        
         filter: drop-shadow(2px 4px 6px black);
    
-        div {
+        span {
             display: flex;
             flex-direction: row-reverse;
             gap:4px;
@@ -312,7 +316,8 @@ ul{
 }
 
 .banda:hover{
-    background-color: dimgrey;
+
+    color: var(--active);
     cursor: pointer;
 }
 
