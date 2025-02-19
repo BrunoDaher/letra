@@ -9,7 +9,7 @@ export class ApiLastFM {
         
         let path = `https://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${string}&api_key=${this.apiKey}&format=json`
         
-        console.log(path)
+        
         return path;  
     }
 

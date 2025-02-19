@@ -268,6 +268,7 @@ ul{
         align-items: center;
         cursor: pointer;
         margin: 1vh 2vh;
+        filter: contrast(0.5);
        
     }
 
@@ -334,7 +335,7 @@ ul{
 
 #discos{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
     overflow-y: scroll;
     max-height: 60vh;
     /* height: fit-content; */
@@ -365,7 +366,7 @@ ul{
             }
 
             @media (min-width:420px) and (max-width:620px){
-                    grid-template-columns: repeat(4,1fr);
+                    grid-template-columns: repeat(3,1fr);
                 }
 }
 
