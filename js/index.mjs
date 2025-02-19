@@ -25,6 +25,8 @@ if ('serviceWorker' in navigator) {
       });
     });
   }
+
+  
   
 
 
@@ -62,6 +64,7 @@ if ('serviceWorker' in navigator) {
         item.addEventListener('click',tela.newModalGroup);
      });
 
+    const divArtistas = document.getElementById('divArtistas');
     const listaArtistas = document.getElementById('listaArtistas');
     const trackMus = document.getElementById('trackMus');
     
@@ -98,12 +101,34 @@ if ('serviceWorker' in navigator) {
     const btnLoadCloud = document.getElementById('btnLoadCloud');
           btnLoadCloud.addEventListener('click',loadCloud);
   
-
+          gestos();
     //----------------Buildings---------------
     //tela.nodeMenu(header);
   
     pesquisa();
-    montaLista()
+    montaLista();
+
+   
+
+
+    function gestos(){
+
+        
+        
+        document.addEventListener('touchstart', function (event) {
+            if (event.touches.length > 1) {
+              const zoomableDiv = document.getElementById('zoomable');
+              const isInsideZoomableDiv = zoomableDiv.contains(event.target);
+      
+              if (!isInsideZoomableDiv) {
+                // Bloqueia zoom fora da div específica
+                event.preventDefault();
+              }
+            }
+          }, { passive: false });
+
+
+    }
 
     new DragAndDrop('listaMusicas', {
         onDragStart: (event) => {
@@ -234,7 +259,7 @@ if ('serviceWorker' in navigator) {
         //LastFM
         function searchArtist(){
             //exibe lista
-            listaArtistas.classList.add('active');
+            divArtistas.classList.add('active');
 
             fetch(api.getArt(this.value))
                 .then( function(response)  {        
@@ -251,6 +276,7 @@ if ('serviceWorker' in navigator) {
                         let artistas = data.results.artistmatches.artist //data.response.docs; <- old vagalume
 
                         //limpa lista
+                        
                         listaArtistas.innerText = '';
                         
                         artistas.forEach(function(element) {
@@ -324,7 +350,7 @@ if ('serviceWorker' in navigator) {
     function getArtInfo(event) {
         //console.log("API artInfo - vagalume")
 
-        listaArtistas.classList.remove('active');
+        divArtistas.classList.remove('active');
         let returnDisco = document.getElementById('listaDiscos');  
        
         //lastFM - busca pelo nome do artista

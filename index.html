@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<header class="grid3">
+<header class="flex between">
     <button id="btnMenuA" target="menuA" class="btn">
         <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">-->
         <i class="bi bi-file-text a2"></i>
@@ -36,8 +36,9 @@
     </div>
     
     <menu id="menuA">
+      
         <div class="painel fundoGradiente">
-            <div class="flex around alignCenter" style="padding: 0 2vh;">
+            <div class="flex between alignCenter" style="padding: 0 2vh;">
             
                 <button class="btn flex gap1" target="listaMusicas" id="btnSetList">
                     <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="setList">-->
@@ -46,18 +47,11 @@
                     <a class="lbl">Lista</a>
                 </button> 
                 <input hidden type="button" id="listObserver">
-                <div class="" style="width: 150px;text-align: center;">
+                <div class="" style="text-align: center;">
                     <label id="titulo" for="scroll-container"></label>
                 </div>
 
-                <div class="slideControll">
-                    <button id="btnLastSong" class="back" value="Back">
-                        <i class="bi bi-caret-left-fill a4"></i>
-                    </button>
-                    <button id="btnNextSong" class="forward" value="Go">
-                        <i class="bi bi-caret-right-fill a4"></i>
-                    </button>
-                 </div>
+              
 
                 <button class="btn flex gap1" target="config" id="btnConfig">
                     <a class="lbl">Config</a>
@@ -72,6 +66,7 @@
         </div>
 
         <div class="grid1 sideBox right rad1" id="config" >
+            
             <div id="fonteContainer" class="fonteContainer configContainer w75">
                 <label for="fonte">Fonte</label>
                 <input  target='infoLetra' type="range" class="w100" id='fonte' step="0.1" min='1.5'  max="5" value="1.5">      
@@ -137,6 +132,14 @@
         </div>
 
         <div id="scroll-container">
+            <div class="slideControll">
+                <button id="btnLastSong" class="back" value="Back">
+                    <i class="bi bi-caret-left-fill a4"></i>
+                </button>
+                <button id="btnNextSong" class="forward" value="Go">
+                    <i class="bi bi-caret-right-fill a4"></i>
+                </button>
+             </div>
             <pre id="infoLetra" class=""></pre>
             <pre id="letraAtual"></pre>
         </div>
@@ -147,7 +150,7 @@
         <fieldset>
             <legend hidden>Discografia</legend>
             <div class="box-pesquisa">
-                <input target = 'listaArtistas' class="inputPesquisa fundoGradiente" type="text" placeholder="artista">
+                <input target = 'divArtistas' class="inputPesquisa fundoGradiente" type="text" placeholder="artista">
                 <button id="btnBolt2" value=0 target="menuB">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="bolt">
                 </button>
@@ -157,7 +160,7 @@
             <div class="wrapper grid1">
                   <!--pesquisa e botoes-->
                   <div id="painelDiscog" class="flex central">
-                        <button class="btnToggle"target="listaArtistas" id="btnListaArt">
+                        <button class="btnToggle"target="divArtistas" id="btnListaArt">
                         <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">-->
                         <i class="bi bi-list-check a2"></i>
                         </button> 
@@ -171,18 +174,20 @@
                         </button>
                     </div>
             <!-- -->
-                <fieldset id="listaArtistas" class="rad1 accord scrollY">
-                   <legend>Artistas</legend>
+           
+                <fieldset id="divArtistas" class="rad1 accord scrollY">
+                    <legend class="bgNone  a1 ">Artistas</legend>
+                    <div id="listaArtistas"></div>>
                 </fieldset>
 
                 <fieldset id="discoBox" class="discoBox accord">
-                    <legend id="infoMus" class="typing bgNone">Faixas</legend>
+                    <legend id="infoMus" class="typing bgNone  a1">Faixas</legend>
                     <img src="" class="miniEncarte" id="infoAlb">
                     <div id="albSongs" class="discoBox"></div>
                 </fieldset>
               
                 <fieldset id="listaDiscos" class="accord" >
-                    <legend class="bgNone corPrimaria sombra "><span id="labelDiscos" class="a2">Discos</span></legend>
+                    <legend class="bgNone  sombra a1" id="labelDiscos">Discos</legend>
                     <div id="discos" class="accord rad1">
                     </div>
                 </fieldset>

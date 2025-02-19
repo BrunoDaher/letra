@@ -34,14 +34,16 @@ pre{
 #infoLetra{
 
     transform:none;
-    transition: transform 0.2s;
+    transition: transform 0.9s cubic-bezier(0, 0, 3.2, 4.2); 
     
     &.active{
         transform:translateX(1110px);
+        transition: transform 0.9s;
     }
 
     &.goingout{
         transform: translateX(-1110px);
+        transition: transform 0.9s;
        
     }
 }

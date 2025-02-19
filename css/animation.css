@@ -6,13 +6,10 @@
     transition: all 0.3s;
   }
 
-  .infoLetra{
-    
-  }
 
 .scrollY{
   overflow-y: scroll;
-  max-height: 25em;
+  max-height: 70vh;
 }  
 
   /* Estilo para o item arrastado */
@@ -26,7 +23,6 @@
 .dragging:focus {
   outline: none;
 }
-
 
   
 

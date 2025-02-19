@@ -56,12 +56,6 @@ input{
     font-style: italic;
 }
 
-body{
-    margin:0; 
-    padding: 0;
-    background-color: var(--fundoC);
-}
-
 legend{
     font-size: 2.5vh;
     padding: 3px;
@@ -114,8 +108,11 @@ input{
 }
 
 fieldset{
+    border:none;
+    /*
     border-radius: 4px;
     border-color: var(--fundoD);
+    */
 }
 
 #myProgress {

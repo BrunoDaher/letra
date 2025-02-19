@@ -216,8 +216,8 @@ input{
 .miniEncarte{
     position: absolute;
     z-index: 2;
-    width: 12vh;
-    margin: 5px 2vh;
+    width: 7vh;
+    margin: 0px 4vh;
     border-radius: 4px;
     filter: drop-shadow(2px 4px 6px black);
 }
