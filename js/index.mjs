@@ -118,7 +118,7 @@ if ('serviceWorker' in navigator) {
         console.log("LoadCloud")
         tela.animateBar();
         dao.loadCloud(1);
-        setTimeout(function(){location.reload()},1200)
+        //setTimeout(function(){location.reload()},1200)
     }
 
     function updateCloud(){
@@ -158,7 +158,7 @@ if ('serviceWorker' in navigator) {
     function changeSong(){
 
 
-        console.log(titulo)
+     //   console.log(titulo)
 
         let t = titulo.getAttribute('idSong').replace("_","");
         let tLoc = document.getElementById('div'+t);

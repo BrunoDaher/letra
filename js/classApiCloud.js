@@ -68,8 +68,11 @@ class ApiCloud { //extends Dao{
              let a = document.createElement('a');
               a.innerText = 'Lista Atualizada';
               document.getElementById('myBar').append(a);
+
+              location.reload()
           }
           else{
+           // console.log('sem dados')
             return false
           }
         };
