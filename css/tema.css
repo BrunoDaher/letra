@@ -208,7 +208,7 @@ ul{
 
     overflow-y: scroll;
    
-    position: absolute;
+    position: fixed;
     top: var(--top) + 2vh;
     gap: 1vh;
 
