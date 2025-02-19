@@ -217,8 +217,9 @@ class Tela {
                     li.id= element.id 
                     li.addEventListener('click',hideParents);
 
-                    div.append(li);
                     div.append(btnTrash);
+                    div.append(li);
+                   
                     container.append(div);
             }
             else{

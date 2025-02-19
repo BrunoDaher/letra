@@ -21,8 +21,15 @@
 }
 
 .banda{
-    margin:1em;
+    margin:1vh;
 }
+
+.banda:hover{
+
+    color: var(--active);
+    cursor: pointer;
+}
+
 
 .sombra{
 

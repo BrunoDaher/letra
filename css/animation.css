@@ -10,6 +10,24 @@
     
   }
 
+.scrollY{
+  overflow-y: scroll;
+  max-height: 25em;
+}  
+
+  /* Estilo para o item arrastado */
+.dragging {
+  background-color: var(--fundoA) !important; /* Cor de fundo durante o arrasto */
+  color:var(--fundoC) !important; /* Cor do texto */
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+/* Para remover as bordas padrão ou outros estilos */
+.dragging:focus {
+  outline: none;
+}
+
+
   
 
   /* for Chrome */

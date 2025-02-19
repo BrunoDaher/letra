@@ -7,9 +7,7 @@
     background: var(--fundoC);
 }
 
-.dragging{
-    color: red !important;
-}
+
 
 .off{
     display: none !important;
@@ -250,12 +248,12 @@ ul{
    
         span {
             display: flex;
-            flex-direction: row-reverse;
-            gap:4px;
-
+            width: 100%;
+           /* flex-direction: row-reverse;*/
+            
             cursor: pointer;
             border-width: 0px 0px 1px 0px;
-            width: fit-content;
+            width: 100%;
             transition: all 0.3s;
 
             &.selected{
@@ -315,11 +313,6 @@ ul{
  
 }
 
-.banda:hover{
-
-    color: var(--active);
-    cursor: pointer;
-}
 
 .rad1{
     border-radius: 7px;
