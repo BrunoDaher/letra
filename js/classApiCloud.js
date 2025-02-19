@@ -91,7 +91,7 @@ class ApiCloud { //extends Dao{
           if (req.readyState == XMLHttpRequest.DONE) {
             let dados  = JSON.parse(req.responseText);
             
-            console.log(dados);
+           // console.log(dados);
 
           //  console.log(this.dao)
            //console.log(JSON.parse(dados.record));

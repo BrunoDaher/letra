@@ -158,14 +158,14 @@ if ('serviceWorker' in navigator) {
     function changeSong(){
 
 
-     //   console.log(titulo)
+       console.log(titulo)
 
         let t = titulo.getAttribute('idSong').replace("_","");
         let tLoc = document.getElementById('div'+t);
        
         let nodes = listaMusicas.childNodes;
 
-       // console.log(nodes)
+        console.log(nodes)
 
         nodes.forEach(function(element) {
             element.childNodes[0].classList.remove('active')
@@ -174,12 +174,12 @@ if ('serviceWorker' in navigator) {
         let no ;
 
         if(this.value == "Go"){
-            no = tLoc.nextElementSibling.childNodes[0];
+            no = tLoc.nextElementSibling.childNodes[1];
             slideTarget = true;
         }
     
         if(this.value == "Back"){
-            no = tLoc.previousElementSibling.childNodes[0];
+            no = tLoc.previousElementSibling.childNodes[1];
             slideTarget = false;
         }
 
@@ -516,7 +516,6 @@ if ('serviceWorker' in navigator) {
     function getLocalMusic()
     {
 
-        console.log(this)
       //  console.log(event.target)
         /* seleção de item dentro de menu */
         let div = this.parentNode;
