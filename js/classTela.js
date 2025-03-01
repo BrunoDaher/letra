@@ -215,7 +215,7 @@ class Tela {
                     btnTrash.addEventListener('click',this.removeIt);
                 
                     li.id= element.id 
-                    li.addEventListener('click',hideParents);
+                   // li.addEventListener('click',hideParents);
 
                     div.append(btnTrash);
                     div.append(li);
@@ -234,7 +234,7 @@ class Tela {
                 nodes.forEach(function(element) {
                     element.childNodes[0].classList.remove('active');
                 });
-            this.classList.add('active')
+           // this.classList.add('active')
         }
     }
 

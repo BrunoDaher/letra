@@ -7,6 +7,10 @@ import User from "./classUser.js"
 import Aux from "./classAux.js"
 import DragAndDrop from "./classDragDrop.js";
 
+//impedir xss
+import * as DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@2.0.9/dist/purify.min.js';
+
+
 
 //previne o zoom com dois touchs ou dois cliques
 document.addEventListener('dblclick', function(event) {
@@ -31,6 +35,9 @@ if ('serviceWorker' in navigator) {
 
 
 // Variaveis
+
+
+
     const objLetra = new Letra();
     const api = new Api();
     const tela = new Tela();
@@ -108,9 +115,6 @@ if ('serviceWorker' in navigator) {
     pesquisa();
     montaLista();
 
-   
-
-
     function gestos(){
 
         
@@ -183,18 +187,19 @@ if ('serviceWorker' in navigator) {
     function changeSong(){
 
 
-       console.log(titulo)
+    //   console.log(titulo)
 
         let t = titulo.getAttribute('idSong').replace("_","");
         let tLoc = document.getElementById('div'+t);
        
         let nodes = listaMusicas.childNodes;
-
-        console.log(nodes)
+       
 
         nodes.forEach(function(element) {
             element.childNodes[0].classList.remove('active')
         });
+
+        
 
         let no ;
 
@@ -209,7 +214,7 @@ if ('serviceWorker' in navigator) {
         }
 
         no.click();
-        no.classList.add('active')
+     //   no.classList.add('active')
         
     }
 
@@ -226,6 +231,7 @@ if ('serviceWorker' in navigator) {
 
                     element = element[Object.keys(element)];
                 //  console.log(element)
+
 
                     let el =  {name:element.artista + ' ' + element.musica, id:element.id,'song':element.musica}
 
@@ -454,6 +460,8 @@ if ('serviceWorker' in navigator) {
                     return response.ok ? response.text() : false; 
                 })//retorna HTML
                 .then(function(responseHtml){
+
+                   // console.log(responseHtml);
  
                     //para letras de ovh api
                         let ovh =JSON.parse(responseHtml).lyrics;
@@ -467,12 +475,12 @@ if ('serviceWorker' in navigator) {
                     //let data = JSON.parse(responseHtml);
                     //let letra = data.mus[0].text;
 
-                    console.log(e.target)
+                   // console.log(letra)
 
                     let id = 'l' + artista + musica;
                         id = id.trim().toLowerCase();
 
-                    console.log(id.trim().toLowerCase());
+                //    console.log(id.trim().toLowerCase());
                  
                     e.target.id = id; 
                    // artista = data.art.name;
@@ -552,7 +560,7 @@ if ('serviceWorker' in navigator) {
         //node menu
         for (let item of collection) {
            // console.log(item);
-            item.classList.remove('selected')
+            item.classList.remove('selected');
         }
 
         this.classList.add('selected')
@@ -625,20 +633,29 @@ if ('serviceWorker' in navigator) {
       
     }
 
-    function getMusicInfo(e){
+    async function getMusicInfo(e){
 
         let item = this?this : e.target;
 
-        
         //console.log(item)
 
         let art = item.getAttribute('artInfo');
         let mus = item.getAttribute('artMus');
 
+        let data = await fetch(api.getArtMusic(art,mus));
+
+        if(data.ok){
+            console.log(data)
+        }
+        else{
+            console.log('erro')
+        }
+
+
        // console.log('get by Id')
         //fetch(api.getMusicById(item.id))
         fetch(api.getArtMusic(art,mus)).then( function(response)   {     
-            //console.log(response)
+          //  console.log(response)
             return response.ok ? response.text() : false; 
         })//retorna HTML
         .then( function(responseHtml)
@@ -660,7 +677,7 @@ if ('serviceWorker' in navigator) {
             //tabulando dados
             //let data = JSON.parse(responseHtml);
             //let letra = data.mus[0].text;
-            console.log(e.target)
+           // console.log(e.target)
 
             //define como vai ficar no banco
             let id = 'l' + art+mus;
@@ -706,7 +723,7 @@ if ('serviceWorker' in navigator) {
 
 
        
-        });  
+        })
         
         //funcao de header
         if(btnBolt.value == 1){
@@ -761,12 +778,12 @@ if ('serviceWorker' in navigator) {
                        //eventos
                         thumbDiv.addEventListener('click',function(){
                             if(faixas.name){
-                               musContainer.innerHTML = `<li class="getLyric">${faixas.name}</li>`;
+                               musContainer.innerHTML = DOMPurify.sanitize(`<li class="getLyric">${faixas.name}</li>`);
                             }
                             else{
                                 musContainer.innerHTML = "";
                                 faixas.forEach(function(faixa) {
-                                     musContainer.innerHTML += `<li class="getLyric">${faixa.name}</li>`;
+                                     musContainer.innerHTML += DOMPurify.sanitize(`<li class="getLyric">${faixa.name}</li>`);
                                 });
                             }
                         

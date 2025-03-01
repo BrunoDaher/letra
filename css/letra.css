@@ -33,7 +33,7 @@ pre{
 
 #infoLetra{
 
-    transform:none;
+    transform:text-capitalize;
     transition: transform 0.9s cubic-bezier(0, 0, 3.2, 4.2); 
     
     &.active{
@@ -42,6 +42,7 @@ pre{
     }
 
     &.goingout{
+       
         transform: translateX(-1110px);
         transition: transform 0.9s;
        

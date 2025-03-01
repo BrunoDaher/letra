@@ -40,7 +40,11 @@ export class Api {
        // console.log(art)
         art = this.normalizeInput(art);
         mus = this.normalizeInput(mus);
+        
+        mus = mus.toLowerCase();
         mus = mus.replace('-live','');
+        mus = mus.replace('-remastered','');
+        mus = mus.replace('-remasterizado','');
      
         return apiVagalume.getArtMusic(art,mus);
     }

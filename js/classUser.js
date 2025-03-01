@@ -7,7 +7,7 @@ class User {
     listaDeMusicas;
     
     constructor(id){
-       this.setId(id)
+       this.setId(id);
     }
 
     setId(id){
