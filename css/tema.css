@@ -286,8 +286,12 @@ ul{
     }
 
     #albSongs{
+        top:2vh;
         height: 62vh;
         overflow-y: scroll;
+        /* align-content: center; */
+        width: fit-content;
+        justify-self: center;
     }
 
 .lista {

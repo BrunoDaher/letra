@@ -20,6 +20,14 @@
    --width:90%;
 }
 
+.pos-abs{
+    position: absolute;
+}
+
+.pos-rel{
+    position: relative;
+}
+
 .banda{
     margin:1vh;
 }

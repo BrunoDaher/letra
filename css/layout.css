@@ -43,12 +43,12 @@ html, body {
 
 .grid1{
     display: grid;
-    gap: 1em;
+    gap: 1vh;
 }
 
 .grid2{
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     gap: 1vh;
     /* grid-template-columns: auto; */
     place-items: center;

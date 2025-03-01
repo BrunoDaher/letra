@@ -37,7 +37,6 @@ if ('serviceWorker' in navigator) {
 // Variaveis
 
 
-
     const objLetra = new Letra();
     const api = new Api();
     const tela = new Tela();
@@ -783,7 +782,7 @@ if ('serviceWorker' in navigator) {
                             else{
                                 musContainer.innerHTML = "";
                                 faixas.forEach(function(faixa) {
-                                     musContainer.innerHTML += DOMPurify.sanitize(`<li class="getLyric">${faixa.name}</li>`);
+                                     musContainer.innerHTML += `<li class="getLyric">${faixa.name}</li>`;
                                 });
                             }
                         
