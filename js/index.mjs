@@ -18,21 +18,22 @@ document.addEventListener('dblclick', function(event) {
 });
 
 //service worker
+// main.js ou seu arquivo principal JS
 
-// Verifica se o navegador suporta Service Workers
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('./js/service-worker.js').then(function(registration) {
-        console.log('ServiceWorker registrado com sucesso: ', registration);
-      }).catch(function(error) {
-        console.log('Falha ao registrar o ServiceWorker: ', error);
-      });
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('./js/service-worker.js') // Caminho do Service Worker
+        .then((registration) => {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch((error) => {
+          console.log('Falha ao registrar o Service Worker:', error);
+        });
     });
   }
-
   
   
-
 
 // Variaveis
 
@@ -202,17 +203,21 @@ if ('serviceWorker' in navigator) {
 
         let no ;
 
-        if(this.value == "Go"){
+
+        if(this.value == "Go" && tLoc.nextElementSibling){
+
             no = tLoc.nextElementSibling.childNodes[1];
             slideTarget = true;
+            no.click();
         }
     
-        if(this.value == "Back"){
+        if(this.value == "Back" && tLoc.previousElementSibling){
             no = tLoc.previousElementSibling.childNodes[1];
             slideTarget = false;
+            no.click();
         }
 
-        no.click();
+       
      //   no.classList.add('active')
         
     }
@@ -610,7 +615,6 @@ if ('serviceWorker' in navigator) {
 
             //inativa
             setTimeout(function(){
-
                     infoLetra.classList.add(fwd);
                     infoLetra.classList.remove('off');
             },200);
@@ -627,8 +631,27 @@ if ('serviceWorker' in navigator) {
         //logica
         titulo.setAttribute('idSong','_' + this.id);
 
+        // -- hide parents
+                // inativa elementos irmaos
+                //ativa elemento atual
+
+            let m = this.parentNode.parentNode.childNodes;
+
+            m.forEach(element => {
+                element.childNodes[1].classList.remove('active');
+
+            });
+
+            this.classList.add('active');
+        // -- hide parents
+
+
         //omitir menu
-        listaMusicas.classList.remove('active');
+        //se estiver ativo
+        if(btnSetList.classList.contains('active')){
+            btnSetList.click();
+        }
+        
       
     }
 
@@ -644,7 +667,7 @@ if ('serviceWorker' in navigator) {
         let data = await fetch(api.getArtMusic(art,mus));
 
         if(data.ok){
-            console.log(data)
+          //  console.log(data)
         }
         else{
             console.log('erro')

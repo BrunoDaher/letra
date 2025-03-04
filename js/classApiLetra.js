@@ -1,8 +1,7 @@
-const urlApi =  "https://api.vagalume.com.br";
-const urlHttp =  "https://www.vagalume.com.br";
+
 
 //const url = 
-export default class apiVagalume {
+export default class apiLetra {
 
     constructor(){
         this.apiKey = 'apiKey=154b4603a98cc875d8e46606cd2585ba'; // Vagalume

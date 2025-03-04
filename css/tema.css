@@ -4,7 +4,7 @@
     height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--fundoC);
+    background: var(--fundoA) !important;
 }
 
 
@@ -205,20 +205,18 @@ ul{
   
     background-color: var(--fundoD);
 
+
     overflow-y: scroll;
    
     position: fixed;
-    top: var(--top) + 2vh;
+    top: var(--top);
     gap: 1vh;
 
-    max-height: 70%;
-
-    padding: 2vh 1vh;
-    margin: 1vh 2vh;
+    max-height: calc(100svh - var(--top) - 40px);
 
     transition: all 0.8s;
 
-    filter: drop-shadow(2px 4px 6px black);
+   /* filter: drop-shadow(2px 4px 6px black);*/
 }
         .left{
             left: -100vw;
@@ -242,16 +240,19 @@ ul{
        
 
     #listaMusicas{
-        top: var(--top);
+
         place-items: baseline;
-       
-        filter: drop-shadow(2px 4px 6px black);
+        
+        padding: 2vh;
+        gap: 3vh;
+
+        /*filter: drop-shadow(2px 4px 6px black);*/
    
         span {
             display: flex;
             width: 100%;
            /* flex-direction: row-reverse;*/
-            
+
             cursor: pointer;
             border-width: 0px 0px 1px 0px;
             width: 100%;
@@ -274,7 +275,11 @@ ul{
 
     #config {
        
-        top: var(--top);
+
+        padding: 2vh 0;
+        
+        display: grid;
+        gap: 2vh;
     
      
     }

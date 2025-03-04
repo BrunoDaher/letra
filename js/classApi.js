@@ -1,9 +1,9 @@
 import ApiLastFM from "./classApiLastFM.js";
-import ApiVagalume from "./classApiVagalume.js";
+import ApiLetra from "./classApiLetra.js";
 
 
 const apiLastFM = new ApiLastFM();
-const apiVagalume = new ApiVagalume();
+const apiLetra = new ApiLetra();
 
 
 //const url = 
@@ -46,7 +46,7 @@ export class Api {
         mus = mus.replace('-remastered','');
         mus = mus.replace('-remasterizado','');
      
-        return apiVagalume.getArtMusic(art,mus);
+        return apiLetra.getArtMusic(art,mus);
     }
 
     getMusLocal(busca){
@@ -66,7 +66,7 @@ export class Api {
     searchTrack(string){
         string = string.replaceAll('-',' '); 
         return apiLastFM.searchTrack(string);
-        //return  apiVagalume.searchTrack(string);  
+        //return  apiLetra.searchTrack(string);  
     }
 
     //aux
@@ -81,13 +81,13 @@ export class Api {
     //vagalume
     getFoto(band){
         band = this.normalizeInput(band);
-        return apiVagalume.getFoto(band);
+        return apiLetra.getFoto(band);
     }
 
     //vagalume
     getCurrentFoto(){
        //console.log(this.dao.getSessionJSON('artist').pic_small)
-        return  apiVagalume.getCurrentFoto();
+        return  apiLetra.getCurrentFoto();
     }
 
     //lastFM
@@ -98,20 +98,20 @@ export class Api {
     //vagalume
     getMusicById(musId){          
        
-       return apiVagalume.getMusicById(musId);
-        // return apiVagalume.getMusicById(musId);
+       return apiLetra.getMusicById(musId);
+        // return apiLetra.getMusicById(musId);
      }
     
      //vagalume
      getArt(art){        
         art = this.normalizeInput(art);      
         return apiLastFM.searchArtist(art);
-        return apiVagalume.getArt(art);
+        return apiLetra.getArt(art);
     }
     //vagalume
     getArtSync(art){        
         art = this.normalizeInput(art);      
-        return apiVagalume.getArtSync(art);
+        return apiLetra.getArtSync(art);
     }
   
     //vagalume

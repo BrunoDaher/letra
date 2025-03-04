@@ -226,6 +226,7 @@ class Tela {
                 container.append(li);
             }
 
+           
             li.addEventListener('click',fn);
 
         function hideParents(){

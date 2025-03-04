@@ -1,9 +1,9 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Impede o scroll horizontal */
-    width: 100%; /* Garante que o layout não ultrapasse a largura da tela */
-    height: 100%;
+    overflow: hidden ; /* Impede o scroll horizontal */
+    max-width: 100%; /* Garante que o layout não ultrapasse a largura da tela */
+    max-height: 100svh !important;
     background-color: var(--fundoC);
   }
   

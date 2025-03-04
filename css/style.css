@@ -6,7 +6,8 @@
 @import url(layout.css);
 
 :root{
-    --top: calc(10vh + 4em);
+    --header:45px;
+    --top: 125px;
     --topSides: calc(var(--top) + 8vw);
     --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
     --fundoA: #4d7a8d;
@@ -78,7 +79,8 @@ header{
     
      background-color: var(--fundoD);
    
-     padding: 2vh;
+    height: var(--header);
+    padding: 10px;
      text-align: center;
 
      z-index: 2;
