@@ -37,9 +37,9 @@
 .painel{
     align-content: center;
     width: 100%;
-    padding: 10px 0;
+    padding: 2svh 0;
     margin: 0;
-
+    height: 4svh;
     button{
         font-size: 2vh;
     }
