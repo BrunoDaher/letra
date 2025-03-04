@@ -7,6 +7,15 @@
     border-radius: 0.5em;
 }
 
+
+.bi::before{
+    
+}
+
+:focus-visible{
+outline: none !important;
+}
+
 .new{
     /*background-image: url(https://www.pngrepo.com/download/348205/new.png);*/
     background-image: url(../css/imgs/new-pngrepo-com.png);
@@ -181,8 +190,8 @@ input{
     width:12px;
     height: 25px;
     */
-    padding-right: 2em;
-    color: #64bbe057;
+    margin-right: 2svh;
+    color: var(--active);
 }
 
 .back{
@@ -192,9 +201,9 @@ input{
     width:14px;
     height: 25px;
     */
-    padding-left: 2em;
+    margin-left: 2svh;
 
-    color: #64bbe057;
+    color: var(--active);
 }
 
 
