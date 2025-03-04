@@ -21,10 +21,7 @@
     background: linear-gradient(27deg, var(--fundoC), var(--fundoA));
 }
 
-#scroll-container {
-    height: 100%;
-    overflow: hidden;
-  }
+
   
 .red{
     color: red;

@@ -6,19 +6,19 @@ import Dao from "./classDao.js";
 import User from "./classUser.js"
 import Aux from "./classAux.js"
 import DragAndDrop from "./classDragDrop.js";
+import Gestos from "./classGestos.js";
 
 //impedir xss
 import * as DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@2.0.9/dist/purify.min.js';
 
 
 
-//previne o zoom com dois touchs ou dois cliques
-document.addEventListener('dblclick', function(event) {
-    event.preventDefault();
-});
-
 //service worker
 // main.js ou seu arquivo principal JS
+
+const container = document.getElementById('letraAtual'); // Alvo para o gesto de pinça
+const gesto = new Gestos(container); // Crie uma nova instância da classe Gestos
+
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

@@ -7,6 +7,19 @@
   }
 
 
+
+  .zoomable {
+    width: 100%;
+    height: 100%;
+    font-size: 16px; /* Tamanho inicial da fonte */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    user-select: none; /* Evita seleção de texto */
+    touch-action: none; /* Impede comportamento padrão de rolagem ou zoom */
+  }
+
 .scrollY{
   overflow-y: scroll;
   max-height: 70vh;

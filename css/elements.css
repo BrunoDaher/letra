@@ -118,19 +118,19 @@
 
 i,a,span,legend{ 
     &.a1{
-        font-size: 16px;
+        font-size: 2svh; 
     }
 
     &.a2{
-        font-size: 32px;
+        font-size: 4svh; 
     }
 
     &.a3{
-        font-size: 48px;
+        font-size: 6svh; 
     }
 
     &.a4{
-        font-size: 64px;
+        font-size: 8svh;
     }
   
 
