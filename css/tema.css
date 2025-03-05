@@ -108,14 +108,13 @@ header > button{
 }
 
 #newList , li {
-    display: flex
-    ;
+    display: flex;
         padding: 0.5vh;
         font-size: 2svh;
         border-radius: 3px;
         cursor: pointer;
         max-width: 40vw;
-        /* text-align: center; */
+         text-align: unset;
         align-items: center;
         place-content: center;
 }
@@ -266,6 +265,7 @@ ul{
         
     #albSongs > li{
         align-items: center;
+        text-align: center;
         cursor: pointer;
         margin: 1vh 2vh;
         filter: contrast(0.5);
