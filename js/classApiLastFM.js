@@ -1,5 +1,8 @@
 export class ApiLastFM {
 
+
+
+    //setar apis
     constructor(){
         this.apiKey = '2651bc07e2240e60ef358c833cc84169'; // LastFM
     }

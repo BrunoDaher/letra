@@ -2,13 +2,20 @@
 
 class User {
 
-    jsonbinID =  "6521d2c054105e766fbf35e8";   
-    userId = 0;
-    listaDeMusicas;
     
     constructor(id){
+
+        this.jsonbinID =  "6521d2c054105e766fbf35e8";   
+        this.userId = 0;
+        this.listaDeMusicas;
+
        this.setId(id);
+        
     }
+
+    listaDeMusicas = [];
+    listaDeArtistas = [];
+    
 
     setId(id){
         this.userId = id;
@@ -19,6 +26,7 @@ class User {
     }
 
     setLista(lista){
+        console.log('lista')
         this.listaDeMusicas = lista;
     }
 

@@ -1,6 +1,5 @@
 //bibliotecas/classes
 import Api from "./classApi.js";
-import Letra from "./classLetra.js";
 import Tela from "./classTela.js";
 import Dao from "./classDao.js";
 import User from "./classUser.js"
@@ -18,8 +17,11 @@ import * as DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@2.0.9/dist/pu
 
 const container = document.getElementById('letraAtual'); // Alvo para o gesto de pinça
 const gesto = new Gestos(container); // Crie uma nova instância da classe Gestos
+gesto.start();
+//crie um servico de consulta ao firebase
 
 
+//service worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker
@@ -33,21 +35,18 @@ if ('serviceWorker' in navigator) {
     });
   }
   
-  
+
+//service worker
 
 // Variaveis
 
-
-    const objLetra = new Letra();
+    const user = new User(1);
     const api = new Api();
     const tela = new Tela();
     const dao = new Dao();
     const aux = new Aux();
-    const nav = window.navigator;
-    const user = new User(1);
-    const infoMus = document.getElementById('infoMus');
 
-    const header = document.querySelector("header");
+    const infoMus = document.getElementById('infoMus');
 
     //Discografia
     const discos = document.getElementById('discog')
@@ -64,7 +63,6 @@ if ('serviceWorker' in navigator) {
     const btnMenuC = document.getElementById('btnMenuC');
 
     let slideTarget = true;
-
 
     //listeners de menu modal
      [btnMenuA,btnMenuB,btnMenuC,discos,btnAlbSongsA,btnListaArt,btnSetList,btnConfig].forEach(function(item) {
@@ -108,31 +106,12 @@ if ('serviceWorker' in navigator) {
     const btnLoadCloud = document.getElementById('btnLoadCloud');
           btnLoadCloud.addEventListener('click',loadCloud);
   
-          gestos();
     //----------------Buildings---------------
     //tela.nodeMenu(header);
   
     pesquisa();
     montaLista();
 
-    function gestos(){
-
-        
-        
-        document.addEventListener('touchstart', function (event) {
-            if (event.touches.length > 1) {
-              const zoomableDiv = document.getElementById('zoomable');
-              const isInsideZoomableDiv = zoomableDiv.contains(event.target);
-      
-              if (!isInsideZoomableDiv) {
-                // Bloqueia zoom fora da div específica
-                event.preventDefault();
-              }
-            }
-          }, { passive: false });
-
-
-    }
 
     new DragAndDrop('listaMusicas', {
         onDragStart: (event) => {
@@ -682,7 +661,7 @@ if ('serviceWorker' in navigator) {
         })//retorna HTML
         .then( function(responseHtml)
         {
-       
+            
             //tabula os dados
            // let data = JSON.parse(responseHtml); 
 
@@ -795,7 +774,7 @@ if ('serviceWorker' in navigator) {
                         thumbDiv.name = alb.artist;  
                         thumbDiv.id = alb.name;
                         let musContainer = document.getElementById('albSongs');
-                        
+                       
 
                        //eventos
                         thumbDiv.addEventListener('click',function(){
@@ -805,6 +784,23 @@ if ('serviceWorker' in navigator) {
                             else{
                                 musContainer.innerHTML = "";
                                 faixas.forEach(function(faixa) {
+
+                                        // Exemplos de uso:
+                                            const duracaoEmSegundos = faixa.duration;
+                                            
+                                            // Converter para minutos e segundos:
+                                         // Converter para minutos e segundos:
+                                    const resultadoMinutosSegundos = aux.converterDuracaoEmSegundos(duracaoEmSegundos, 'minutosSegundos');
+                                    console.log(`${faixa.name}[${duracaoEmSegundos}]  ${resultadoMinutosSegundos.minutos}m:${resultadoMinutosSegundos.segundos} seg`);
+                                    // Saída: 4 minutos e 46 segundos
+
+                                    
+
+                                    // Converter para número real em minutos:
+                                    const resultadoRealEmMinutos = aux.converterDuracaoEmSegundos(duracaoEmSegundos, 'real');
+                                    //console.log(`${resultadoRealEmMinutos} minutos`);
+                                    // Saída: 4.766666666666667 minutos
+
                                      musContainer.innerHTML += `<li class="getLyric">${faixa.name}</li>`;
                                 });
                             }

@@ -12,7 +12,9 @@ class Dao extends ApiCloud{
 
     updateLog(){
       let users = this.getLocalJSON('userList');
-      this.apiCloud.saveLogCloud(users);
+
+      
+      //this.apiCloud.saveLogCloud(users);
     }
 
     saveCloud(nome){
@@ -21,19 +23,20 @@ class Dao extends ApiCloud{
 
       //console.log(conteudo)
     
-     this.apiCloud.createBin(nome, conteudo);
+     //this.apiCloud.createBin(nome, conteudo);
     }
 
     loadCloud(op){
       
+      //carregnado nuvem
       if(op == 1){
-        //from super()
-        this.readList();
+        this.readList(); // from super()
         
       }
       else{
-        //from super
-        this.readUsers();
+        //lendo usuarios
+        
+        this.readUsers(); //from super
       }
     }
 

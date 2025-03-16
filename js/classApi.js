@@ -11,8 +11,10 @@ export class Api {
 
     //toDo
     
+
+    //setar apis
     constructor(){
-        this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa'; // Vagalume
+       // this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa'; // Vagalume
 
         //console.log(apiMusixMatch)
     }

@@ -20,6 +20,22 @@ class Aux{
     
     }
 
+     converterDuracaoEmSegundos(segundos, formato = 'real') {
+        if (formato === 'real') {
+            // Converter segundos para número real em minutos
+            return segundos / 60;
+        } else if (formato === 'minutosSegundos') {
+            // Converter segundos para minutos e segundos
+            const minutos = Math.floor(segundos / 60); // Parte inteira (minutos)
+            const segundosRestantes = segundos % 60; // Resto (segundos)
+            return {
+                minutos: minutos,
+                segundos: segundosRestantes
+            };
+        } else {
+            throw new Error('Formato inválido. Use "real" ou "minutosSegundos".');
+        }
+    }
 
 
 }

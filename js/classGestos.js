@@ -1,5 +1,6 @@
 // Gesto.js
 export default class Gestos {
+ 
   constructor(container) {
     this.container = container;
     this.initialDistance = null;
@@ -60,4 +61,24 @@ export default class Gestos {
     this.container.removeEventListener("touchmove", this.handleTouchMove);
     this.container.removeEventListener("touchend", this.handleTouchEnd);
   }
+
+
+   start(){
+
+        
+        
+    document.addEventListener('touchstart', function (event) {
+        if (event.touches.length > 1) {
+          const zoomableDiv = document.getElementById('zoomable');
+          const isInsideZoomableDiv = zoomableDiv.contains(event.target);
+  
+          if (!isInsideZoomableDiv) {
+            // Bloqueia zoom fora da div específica
+            event.preventDefault();
+          }
+        }
+      }, { passive: false });
+
+
+}
 }

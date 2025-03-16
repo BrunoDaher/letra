@@ -229,24 +229,17 @@ class Tela {
            
             li.addEventListener('click',fn);
 
-        function hideParents(){
-            let arrAvo = this.parentNode.parentNode;
-            let nodes = arrAvo.childNodes;
-                nodes.forEach(function(element) {
-                    element.childNodes[0].classList.remove('active');
-                });
-           // this.classList.add('active')
-        }
+       
     }
 
     removeIt(e){
         let item = this?this: e.target;
-        console.log('Removendo: ')
+       // console.log('Removendo: ')
      
         let musId = (this.parentNode.id).replaceAll('div','');  
         let lista = dao.getLocalJSON('listaLocal');
 
-        console.log(lista)
+       // console.log(lista)
 
         Object.values(lista).forEach(function(element) {
             let id = Object.keys(element)[0];
