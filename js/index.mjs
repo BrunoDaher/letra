@@ -1,6 +1,7 @@
 //bibliotecas/classes
 import Api from "./classApi.js";
 import Tela from "./classTela.js";
+import Letra from "./classLetra.js";
 import Dao from "./classDao.js";
 import User from "./classUser.js"
 import Aux from "./classAux.js"
@@ -10,7 +11,7 @@ import Gestos from "./classGestos.js";
 //impedir xss
 import * as DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@2.0.9/dist/purify.min.js';
 
-
+const objLetra = new Letra();
 
 //service worker
 // main.js ou seu arquivo principal JS
