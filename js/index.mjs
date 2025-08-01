@@ -24,17 +24,19 @@ gesto.start();
 
 //service worker
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker
-        .register('./js/service-worker.js') // Caminho do Service Worker
-        .then((registration) => {
-          console.log('Service Worker registrado com sucesso:', registration);
-        })
-        .catch((error) => {
-          console.log('Falha ao registrar o Service Worker:', error);
-        });
-    });
-  }
+  window.addEventListener('load', () => {
+    // Ajuste o caminho do service-worker.js conforme onde ele está no projeto
+    navigator.serviceWorker
+      .register('letra/js/service-worker.js') // caminho absoluto da raiz do site
+      .then((registration) => {
+        console.log('Service Worker registrado com sucesso:', registration);
+      })
+      .catch((error) => {
+        console.error('Falha ao registrar o Service Worker:', error);
+      });
+  });
+}
+
   
 
 //service worker
