@@ -445,10 +445,10 @@ if ('serviceWorker' in navigator) {
                 })//retorna HTML
                 .then(function(responseHtml){
 
-                   // console.log(responseHtml);
+                    console.log(responseHtml);
  
                     //para letras de ovh api
-                        let ovh =JSON.parse(responseHtml).lyrics;
+                        let ovh = JSON.parse(responseHtml).lyrics;
                     
                         let content = formatLyrics(ovh) //letra.message.body.lyrics;
                             // Removendo o texto específico
@@ -637,6 +637,7 @@ if ('serviceWorker' in navigator) {
 
     async function getMusicInfo(e){
 
+        console.log(e);
         let item = this?this : e.target;
 
         //console.log(item)
@@ -657,7 +658,7 @@ if ('serviceWorker' in navigator) {
        // console.log('get by Id')
         //fetch(api.getMusicById(item.id))
         fetch(api.getArtMusic(art,mus)).then( function(response)   {     
-          //  console.log(response)
+            console.log(response)
             return response.ok ? response.text() : false; 
         })//retorna HTML
         .then( function(responseHtml)

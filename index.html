@@ -224,3 +224,28 @@
  
 </body>
 </html>
+
+<!--
+Para clonar uma branch e copiar todo o conteúdo dela para outra branch usando git, siga estes passos:
+
+1. Certifique-se de estar no repositório local.
+2. Faça o fetch das branches remotas:
+    git fetch
+
+3. Faça checkout na branch de origem:
+    git checkout nome-da-branch-origem
+
+4. Crie e troque para a branch de destino:
+    git checkout -b nome-da-branch-destino
+
+5. Agora, a branch de destino terá todo o conteúdo da branch de origem.
+6. Faça commit/push se necessário:
+    git push origin nome-da-branch-destino
+
+Se quiser sobrescrever uma branch existente com o conteúdo de outra:
+    git checkout nome-da-branch-que-sera-sobrescrita
+    git reset --hard nome-da-branch-origem
+    git push -f origin nome-da-branch-que-sera-sobrescrita
+
+Tenha cuidado ao usar --hard e push -f, pois sobrescrevem o histórico da branch de destino.
+-->

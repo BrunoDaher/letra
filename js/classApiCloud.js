@@ -11,10 +11,8 @@ class ApiCloud { //extends Dao{
     this.binId = "648e2cc4b89b1e2299b0ae51"; //<-setlist 
     this.binUsers =  "6492524e8e4aa6225eb1b6c2"; //<-usuarios
 
-
   }
 
-  
       getUserId(){
         return this.binId;
       }
