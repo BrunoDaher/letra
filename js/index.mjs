@@ -27,7 +27,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     // Ajuste o caminho do service-worker.js conforme onde ele está no projeto
     navigator.serviceWorker
-      .register('letra/js/service-worker.js') // caminho absoluto da raiz do site
+      .register('js/service-worker.js') // caminho absoluto da raiz do site
       .then((registration) => {
         console.log('Service Worker registrado com sucesso:', registration);
       })
