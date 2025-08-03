@@ -406,6 +406,7 @@ if ('serviceWorker' in navigator) {
 
     //to DO, tentar buscar tudo na Last
 
+    //vindo do
     function fetchLP(url){
         
             fetch(url)
@@ -422,12 +423,6 @@ if ('serviceWorker' in navigator) {
                   
                     let alb = response.album;
                     
-                    let getLyric = document.querySelectorAll('.getLyric');
-    
-                        getLyric.forEach(function(track) {
-                            track.removeEventListener('click',getArtMusic);
-                        });
-
                     if(alb.tracks){
                         let faixas = alb.tracks.track;
                         let urlImg = alb.image[2]['#text'];
@@ -452,23 +447,22 @@ if ('serviceWorker' in navigator) {
             }
     }
 
-     async function getArtMusic(e){
+     async function getArtistMusic(item){
+
+        item.classList.add('active')
 
         console.log("trilhoA Buscando pela Discografia")
 
-        let artista = this.parentNode.getAttribute('band');
-        let musica = this.innerText; //titulo da musica
+        let artista = item.parentNode.getAttribute('band');
+        let musica = item.innerText; //titulo da musica
+
+      
 
         let letra =  await api.getArtMusic(artista,musica);
 
         if(letra){
             plotaLetra(letra, artista, musica);
-
-              setTimeout(
-            ()=>{
-                btnMenuA.click();
-            }
-            ,300)
+            fastGo();
         }
        
             
@@ -513,7 +507,7 @@ if ('serviceWorker' in navigator) {
                     if(btnBolt.value == 1 || btnBolt2.value == 1){
                        
                         setTimeout(function(){
-                            document.getElementById('btnMenuA').click();    
+                            btnMenuA.click();
                         })
             
                     }
@@ -638,14 +632,22 @@ if ('serviceWorker' in navigator) {
         if(letra){
            
            plotaLetra(letra, art, mus);
-
-         setTimeout(
-            ()=>{
-                btnMenuA.click();
-            }
-            ,300)
+           fastGo();
         }
+     
+        
 
+    }
+
+    function fastGo(){
+        
+        if(btnBolt.classList.contains('active')){
+                       
+                setTimeout(function(){
+                    btnMenuA.click();
+                })
+            
+        }
     }
 
     function addToList(obj){
@@ -693,7 +695,7 @@ if ('serviceWorker' in navigator) {
                        //eventos
                         thumbDiv.addEventListener('click',function(){
                             if(faixas.name){
-                               musContainer.innerHTML = DOMPurify.sanitize(`<li class="getLyric">${faixas.name}</li>`);
+                               musContainer.innerHTML = DOMPurify.sanitize(`<li class="getLyric bi-activity">${faixas.name}</li>`);
                             }
                             else{
                                 musContainer.innerHTML = "";
@@ -708,14 +710,12 @@ if ('serviceWorker' in navigator) {
                                     console.log(`${faixa.name}[${duracaoEmSegundos}]  ${resultadoMinutosSegundos.minutos}m:${resultadoMinutosSegundos.segundos} seg`);
                                     // Saída: 4 minutos e 46 segundos
 
-                                    
-
                                     // Converter para número real em minutos:
                                     const resultadoRealEmMinutos = aux.converterDuracaoEmSegundos(duracaoEmSegundos, 'real');
                                     //console.log(`${resultadoRealEmMinutos} minutos`);
                                     // Saída: 4.766666666666667 minutos
 
-                                     musContainer.innerHTML += `<li class="getLyric">${faixa.name}</li>`;
+                                     musContainer.innerHTML += `<li class="getLyric bi-activity">${faixa.name}</li>`;
                                 });
                             }
                         
@@ -740,8 +740,11 @@ if ('serviceWorker' in navigator) {
                                 let getLyric = document.querySelectorAll('.getLyric');
                                 setTimeout(cback,200);
                                 //pra cada letra
-                                getLyric.forEach(function(track) {
-                                    track.addEventListener('click',getArtMusic);
+                                getLyric.forEach(btn => {
+                                    btn.onclick = 
+                                        ()=>{
+                                            getArtistMusic(btn)
+                                        }
                                 });
                             }
                         });

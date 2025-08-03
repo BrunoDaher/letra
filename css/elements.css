@@ -225,7 +225,7 @@ input{
 .miniEncarte{
    
     z-index: 2;
-    width: 7vh;
+    width: 14vh;
     
     border-radius: 4px;
     filter: drop-shadow(2px 4px 6px black);

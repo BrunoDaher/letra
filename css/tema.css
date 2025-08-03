@@ -109,9 +109,9 @@ header > button{
 
 #newList , li {
     display: flex;
-        padding: 0.5vh;
-        font-size: 2svh;
-        border-radius: 3px;
+        padding: 1svh;
+        font-size: 3svw;
+        border-radius: 3svw;
         cursor: pointer;
         max-width: 40vw;
          text-align: unset;
@@ -147,7 +147,7 @@ header > button{
 }
 
 #newList:hover, li:hover, li.active, #newList:active{
-    color: rgb(92, 181, 229);
+    color: var(--active);
     text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2), 
                  1px 1px 1px rgba(0, 0, 0, 0.6);
     transition: all 0.3s;
@@ -267,14 +267,7 @@ ul{
     }
 
         
-    #albSongs > li{
-        align-items: center;
-        text-align: center;
-        cursor: pointer;
-        margin: 1vh 2vh;
-        filter: contrast(0.5);
-       
-    }
+ 
 
     #config {
        
@@ -299,7 +292,20 @@ ul{
         overflow-y: scroll;
         /* align-content: center; */
         width: fit-content;
-        justify-self: center;
+        justify-self: right;
+
+          li{
+                flex-flow: row-reverse;
+                align-items: center;
+                justify-self: right;
+                cursor: pointer;
+                text-align: right;
+                margin: 1vh 2vh;
+                display: flex;
+                
+                gap: 1vh;
+       
+        }
     }
 
 .lista {
@@ -311,7 +317,7 @@ ul{
 
 .discoBox{
     position: relative;
-    background-color: var(--fundoC);
+    
     transition: all 0.3s;
 }
 
@@ -320,7 +326,8 @@ ul{
 }
 
 .accord.active{
-   display: grid;
+   display: block;
+   background-color: var(--fundoD);
 }
 
 #listaDiscos{
@@ -366,7 +373,7 @@ ul{
                 grid-template-columns: repeat(5,1fr);
              
                 img{
-                    width: 8em;
+                    width: 5em;
                 }
             }
 
