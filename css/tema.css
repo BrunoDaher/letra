@@ -18,7 +18,7 @@
 }
 
 .fundoGradiente, legend{
-    background: linear-gradient(27deg, var(--fundoC), var(--fundoA));
+    background: linear-gradient(27deg, var(--fundoC), var(--fundoD));
 }
 
 
@@ -165,12 +165,12 @@ ul{
 }
 
 #trackSugestions{
-     /* top: calc(var(--top) + 14vh); */
+     top: calc(var(--top) + 2em);
     /* padding: 1vh 0; */
   /*  height: calc(60vh - 5vw);*/
     padding: 2vh;
     opacity: 0;
-    /* justify-items: center; */
+     justify-content: center; 
     width: fit-content;
 }
 
@@ -243,6 +243,10 @@ ul{
         
         padding: 2vh;
         gap: 3vh;
+
+        li{
+           text-transform: capitalize; 
+        }
 
         /*filter: drop-shadow(2px 4px 6px black);*/
    
@@ -342,6 +346,7 @@ ul{
 }
 
 #discos{
+    margin:1vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
     overflow-y: scroll;

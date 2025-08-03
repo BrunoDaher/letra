@@ -28,6 +28,7 @@ pre{
 #titulo{
     filter: drop-shadow(2px 4px 6px black) contrast(6.5);
     font-size: 2vh;
+    text-transform: capitalize;
     max-width: 10px !important;
   
 }
