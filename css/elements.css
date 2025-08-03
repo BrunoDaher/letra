@@ -127,7 +127,7 @@ outline: none !important;
 
 i,a,span,legend{ 
     &.a1{
-        font-size: 2svh; 
+        font-size: 2.5svh
     }
 
     &.a2{

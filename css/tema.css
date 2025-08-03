@@ -110,7 +110,7 @@ header > button{
 #newList , li {
     display: flex;
         padding: 1svh;
-        font-size: 3svw;
+        
         border-radius: 3svw;
         cursor: pointer;
         max-width: 40vw;
@@ -287,19 +287,17 @@ ul{
     }
 
     #albSongs{
-        top:2vh;
-        height: 62vh;
+        
+        max-height: 66vh;
         overflow-y: scroll;
         /* align-content: center; */
         width: fit-content;
-        justify-self: right;
+        float: inline-end;
 
           li{
                 flex-flow: row-reverse;
                 align-items: center;
-                justify-self: right;
                 cursor: pointer;
-                text-align: right;
                 margin: 1vh 2vh;
                 display: flex;
                 
@@ -352,12 +350,16 @@ ul{
     color:chartreuse;
 }
 
+.getLyric{
+    font-size: 2svh;
+}
+
 #discos{
-    margin:1vh;
+    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
     overflow-y: scroll;
-    max-height: 60vh;
+    max-height: 60svh;
     /* height: fit-content; */
     /* width: max-content; */
     gap: 1vh;
@@ -373,7 +375,7 @@ ul{
                 grid-template-columns: repeat(5,1fr);
              
                 img{
-                    width: 5em;
+                    width: 14svw;
                 }
             }
 
