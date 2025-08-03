@@ -37,7 +37,7 @@ export class Api {
 
  
      //vagalume
-    getArtMusic(art,mus){       
+     getArtMusic(art,mus){       
 
        // console.log(art)
         art = this.normalizeInput(art);
@@ -47,8 +47,12 @@ export class Api {
         mus = mus.replace('-live','');
         mus = mus.replace('-remastered','');
         mus = mus.replace('-remasterizado','');
-     
-        return apiLetra.getArtMusic(art,mus);
+
+        let res = apiLetra.getArtMusicAlt(art,mus)
+
+        return res
+
+     //   return apiLetra.getArtMusic(art,mus);
     }
 
     getMusLocal(busca){
@@ -127,20 +131,20 @@ export class Api {
     
    //aux
     normalizeInput(str){
-    str = str.toLowerCase();
-    str = str.replaceAll(':',''); 
-    str = str.replaceAll(' ','-');  
-    str = str.replaceAll('/','-');  
-    str = str.replaceAll('!','');
-    //str = str.replaceAll('.','');
-    str = str.replaceAll('--','*');
-    str = str.replaceAll('*','');
-    str = str.replaceAll('+','');
-    str = str.replaceAll(',','');
-    str = str.replaceAll('?','');
-    str = str.replaceAll("'s",'s');
-    str = str.replaceAll("'m",'m');
-    str = str.replaceAll("&",'');
+        str = str.toLowerCase();
+        str = str.replaceAll(':',''); 
+        str = str.replaceAll(' ','-');  
+        str = str.replaceAll('/','-');  
+        str = str.replaceAll('!','');
+        //str = str.replaceAll('.','');
+        str = str.replaceAll('--','*');
+        str = str.replaceAll('*','');
+        str = str.replaceAll('+','');
+        str = str.replaceAll(',','');
+        str = str.replaceAll('?','');
+        str = str.replaceAll("'s",'s');
+        str = str.replaceAll("'m",'m');
+        str = str.replaceAll("&",'');
 
     //removeacentos
     str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');

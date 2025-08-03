@@ -10,6 +10,7 @@ import Gestos from "./classGestos.js";
 
 //impedir xss
 import * as DOMPurify from 'https://cdn.jsdelivr.net/npm/dompurify@2.0.9/dist/purify.min.js';
+import apiLetra from "./classApiLetra.js";
 
 const objLetra = new Letra();
 
@@ -307,9 +308,8 @@ if ('serviceWorker' in navigator) {
                     //console.log(responseHtml.length)
                     //modela Json
                     let data = responseHtml.length > 2 ? JSON.parse(responseHtml).results.trackmatches.track : false;
-
                
-                    if(data){
+                    if(data ){
     
                     //limpa container destino
                         trackSugestion.innerText = '';
@@ -318,20 +318,38 @@ if ('serviceWorker' in navigator) {
                       data.forEach(function(element)  {
                             //verificar se é o mesmo artista de antes
 
-                        //    console.log(element)
+                            let valido = (element.name.includes(element.artist));
 
-                            let el = document.createElement('div');
-                            el.id = element.mbid;
-                            el.setAttribute('artInfo',element.artist);
-                            el.setAttribute('artMus',element.name);
-                            el.classList.add('banda');
-                            el.innerText = `${element.artist} ${element.name}`;
-                            
-                            //busca info das letras
-                            el.addEventListener('click',getMusicInfo); 
+                            if(valido){
+
+                                    
+                                    console.log(element.name, '-> '+ element.artist);
+                                    let mus = element.name.replace(element.artist,'');
+                                        mus = aux.normalize(mus);
+                                
+                                    let art = aux.normalize(element.name);
+                                    if(art.includes(mus)){
+                                       art = art.replace(mus,''); 
+                                    }
+
+
+                                    //console.log(element)
+                                    let el = document.createElement('div');
+                                    el.name = element.mbid || element.artist;
+                                    el.setAttribute('artInfo',art.trim());
+                                    el.setAttribute('artMus',mus.trim());
+                                    el.classList.add('banda');
+                                    el.innerText = `${element.name}`;
+                                    
+                                    //busca info das letras
+
+                                    el.addEventListener('click',getMusicInfo); 
+                                
+                                    //preenche destino
+                                    trackSugestion.append(el);
+                            }
+
                           
-                            //preenche destino
-                            trackSugestion.append(el);
                         });
 
                     }
@@ -341,7 +359,7 @@ if ('serviceWorker' in navigator) {
     }
 
     //LAST FM
-    function getArtInfo(event) {
+    function getArtInfo(event) {    
         //console.log("API artInfo - vagalume")
 
         divArtistas.classList.remove('active');
@@ -434,43 +452,35 @@ if ('serviceWorker' in navigator) {
             }
     }
 
-    function getArtMusic(e){
+     async function getArtMusic(e){
 
         console.log("trilhoA Buscando pela Discografia")
 
         let artista = this.parentNode.getAttribute('band');
         let musica = this.innerText; //titulo da musica
 
-        fetch(api.getArtMusic(artista,musica))
-                .then(function(response){  
-                    return response.ok ? response.text() : false; 
-                })//retorna HTML
-                .then(function(responseHtml){
+        let letra =  await api.getArtMusic(artista,musica);
 
-                    console.log(responseHtml);
- 
-                    //para letras de ovh api
-                        let ovh = JSON.parse(responseHtml).lyrics;
-                    
-                        let content = formatLyrics(ovh) //letra.message.body.lyrics;
-                            // Removendo o texto específico
-                      //  let letra  = content.replace(/(\*{7} This Lyrics is NOT for Commercial use \*{7}\s*\(\d+\))/g, '').trim();
-                
-                        let letra = content;
-                    //tabulando dados
-                    //let data = JSON.parse(responseHtml);
-                    //let letra = data.mus[0].text;
+        if(letra){
+            plotaLetra(letra, artista, musica);
 
-                   // console.log(letra)
+              setTimeout(
+            ()=>{
+                btnMenuA.click();
+            }
+            ,300)
+        }
+       
+            
+}
 
+   
+    function plotaLetra(letra, artista, musica){
+            
+       
                     let id = 'l' + artista + musica;
                         id = id.trim().toLowerCase();
-
-                //    console.log(id.trim().toLowerCase());
-                 
-                    e.target.id = id; 
-                   // artista = data.art.name;
-                    // modelagem
+             
                     let obj = {
                         [id]:{'letra':letra,"id":id,'musica':musica,'artista':artista}
                     };
@@ -486,18 +496,16 @@ if ('serviceWorker' in navigator) {
                                 );
                         } 
                     
-
-                    //plotagem
-                    
                     setTimeout(function(){
                         infoLetra.classList.remove('active');
-                        infoLetra.innerText = letra;
+                        if(letra.includes('<'))
+                        infoLetra.innerHTML = letra;
                     },700);
-                
                     
                     infoLetra.classList.add('active');
 
                     titulo.innerText = musica;
+                    titulo.style = 'text-transform:capitalize';
                     titulo.setAttribute('idSong',id);
                         
                     //se opção tiver ativada
@@ -509,31 +517,9 @@ if ('serviceWorker' in navigator) {
                         })
             
                     }
-                });  
-    }
-
-
-    // Função para formatar letras
-    function formatLyrics(lyrics) {
-        if (!lyrics) return 'Letra não encontrada';
-          // Remove espaços no início e no fim
-          lyrics = lyrics.trim();
-  
-          // Substitui combinações de quebras de linha múltiplas por uma única quebra de parágrafo (duas quebras de linha)
-          lyrics = lyrics.replace(/(\r\n|\n|\r){3,}/g, '\n strofeNova \n');
-          
-          // Substitui quebras de linha duplas (separação de estrofes) por '\n\n' e quebras de linha simples por '\n'
-          lyrics = lyrics.replace(/(\r\n|\n|\r)/g, '\n').replace(/\n{2,}/g,  '\n');
-          
-  
-          lyrics = lyrics.replace(/strofeNova/g, '');
-          
-          // Substitui quebras de linha duplas (\n\n) por <br><br> para pular uma linha
-  
-          
-  
-        return lyrics;
-      }
+        }
+     
+    
 
     function getLocalMusic()
     {
@@ -592,7 +578,7 @@ if ('serviceWorker' in navigator) {
                 infoLetra.classList.add('off');
 
                 infoLetra.classList.remove(back);
-                infoLetra.innerText = curSong;
+                infoLetra.innerHTML = curSong;
             },150);
 
             //inativa
@@ -639,104 +625,28 @@ if ('serviceWorker' in navigator) {
 
     async function getMusicInfo(e){
 
-        console.log(e);
-        let item = this?this : e.target;
 
-        //console.log(item)
+         console.log('trilhoB buscando via pesquisa composta')
+
+        let item = this?this : e.target;
 
         let art = item.getAttribute('artInfo');
         let mus = item.getAttribute('artMus');
 
-        let data = await fetch(api.getArtMusic(art,mus));
+         let letra =  await api.getArtMusic(art,mus);
 
-        if(data.ok){
-          //  console.log(data)
-        }
-        else{
-            console.log('erro')
-        }
-
-
-       // console.log('get by Id')
-        //fetch(api.getMusicById(item.id))
-        fetch(api.getArtMusic(art,mus)).then( function(response)   {     
-            console.log(response)
-            return response.ok ? response.text() : false; 
-        })//retorna HTML
-        .then( function(responseHtml)
-        {
-            
-            //tabula os dados
-           // let data = JSON.parse(responseHtml); 
-
-           // let title = data.mus[0].name;  
-          //  let letra = data.mus[0].text;
-            let artista = art;
-
-          let ovh =JSON.parse(responseHtml).lyrics;
-                    
-          let content = formatLyrics(ovh) //letra.message.body.lyrics;
-              // Removendo o texto específico
-          let letra  = content.replace(/(\*{7} This Lyrics is NOT for Commercial use \*{7}\s*\(\d+\))/g, '').trim();
-  
-            //tabulando dados
-            //let data = JSON.parse(responseHtml);
-            //let letra = data.mus[0].text;
-           // console.log(e.target)
-
-            //define como vai ficar no banco
-            let id = 'l' + art+mus;
-                id = id.trim().toLowerCase();
-
-            //plota titulo
-            titulo.innerText = mus;  
+        if(letra){
            
-            //plota a letra
-            infoLetra.innerText = letra;
+           plotaLetra(letra, art, mus);
 
-            let obj = {
-                [id]:{'letra':letra,"id":id,'musica':mus,'artista':art}
-            };
-    
-           
-            //dao
-            let ls = dao.getLocalJSON('listaLocal') || new Array();
-
-            //modelagem de elemento - populator
-            ls.forEach(function(element)  {
-                if( Object.keys(element) == item.id ){
-                
-                    console.log(element)
-                    //modelagem
-                    element[item.id] = 
-                    {
-                        id:item.id, 
-                        'letra':letra,
-                        'musica':mus, 
-                        'artista':artista
-                    };
-                }
-            
+         setTimeout(
+            ()=>{
+                btnMenuA.click();
             }
-            );
-
-            //persiste - via discografia
-            dao.saveLocalJSON('listaLocal',ls);
-
-            //att lista
-            addToList(obj)
-
-
-       
-        })
-        
-        //funcao de header
-        if(btnBolt.value == 1){
-            //verificar se letra existe
-            document.getElementById('btnMenuA').click()
+            ,300)
         }
-    }
 
+    }
 
     function addToList(obj){
     

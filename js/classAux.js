@@ -37,6 +37,28 @@ class Aux{
         }
     }
 
+    normalize(str){
+        str = str.toLowerCase();
+        str = str.replaceAll(':',''); 
+        str = str.replaceAll('-','');  
+        str = str.replaceAll('/','-');  
+        str = str.replaceAll('!','');
+        //str = str.replaceAll('.','');
+        str = str.replaceAll('--','*');
+        str = str.replaceAll('*','');
+        str = str.replaceAll('+','');
+        str = str.replaceAll(',','');
+        str = str.replaceAll('?','');
+        str = str.replaceAll("'s",'s');
+        str = str.replaceAll("'m",'m');
+        str = str.replaceAll("&",'');
+
+    //removeacentos
+    str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    return str.trim();
+}
+
 
 }
 

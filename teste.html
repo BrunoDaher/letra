@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Leitor HTML via GET</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    input { width: 80%; padding: 0.5rem; margin-bottom: 1rem; }
+    button { padding: 0.5rem 1rem; }
+    pre { white-space: pre-wrap; background: #f4f4f4; padding: 1rem; border-radius: 5px; max-width: 90vw; max-height: 70vh; overflow: auto; }
+  </style>
+</head>
+<body>
+
+<h1>Leitor HTML via GET (com proxy CORS)</h1>
+
+<input type="text" id="urlInput" placeholder="Cole a URL aqui" value="https://www.vagalume.com.br/pearl-jam/alive.html" />
+<br />
+<button onclick="getText()">Buscar HTML</button>
+
+<pre id="resultado">Cole a URL e clique em Buscar HTML.</pre>
+
+<script>
+  async function buscarHTML() {
+    const url = document.getElementById('urlInput').value.trim();
+    const resultado = document.getElementById('resultado');
+    resultado.textContent = 'Buscando...';
+
+    if (!url) {
+      resultado.textContent = 'Por favor, cole uma URL válida.';
+      return;
+    }
+
+    try {
+      // Usando corsproxy.io para evitar bloqueio CORS
+      const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(url);
+
+      const res = await fetch(proxyUrl);
+      if (!res.ok) throw new Error('Erro na requisição: ' + res.status);
+
+      const html = await res.text();
+      const parser = new DOMParser();
+const doc = parser.parseFromString(html, 'text/html');
+const container = doc.body; // Aqui você pode manipular os filhos
+
+      //console.log(html  )
+     // resultado.innerHTML = html;
+ 
+  const lyrics = container.querySelector('#lyrics');
+    console.log(lyrics.innerHTML);    
+
+    return lyrics.innerHTML();
+
+    } catch (e) {
+      return 'nao encontrado';
+    }
+  }
+
+
+  async function getText(){
+
+    let texto = await buscarHTML();
+
+    if(texto){
+      console.log(texto)
+    }
+    
+  }
+</script>
+
+</body>
+</html>
