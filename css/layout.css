@@ -3,19 +3,24 @@ html, body {
     padding: 0;
     overflow: hidden ; /* Impede o scroll horizontal */
     max-width: 100%; /* Garante que o layout não ultrapasse a largura da tela */
-    max-height: 100svh !important;
-    background-color: var(--fundoC);
+   
+   
 
     /*travar gestos*/
     touch-action: none; /* Impede o zoom e arraste */
     -ms-touch-action: none; /* Para IE/Edge */
-    overflow: hidden; /* Para impedir rolagem */
+    overflow-x: hidden; /* Para impedir rolagem */
     user-select: none; /* Impede seleção de texto (opcional) */
   }
+
+  main{
+    height: 100vh;
+}
   
 
-html, body {
-
+ body {
+ background-color: var(--fundoC);
+ height: 100vh;
   }
   
 

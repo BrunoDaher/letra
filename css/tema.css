@@ -18,7 +18,8 @@
 }
 
 .fundoGradiente, legend{
-    background: linear-gradient(27deg, var(--fundoC), var(--fundoD));
+
+    background: linear-gradient(45deg, var(--fundoC), transparent);
 }
 
 
@@ -82,9 +83,14 @@ button{
     
 }
 
-.active{
+menu.active{
     display: grid;
+        grid-template-rows: 0fr 1fr;
 }
+
+
+
+
 
 header > button.active, button.active{
 
@@ -170,7 +176,8 @@ ul{
   /*  height: calc(60vh - 5vw);*/
     padding: 2vh;
     opacity: 0;
-     justify-content: center; 
+     justify-self: center; 
+     text-align: center;
     width: fit-content;
 }
 
@@ -178,7 +185,7 @@ ul{
     opacity: 1;
 }
 
-#listaArtistas > .banda {
+.banda {
 
     padding: 1vh;
     font-size: 2.2vh;
@@ -201,8 +208,8 @@ ul{
 
 .sideBox{
   
-    background-color: var(--fundoD);
-
+    
+    
 
     overflow-y: scroll;
    
@@ -325,7 +332,7 @@ ul{
 
 .accord.active{
    display: block;
-   background-color: var(--fundoD);
+  
 }
 
 #listaDiscos{
@@ -351,7 +358,7 @@ ul{
 }
 
 .getLyric{
-    font-size: 2svh;
+    font-size: 2.5svh;
 }
 
 #discos{
