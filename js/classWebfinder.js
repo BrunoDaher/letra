@@ -3,8 +3,11 @@ export default class webFinder{
 
 
     async  buscarHTML(url) {
+
+        const prx = 'https://api.allorigins.win/raw?url=';
+        
    
-          const proxyUrl = 'https://corsproxy.io/?' + (url);
+          const proxyUrl = prx + (url);
 
           const res = await fetch(proxyUrl);
           if (!res.ok) throw new Error('Erro na requisição: ' + res.status);
