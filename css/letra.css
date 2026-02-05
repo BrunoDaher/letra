@@ -14,25 +14,20 @@ pre{
     
 }
 
-
-    pre.rollOff{
-        max-height: 80%;
-    }
+pre.rollOff{
+        max-height: 80%;   
+}
 
 #scroll-container{
     display: contents;
 }
 
-
-
 #titulo{
     filter: drop-shadow(2px 4px 6px black) contrast(6.5);
-    font-size: 2vh;
+    font-size: calc(1.7em);
     text-transform: capitalize;
     max-width: 10px !important;
-  
 }
-
 
 .d-none{
     display: none;

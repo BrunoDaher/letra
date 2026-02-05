@@ -4,7 +4,7 @@ export default class webFinder{
 
     async  buscarHTML(url) {
    
-          const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(url);
+          const proxyUrl = 'https://corsproxy.io/?' + (url);
 
           const res = await fetch(proxyUrl);
           if (!res.ok) throw new Error('Erro na requisição: ' + res.status);
