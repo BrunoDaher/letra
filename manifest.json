@@ -3,8 +3,8 @@
   "short_name": "SetlistPro",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#333333",
+ "background_color": "#1916168c",
+  "theme_color": "f9ac47",
   "icons": [
     {
       "src": "icon192.png",
