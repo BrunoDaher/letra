@@ -6,7 +6,7 @@ pre{
     height: 100%;
     max-height: calc(100svh - var(--top) - 40px);
     overflow-y: scroll;
-    white-space: normal;
+    
 
     &.active{
             touch-action: none; /* Impede o zoom e arraste */
@@ -23,8 +23,8 @@ pre.rollOff{
 }
 
 #titulo{
-    filter: drop-shadow(2px 4px 6px black) contrast(6.5);
-    font-size: calc(1.7em);
+    filter: drop-shadow(2px 2px 2px var(--fundoA)) contrast(6.5);
+    font-size: calc(3svh);
     text-transform: capitalize;
     max-width: 10px !important;
 }

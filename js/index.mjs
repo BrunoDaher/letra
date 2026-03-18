@@ -235,6 +235,8 @@ if ('serviceWorker' in navigator) {
     }
 
     function pesquisa(){
+
+        
         let arrPesq = document.querySelectorAll('.inputPesquisa');
     
         //pelo fato de serem funcoes privadas da pesquisa
@@ -323,7 +325,8 @@ if ('serviceWorker' in navigator) {
                             if(valido){
 
                                     
-                                    console.log(element.name, '-> '+ element.artist);
+
+                                    //console.log(element.name, '-> '+ element.artist);
                                     let mus = element.name.replace(element.artist,'');
                                         mus = aux.normalize(mus);
                                 
@@ -472,6 +475,7 @@ if ('serviceWorker' in navigator) {
     function plotaLetra(letra, artista, musica){
             
        
+        
                     let id = 'l' + artista + musica;
                         id = id.trim().toLowerCase();
              
@@ -630,9 +634,11 @@ if ('serviceWorker' in navigator) {
          let letra =  await api.getArtMusic(art,mus);
 
         if(letra){
-           
            plotaLetra(letra, art, mus);
            fastGo();
+        }
+        else{
+            console.log('trilhoB falhou, buscando via getArtMusicAlt')
         }
      
         

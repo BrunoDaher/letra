@@ -1,6 +1,8 @@
 
 
 import webFinder from "./classWebfinder.js";
+import LyricsEngine from './classApiGSE.js';
+
 
 //const url = 
 export default class apiLetra {
@@ -10,8 +12,33 @@ export default class apiLetra {
         this.audb   = 'c2acfd5d40d1d1870ad0d45f9b8cfc71';
 
         this.webFinder = new webFinder();
+
+        this.motorGSE = new LyricsEngine({
+            apiKey: 'AIzaSyDr0frs3E6bDroBl09Gw4zVOO-VUjh5Ag0', // Pode deixar vazio se for usar só o LRCLIB
+            cx: '33a78946579874d0d'
+        });
       
     }
+
+
+    async  carregarMusica(artist, track) {
+    try {
+        const resultado = await this.motorGSE.search(artist, track);
+        
+        // Exibindo a letra no seu container com o tema de colmeia
+        //console.log("Letra encontrada:", resultado);
+        //const divLetra = document.querySelector('#container-letra');
+        //divLetra.innerText = resultado.content;
+
+        return resultado.content
+        
+        console.log(`Letra obtida via: ${resultado.engine}`);
+    } catch (erro) {
+        console.error("Ops:", erro.message);
+    }
+}
+    
+
 
      getArtMusicAlt(art,mus){
         
@@ -21,6 +48,8 @@ export default class apiLetra {
 
         const url = `https://www.vagalume.com.br/${art}/${mus}.html`
         //  const resultado = document.getElementById('resultado');
+
+        
          
         return this.webFinder.getText(url)
     }
@@ -40,6 +69,8 @@ export default class apiLetra {
         //console.log(path);
         //return path;
     }
+
+    
 
     
 

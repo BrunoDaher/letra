@@ -37,7 +37,7 @@ export class Api {
 
  
      //vagalume
-     getArtMusic(art,mus){       
+     async getArtMusic(art,mus){       
 
        // console.log(art)
         art = this.normalizeInput(art);
@@ -48,7 +48,9 @@ export class Api {
         mus = mus.replace('-remastered','');
         mus = mus.replace('-remasterizado','');
 
-        let res = apiLetra.getArtMusicAlt(art,mus)
+    
+        
+        let res = await  apiLetra.carregarMusica(art,mus)
 
         return res
 
