@@ -22,11 +22,21 @@ pre.rollOff{
     display: contents;
 }
 
+
+.reticent{ 
+    width: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 #titulo{
     filter: drop-shadow(2px 2px 2px var(--fundoA)) contrast(6.5);
     font-size: calc(3svh);
     text-transform: capitalize;
-    max-width: 10px !important;
+    overflow: hidden;
+    width: 200px;
+    text-overflow: ellipsis;
+    
 }
 
 .d-none{
@@ -37,6 +47,7 @@ pre.rollOff{
 
     transform:text-capitalize;
     transition: transform 0.9s cubic-bezier(0, 0, 3.2, 4.2); 
+    white-space: pre-line;
     
     &.active{
         transform:translateX(1110px);

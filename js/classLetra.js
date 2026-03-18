@@ -55,7 +55,13 @@ class Letra{
     setColunas(){
         let elem = document.getElementById(this.getAttribute('target'));
         
-        elem.style.columnCount = this.value
+        if(this.value == 0){
+            this.value = 1;
+        }
+
+        elem.style.columnCount = this.value;
+
+
 
         console.log(elem.style.columnCount)
         console.log(this.value)
