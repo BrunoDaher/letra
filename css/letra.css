@@ -27,6 +27,8 @@ pre.rollOff{
     width: 100px;
     text-overflow: ellipsis;
     overflow: hidden;
+    text-wrap-mode: nowrap;
+    
 }
 
 #titulo{

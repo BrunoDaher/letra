@@ -75,7 +75,7 @@ if ('serviceWorker' in navigator) {
 
     const divArtistas = document.getElementById('divArtistas');
     const listaArtistas = document.getElementById('listaArtistas');
-    const trackMus = document.getElementById('trackMus');
+    const trackMus = document.getElementById('trackMus'); // pesquisa por musica e artista
     
     //busca avançada
     const trackSugestion = document.getElementById('trackSugestions');
@@ -116,6 +116,7 @@ if ('serviceWorker' in navigator) {
     pesquisa();
     montaLista();
 
+    setTimeout(() => btnMenuB.click(), 1000); // Abre o menu B após 1 segundo
 
     new DragAndDrop('listaMusicas', {
         onDragStart: (event) => {
@@ -241,13 +242,14 @@ if ('serviceWorker' in navigator) {
     
         //pelo fato de serem funcoes privadas da pesquisa
         //o que provavalmente cadastra o evento a cada vez que o trigger é chamado
-        trackMus.addEventListener('keypress',searchTrackInfo);
+        
+        trackMus.addEventListener('input',searchTrackInfo);
         trackMus.addEventListener('change',searchTrackInfo);
         trackMus.addEventListener('click',inputClean);
     
 
         arrPesq.forEach(function(element){
-            element.addEventListener('keypress',searchArtist);   
+            element.addEventListener('input',searchArtist);   
             element.addEventListener('click',inputClean);     
         });
 
@@ -298,8 +300,9 @@ if ('serviceWorker' in navigator) {
         //Vagalume    
         function searchTrackInfo(){
             //exibe lista
-            trackSugestion.classList.add('active');
+            
         //let returnArt = document.getElementById('listaArtistas');
+
 
             fetch(api.searchTrack(this.value))
             .then( function(response)  {        
@@ -313,6 +316,7 @@ if ('serviceWorker' in navigator) {
                
                     if(data ){
     
+                        trackSugestion.classList.add('active');
                     //limpa container destino
                         trackSugestion.innerText = '';
                         
@@ -323,9 +327,6 @@ if ('serviceWorker' in navigator) {
                             let valido = (element.name.includes(element.artist));
 
                             if(valido){
-
-                                    
-
                                     //console.log(element.name, '-> '+ element.artist);
                                     let mus = element.name.replace(element.artist,'');
                                         mus = aux.normalize(mus);
@@ -334,7 +335,6 @@ if ('serviceWorker' in navigator) {
                                     if(art.includes(mus)){
                                        art = art.replace(mus,''); 
                                     }
-
 
                                     //console.log(element)
                                     let el = document.createElement('div');
@@ -348,8 +348,13 @@ if ('serviceWorker' in navigator) {
 
                                     el.addEventListener('click',getMusicInfo); 
                                 
+                                    
                                     //preenche destino
                                     trackSugestion.append(el);
+
+                                    console.log(el)
+
+                                    
                             }
 
                           
@@ -363,6 +368,7 @@ if ('serviceWorker' in navigator) {
 
     //LAST FM
     function getArtInfo(event) {    
+        
         //console.log("API artInfo - vagalume")
 
         divArtistas.classList.remove('active');
@@ -474,7 +480,6 @@ if ('serviceWorker' in navigator) {
    
     function plotaLetra(letra, artista, musica){
             
-       
         
                     let id = 'l' + artista + musica;
                         id = id.trim().toLowerCase();
@@ -489,16 +494,19 @@ if ('serviceWorker' in navigator) {
                             //plota e persiste
                             setTimeout(
                                 function(){ 
-                                    console.log('via getArtMusic') 
+                                    //console.log('plotando letra e salvando')
+                                    infoLetra.innerHTML = letra;
+                                    //console.log('via getArtMusic') 
                                     appendMusica(obj,listaLocal);},100
                                 );
                         } 
                     
                     setTimeout(function(){
+                        console.log('plotando letra')
                         infoLetra.classList.remove('active');
-                        if(letra.includes('<'))
-                        infoLetra.innerHTML = letra;
-                    },700);
+                        //if(letra.includes('<'))
+                        //infoLetra.innerHTML = letra;
+                    },200);
                     
                     infoLetra.classList.add('active');
 

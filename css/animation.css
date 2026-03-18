@@ -2,10 +2,23 @@
   .scroll-text  {
     transform: translateY(100%);
     overflow: hidden;
-    animation: my-animation 200s linear infinite;
-    transition: all 0.3s;
+    animation: my-animation 2s linear infinite;
+    transition: all 0.1s;
   }
 
+@keyframes cinematicaEthereal {
+    /* ESTADO INICIAL (0s): Invisível, Desfocada e Escura */
+    0% {
+        opacity: 1;
+    }
+
+
+    /* ESTADO FINAL (5s): Desaparece total com efeito reverso */
+    100% {
+        opacity: 0;
+      display: none;
+    }
+}
 
 
   .zoomable {

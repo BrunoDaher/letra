@@ -29,10 +29,10 @@ export default class apiLetra {
         //console.log("Letra encontrada:", resultado);
         //const divLetra = document.querySelector('#container-letra');
         //divLetra.innerText = resultado.content;
-
+console.log(`Letra obtida via: ${resultado.engine}`);
         return resultado.content
         
-        console.log(`Letra obtida via: ${resultado.engine}`);
+        
     } catch (erro) {
         console.error("Ops:", erro.message);
     }
@@ -40,7 +40,7 @@ export default class apiLetra {
     
 
 
-     getArtMusicAlt(art,mus){
+    getArtMusicAlt(art,mus){
         
 
         art = encodeURIComponent(art);

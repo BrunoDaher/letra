@@ -294,6 +294,34 @@ ul{
       
     }
 
+    .logo{
+
+        width: -webkit-fill-available;
+    height: stretch;
+    mix-blend-mode: revert-layer;
+    filter: invert(1);
+            display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        
+        position: absolute;
+        z-index: 0;
+
+        /* --- Configuração da Animação --- */
+        /* Mantivemos 5s, ease-in-out para suavidade.
+        'forwards' garante que ela fique invisível no final. */
+        animation: cinematicaEthereal 5s ease-in-out forwards;
+        
+        /* Garante que comece invisível e com filtro antes de rodar */
+        animation-fill-mode: both;
+        animation-delay: 0s; 
+
+        /* Dica: Melhora a renderização de filtros em alguns navegadores */
+        backface-visibility: hidden;
+        will-change: transform, opacity, filter;
+    }
+
     #albSongs{
         
         max-height: 66vh;
@@ -301,6 +329,7 @@ ul{
         /* align-content: center; */
         width: fit-content;
         float: inline-end;
+        text-align: -webkit-center;
 
           li{
                 flex-flow: row-reverse;
