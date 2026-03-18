@@ -88,16 +88,15 @@ outline: none !important;
 }
 
 .bolt{
-    /*background-image: url(https://www.pngrepo.com/download/400010/bolt.png);
-    */background-image: url(../css/imgs/bolt-pngrepo-com.png);
-    background-size: 31px ;
-    width:31px;
-    height: 31px;
-    filter: hue-rotate(234deg) brightness(1.5) contrast(0.5);
+    
+    
+    color: var(--colorB);
+    font-size:3.4vh;
+    
 }
 
 .bolt.active{
-    filter: invert(0);
+ color: var(--active);
 }
 
 .btn{

@@ -165,7 +165,7 @@ if ('serviceWorker' in navigator) {
     function toggleLogic(){
         let valor =  this.value;
         this.value = valor == 0 ? 1:0;
-        this.childNodes[1].classList.toggle('active');
+        this.classList.toggle('active');
     }
 
     function changeSong(){
