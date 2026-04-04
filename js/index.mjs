@@ -347,13 +347,15 @@ if ('serviceWorker' in navigator) {
                                     
                                     //busca info das letras
 
+                                  //    el.onclick = this.getLocalSong(btn)
+
                                     el.addEventListener('click',getMusicInfo); 
                                 
                                     
                                     //preenche destino
                                     trackSugestion.append(el);
 
-                                    console.log(el)
+                                    
 
                                     
                             }
@@ -637,11 +639,39 @@ if ('serviceWorker' in navigator) {
         let art = item.getAttribute('artInfo');
         let mus = item.getAttribute('artMus');
 
-         let letra =  await api.getArtMusic(art,mus);
 
+           console.log('verificando localStorage', item);
+
+        let local = api.getMusLocal(mus);
+
+        let letra = '';
+
+        if(local.existe){
+            console.log('via Local')
+             letra = local.doc.letra;
+        }
+        else{
+            console.log('via API')
+           letra =  await api.getArtMusic(art,mus);
+        }
+        
         if(letra){
-           plotaLetra(letra, art, mus);
-           fastGo();
+            console.log('letra encontrada')
+          
+               infoLetra.innerHTML = local.doc.letra;
+                        titulo.innerText = local.doc.musica;
+                    titulo.style = 'text-transform:capitalize';
+                    titulo.setAttribute('idSong',local.doc.id);
+                //fastGo();
+                //plotaLetra(local.doc.letra, local.doc.artista, local.doc.musica);
+                
+                if(btnBolt.value == 1 || btnBolt2.value == 1){
+                    setTimeout(function(){
+                        btnMenuA.click();
+                    }, 300)
+                }
+
+           //fastGo();
         }
         else{
             console.log('trilhoB falhou, buscando via getArtMusicAlt')
@@ -753,38 +783,9 @@ if ('serviceWorker' in navigator) {
                                 setTimeout(cback,200);
                                 //pra cada letra
                                 getLyric.forEach(btn => {
-                                    btn.onclick = 
-                                        ()=>{
-                                            
-                                            console.log('verificando localStorage');
-
-                                            let local = api.getMusLocal(btn.innerText);
-
-                                            
-                                            if(local.existe){
-                                                console.log('letra existe no storage local, plotando');
-                                                
-                                                    infoLetra.innerHTML = local.doc.letra;
-                                                     titulo.innerText = local.doc.musica;
-                                                    titulo.style = 'text-transform:capitalize';
-                                                    titulo.setAttribute('idSong',local.doc.id);
-                                                //fastGo();
-                                                //plotaLetra(local.doc.letra, local.doc.artista, local.doc.musica);
-                                                
-                                                if(btnBolt.value == 1 || btnBolt2.value == 1){
-                                                    setTimeout(function(){
-                                                        btnMenuA.click();
-                                                    }, 300)
-                                                }
-                                                
-
-                                            }
-                                                else{
-                                                    getArtistMusic(btn)
-                                                }
-                                            
-                                            
-                                        }
+                                    
+                                    btn.onclick = this.getLocalSong()
+                                      
                                 });
                             }
                         });
@@ -792,6 +793,40 @@ if ('serviceWorker' in navigator) {
                         thumbDiv.append(img);
 
         return thumbDiv;
+    }
+
+    function getLocalSong(btn){
+          
+                                            
+            console.log('verificando localStorage');
+
+            let local = api.getMusLocal(btn.innerText);
+
+            
+            if(local.existe){
+                console.log('letra existe no storage local, plotando');
+                
+                    infoLetra.innerHTML = local.doc.letra;
+                        titulo.innerText = local.doc.musica;
+                    titulo.style = 'text-transform:capitalize';
+                    titulo.setAttribute('idSong',local.doc.id);
+                //fastGo();
+                //plotaLetra(local.doc.letra, local.doc.artista, local.doc.musica);
+                
+                if(btnBolt.value == 1 || btnBolt2.value == 1){
+                    setTimeout(function(){
+                        btnMenuA.click();
+                    }, 300)
+                }
+                
+
+            }
+                else{
+                    getArtistMusic(btn)
+                }
+            
+            
+        
     }
 
   
