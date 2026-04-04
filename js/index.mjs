@@ -45,10 +45,11 @@ if ('serviceWorker' in navigator) {
 // Variaveis
 
     const user = new User(1);
+        const aux = new Aux();
     const api = new Api();
     const tela = new Tela();
     const dao = new Dao();
-    const aux = new Aux();
+
 
     const infoMus = document.getElementById('infoMus');
 
@@ -466,7 +467,6 @@ if ('serviceWorker' in navigator) {
         let musica = item.innerText; //titulo da musica
 
       
-
         let letra =  await api.getArtMusic(artista,musica);
 
         if(letra){
@@ -475,7 +475,7 @@ if ('serviceWorker' in navigator) {
         }
        
             
-}
+   }
 
    
     function plotaLetra(letra, artista, musica){
@@ -523,10 +523,8 @@ if ('serviceWorker' in navigator) {
                         })
             
                     }
-        }
-     
-    
-
+  }
+         
     function getLocalMusic()
     {
 
@@ -757,7 +755,35 @@ if ('serviceWorker' in navigator) {
                                 getLyric.forEach(btn => {
                                     btn.onclick = 
                                         ()=>{
-                                            getArtistMusic(btn)
+                                            
+                                            console.log('verificando localStorage');
+
+                                            let local = api.getMusLocal(btn.innerText);
+
+                                            
+                                            if(local.existe){
+                                                console.log('letra existe no storage local, plotando');
+                                                
+                                                    infoLetra.innerHTML = local.doc.letra;
+                                                     titulo.innerText = local.doc.musica;
+                                                    titulo.style = 'text-transform:capitalize';
+                                                    titulo.setAttribute('idSong',local.doc.id);
+                                                //fastGo();
+                                                //plotaLetra(local.doc.letra, local.doc.artista, local.doc.musica);
+                                                
+                                                if(btnBolt.value == 1 || btnBolt2.value == 1){
+                                                    setTimeout(function(){
+                                                        btnMenuA.click();
+                                                    }, 300)
+                                                }
+                                                
+
+                                            }
+                                                else{
+                                                    getArtistMusic(btn)
+                                                }
+                                            
+                                            
                                         }
                                 });
                             }

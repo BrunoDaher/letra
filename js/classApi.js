@@ -1,9 +1,13 @@
 import ApiLastFM from "./classApiLastFM.js";
 import ApiLetra from "./classApiLetra.js";
+import Dao from "./classDao.js";
+
 
 
 const apiLastFM = new ApiLastFM();
 const apiLetra = new ApiLetra();
+const dao = new Dao();
+
 
 
 //const url = 
@@ -11,12 +15,9 @@ export class Api {
 
     //toDo
     
-
     //setar apis
     constructor(){
-       // this.apiKey = 'apiKey=660a4395f992ff67786584e238f501aa'; // Vagalume
-
-        //console.log(apiMusixMatch)
+       
     }
 
     //api last//
@@ -39,6 +40,8 @@ export class Api {
      //vagalume
      async getArtMusic(art,mus){       
 
+        console.log(this.normalizeInput(art))
+
        // console.log(art)
         art = this.normalizeInput(art);
         mus = this.normalizeInput(mus);
@@ -48,7 +51,6 @@ export class Api {
         mus = mus.replace('-remastered','');
         mus = mus.replace('-remasterizado','');
 
-    
         
         let res = await  apiLetra.carregarMusica(art,mus)
 
@@ -58,17 +60,29 @@ export class Api {
     }
 
     getMusLocal(busca){
-        let mus = this.dao.getSessionJSON('artist').lyrics.item;   
-        let slim = [];
+
+        const listaLocal = dao.getLocalJSON('listaLocal') || [];
+   
+        let existe = false;
+        let doc = null;
         
-        mus.forEach(function (element) {                                                
-            if(element.desc.toLowerCase().startsWith(busca.toLowerCase()))
-            {                                
-                slim.push(element);                
-            }
-        });        
-        return slim;        
+        if(listaLocal.length > 0){
+
+            listaLocal.forEach((element) => {
+             let obj = Object.values(element)[0];
+                let mus = obj['musica'];
+            
+            if(this.normalizeInput(mus) === this.normalizeInput(busca)){
+                existe = true;
+                doc = obj;
+            } 
+            
+        });
+     }
+        return {existe,doc};
     }
+    
+    
 
     //lastFM
     searchTrack(string){
