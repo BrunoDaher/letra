@@ -296,10 +296,12 @@ ul{
 
     .logo{
 
+        
+
         width: -webkit-fill-available;
-    height: stretch;
-    mix-blend-mode: revert-layer;
-    filter: invert(1);
+        height: stretch;
+        mix-blend-mode: revert-layer;
+        filter: invert(1);
             display: flex;
         justify-content: center;
         align-items: center;
@@ -320,6 +322,10 @@ ul{
         /* Dica: Melhora a renderização de filtros em alguns navegadores */
         backface-visibility: hidden;
         will-change: transform, opacity, filter;
+
+        @media (min-width: 601px){
+            display: none !important;
+        }
     }
 
     #albSongs{
