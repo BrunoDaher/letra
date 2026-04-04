@@ -782,10 +782,9 @@ if ('serviceWorker' in navigator) {
                                 let getLyric = document.querySelectorAll('.getLyric');
                                 setTimeout(cback,200);
                                 //pra cada letra
-                                getLyric.forEach(btn => {
-                                    
-                                    btn.onclick = this.getLocalSong()
-                                      
+                              getLyric.forEach(btn => {
+                                    console.log(this)
+                                    btn.addEventListener('click', () => getLocalSong(btn));  
                                 });
                             }
                         });
