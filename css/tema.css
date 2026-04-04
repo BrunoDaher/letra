@@ -313,7 +313,7 @@ ul{
         /* --- Configuração da Animação --- */
         /* Mantivemos 5s, ease-in-out para suavidade.
         'forwards' garante que ela fique invisível no final. */
-        animation: cinematicaEthereal 5s ease-in-out forwards;
+        animation: cinematicaEthereal 700ms ease-in-out forwards;
         
         /* Garante que comece invisível e com filtro antes de rodar */
         animation-fill-mode: both;
