@@ -19,7 +19,9 @@
 
 .fundoGradiente, legend{
 
-    background: repeating-linear-gradient(18deg, var(--fundoD), transparent 310px)
+    
+
+    background:linear-gradient(45deg, var(--fundoD), transparent);
 }
 
 
@@ -38,6 +40,7 @@
     padding: 2svh 0;
     margin: 0;
     height: 4svh;
+    background: repeating-linear-gradient(18deg, var(--fundoD), transparent 310px);
     button{
         font-size: 2vh;
     }
@@ -178,7 +181,8 @@ ul{
     opacity: 0;
      justify-self: center; 
      text-align: center;
-    width: fit-content;
+         width: 100%;
+    
 }
 
 #trackSugestions.active{
