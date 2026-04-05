@@ -191,8 +191,12 @@ ul{
 
 .banda {
 
-    padding: 1vh;
-    font-size: 2.2vh;
+    padding-block:3vh;
+    padding-inline: 2vh;
+    font-size: 2.5vh;
+
+    backdrop-filter: blur(10px);
+    
 }
 
     #listaArtistas.active{
