@@ -195,7 +195,7 @@ ul{
     padding-inline: 2vh;
     font-size: 2.5vh;
 
-    backdrop-filter: blur(10px);
+  
     
 }
 
@@ -268,7 +268,7 @@ ul{
         
         background: linear-gradient(45deg, var(--fundoB), var(--fundoC));
         padding: 2vh;
-        gap: 3vh;
+        gap: 6vh;
 
         li{
            text-transform: capitalize; 
@@ -359,7 +359,7 @@ ul{
                 flex-flow: row-reverse;
                 align-items: center;
                 cursor: pointer;
-                margin: 1vh 2vh;
+                margin: 4vh 2vh;
                 display: flex;
                 
                 gap: 1vh;
