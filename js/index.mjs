@@ -757,7 +757,7 @@ if ('serviceWorker' in navigator) {
                                     //console.log(`${resultadoRealEmMinutos} minutos`);
                                     // Saída: 4.766666666666667 minutos
 
-                                     musContainer.innerHTML += `<li class="getLyric bi-activity">${faixa.name}</li>`;
+                                     musContainer.innerHTML += `<li class="getLyric bi-file-music">${faixa.name}</li>`;
                                 });
                             }
                         

@@ -35,13 +35,15 @@
 }
 
 .painel{
-    align-content: center;
+  align-content: center;
     width: 100%;
     padding: 2svh 0;
     margin: 0;
     height: 4svh;
-    background: repeating-linear-gradient(18deg, var(--fundoD), transparent 310px);
-    button{
+    background: repeating-linear-gradient(323deg, var(--fundoC), transparent 234px);
+    filter: drop-shadow(2px 4px 6px black);
+
+    & > button{
         font-size: 2vh;
     }
 }
@@ -148,7 +150,11 @@ header > button{
     }
 
     .rad5{
-        border-radius: 5vh;
+        border-radius: 5svh;
+    }
+
+     .rad2{
+        border-radius: 2svh;
     }
 
 .inputPesquisa{
