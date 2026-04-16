@@ -24,6 +24,10 @@ html, body {
   }
   
 
+  .justEven{
+    justify-content: space-evenly;
+  }
+
 .w100{
     width: 100%;
 }

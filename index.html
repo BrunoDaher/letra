@@ -159,7 +159,7 @@
 
         <menu id="menuB">
         
-            <fieldset>
+            <div>
                 <legend hidden>Discografia</legend>
                 <div class="box-pesquisa">
                     <input target = 'divArtistas' class="inputPesquisa rad5 fundoGradiente" type="text" placeholder="artista">
@@ -170,51 +170,51 @@
 
                 <div class="wrapper grid1">
                     <!--pesquisa e botoes-->
-                    <div id="painelDiscog" class="flex central">
+                    <div id="painelDiscog" class="flex justEven p2 gap1">
                             <button class="btnToggle"target="divArtistas" id="btnListaArt">
                             <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">-->
-                            <i class="bi bi-list-check a2"></i>
+                            <i class="bi bi-person ">Artistas</i>
                             </button> 
                             <button class="btnToggle"target="listaDiscos" id="discog">
                             <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">-->
-                                <i class="bi bi-vinyl a2"></i>
+                                <i class="bi bi-vinyl "> Discos</i>
                             </button>
                             <button class="btnToggle"target="discoBox" id="btnAlbSongs">
-                                <i class="bi bi-music-note a2"></i>
+                                <i class="bi bi-music-note ">Faixas</i>
                                 <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">-->
                             </button>
                         </div>
                 <!-- -->
             
-                    <fieldset id="divArtistas" class="rad1 accord scrollY">
-                        <legend class=" bi sombra bi-magic flex gap1 a1 "> Artistas</legend>
-                        <div id="listaArtistas" class="fundoGradiente"></div>
+                    <fieldset id="divArtistas" class=" accord scrollY p0">
+                        <legend class="off w100 bi  sombra bi-magic flex gap1 a1 "> Artistas</legend>
+                        <div id="listaArtistas" class="p2"></div>
                     </fieldset>
 
                 
-                    <fieldset id="listaDiscos" class="accord" >
-                        <legend class=" bi bi-disc sombra flex gap1 a1" id="labelDiscos"> Discos</legend>
-                        <div id="discos" class=" rad1">
+                    <div id="listaDiscos" class="accord" >
+                        <legend class="w100  bi bi-disc sombra flex gap1 a1" id="labelDiscos"> Discos</legend>
+                        <div id="discos" class="p2 rad1">
                         </div>
-                    </fieldset>
+                    </div>
 
 
-                    <fieldset id="discoBox" class="discoBox accord " >
+                    <div id="discoBox" class=" discoBox accord " >
                         
-                            <legend id="infoMus" class="typing sombra  bi-list a1 ">Faixas</legend>
-                            <img src="" class="miniEncarte sombra pos-abs " id="infoAlb">
+                            <legend id="infoMus" class="w100 typing sombra  bi-music-note a1 ">Faixas</legend>
+                            <img src="" class="p2 miniEncarte sombra pos-abs " id="infoAlb">
                         
-                        <div id="albSongs" class="discoBox"></div>
-                    </fieldset>
+                        <div id="albSongs" class="p2 discoBox"></div>
+                    </div>
 
                 </div>
             
-            </fieldset>   
+            </div>   
         </menu>
 
         <menu id="menuC">
             <div class="lista">
-            <fieldset>
+            <div>
                 <legend hidden>Busca Avançada</legend>
                     <div class="box-pesquisa">
                         <input target="trackSugestions" class="pesquisa rad5 fundoGradiente" id="trackMus" type="text" placeholder="artista e musica"> 
@@ -222,8 +222,8 @@
                             
                         </button>
                     </div>
-                <ul id="trackSugestions" class="sideBox center rad1"></ul>
-            </fieldset>
+                <ul id="trackSugestions" class="sideBox rad5 center rad1"></ul>
+                </div>
             </div>
         </menu>
     </main>

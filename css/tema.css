@@ -17,11 +17,11 @@
     filter: drop-shadow(3px 2px 1px var(--fundoA)) saturate(2.5);
 }
 
-.fundoGradiente, legend{
+.fundoGradiente, legend, .banda{
 
-    
-
-    background:linear-gradient(45deg, var(--fundoD), transparent);
+        background: linear-gradient(45deg, black, var(--fundoB));
+    border-radius: 0vh 0vh 0vh 0vh ;
+    filter: drop-shadow(2px 4px 6px var(--fundoC));
 }
 
 
@@ -79,7 +79,7 @@ button{
     align-items: center;
     border:none;
     background: none;
-    color: white;
+    color: var(--fundoA);
     font-size: 2.5vh;
 
     outline: none;
@@ -200,9 +200,17 @@ ul{
     padding-inline: 2vh;
     font-size: 2.5vh;
 
-  
+    
     
 }
+
+
+.banda:hover{
+
+    color: var(--active);
+    cursor: pointer;
+}
+
 
     #listaArtistas.active{
         transition: all 0.5s;

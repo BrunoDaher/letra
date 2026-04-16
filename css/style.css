@@ -11,7 +11,7 @@
     --topSides: calc(var(--top) + 8vw);
     --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
     
-    /*
+    
     --fundoA: #4d7a8d;
     --fundoB: rgb(35, 33, 33);
     --active: #64bbe0;
@@ -20,16 +20,8 @@
     --shadowA: #71aac381;
     --colorA: var(--fundoA);
     --colorB: white;
-    */
+    
 
-    --fundoA: #ba6210;
-    --fundoB: rgb(35, 33, 33);
-    --active: #15de3a;
-    --fundoC: #000000;
-    --fundoD: #cb7014;
-    --shadowA: #71aac381;
-    --colorA: var(--fundoA);
-    --colorB: white;
 
    --width:90%;
 }
@@ -44,15 +36,7 @@
     position: relative;
 }
 
-.banda{
-    margin:1vh;
-}
 
-.banda:hover{
-
-    color: var(--active);
-    cursor: pointer;
-}
 
 
 .sombra{
@@ -136,6 +120,7 @@ input{
 
 fieldset{
     border:none;
+    margin: 0;
     /*
     border-radius: 4px;
     border-color: var(--fundoD);
