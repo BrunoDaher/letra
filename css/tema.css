@@ -361,20 +361,18 @@ ul{
 
     #albSongs{
         
-        max-height: 66vh;
-        overflow-y: scroll;
-        /* align-content: center; */
+        
         width: fit-content;
         float: inline-end;
         text-align: -webkit-center;
 
           li{
-                flex-flow: row-reverse;
+                
                 align-items: center;
                 cursor: pointer;
-                margin: 4vh 2vh;
-                display: flex;
+                margin-block: 2vh;
                 
+                display: flex;
                 gap: 1vh;
        
         }
@@ -390,6 +388,10 @@ ul{
 .discoBox{
     position: relative;
     
+
+        padding-inline-end: 2vh;
+
+
     transition: all 0.3s;
 }
 

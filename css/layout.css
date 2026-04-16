@@ -23,6 +23,13 @@ html, body {
  height: 100vh;
   }
   
+  .justAround{
+    justify-content: space-around;
+  }
+
+  .justBetween{
+    justify-content: space-between;
+  }
 
   .justEven{
     justify-content: space-evenly;

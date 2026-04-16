@@ -12,7 +12,7 @@
     --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
     
     
-    --fundoA: #4d7a8d;
+    --fundoA: #767370;
     --fundoB: rgb(35, 33, 33);
     --active: #64bbe0;
     --fundoC: #000000;
