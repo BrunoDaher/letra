@@ -35,6 +35,16 @@ class User {
     }
 
 
+    modelLista(lista){
+
+        return `   
+                <div id="${lista.id}" class="listaCard central fundoGradiente">
+                    <div class="card-body">
+                        <h5 class="card-title">${lista.nome}</h5>
+                    </div>
+                </div>`
+    }
+
     
 }
 

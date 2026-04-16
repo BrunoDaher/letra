@@ -13,7 +13,13 @@ export class ApiLastFM {
         let path = `https://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${string}&api_key=${this.apiKey}&format=json`
         
         
+        
         return path;  
+    }
+
+    searchTopArtists(){
+            let path = `https://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=${genero}&api_key=${this.apiKey}}&format=json`;
+
     }
 
     searchTrack(string){

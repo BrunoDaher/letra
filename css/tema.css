@@ -285,7 +285,7 @@ ul{
 
         place-items: baseline;
         
-        background: linear-gradient(45deg, var(--fundoB), var(--fundoC));
+            filter: drop-shadow(2px 1px 11px black);
         padding: 2vh;
         gap: 6vh;
 

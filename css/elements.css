@@ -230,6 +230,12 @@ input{
     filter: drop-shadow(2px 4px 6px black);
 }
 
+.listaCard{
+     width: 25vw;
+    height: 25vw;
+    border-radius: 4px;
+    filter: drop-shadow(2px 4px 6px black);
+}
 
 button:hover{
     filter: drop-shadow(2px 4px 6px black);

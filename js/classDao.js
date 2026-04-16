@@ -44,7 +44,7 @@ class Dao extends ApiCloud{
      // this.apiCloud.updateLog(user);
      //from super()
      try {
-      this.updateBin();
+      this.updateBin('listaLocal');
     
       //alert('salvo')
      } catch (error) {

@@ -94,10 +94,10 @@ class ApiCloud { //extends Dao{
           if (req.readyState == XMLHttpRequest.DONE) {
             let dados  = JSON.parse(req.responseText);
             
-           // console.log(dados);
+            console.log(dados);
 
-          //  console.log(this.dao)
-           //console.log(JSON.parse(dados.record));
+            console.log(this.dao)
+        console.log(JSON.parse(dados.record));
           
          //  this.dao.saveLocalJSON('userList','teste');
            return dados.record
@@ -114,10 +114,10 @@ class ApiCloud { //extends Dao{
         req.send();  
       }
 
-      updateBin(){
+      updateBin(name){
             let req = new XMLHttpRequest();
 
-            let listaLocal = JSON.parse(localStorage.getItem('listaLocal'));
+            let listaLocal = JSON.parse(localStorage.getItem(name));
 
             req.onreadystatechange = function () {
             if (req.readyState == XMLHttpRequest.DONE) {

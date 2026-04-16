@@ -244,9 +244,9 @@ if ('serviceWorker' in navigator) {
         //pelo fato de serem funcoes privadas da pesquisa
         //o que provavalmente cadastra o evento a cada vez que o trigger é chamado
         
-        trackMus.addEventListener('input',searchTrackInfo);
-        trackMus.addEventListener('change',searchTrackInfo);
-        trackMus.addEventListener('click',inputClean);
+      //  trackMus.addEventListener('input',searchTrackInfo);
+        //trackMus.addEventListener('change',searchTrackInfo);
+        //trackMus.addEventListener('click',inputClean);
     
 
         arrPesq.forEach(function(element){
@@ -299,6 +299,7 @@ if ('serviceWorker' in navigator) {
 
 
         //Vagalume    
+        /*
         function searchTrackInfo(){
             //exibe lista
             
@@ -367,6 +368,8 @@ if ('serviceWorker' in navigator) {
                         
             }); 
         }
+
+        */
     }
 
     //LAST FM

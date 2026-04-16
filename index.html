@@ -25,10 +25,10 @@
         <i class="bi bi-music-note-list a2"></i>
             <a>Albuns</a>
         </button>
-<button  id="btnMenuC" target="menuC"  class="btn">
+        <button  id="btnMenuC" target="menuC"  class="btn">
             <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="advSearch">-->
-            <i class="bi bi-search a2"></i>
-            <span>Pesquisa</span>
+            <i class="bi bi-journal-bookmark-fill a2"></i>
+            <span>Listas</span>
         </button>
                 <button id="btnMenuA" target="menuA" class="btn">
             <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">-->
@@ -55,8 +55,8 @@
                     <button class="btn flex gap1" target="listaMusicas" id="btnSetList">
                         <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="setList">-->
                 
-                        <i class="bi bi-list-check a2"></i>
-                        <a class="lbl">Lista</a>
+                        <i class="bi bi-file-earmark-music-fill a2"></i>
+                        <a class="lbl">SetList</a>
                     </button> 
                     <input hidden type="button" id="listObserver">
                     <div class="reticent" style="text-align: center; ">
@@ -105,41 +105,7 @@
                     </div> 
             </div>
                 
-                <div id="loadCloud" class="iconText flex configContainer ">
-                    
-                    <div id="save" class="iconText configContainer " >
-                        <input type="text" id="nomeArquivo" class="off">
-                        <button target="" type="button"  id='btnSaveCloud'>
-                            <i class="bi bi-cloud-arrow-up a2 colorChroma"></i>
-                        </button>
-                        <span for="saveCloud" class="">Cloud</span>
-                    </div>  
-                    
-                    <div class="iconText configContainer">
-                        <button target="" type="button"  id='btnLoadCloud'>
-                            <i class="bi bi-cloud-arrow-down a2"></i>
-                        </button>
-                        <span>Load</span>
-                    </div>
-
-                    <div id="export" class="iconText configContainer a2">
-                        <button type="button"  id='btnExport'>
-                            <i class="bi bi-filetype-json a2"></i>
-                        </button>
-                        <span for="export">Export</span>
-                    </div>  
-                </div>
-                    
-                <div id="load" class="iconText configContainer" style="display: none;">
-                    
-                    <button target="dataLoad" type="button"  id='btnUpload'>
-                        <i class="bi bi-cloud-arrow-up-fill a3"></i>
-                    </button>
-                        <div hidden> 
-                            <input id='inputFile' type="file">
-                        </div>
-                    <label for="save">Load File</label>    
-                </div>  
+               
                 
             </div>
 
@@ -187,13 +153,13 @@
                 <!-- -->
             
                     <fieldset id="divArtistas" class=" accord scrollY p0">
-                        <legend class="off w100 bi  sombra bi-magic flex gap1 a1 "> Artistas</legend>
+                        <legend class="off w100 bi sombra bi-magic flex  a1 "> Artistas</legend>
                         <div id="listaArtistas" class="p2"></div>
                     </fieldset>
 
                 
                     <div id="listaDiscos" class="accord" >
-                        <legend class="w100  bi bi-disc sombra flex gap1 a1" id="labelDiscos"> Discos</legend>
+                        <legend class="w100  bi bi-vinyl sombra flex gap1 a1" id="labelDiscos"> Discos</legend>
                         <div id="discos" class="p2 rad1">
                         </div>
                     </div>
@@ -218,18 +184,81 @@
         </menu>
 
         <menu id="menuC">
-            <div class="lista">
-            <div>
-                <legend hidden>Busca Avançada</legend>
+            
+            <article class="off">
+                     
                     <div class="box-pesquisa">
                         <input target="trackSugestions" class="pesquisa rad2 fundoGradiente" id="trackMus" type="text" placeholder="artista e musica"> 
                         <button class='bi bi-arrow-right-circle-fill bolt'id="btnBolt" value=0 target="menuB">
                             
                         </button>
                     </div>
-                <ul id="trackSugestions" class="sideBox rad2 center rad1"></ul>
+
+                    <ul id="trackSugestions" class="sideBox rad2 center rad1"></ul>
+                </article>
+            
+
+            <article id="listas" class="cardsContainer flex gap1  justAround m2">
+                
+                <div class="listaCard central fundoGradiente">
+                    <div class="card-body">
+                        <h5 class="card-title">SetListA</h5>
+                    </div>
                 </div>
-            </div>
+                
+                <div class="listaCard central fundoGradiente">
+                    <div class="card-body">
+                        <h5 class="card-title">SetListB</h5>
+                    </div>
+                </div>
+                
+                <div class="listaCard central fundoGradiente">
+                    <div class="card-body">
+                        <h5 class="card-title">SetListC</h5>
+                    </div>
+                </div>
+
+            </article>
+
+            <article id='clouds' class="m2 p2">
+                <div id="loadCloud" class="iconText flex configContainer ">
+                    
+                    <div id="save" class="off iconText configContainer " >
+                        <input type="text" id="nomeArquivo" class="off">
+                        <button target="" type="button"  id='btnSaveCloud'>
+                            <i class="bi bi-journal-arrow-up a2 colorChroma"></i>
+                        </button>
+                        <span for="saveCloud" class="">Cloud</span>
+                    </div>  
+                    
+                    <div class="iconText configContainer fundoGradiente rad2 p2">
+                        <button target="" type="button"  id='btnLoadCloud'>
+                            <i class="bi bi-activity a3"></i>
+                        </button>
+                        <span>Update</span>
+                    </div>
+
+                    <div id="export" class="off iconText configContainer a2">
+                        <button type="button"  id='btnExport'>
+                            <i class="bi bi-filetype-json a3"></i>
+                        </button>
+                        <span for="export">Export</span>
+                    </div>  
+                </div>
+                
+                <div id="load" class="iconText configContainer" style="display: none;">
+                
+                <button target="dataLoad" type="button"  id='btnUpload'>
+                    <i class="bi bi-cloud-arrow-up-fill a3"></i>
+                </button>
+                    <div hidden> 
+                        <input id='inputFile' type="file">
+                    </div>
+                <label for="save">Load File</label>    
+                </div>  
+            </article>
+
+
         </menu>
     </main>
 
