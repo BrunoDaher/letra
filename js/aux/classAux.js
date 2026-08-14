@@ -3,6 +3,21 @@ class Aux{
     constructor(){
 
     }
+
+    getDispositivo()
+    {
+        return navigator;
+    }
+
+    isEmpty(json){
+        return Object.keys(json).length > 0 ? false:true;
+    }
+
+    toArray(obj) {
+        return Object.keys(obj).map(function (key) {
+            return obj[key];
+        });
+    }
     
      intoArray(array,elemento){
         let cont = 0;

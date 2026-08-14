@@ -1,0 +1,391 @@
+/* Componentes de página */
+
+header {
+    backdrop-filter: saturate(3);
+    height: var(--header);
+    padding: 1svh;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+main > menu {
+    margin: 0;
+    height: 100%;
+    display: none;
+    padding: 0;
+    background: black;
+    color: white;
+}
+
+footer {
+    bottom: 0;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    padding: 1vh;
+}
+
+footer > div {
+    display: flex;
+    gap: 1vh;
+    justify-self: center;
+    text-align: center;
+}
+
+#myProgress {
+    display: none;
+    width: 100%;
+    background-color: var(--colorA);
+}
+
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: var(--colorB);
+    text-align: center;
+}
+
+#myBar > a {
+    text-align: center;
+    place-items: center;
+    vertical-align: -webkit-baseline-middle;
+    color: var(--active);
+}
+
+#myProgress.on {
+    display: block;
+}
+
+header > button.active,
+button.active {
+    color: var(--active);
+    filter: drop-shadow(2px 4px 6px black);
+    transition: all 0.3s;
+}
+
+header > button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 2.2vh;
+}
+
+#newList,
+li {
+    display: flex;
+    padding: 1svh;
+    border-radius: 3svw;
+    cursor: pointer;
+    max-width: 40vw;
+    text-align: unset;
+    align-items: center;
+    place-content: center;
+}
+
+.box-pesquisa {
+    display: flex;
+    text-align: center;
+    gap: 1vh;
+    justify-content: center;
+    padding: 2vh;
+}
+
+.box-pesquisa > input {
+    height: 5vh;
+    color: var(--fundoD);
+    width: 100%;
+    border-color: var(--fundoD);
+    text-align: center;
+    font-size: 2.5vh;
+}
+
+#trackSugestions {
+    top: calc(var(--top) + 2em);
+    padding: 2vh;
+    opacity: 0;
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+}
+
+#trackSugestions.active {
+    opacity: 1;
+}
+
+.sideBox {
+    background: linear-gradient(45deg, var(--fundoB), var(--fundoC));
+    overflow-y: scroll;
+    position: fixed;
+    top: var(--top);
+    gap: 1vh;
+    line-height: 5vh;
+    padding-block: 2vh;
+    font-size: 2.5vh;
+    max-height: calc(100svh - var(--top) - 40px);
+    filter: drop-shadow(2px 4px 6px black);
+    transition: all 0.8s;
+}
+
+.sideBox.left {
+    left: -120vw;
+}
+
+.sideBox.right {
+    right: -120vh;
+}
+
+.sideBox.left.active {
+    left: 0em;
+    z-index: 4;
+    transition: left 0.3s;
+}
+
+.sideBox.right.active {
+    right: 0em;
+    filter: sepia(1);
+    opacity: 0.95;
+    z-index: 4;
+    transition: right 0.3s;
+}
+
+#setList {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(2px 1px 11px black);
+    padding: 2vh;
+    gap: 2vh;
+}
+
+#setList li {
+    text-transform: capitalize;
+}
+
+#setList span {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    border-width: 0px 0px 1px 0px;
+    transition: all 0.3s;
+}
+
+#setList span.selected {
+    color: red;
+}
+
+.setlistItem {
+    justify-items: self-start;
+    border-radius: 1vh;
+    background: none;
+    z-index: 1;
+    text-align: left;
+}
+
+.setlistItem:focus,
+.setlistItem.active,
+.setlistItem:active {
+    filter: drop-shadow(2px 4px 6px black);
+    color: var(--active);
+}
+
+#config {
+    padding: 2vh 0;
+    display: grid;
+    gap: 2vh;
+}
+
+.fonteContainer {
+    justify-self: center;
+}
+
+.logo > img {
+    filter: saturate(0.5);
+    width: 100%;
+    padding: 9vh;
+    background: white;
+    backdrop-filter: blur(100px);
+}
+
+.logo {
+    filter: saturate(0.5);
+    width: 100%;
+    background: white;
+    backdrop-filter: blur(100px);
+    width: -webkit-fill-available;
+    height: stretch;
+    mix-blend-mode: revert-layer;
+    filter: invert(1);
+    display: flex;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    animation: cinematicaEthereal 1000ms ease-in-out forwards;
+    animation-fill-mode: both;
+    animation-delay: 0s;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+}
+
+@media (min-width: 601px) {
+    .logo {
+        display: none !important;
+    }
+}
+
+#albSongs {
+    width: fit-content;
+    float: inline-end;
+    text-align: -webkit-center;
+}
+
+#albSongs li {
+    align-items: center;
+    cursor: pointer;
+    margin-block: 2vh;
+    display: flex;
+    gap: 1vh;
+}
+
+.lista {
+    display: grid;
+    height: 80vh;
+    width: 100%;
+}
+
+.discoBox {
+    position: relative;
+    padding-inline-end: 2vh;
+    transition: all 0.3s;
+}
+
+.accord {
+    display: none;
+}
+
+.accord.active {
+    display: contents;
+}
+
+#listaDiscos.active {
+    right: 2vw;
+    transition: all 0.1s;
+}
+
+#discos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow-y: scroll;
+    max-height: 60svh;
+    gap: 1vh;
+    justify-content: space-between;
+}
+
+#discos img {
+    width: 6em;
+    border-radius: 4px !important;
+}
+
+@media (min-width: 620px) {
+    #discos {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    #discos img {
+        width: 10svw;
+    }
+}
+
+@media (max-width: 320px) {
+    #discos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 260px) {
+    #discos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 420px) and (max-width: 620px) {
+    #discos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.box {
+    padding: 1vh;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    font-size: 1.5vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.configContainer {
+    justify-content: space-evenly;
+}
+
+.painel {
+    align-content: center;
+    width: 100%;
+    padding: 2svh 0;
+    margin: 0;
+    height: 4svh;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.painel > button {
+    font-size: 2vh;
+}
+
+.banda {
+    font-size: 2.5vh;
+    width: 18vw;
+    height: 18vw;
+    border-radius: 1vh;
+    text-wrap: nowrap;
+    margin: 1vh;
+    border-radius: 2vh;
+}
+
+.banda span {
+    width: 100%;
+    align-content: end;
+    padding: 1vh;
+}
+
+.banda span:hover {
+    font-size: 4vh;
+    backdrop-filter: brightness(0.6);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.slideControll {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: var(--active);
+}
+
+@media (max-width: 400px) {
+    footer > div {
+        display: grid;
+        justify-self: center;
+        text-align: center;
+        padding: 1vh;
+    }
+
+    footer {
+        bottom: 0;
+        color: white;
+        display: grid;
+        justify-content: center;
+        padding: 1vh;
+    }
+}

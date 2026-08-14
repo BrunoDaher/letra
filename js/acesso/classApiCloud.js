@@ -7,7 +7,7 @@ class ApiCloud { //extends Dao{
   //setar apis
   constructor(){
 
-    this.apiKey = "$2b$10$pl4q33prdidrF1ECS4BFKeClGFGT8wrQR3kjdQgMjTWTDAv8kGJgK";
+    this.apiKey = "$2b$10$pl4q33prdidrF1ECS4BFKeClGFGT8wrQR3kjdQgMjTWTDAv8kGJgK"; //<-clienteA
     this.binId = "648e2cc4b89b1e2299b0ae51"; //<-setlist 
     this.binUsers =  "6492524e8e4aa6225eb1b6c2"; //<-usuarios
 

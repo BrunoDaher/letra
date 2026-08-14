@@ -1,12 +1,20 @@
+
 pre{
     text-align: center;
     padding: 2vh;
     margin: 0;
     font-size: 1.7vh;
     height: 100%;
-    max-height: calc(100svh - var(--top) - 40px);
-    overflow-y: scroll;
-    
+
+     font-family: "Cherry Cream Soda", system-ui;
+  font-weight: 400;
+  font-style: normal;
+   
+
+
+  max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     &.active{
             touch-action: none; /* Impede o zoom e arraste */
@@ -14,31 +22,47 @@ pre{
     
 }
 
+
 pre.rollOff{
         max-height: 80%;   
 }
 
 #scroll-container{
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(80vh);
+    overflow-y: scroll;
+    
+    overflow-x: hidden;
 }
 
 
 .reticent{ 
-    width: 29svw;
+    text-align-last: start;
     text-overflow: ellipsis;
     overflow: hidden;
     text-wrap-mode: nowrap;
     
 }
 
+.txtend{
+    text-align: end;
+}
+
+.boxtitle
+{
+    line-height: 2vh;
+    font-family: system-ui;
+    align-content: flex-start;
+    display: grid;
+    font-variant: all-small-caps;
+}
+
 #titulo{
+    font-size:2svh;
     filter: drop-shadow(2px 2px 2px var(--fundoA));
-    font-size: calc(3svh);
     text-transform: capitalize;
     overflow: hidden;
-    width: 200px;
-    text-overflow: ellipsis;
-    
 }
 
 .d-none{

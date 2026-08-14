@@ -3,11 +3,9 @@ import ApiLetra from "./classApiLetra.js";
 import Dao from "./classDao.js";
 
 
-
-const apiLastFM = new ApiLastFM();
+const apiLastFM = new ApiLastFM('2651bc07e2240e60ef358c833cc84169');
 const apiLetra = new ApiLetra();
 const dao = new Dao();
-
 
 
 //const url = 
@@ -38,7 +36,7 @@ export class Api {
 
  
      //vagalume
-     async getArtMusic(art,mus){       
+    async getArtMusic(art,mus){       
 
         console.log(this.normalizeInput(art))
 
@@ -52,9 +50,10 @@ export class Api {
         mus = mus.replace('-remasterizado','');
 
         
-        let res = await  apiLetra.carregarMusica(art,mus)
+        let res = await apiLetra.carregarMusica(art,mus);
 
-        return res
+        
+        return res;
 
      //   return apiLetra.getArtMusic(art,mus);
     }
@@ -81,8 +80,6 @@ export class Api {
      }
         return {existe,doc};
     }
-    
-    
 
     //lastFM
     searchTrack(string){
@@ -122,13 +119,25 @@ export class Api {
        
        return apiLetra.getMusicById(musId);
         // return apiLetra.getMusicById(musId);
-     }
+    }
     
+    buscaArtista(art){
+        return apiLastFM.searchArtist(art);
+    }
+
+    buscaDiscos(art){
+        return apiLastFM.getTopAlbums(art);
+    }
+
+    buscaFaixas(art,alb ){
+        return apiLastFM.getTracks(art,alb);
+    }
+
      //vagalume
-     getArt(art){        
+    getArt(art){        
         art = this.normalizeInput(art);      
         return apiLastFM.searchArtist(art);
-        return apiLetra.getArt(art);
+        //return apiLetra.getArt(art);
     }
     //vagalume
     getArtSync(art){        
@@ -137,7 +146,7 @@ export class Api {
     }
   
     //vagalume
-        getArtInfo(art){                
+    getArtInfo(art){                
         art = this.normalizeInput(art);
         art = art.replaceAll('.','-');
         art = art.replace('-/','/');
@@ -168,6 +177,24 @@ export class Api {
     return str;
     }
 
+    async fecthData(path) {            
+        try {
+            const response = await fetch(path);
+            
+            if (!response.ok) return false;
+
+            const responseHtml = await response.text();
+            const data = JSON.parse(responseHtml);
+            const key = Object.keys(data)[0];              
+            const r = data[key];
+
+            
+            return r;
+        } catch (e) {       
+            console.error(e);
+            return 'erro';   
+        }
+    }
     //aux
     fetchApi(path){            
         fetch(path)
@@ -178,7 +205,10 @@ export class Api {
             { 
               let key = Object.keys(JSON.parse(responseHtml))[0];              
               let r = JSON.parse(responseHtml)[key];
-              key ? sessionStorage.setItem(key,JSON.stringify(r)):"";    
+
+              console.log('Resposta da API:', r); // Log da resposta para depuração
+              return r;
+              //key ? sessionStorage.setItem(key,JSON.stringify(r)):"";    
             } )
         .catch(function (e) {       
             return 'erro' ;   

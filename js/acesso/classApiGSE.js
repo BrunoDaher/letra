@@ -2,7 +2,7 @@
  * LyricsEngine - Módulo de busca de letras de música
  * Prioriza LRCLIB (grátis/direto) com fallback para Google CSE
  */
-export default class LyricsEngine {
+export default class apiGSE {
     constructor(config = {}) {
         // Credenciais do Google (opcionais, para o motor secundário)
         this.googleApiKey = config.apiKey || null;
@@ -60,7 +60,11 @@ export default class LyricsEngine {
             if (!response.ok) return null;
 
             const data = await response.json();
+            
             return {
+                albumName:data.albumName || null,    
+                artistName: data.artistName || null,    
+                trackName: data.trackName || null,
                 content: data.plainLyrics || null,
                 synced: data.syncedLyrics || null,
                 instrumental: data.instrumental || false

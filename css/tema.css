@@ -17,460 +17,117 @@
     filter: drop-shadow(3px 2px 1px var(--fundoA)) saturate(2.5);
 }
 
-.fundoGradiente, legend, .banda{
+/* Tema e tokens visuais */
 
-        background: linear-gradient(45deg, black, var(--fundoB));
-    border-radius: 0vh 0vh 0vh 0vh ;
+.fundoGradiente,
+legend,
+.banda {
+    background: linear-gradient(45deg, black, var(--fundoB));
+    border-radius: 0vh 0vh 0vh 0vh;
     filter: drop-shadow(2px 4px 6px var(--fundoC));
 }
 
+.disco > img:focus {
+    z-index: 10;
+    transform: scale(1.2);
+    rotate: -10deg;
+}
 
-  
-.red{
+.red {
     color: red;
 }
 
-.corPrimaria{
+.corPrimaria {
     color: var(--active);
 }
 
-.painel{
-  align-content: center;
-    width: 100%;
-    padding: 2svh 0;
-    margin: 0;
-    height: 4svh;
-    background: repeating-linear-gradient(323deg, var(--fundoC), transparent 234px);
-    filter: drop-shadow(2px 4px 6px black);
-
-    & > button{
-        font-size: 2vh;
-    }
-}
-
-
-.iconText{
+.iconText {
     display: grid;
     font-size: 2vh;
-    color:var(--active);
+    color: var(--active);
     place-items: center;
-   
 }
 
-.configContainer{
-    
-    justify-content: space-evenly;
-  
-}
-
-.box{
-    padding: 1vh;
-    grid-template-columns: 1fr 1fr;
-    display: grid;
-    /* gap: 12vh; */
-    font-size: 1.5vh;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/*Elementos internos do botao*/
-button{
+button {
     cursor: pointer;
     display: flex;
     align-items: center;
-    border:none;
+    border: none;
     background: none;
-    color: var(--fundoA);
-    font-size: 2.5vh;
-
+    color: var(--collorA);
+    font-size: 2vh;
     outline: none;
-    
 }
 
-menu.active{
+menu.active {
     display: grid;
-        grid-template-rows: 0fr 1fr;
 }
 
+.italic {
+}
 
-
-
-
-header > button.active, button.active{
-
-    color: var(--active);
-    
-    
-    display: flex;
-    filter: drop-shadow(2px 4px 6px black);
-
-
+.smallTitle {
+    font-size: 2.5svh;
     font-style: italic;
-
-    transition: all 0.3s;
 }
 
-header > button{
-       cursor: pointer;
-       border: none;
-       background: none;
-       font-size: 2.2vh;
-}
-
-#newList , li {
-    display: flex;
-        padding: 1svh;
-        
-        border-radius: 3svw;
-        cursor: pointer;
-        max-width: 40vw;
-         text-align: unset;
-        align-items: center;
-        place-content: center;
-}
-
-
-.box-pesquisa{
-    display: flex;
-    text-align: center;
-    /* place-content: center; */
-    gap: 1vh;
-    justify-content: center;
-    padding: 2vh;
-}
-
-    .box-pesquisa > input{
-        height: 5vh;
-        color: var(--colorB);
-        width: 100%;
-        border-color: var(--fundoC);
-        text-align: center;
-        font-size: 2.5vh;
-    }
-
-    .rad5{
-        border-radius: 5svh;
-    }
-
-     .rad2{
-        border-radius: 2svh;
-    }
-
-.inputPesquisa{
-
+.inputPesquisa {
     background-color: var(--fundoD);
     color: var(--colorB);
     outline: none;
     font-size: 5vw;
-    
 }
 
-#newList:hover, li:hover, li.active, #newList:active{
+#newList:focus,
+li:focus,
+li.active,
+#newList:active {
     color: var(--active);
-    text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2), 
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.2),
                  1px 1px 1px rgba(0, 0, 0, 0.6);
     transition: all 0.3s;
 }
 
-.icon{
+.icon {
     width: 25px;
     height: 25px;
     margin: 2px;
 }
 
-ul{
+ul {
     display: grid;
     padding: 0;
 }
 
-#trackSugestions{
-     top: calc(var(--top) + 2em);
-    /* padding: 1vh 0; */
-  /*  height: calc(60vh - 5vw);*/
-    padding: 2vh;
-    opacity: 0;
-     justify-self: center; 
-     text-align: center;
-         width: 100%;
-    
+.left {
+    left: -120vw;
 }
 
-#trackSugestions.active{
-    opacity: 1;
+.right {
+    right: -120vh;
 }
 
-.banda {
-
-    padding-block:3vh;
-    padding-inline: 2vh;
-    font-size: 2.5vh;
-
-    
-    
+.colorChroma {
+    color: chartreuse;
 }
 
-
-.banda:hover{
-
-    color: var(--active);
-    cursor: pointer;
-}
-
-
-    #listaArtistas.active{
-        transition: all 0.5s;
-    }
-
-
- .slideControll{
-    position: fixed;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  
-    color: var(--active);
-
-    @media (orientation: portrait) {
-    /*    position: fixed;
-        bottom: 5%;
-        width: 10%;
-        display: flex;
-        color: var(--active);
-        right: 40%;
-        */
-    }
- }   
-
-.sideBox{
-  
-    
-    background: linear-gradient(45deg, var(--fundoB), var(--fundoC));
-
-    overflow-y: scroll;
-   
-    position: fixed;
-    top: var(--top);
-    gap: 1vh;
-
-    max-height: calc(100svh - var(--top) - 40px);
-
-    transition: all 0.8s;
-
-   filter: drop-shadow(2px 4px 6px black);
-}
-        .left{
-            left: -100vw;
-        }
-
-        .right{
-            right: -100vh;
-        }
-
-        .sideBox.left.active{
-            left: 0em;
-            z-index: 4;
-            transition: left 0.3s;
-        }
-
-        .sideBox.right.active{
-            right: 0em;
-            z-index: 4;
-            transition: right 0.3s;
-        }
-       
-
-    #listaMusicas{
-
-        place-items: baseline;
-        
-            filter: drop-shadow(2px 1px 11px black);
-        padding: 2vh;
-        gap: 6vh;
-
-        li{
-           text-transform: capitalize; 
-        }
-
-        /*filter: drop-shadow(2px 4px 6px black);*/
-   
-        span {
-            display: flex;
-            width: 100%;
-           /* flex-direction: row-reverse;*/
-
-            cursor: pointer;
-            border-width: 0px 0px 1px 0px;
-            width: 100%;
-            transition: all 0.3s;
-
-            &.selected{
-                color: red;
-            }
-        }
-    }
-
-        
- 
-
-    #config {
-       
-
-        padding: 2vh 0;
-        
-        display: grid;
-        gap: 2vh;
-    
-     
-    }
-
-   .fonteContainer{
-      
-        justify-self: center;
-      
-    }
-
-    .logo{
-
-        
-
-        width: -webkit-fill-available;
-        height: stretch;
-        mix-blend-mode: revert-layer;
-        filter: invert(1);
-            display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        
-        position: absolute;
-        z-index: 0;
-
-        /* --- Configuração da Animação --- */
-        /* Mantivemos 5s, ease-in-out para suavidade.
-        'forwards' garante que ela fique invisível no final. */
-        animation: cinematicaEthereal 700ms ease-in-out forwards;
-        
-        /* Garante que comece invisível e com filtro antes de rodar */
-        animation-fill-mode: both;
-        animation-delay: 0s; 
-
-        /* Dica: Melhora a renderização de filtros em alguns navegadores */
-        backface-visibility: hidden;
-        will-change: transform, opacity, filter;
-
-        @media (min-width: 601px){
-            display: none !important;
-        }
-    }
-
-    #albSongs{
-        
-        
-        width: fit-content;
-        float: inline-end;
-        text-align: -webkit-center;
-
-          li{
-                
-                align-items: center;
-                cursor: pointer;
-                margin-block: 2vh;
-                
-                display: flex;
-                gap: 1vh;
-       
-        }
-    }
-
-.lista {
-    display: grid;
-    /*grid-template-columns: 1fr 2fr 2fr;*/
-    height: 80vh;
-    width: 100%;
-}
-
-.discoBox{
-    position: relative;
-    
-
-        padding-inline-end: 2vh;
-
-
-    transition: all 0.3s;
-}
-
-.accord{
-    display:none;
-}
-
-.accord.active{
-   display: block;
-  
-}
-
-#listaDiscos{
- 
-}
-
-
-.rad1{
-    border-radius: 7px;
-}
-
-.rad3vh{
-    border-radius: 3vh;
-}
-
-#listaDiscos.active{
-    right: 2vw;
-    transition: all 0.1s;
-}
-
-.colorChroma{
-    color:chartreuse;
-}
-
-.getLyric{
+.getLyric {
     font-size: 2.5svh;
 }
 
-#discos{
-    
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    overflow-y: scroll;
-    max-height: 60svh;
-    /* height: fit-content; */
-    /* width: max-content; */
-    gap: 1vh;
-    justify-content: space-between;
+.rad5 {
+    border-radius: 5svh;
+}
 
-        
-        img{
-            width: 6em;
-            border-radius: 4px !important;
-        }
+.rad2 {
+    border-radius: 2svh;
+}
 
-            @media (min-width:620px){
-                grid-template-columns: repeat(5,1fr);
-             
-                img{
-                    width: 14svw;
-                }
-            }
+.rad1 {
+    border-radius: 7px;
+}
 
-            @media (max-width:320px){
-                grid-template-columns: repeat(3,1fr);
-            }
-
-            @media (max-width:260px){
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            @media (min-width:420px) and (max-width:620px){
-                    grid-template-columns: repeat(3,1fr);
-                }
+.rad3vh {
+    border-radius: 3vh;
 }
 

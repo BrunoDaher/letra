@@ -2,11 +2,6 @@ const CACHE_NAME = "letras-v1";
 const urlsToCache = [
   "/",
   "/index.html",
-  "/css/style.css",
-  "/main.js",
-  "/manifest.json",
-  "/icon192.png",
-  "/icon512.png"
 ];
 
 self.addEventListener("install", event => {

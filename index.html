@@ -15,258 +15,31 @@
     <div id="logoPng" class="logo" >
             <img src="./imgs/start.gif"  style="width: auto ;filter: saturate(0.5);">
         </div>
-    <header class="flex between">
-
-    
-        
-
-        <button  id="btnMenuB" target="menuB"  class="btn">
-        <!-- <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">-->
-        <i class="bi bi-music-note-list a2"></i>
-            <a>Albuns</a>
-        </button>
-        <button  id="btnMenuC" target="menuC"  class="btn">
-            <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="advSearch">-->
-            <i class="bi bi-journal-bookmark-fill a2"></i>
-            <span>Listas</span>
-        </button>
-                <button id="btnMenuA" target="menuA" class="btn">
-            <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="doc">-->
-            <i class="bi bi-file-text a2"></i>
-            <span>Letra</span>
-        </button>
-    </header>
-
-
-        
+   
+     <header id="mainHeader" class="flex between"></header>
 
     <main>
-
-
+        <!--Barra progresso-->
         <div id="myProgress" >
             <div id="myBar"></div>
         </div>
+
+         <!-- Listas-->
+        <menu id="menuC"></menu>  
+
+        <!-- Albuns-->
+        <menu id="menuB"></menu>
         
-        <menu id="menuA">
-        
-            <div class="painel fundoGradiente">
-                <div class="flex between alignCenter" style="padding: 0 2vh;">
-                
-                    <button class="btn flex gap1" target="listaMusicas" id="btnSetList">
-                        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="setList">-->
-                
-                        <i class="bi bi-file-earmark-music-fill a2"></i>
-                        <a class="lbl">SetList</a>
-                    </button> 
-                    <input hidden type="button" id="listObserver">
-                    <div class="reticent" style="text-align: center; ">
-                        <label class="a1"  id="titulo" for="scroll-container" style="text-wrap-mode:nowrap;"></label>
-                    </div>
-
-                
-
-                    <button class="btn flex gap1" target="config" id="btnConfig">
-                        <a class="lbl">Config</a>
-                        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="config">-->
-                        <i class="bi bi-gear a2"></i>
-                    </button>
-
-                </div>  
-            </div>
-
-            <div id="listaMusicas" class="grid1 sideBox left ">
-            </div>
-
-            <div class="sideBox right" id="config" >
-                
-                <div id="fonteContainer" class="fonteContainer configContainer w75">
-                    <label for="fonte">Fonte</label>
-                    <input  target='infoLetra' type="range" class="w100" id='fonte' step="0.1" min='1.5'  max="5" value="1.5">      
-                </div>
-                
-                <!--
-                <div id="rolagem" class="fonteContainer">
-                    <label for="tempo">Rolagem</label>
-                    <input target="scroll-text" type="range" class="" id='velocidade' step="0.1" min='0.1'  max="10" value="0.1">
-                </div>
-                -->
-
-                <div id="tabulacao" class="fonteContainer configContainer w75">
-                    <label for="colunas">Colunas</label>
-                    <input target="infoLetra" type="range" class="w100" value='1' id='colunas' step="1" min='1'  max="3" >
-                </div>  
-                
-                <div class="fonteContainer configContainer w75">
-                
-                    <div id="alignTool" class=" flex central">
-                        <button target="infoLetra" class="setAlign" value="start" > <i class="bi bi-text-left a2"></i></button> 
-                        <button  target="infoLetra" class="setAlign" value="center">  <i class="bi bi-text-center a2"></i></button> 
-                        <button target="infoLetra" class="setAlign" value="end">  <i class="bi bi-text-right a2"></i></button> 
-                    </div> 
-            </div>
-                
-               
-                
-            </div>
-
-            <div id="scroll-container">
-                <div class="slideControll">
-                    <button id="btnLastSong" class="back" value="Back">
-                        <i class="bi bi-caret-left-fill a4"></i>
-                    </button>
-                    <button id="btnNextSong" class="forward" value="Go">
-                        <i class="bi bi-caret-right-fill a4"></i>
-                    </button>
-                </div>
-                <pre id="infoLetra" class=""></pre>
-                <pre id="letraAtual" class="zoomable"></pre>
-            </div>
-        </menu>  
-
-        <menu id="menuB">
-        
-            <div>
-                <legend hidden>Discografia</legend>
-                <div class="box-pesquisa">
-                    <input target = 'divArtistas' class="inputPesquisa rad2 fundoGradiente" type="text" placeholder="artista">
-                    <button id="btnBolt2" class="bi bi-arrow-right-circle-fill bolt" value=0 target="menuB">
-                    </button>
-                    <input hidden class="inputPesquisa" id="musica" type="text" placeholder="artista musica"> 
-                </div>
-
-                <div class="wrapper grid1">
-                    <!--pesquisa e botoes-->
-                    <div id="painelDiscog" class="flex justEven p2 gap1">
-                            <button class="btnToggle"target="divArtistas" id="btnListaArt">
-                            <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="list">-->
-                            <i class="bi bi-person ">Artistas</i>
-                            </button> 
-                            <button class="btnToggle"target="listaDiscos" id="discog">
-                            <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="disc">-->
-                                <i class="bi bi-vinyl "> Discos</i>
-                            </button>
-                            <button class="btnToggle"target="discoBox" id="btnAlbSongs">
-                                <i class="bi bi-music-note ">Faixas</i>
-                                <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="discog">-->
-                            </button>
-                        </div>
-                <!-- -->
-            
-                    <fieldset id="divArtistas" class=" accord scrollY p0">
-                        <legend class="off w100 bi sombra bi-magic flex  a1 "> Artistas</legend>
-                        <div id="listaArtistas" class="p2"></div>
-                    </fieldset>
-
-                
-                    <div id="listaDiscos" class="accord" >
-                        <legend class="w100  bi bi-vinyl sombra flex gap1 a1" id="labelDiscos"> Discos</legend>
-                        <div id="discos" class="p2 rad1">
-                        </div>
-                    </div>
-
-
-                    <div id="discoBox" class=" discoBox accord " >
-                        
-                        <legend id="infoMus" class="w100 typing sombra  bi-music-note a1 ">Faixas</legend>
-                        
-                        <div class="flex justAround scrollY">
-                            <div style="align-content: center; height: fit-content; margin-top: 2vh;">
-                                    <img src="" class="miniEncarte sombra  " id="infoAlb">
-                            </div>
-                            
-                            <div id="albSongs" class=" discoBox"></div>
-                        </div>
-                    </div>
-
-                </div>
-            
-            </div>   
-        </menu>
-
-        <menu id="menuC">
-            
-            <article class="off">
-                     
-                    <div class="box-pesquisa">
-                        <input target="trackSugestions" class="pesquisa rad2 fundoGradiente" id="trackMus" type="text" placeholder="artista e musica"> 
-                        <button class='bi bi-arrow-right-circle-fill bolt'id="btnBolt" value=0 target="menuB">
-                            
-                        </button>
-                    </div>
-
-                    <ul id="trackSugestions" class="sideBox rad2 center rad1"></ul>
-                </article>
-            
-
-            <article id="listas" class="cardsContainer flex gap1  justAround m2">
-                
-                <div class="listaCard central fundoGradiente">
-                    <div class="card-body">
-                        <h5 class="card-title">SetListA</h5>
-                    </div>
-                </div>
-                
-                <div class="listaCard central fundoGradiente">
-                    <div class="card-body">
-                        <h5 class="card-title">SetListB</h5>
-                    </div>
-                </div>
-                
-                <div class="listaCard central fundoGradiente">
-                    <div class="card-body">
-                        <h5 class="card-title">SetListC</h5>
-                    </div>
-                </div>
-
-            </article>
-
-            <article id='clouds' class="m2 p2">
-                <div id="loadCloud" class="iconText flex configContainer ">
-                    
-                    <div id="save" class="off iconText configContainer " >
-                        <input type="text" id="nomeArquivo" class="off">
-                        <button target="" type="button"  id='btnSaveCloud'>
-                            <i class="bi bi-journal-arrow-up a2 colorChroma"></i>
-                        </button>
-                        <span for="saveCloud" class="">Cloud</span>
-                    </div>  
-                    
-                    <div class="iconText configContainer fundoGradiente rad2 p2">
-                        <button target="" type="button"  id='btnLoadCloud'>
-                            <i class="bi bi-activity a3"></i>
-                        </button>
-                        <span>Update</span>
-                    </div>
-
-                    <div id="export" class="off iconText configContainer a2">
-                        <button type="button"  id='btnExport'>
-                            <i class="bi bi-filetype-json a3"></i>
-                        </button>
-                        <span for="export">Export</span>
-                    </div>  
-                </div>
-                
-                <div id="load" class="iconText configContainer" style="display: none;">
-                
-                <button target="dataLoad" type="button"  id='btnUpload'>
-                    <i class="bi bi-cloud-arrow-up-fill a3"></i>
-                </button>
-                    <div hidden> 
-                        <input id='inputFile' type="file">
-                    </div>
-                <label for="save">Load File</label>    
-                </div>  
-            </article>
-
-
-        </menu>
+        <!-- Letras-->
+        <menu id="menuA"></menu>
     </main>
 
     <footer>
     </footer>
+
+    <script serviceWorker src="js/service-worker.js"></script>
 <script type='module' src="js/index.mjs"></script>      
-
-
+<script src="https://cdn.jsdelivr.net/npm/swiped-events@latest/dist/swiped-events.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@latest/dist/panzoom.min.js"></script>
  
 </body>

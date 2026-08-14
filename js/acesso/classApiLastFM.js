@@ -3,23 +3,20 @@ export class ApiLastFM {
 
 
     //setar apis
-    constructor(){
-        this.apiKey = '2651bc07e2240e60ef358c833cc84169'; // LastFM
+    constructor(apiKey){
+        this.apiKey = apiKey // LastFM
     }
 
     searchArtist(string){
         string = string.replaceAll('-',' '); 
+
+        
         
         let path = `https://ws.audioscrobbler.com//2.0/?method=artist.search&artist=${string}&api_key=${this.apiKey}&format=json`
         
         
         
         return path;  
-    }
-
-    searchTopArtists(){
-            let path = `https://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=${genero}&api_key=${this.apiKey}}&format=json`;
-
     }
 
     searchTrack(string){
@@ -63,7 +60,7 @@ export class ApiLastFM {
         return path;  
      }
 
-     getArtInfo(art){
+     getTopAlbums(art){
         art = art.replaceAll('-',' '); 
         let path = `https://ws.audioscrobbler.com//2.0/?method=artist.gettopalbums&artist=${art}&api_key=${this.apiKey}&format=json`;
         return path;  

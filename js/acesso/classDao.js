@@ -1,13 +1,14 @@
 
 
-import ApiCloud from "./classApiCloud.js";
 
-class Dao extends ApiCloud{
+import JsonBinService from "../services/JsonBinService.js";
+
+class Dao extends JsonBinService{
 
 
    
   constructor(){
-    super();
+    super('$2b$10$pl4q33prdidrF1ECS4BFKeClGFGT8wrQR3kjdQgMjTWTDAv8kGJgK');
   }
 
     updateLog(){
@@ -26,13 +27,22 @@ class Dao extends ApiCloud{
      //this.apiCloud.createBin(nome, conteudo);
     }
 
-    loadCloud(op){
+    async loadCloud(op){
       
       //carregnado nuvem
       if(op == 1){
-        this.readList(); // from super()
+        let data = await this.ler('648e2cc4b89b1e2299b0ae51');
+        if(data){
+
+          console.log(data)
+          
+          //this.saveLocalJSON('listaLocal',JSON.parse(this.ler('648e2cc4b89b1e2299b0ae51')));
+        } // from super()
+
         
-      }
+      
+      }  
+      
       else{
         //lendo usuarios
         
@@ -70,6 +80,7 @@ class Dao extends ApiCloud{
         return JSON.parse(sessionStorage.getItem(id));
     }
 
+
     export() {
         let l =  this.getLocalJSON('listaLocal');
         console.log(l)
@@ -82,19 +93,19 @@ class Dao extends ApiCloud{
   }
 
     makeFile(name,local){
-    let fileName = name;
+      let fileName = name;
 
-    let a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style = "display: none";
-  
-    let json = JSON.stringify(local),
-        blob = new Blob([json], {type: "octet/stream"}),
-        url = window.URL.createObjectURL(blob);
-      a.href = url;
-      a.download = fileName;
-      a.click();
-      window.URL.revokeObjectURL(url);
+      let a = document.createElement("a");
+          document.body.appendChild(a);
+          a.style = "display: none";
+    
+      let json = JSON.stringify(local),
+          blob = new Blob([json], {type: "octet/stream"}),
+          url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
     }
 
      upload() {

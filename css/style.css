@@ -4,6 +4,9 @@
 @import url(letra.css);
 @import url(tema.css);
 @import url(layout.css);
+@import url(componentes.css);
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda&display=swap');
+
 
 :root{
     --header:6svh;
@@ -12,18 +15,28 @@
     --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
     
     
-    --fundoA: #767370;
+    --fundoA: #f3eeea;
     --fundoB: rgb(35, 33, 33);
-    --active: #64bbe0;
-    --fundoC: #000000;
-    --fundoD: #1c2b38;
-    --shadowA: #71aac381;
+    --active: #c58e3c;
+    --fundoC: #423615;
+    --fundoD: #b66c1b;
+    --shadowA: #132c0a81;
     --colorA: var(--fundoA);
-    --colorB: white;
+    --colorB:var(--fundoB)
     
 
 
    --width:90%;
+}
+
+body{
+    background: linear-gradient(-25deg, 
+        var(--fundoA),
+        var(--colorB), 
+        var(--fundoC), 
+    );
+
+
 }
 
 
@@ -66,7 +79,8 @@ input{
 
 legend{
 
-
+    box-sizing: border-box;
+    line-height: 5vh;
     align-items: center;
     border-radius: 5px;
     width: fit-content;
@@ -76,7 +90,7 @@ legend{
 header{
 
     
-     background-color: var(--fundoD);
+     backdrop-filter: saturate(3);
    
     height: var(--header);
     padding: 1svh;
@@ -91,7 +105,10 @@ main > menu{
     height: 100%;
     display: none;
     padding: 0;
-   background: linear-gradient(145deg, var(--fundoB), var(--fundoC));
+
+
+    background: black;
+
     color: white;
 
 
