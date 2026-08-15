@@ -294,6 +294,12 @@ input{
     color: var(--active);
 }
 
+.slideControll > button{
+
+    @media (orientation: portrait) {
+        visibility: hidden;
+    }
+}
 
 
 .config{
@@ -316,10 +322,9 @@ input{
     width: 25vw;
     height: 25vw;
     border-radius: 4px;
-        align-content: center;
+  align-content: center;
     height: fit-content;
-    margin-top: 4vh;
-    position: fixed;
+    
     filter: drop-shadow(2px 4px 6px black);
 
     @media (min-width:620px) {

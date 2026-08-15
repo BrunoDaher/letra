@@ -6,6 +6,7 @@ import Dao from "./acesso/classDao.js";
 import User from "./classUser.js"
 import Aux from "./aux/classAux.js"
 
+
 import viewHeader   from "./view/viewHeader.js";
 import viewAlbuns from "./view/viewAlbuns.js"
 import viewListas from "./view/viewListas.js"

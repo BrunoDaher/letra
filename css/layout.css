@@ -16,6 +16,14 @@ html, body {
   main{
     height: 100vh;
 }
+
+.gap{
+    gap:2vh;
+}
+
+.col{
+    flex-direction: column;
+}
   
 .wfit{
     width: fit-content;

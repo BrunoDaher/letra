@@ -48,6 +48,7 @@ export default class viewAlbuns extends Tela {
         //
         this.listaArtistas = document.getElementById('listaArtistas');
         this.infoAlb = document.getElementById('infoAlb');
+        this.nomeAlb = document.getElementById('nomeAlb');
 
         this.inputPesquisaArtista = document.getElementById('inputPesquisaArtista');
         
@@ -183,8 +184,9 @@ export default class viewAlbuns extends Tela {
                         </button>
 
                         <div class="flex justEven scrollY">
-                            <div>
+                            <div class='flex col gap2'>
                                 <img src="" class="off miniEncarte sombra" id="infoAlb" lazy="loading">
+                                <span id='nomeAlb'><span/>
                             </div>
                             <div id="albSongs" class=" discoBox"></div>
                         </div>
@@ -201,13 +203,16 @@ export default class viewAlbuns extends Tela {
             this.actBtn(this.btnAlbSongs);
         }    
 
-
             let art = this.inputPesquisaArtista.value;
             let alb = el.id;
+
+
             
             let url = this.api.buscaFaixas(art,alb);
-           
 
+            console.log(alb)
+            this.nomeAlb.innerText = alb;
+           
 
             const resultado = await this.api.fecthData(url);   
 
@@ -300,9 +305,6 @@ export default class viewAlbuns extends Tela {
 
         let url = this.api.buscaDiscos(string);
         
-        
-        console.log(string)
-
         //local
          if(this.user.getArts()[string]){
             console.log('local')

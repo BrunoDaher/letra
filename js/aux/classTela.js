@@ -1,19 +1,23 @@
 
 let classe = null;
 
+import Gestos from "./classGestos.js";
+
 class Tela {
    
     constructor(dao){
         this.dao = dao;
        classe = this;
+
+       this.gestos = new Gestos();
+       //this.gestos.setContainer('scroll-container');
+       
     }
 
     getSizes(){
         let tela =  window.screen;
         console.log(tela)
     }
-
- 
 
     garbageCollector(classe){
         

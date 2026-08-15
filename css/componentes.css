@@ -94,9 +94,9 @@ li {
 
 .box-pesquisa > input {
     height: 5vh;
+        border-width: 0;
     color: var(--fundoD);
     width: 100%;
-    border-color: var(--fundoD);
     text-align: center;
     font-size: 2.5vh;
 }
@@ -349,16 +349,18 @@ li {
     text-wrap: nowrap;
     margin: 1vh;
     border-radius: 2vh;
+    background-repeat: no-repeat;
 }
 
 .banda span {
     width: 100%;
     align-content: end;
     padding: 1vh;
+    font-size: 2vw;
 }
 
 .banda span:hover {
-    font-size: 4vh;
+    font-size: 3vw;
     backdrop-filter: brightness(0.6);
     cursor: pointer;
     transition: all 0.2s ease-in-out;

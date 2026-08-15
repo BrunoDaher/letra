@@ -1,7 +1,6 @@
 import Tela from "../aux/classTela.js";
 class Letra extends Tela{
 
-
     constructor(user){
 
         super();
@@ -150,6 +149,8 @@ class Letra extends Tela{
 
     triggers(){
         
+        this.gestos.setContainer('scroll-container');
+
         this.fonte.addEventListener('change',this.setFontSize);
         this.colunas.addEventListener('change',this.setColunas);
         
@@ -175,8 +176,6 @@ class Letra extends Tela{
         let lista = this.user.getSetlist();   
         
         let obj = {};
-
-
 
         for(const key in lista){
 

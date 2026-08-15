@@ -153,7 +153,9 @@ export default class viewListas{
 
            let html= 
                 `
-                <button action=${item.action} name='${item.fn}'  id='${item.nome}' class='grid fundoGradiente btnlista p2' type="button"  >
+                <button action=${item.action} name='${item.fn}'  
+                    id='${item.nome}' 
+                    class='grid  btnlista p2' type="button">
                     <i class="bi bi-music-note-list a1"></i>
                     <span>${item.nome}</span>
                 </button>
