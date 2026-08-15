@@ -8,6 +8,11 @@ export default class Gestos {
     this.dragStartX = null;
     this.dragMoved = false;
     this.dragDirection = null;
+    this.isPinching = false;
+    this.pinchStartFontSize = null;
+    this.baseFontSize = null;
+    this.minFontSize = 12; // px
+    this.maxFontSize = 72; // px
     this.documentTouchStartHandler = null;
   }
 
@@ -21,9 +26,10 @@ export default class Gestos {
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
 
     // Adiciona os eventos para gerenciar o toque
-    this.container.addEventListener("touchstart", this.handleTouchStart);
-    this.container.addEventListener("touchmove", this.handleTouchMove);
-    this.container.addEventListener("touchend", this.handleTouchEnd);
+    // Usamos passive: false para poder chamar event.preventDefault() em touchmove
+    this.container.addEventListener("touchstart", this.handleTouchStart, { passive: false });
+    this.container.addEventListener("touchmove", this.handleTouchMove, { passive: false });
+    this.container.addEventListener("touchend", this.handleTouchEnd, { passive: false });
 
     // Impede o zoom do navegador
     this.container.style.touchAction = "none";  // Desabilita o zoom e scroll nativos
@@ -56,8 +62,25 @@ export default class Gestos {
 
     // Se for dois ou mais toques, inicia pinça
     if (event.touches.length >= 2) {
+      // Marca pinça e bloqueia outras ações
+      this.isPinching = true;
       this.isDragging = false;
+      this.dragMoved = false;
+      this.dragDirection = null;
+
+      // Previne comportamento nativo (zoom/scroll)
+      if (event.cancelable) event.preventDefault();
+
       this.initialDistance = this.getDistance(event.touches[0], event.touches[1]);
+      // Captura tamanho de fonte atual como base
+      const infoEl = document.getElementById('infoLetra');
+      if (infoEl) {
+        const fs = window.getComputedStyle(infoEl).fontSize;
+        this.baseFontSize = parseFloat(fs) || 16;
+      } else {
+        this.baseFontSize = 16;
+      }
+      this.pinchStartFontSize = this.baseFontSize;
       console.log("Início do gesto de pinça detectado");
     }
   }
@@ -79,23 +102,46 @@ export default class Gestos {
     }
 
     // Pinça (dois dedos)
-    if (event.touches.length >= 2 && this.initialDistance) {
-      const currentDistance = this.getDistance(event.touches[0], event.touches[1]);
-      if (Math.abs(currentDistance - this.initialDistance) > 10) {
-        if (currentDistance > this.initialDistance) {
-          console.log('pinçamento para fora');
-        } else {
-          console.log('pinçamento para dentro');
+      if (event.touches.length >= 2 && this.initialDistance) {
+        // Impede comportamento nativo durante pinça
+        if (event.cancelable) event.preventDefault();
+
+        const currentDistance = this.getDistance(event.touches[0], event.touches[1]);
+        // Calculo de escala relativo ao início da pinça
+        const scale = currentDistance / this.initialDistance;
+
+        // Atualiza fonte baseada na escala, com limites
+        const infoEl = document.getElementById('infoLetra');
+        if (infoEl && this.baseFontSize) {
+          let newFont = this.baseFontSize * scale;
+          if (newFont < this.minFontSize) newFont = this.minFontSize;
+          if (newFont > this.maxFontSize) newFont = this.maxFontSize;
+          infoEl.style.fontSize = newFont + 'px';
         }
-        this.initialDistance = currentDistance; // Atualiza referência
+        // Não alteramos initialDistance aqui para manter escala relativa ao início
+        this.isPinching = true;
       }
-    }
   }
 
   // Detecta o fim do gesto de pinça
   handleTouchEnd(event) {
     // Se não houver mais toques, reseta estados
     if (!event.touches || event.touches.length === 0) {
+      // Se estava em pinça, define font-size final e registra direção
+      if (this.isPinching) {
+        const infoEl = document.getElementById('infoLetra');
+        if (infoEl) {
+          const fs = window.getComputedStyle(infoEl).fontSize;
+          const finalFont = parseFloat(fs) || this.baseFontSize || 16;
+          if (this.pinchStartFontSize != null) {
+            if (finalFont > this.pinchStartFontSize) console.log('pinçamento para fora');
+            else if (finalFont < this.pinchStartFontSize) console.log('pinçamento para dentro');
+          }
+          this.baseFontSize = finalFont;
+        }
+        this.isPinching = false;
+        this.pinchStartFontSize = null;
+      }
       // Se foi um arrasto com movimento suficiente, emitir ação no fim
       if (this.isDragging && this.dragMoved && this.dragDirection) {
         console.log(this.dragDirection);
@@ -122,6 +168,21 @@ export default class Gestos {
 
     // Se restou apenas um toque, cancela pinça e passa para arrasto
     if (event.touches.length === 1) {
+      // Se estava pinçando e caiu para um dedo, finalizar pinça
+      if (this.isPinching) {
+        const infoEl = document.getElementById('infoLetra');
+        if (infoEl) {
+          const fs = window.getComputedStyle(infoEl).fontSize;
+          const finalFont = parseFloat(fs) || this.baseFontSize || 16;
+          if (this.pinchStartFontSize != null) {
+            if (finalFont > this.pinchStartFontSize) console.log('pinçamento para fora');
+            else if (finalFont < this.pinchStartFontSize) console.log('pinçamento para dentro');
+          }
+          this.baseFontSize = finalFont;
+        }
+        this.isPinching = false;
+        this.pinchStartFontSize = null;
+      }
       this.initialDistance = null;
       this.isDragging = true;
       this.lastTouchX = event.touches[0].clientX;
