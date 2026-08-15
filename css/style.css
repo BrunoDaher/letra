@@ -20,7 +20,7 @@
     --active: #c58e3c;
     --fundoC: #423615;
     --fundoD: #b66c1b;
-    --shadowA: #132c0a81;
+    --shadowA: #120d0cde;
     --colorA: var(--fundoA);
     --colorB:var(--fundoB)
     
@@ -107,7 +107,7 @@ main > menu{
     padding: 0;
 
 
-    background: black;
+    background: var(--shadowA);
 
     color: white;
 

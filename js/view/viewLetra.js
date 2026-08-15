@@ -216,6 +216,7 @@ class Letra extends Tela{
                         
                         <div class="reticent" style="text-align: center">
                             <label for='btnSetList' class="smallText" id="titulo" for="scroll-container" style="text-wrap-mode:nowrap;">
+                            Lista
                             </label>
                         </div>
                         

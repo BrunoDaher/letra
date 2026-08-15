@@ -73,6 +73,10 @@ outline: none !important;
     filter: invert(1);
 }
 
+#nomeAlb{
+    color: var(--fundoD);
+}
+
 .discog{
     /*background-image: url(https://www.pngrepo.com/download/294609/music-album-album.png);*/
     background-image: url(../css/imgs/music-album-album-pngrepo-com.png);
@@ -320,7 +324,7 @@ input{
    
     z-index: 2;
     width: 25vw;
-    height: 25vw;
+    height: 30vw;
     border-radius: 4px;
   align-content: center;
     height: fit-content;
@@ -328,8 +332,7 @@ input{
     filter: drop-shadow(2px 4px 6px black);
 
     @media (min-width:620px) {
-          width: 15vw;
-            height: 15vw;  
+          
                 
     }
 }
@@ -341,8 +344,17 @@ input{
 }
 
 button:hover{
-    filter: drop-shadow(2px 4px 6px black);
+        transform: scale(1.05);
     color: var(--active);
+}
+
+.getLyric {
+    font-size: 2svh;
+    flex-wrap: balance;
+    &:hover{
+        color:var(--active);
+        transform: scale(1.05);
+    }
 }
 
 .uploadCloud{

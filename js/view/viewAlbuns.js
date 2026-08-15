@@ -183,12 +183,13 @@ export default class viewAlbuns extends Tela {
                             <a class='smallTitle'>letra</a>
                         </button>
 
-                        <div class="flex justEven scrollY">
-                            <div class='flex col gap2'>
-                                <img src="" class="off miniEncarte sombra" id="infoAlb" lazy="loading">
-                                <span id='nomeAlb'><span/>
+                        <div class="flex justAround scrollY">
+                        <div id="albSongs" class=" discoBox"></div>    
+                        <div class='grid central gap' style='height:fit-content'>
+                                <img src="" class="off miniEncarte sombra" id="infoAlb" lazy="loading"/>    
+                                <span id='nomeAlb'><span/>    
                             </div>
-                            <div id="albSongs" class=" discoBox"></div>
+                            
                         </div>
                     </article>
             `

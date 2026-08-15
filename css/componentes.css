@@ -61,7 +61,7 @@ footer > div {
 header > button.active,
 button.active {
     color: var(--active);
-    filter: drop-shadow(2px 4px 6px black);
+    
     transition: all 0.3s;
 }
 
@@ -78,7 +78,7 @@ li {
     padding: 1svh;
     border-radius: 3svw;
     cursor: pointer;
-    max-width: 40vw;
+
     text-align: unset;
     align-items: center;
     place-content: center;
@@ -243,7 +243,8 @@ li {
 #albSongs li {
     align-items: center;
     cursor: pointer;
-    margin-block: 2vh;
+    
+    justify-content: center;
     display: flex;
     gap: 1vh;
 }
@@ -256,7 +257,7 @@ li {
 
 .discoBox {
     position: relative;
-    padding-inline-end: 2vh;
+    
     transition: all 0.3s;
 }
 
@@ -289,7 +290,7 @@ li {
 
 @media (min-width: 620px) {
     #discos {
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 
     #discos img {
