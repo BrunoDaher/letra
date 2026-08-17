@@ -1,4 +1,4 @@
-const CACHE_NAME = "letras-v2";
+const CACHE_NAME = "letras-v3";
 const urlsToCache = [
   "/",
   "/index.html",

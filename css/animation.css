@@ -1,49 +1,53 @@
+@keyframes cinematicaEthereal {
 
-  .scroll-text  {
-    transform: translateY(100%);
-    overflow: hidden;
-    animation: my-animation 2s linear infinite;
-    transition: all 0.1s;
+  /* ESTADO INICIAL (0s): Invisível, Desfocada e Escura */
+  0% {
+    opacity: 1;
   }
 
-  
 
-@keyframes cinematicaEthereal {
-    /* ESTADO INICIAL (0s): Invisível, Desfocada e Escura */
-    0% {
-        opacity: 1;
-    }
-
-
-    /* ESTADO FINAL (5s): Desaparece total com efeito reverso */
-    100% {
-        opacity: 0;
-      display: none;
-    }
+  /* ESTADO FINAL (5s): Desaparece total com efeito reverso */
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 
 
-  .zoomable {
-    width: 100%;
-    height: 100%;
-    font-size: 16px; /* Tamanho inicial da fonte */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    user-select: none; /* Evita seleção de texto */
-    touch-action: none; /* Impede comportamento padrão de rolagem ou zoom */
-  }
+.scroll-text {
+  transform: translateY(100%);
+  overflow: hidden;
+  animation: my-animation 2s linear infinite;
+  transition: all 0.1s;
+}
 
-.scrollY{
+
+.zoomable {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  /* Tamanho inicial da fonte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  /* Evita seleção de texto */
+  touch-action: none;
+  /* Impede comportamento padrão de rolagem ou zoom */
+}
+
+.scrollY {
   overflow-y: scroll;
-  max-height: 65svh;
-}  
 
-  /* Estilo para o item arrastado */
+}
+
+/* Estilo para o item arrastado */
 .dragging {
-  background-color: var(--fundoA) !important; /* Cor de fundo durante o arrasto */
-  color:var(--fundoC) !important; /* Cor do texto */
+  background-color: var(--fundoA) !important;
+  /* Cor de fundo durante o arrasto */
+  color: var(--fundoC) !important;
+  /* Cor do texto */
   transition: background-color 0.5s, transform 0.5s;
 }
 
@@ -52,50 +56,79 @@
   outline: none;
 }
 
-  
 
-  /* for Chrome */
-  @-webkit-keyframes my-animation {
-    from { -webkit-transform: translateY(1%); }
-    to { -webkit-transform: translateY(-100%); }
-  }
-  
-  @keyframes my-animation {
-    from {
-      -moz-transform: translateY(1%);
-      -webkit-transform: translateY(1%);
-      transform: translateY(1%);
-    }
-    to {
-      -moz-transform: translateY(-100%);
-      -webkit-transform: translateY(-100%);
-      transform: translateY(-100%);
-    }
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateY(1%);
   }
 
-    /* for Chrome */
-    @-webkit-keyframes myCarousel{
-      from { -webkit-transform: translateX(1%); }
-      to { -webkit-transform: translateX(-100%); }
-    }
-    
-    @keyframes myCarousel{
-      0% {
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-      }
-      50% {
-        -moz-transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-      }
-      100%{
-     -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-      
-      }
-    }
+  to {
+    -webkit-transform: translateY(-100%);
+  }
+}
 
-   
+@keyframes my-animation {
+  from {
+    -moz-transform: translateY(1%);
+    -webkit-transform: translateY(1%);
+    transform: translateY(1%);
+  }
+
+  to {
+    -moz-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+.hide {
+  animation: hide 1s ease;
+}
+
+.wrapper>div {
+  flex: auto
+}
+
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes myCarousel {
+  from {
+    -webkit-transform: translateX(1%);
+  }
+
+  to {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes rotary {
+  0% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  50% {
+    -moz-transform: rotate(-4deg);
+    -webkit-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+  }
+
+  100% {
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}

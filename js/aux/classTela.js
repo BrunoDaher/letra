@@ -14,9 +14,13 @@ class Tela {
        
     }
 
+    isMobile(){
+        return navigator.userAgentData.mobile;
+    }
+
     getSizes(){
-        let tela =  window.screen;
-        console.log(tela)
+        
+        return window.screen;
     }
 
     garbageCollector(classe){

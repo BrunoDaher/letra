@@ -32,7 +32,28 @@ class User extends Aux{
         return this.usuario;
     }
 
+    getListas(){
+        return this.#minhasListas;
+    }
+
+    async criaNovaLista(_nome){
+       // 1. Cria uma nova cópia ou adiciona diretamente ao array existente
+        this.#minhasListas.push({ nome: _nome });
+
+        // 2. Converte para JSON de forma segura
+        const listasString = JSON.stringify(this.#minhasListas);
+
+        // 3. Salva no localStorage (não precisa limpar antes com '', basta sobrescrever)
+        
+        setTimeout(
+            ()=>{ localStorage.setItem('listas', listasString); },400
+        )
+        
+
+    }
+
     getSetlist(){
+        //trazer setlist dentro da lista corrente
         return JSON.parse(sessionStorage.getItem('setlist')) || {};
     }
 
@@ -41,12 +62,15 @@ class User extends Aux{
     }
 
     getUserLists(){
+        console.log('retrieving lists')
         //itera objeto do localStorage
         //cria um array com as listas do usuario
-        return JSON.parse(localStorage.getItem(`${this.usuario}_listas`)) || {};
+        
+        return JSON.parse(localStorage.getItem(`listas`)) || [];
     }
 
     getFaixa(id){
+        
         return this.getSetlist()[id];
     }
 
@@ -71,17 +95,14 @@ class User extends Aux{
 
     updateList(song){
         
-        console.log(song)
-        
             let lista = this.getSetlist();
-
             let id = this.chavePadrao(song.artistName, song.trackName);
 
             lista[id] = song;
 
             this.#minhasListas[this.usuario] = lista;
 
-
+            //em vez de setlist, salvar na listaCorrente
             sessionStorage.setItem('setlist',JSON.stringify(lista));
 
     } 
@@ -107,7 +128,7 @@ class User extends Aux{
         localStorage.setItem('albuns', JSON.stringify(this.#meusAlbuns));
     }
 
- 
+    
 
   
     

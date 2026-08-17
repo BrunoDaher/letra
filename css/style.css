@@ -1,4 +1,4 @@
-
+@import url(common.css);
 @import url(animation.css);
 @import url(elements.css);
 @import url(letra.css);
@@ -8,13 +8,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda&display=swap');
 
 
-:root{
-    --header:6svh;
-    --top: 16svh; /* alt header +  alt menu + 2*paddings */
+:root {
+    --header: 2em;
+    --top: 16svh;
+    /* alt header +  alt menu + 2*paddings */
     --topSides: calc(var(--top) + 8vw);
-    --topInfo: calc(var(--top) + var(--topSides) ); /*mistura medidas de vh e vw*/
-    
-    
+    --topInfo: calc(var(--top) + var(--topSides));
+    /*mistura medidas de vh e vw*/
+
+
     --fundoA: #f3eeea;
     --fundoB: rgb(35, 33, 33);
     --active: #c58e3c;
@@ -22,62 +24,54 @@
     --fundoD: #b66c1b;
     --shadowA: #120d0cde;
     --colorA: var(--fundoA);
-    --colorB:var(--fundoB)
-    
-
-
-   --width:90%;
+    --colorB: var(--fundoB) --width:90%;
 }
 
-body{
-    background: linear-gradient(-25deg, 
-        var(--fundoA),
-        var(--colorB), 
-        var(--fundoC), 
-    );
+body {
+    background: linear-gradient(-25deg,
+            var(--fundoA),
+            var(--colorB),
+            var(--fundoC),
+        );
 
 
 }
 
 
 
-.pos-abs{
+.pos-abs {
     position: absolute;
 }
 
-.pos-rel{
+.pos-rel {
     position: relative;
 }
 
 
 
 
-.sombra{
+.sombra {}
 
-    filter: drop-shadow(2px 4px 6px black);
-}
-
-.bgNone{
+.bgNone {
     background: none !important;
 }
 
-input{
-    accent-color: rgba(214, 214, 204, 0.698);
-}
+/* input styles moved to common.css */
 
-::-webkit-input-placeholder{
-    color: var(--colorB);
- filter: brightness(0.8);
- font-style: italic;
-}
-
-::-ms-input-placeholder { /* Edge 12 -18 */
+::-webkit-input-placeholder {
     color: var(--colorB);
     filter: brightness(0.8);
     font-style: italic;
 }
 
-legend{
+::-ms-input-placeholder {
+    /* Edge 12 -18 */
+    color: var(--colorB);
+    filter: brightness(0.8);
+    font-style: italic;
+}
+
+legend {
 
     box-sizing: border-box;
     line-height: 5vh;
@@ -87,57 +81,10 @@ legend{
     padding: 10px;
 }
 
-header{
-
-    
-     backdrop-filter: saturate(3);
-   
-    height: var(--header);
-    padding: 1svh;
-     text-align: center;
-
-     z-index: 2;
-     position: relative;
-}
-
-main > menu{
-    margin:0 ;
-    height: 100%;
-    display: none;
-    padding: 0;
 
 
-    background: var(--shadowA);
-
-    color: white;
-
-
-}
-
-footer{
-    bottom: 0;
-    /* position: fixed; */
-    /* width: 100%; */
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    padding: 1vh;
-}
-
-footer > div{
-    display: flex;
-    gap: 1vh;
-    justify-self: center;
-    text-align: center;
-}
-
-input{
-    border-radius: 4px;
-}
-
-fieldset{
-    border:none;
+fieldset {
+    border: none;
     margin: 0;
     /*
     border-radius: 4px;
@@ -145,49 +92,4 @@ fieldset{
     */
 }
 
-#myProgress {
-    display: none;
-    width: 100%;
-    background-color: var(--colorA);
-  }
-  
-  #myBar {
-    width: 1%;
-    height: 30px;
-    background-color: var(--colorB);
-    text-align: center;
-  }
-
-  #myBar > a{
-    text-align: center;
-    place-items: center;
-    vertical-align: -webkit-baseline-middle;
-    color:var(--active);
-    
-  }
-
-  #myProgress.on{
-    display: block;
-  }
-
-@media (max-width:400px){
-
-    footer > div{
-        display: grid;
-        /* grid-template-columns: 1fr 1fr; */
-        /* gap: 1vh; */
-        justify-self: center;
-        text-align: center;
-        padding: 1vh;
-    }
-
-    footer{
-        bottom: 0;
-         color: white;
-        display: grid;
-        justify-content: center;
-        padding: 1vh;
-    }
-}
-
-
+/* header/footer/progress/input rules moved to common.css */

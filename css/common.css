@@ -1,0 +1,222 @@
+/* Regras comuns consolidadas para evitar redundância */
+
+header {
+    backdrop-filter: saturate(3);
+    height: var(--header);
+    padding: 1svh;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+main>menu {
+    margin: 0;
+    height: 100%;
+    display: none;
+    padding: 0;
+    background: var(--shadowA);
+    color: white;
+}
+
+footer {
+    bottom: 0;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    padding: 1vh;
+}
+
+footer>div {
+    display: flex;
+    gap: 1vh;
+    justify-self: center;
+    text-align: center;
+}
+
+input {
+    border-radius: 4px;
+    accent-color: rgba(214, 214, 204, 0.698);
+    outline: none;
+}
+
+#myProgress {
+    display: none;
+    width: 100%;
+    background-color: var(--colorA);
+}
+
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: var(--colorB);
+    text-align: center;
+}
+
+#myBar>a {
+    text-align: center;
+    place-items: center;
+    vertical-align: -webkit-baseline-middle;
+    color: var(--active);
+}
+
+#myProgress.on {
+    display: block;
+}
+
+@media (max-width:400px) {
+    footer>div {
+        display: grid;
+        justify-self: center;
+        text-align: center;
+        padding: 1vh;
+    }
+
+    footer {
+        bottom: 0;
+        color: white;
+        display: grid;
+        justify-content: center;
+        padding: 1vh;
+    }
+}
+
+/* --- Utilitários comuns --- */
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.alignCenter {
+    align-items: center;
+}
+
+.justifyCenter {
+    justify-content: center;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.w100 {
+    width: 100%;
+}
+
+.wfit {
+    width: fit-content;
+}
+
+.hidden {
+    display: none !important
+}
+
+.off {
+    display: none !important
+}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0
+}
+
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.no-tap-highlight {
+    -webkit-tap-highlight-color: transparent
+}
+
+/* Gaps utilitários (valores em rem/vh para consistência) */
+.gap-1 {
+    gap: 0.25rem
+}
+
+.gap-2 {
+    gap: 0.5rem
+}
+
+.gap-3 {
+    gap: 1rem
+}
+
+.m0 {
+    margin: 0
+}
+
+.p0 {
+    padding: 0
+}
+
+.p2 {
+    padding: 2vh
+}
+
+.rad1 {
+    border-radius: 0.25rem
+}
+
+.rad2 {
+    border-radius: 0.5rem
+}
+
+.rad3 {
+    border-radius: 1rem
+}
+
+/* Transições padrão */
+.smooth {
+    transition: all .2s ease-in-out
+}
+
+/* Agrupamento de sombras usadas em vários componentes */
+.sombra,
+.sideBox,
+.setlistItem:focus,
+.trash:focus,
+.miniEncarte,
+.listaCard,
+.painel {
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+/* border-radius 4px usado em múltiplos componentes */
+.miniEncarte,
+.listaCard,
+.rad-4 {
+    border-radius: 4px;
+}
+
+/* Transitions agrupadas para evitar repetições */
+.trans-03,
+header>button.active,
+button.active,
+#setList span,
+.discoBox,
+#nomeArquivo,
+#newList:focus,
+li:focus,
+li.active,
+#newList:active {
+    transition: all 0.3s;
+}

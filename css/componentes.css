@@ -1,87 +1,25 @@
-/* Componentes de página */
+/* Componentes de página - regras globais (header/footer/progress) centralizadas em style.css */
 
-header {
-    backdrop-filter: saturate(3);
-    height: var(--header);
-    padding: 1svh;
-    text-align: center;
-    z-index: 2;
-    position: relative;
-}
-
-main > menu {
-    margin: 0;
-    height: 100%;
-    display: none;
-    padding: 0;
-    background: black;
-    color: white;
-}
-
-footer {
-    bottom: 0;
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    padding: 1vh;
-}
-
-footer > div {
-    display: flex;
-    gap: 1vh;
-    justify-self: center;
-    text-align: center;
-}
-
-#myProgress {
-    display: none;
-    width: 100%;
-    background-color: var(--colorA);
-}
-
-#myBar {
-    width: 1%;
-    height: 30px;
-    background-color: var(--colorB);
-    text-align: center;
-}
-
-#myBar > a {
-    text-align: center;
-    place-items: center;
-    vertical-align: -webkit-baseline-middle;
-    color: var(--active);
-}
-
-#myProgress.on {
-    display: block;
-}
-
-header > button.active,
+header>button.active,
 button.active {
     color: var(--active);
-    
-    transition: all 0.3s;
+
 }
 
-header > button {
+header>button {
     cursor: pointer;
     border: none;
     background: none;
-    font-size: 2.2vh;
+    font-size: 1em;
 }
 
 #newList,
 li {
     display: flex;
     padding: 1svh;
-    border-radius: 3svw;
     cursor: pointer;
-
-    text-align: unset;
     align-items: center;
-    place-content: center;
+
 }
 
 .box-pesquisa {
@@ -92,13 +30,13 @@ li {
     padding: 2vh;
 }
 
-.box-pesquisa > input {
+.box-pesquisa>input {
     height: 5vh;
-        border-width: 0;
-    color: var(--fundoD);
+    border-width: 0;
+    color: var(--colorA);
     width: 100%;
     text-align: center;
-    font-size: 2.5vh;
+    font-size: 1em;
 }
 
 #trackSugestions {
@@ -124,7 +62,6 @@ li {
     padding-block: 2vh;
     font-size: 2.5vh;
     max-height: calc(100svh - var(--top) - 40px);
-    filter: drop-shadow(2px 4px 6px black);
     transition: all 0.8s;
 }
 
@@ -168,7 +105,6 @@ li {
     width: 100%;
     cursor: pointer;
     border-width: 0px 0px 1px 0px;
-    transition: all 0.3s;
 }
 
 #setList span.selected {
@@ -186,7 +122,6 @@ li {
 .setlistItem:focus,
 .setlistItem.active,
 .setlistItem:active {
-    filter: drop-shadow(2px 4px 6px black);
     color: var(--active);
 }
 
@@ -200,7 +135,7 @@ li {
     justify-self: center;
 }
 
-.logo > img {
+.logo>img {
     filter: saturate(0.5);
     width: 100%;
     padding: 9vh;
@@ -234,17 +169,10 @@ li {
     }
 }
 
-#albSongs {
-    width: fit-content;
-    float: inline-end;
-    text-align: -webkit-center;
-}
 
 #albSongs li {
     align-items: center;
     cursor: pointer;
-    
-    justify-content: center;
     display: flex;
     gap: 1vh;
 }
@@ -255,10 +183,16 @@ li {
     width: 100%;
 }
 
+.disco img:hover {
+
+    animation: rotary 1s ease;
+
+}
+
 .discoBox {
     position: relative;
-    
-    transition: all 0.3s;
+    overflow-x: hidden;
+    flex: 70vh;
 }
 
 .accord {
@@ -266,7 +200,8 @@ li {
 }
 
 .accord.active {
-    display: contents;
+    display: flex;
+    flex-direction: column;
 }
 
 #listaDiscos.active {
@@ -275,17 +210,29 @@ li {
 }
 
 #discos {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vh;
     overflow-y: scroll;
-    max-height: 60svh;
-    gap: 1vh;
-    justify-content: space-between;
+    max-height: 70svh;
+
+}
+
+#disco img,
+.banda {
+    box-shadow: 5px 5px 5px black;
+    border-radius: 4px !important;
+
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
 #discos img {
-    width: 6em;
-    border-radius: 4px !important;
+    max-width: 35svw;
 }
 
 @media (min-width: 620px) {
@@ -335,36 +282,11 @@ li {
     padding: 2svh 0;
     margin: 0;
     height: 4svh;
-    filter: drop-shadow(2px 4px 6px black);
+
 }
 
-.painel > button {
+.painel>button {
     font-size: 2vh;
-}
-
-.banda {
-    font-size: 2.5vh;
-    width: 18vw;
-    height: 18vw;
-    border-radius: 1vh;
-    text-wrap: nowrap;
-    margin: 1vh;
-    border-radius: 2vh;
-    background-repeat: no-repeat;
-}
-
-.banda span {
-    width: 100%;
-    align-content: end;
-    padding: 1vh;
-    font-size: 2vw;
-}
-
-.banda span:hover {
-    font-size: 3vw;
-    backdrop-filter: brightness(0.6);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
 }
 
 .slideControll {
@@ -377,7 +299,7 @@ li {
 }
 
 @media (max-width: 400px) {
-    footer > div {
+    footer>div {
         display: grid;
         justify-self: center;
         text-align: center;

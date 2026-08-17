@@ -15,17 +15,12 @@ class Letra extends Tela{
 
         //no evento é enviada a api
            document.addEventListener('plotaLetra', function(event) { // Nome corrigido aqui
-              
               classe.buscaLetra(event.detail);
-              
         });
 
     }
 
     changeSong(item){
-
-        
-        
         let child = this.setList.children;
 
         let activeId = Array.from(child).filter(item => item.className.includes('active'))[0];
@@ -43,38 +38,25 @@ class Letra extends Tela{
             prev = child.length - 1;
         }
         
-
         child[item.value == 'Go' ? next : prev].click();
-
-        
         setTimeout(() => {
                     this.btnSetList.click();    
                 }, 400);
-
-
-
     }
 
     async buscaLetra(detail){
-
-        
-        
         try {
             // 1. Define a fonte de dados (Local ou API) de forma linear
             const song = detail.metodo == 'local' ? 
                 this.user.getFaixa(detail.id)  //local
                 : await detail.api.getArtMusic(detail.artista, detail.musica);//api
-
                 
             // 2. Desestruturação para extrair o que interessa
-            
-            
             const { content, trackName } = song;
 
             // 3. Atualização única da View (independente da fonte)
             this.infoLetra.innerText = content;
             this.titulo.innerText = trackName;
-
             song.urlFoto = detail.urlFoto;
 
             // 4. Efeitos colaterais exclusivos para novos dados (API)
@@ -82,40 +64,40 @@ class Letra extends Tela{
                 this.user.updateList(song);
                 this.updateLista(this.modelMusica(detail));
             }
-
             
-            let tam = content.split('\n').filter(linha => linha.trim() !== '').length;
-            
-            console.log(tam);
+            console.log(this.getSizes())
 
-            if(tam > 30){
-                this.colunas.value = 2;
-                this.setColunas.call(this.colunas);
-
-                //this.infoLetra.style.marginTop = '4vh';
+            if(!this.isMobile() && this.getSizes().width > 768)
+            {
+                this.autoCol(content);
             }
-       
 
         } catch (error) {
             console.error("Falha ao processar música:", error);
         }
-        
+    }
+
+    autoCol(content){
+    let tam = content.split('\n').filter(linha => linha.trim() !== '').length;
+
+                if(tam > 30){
+                    this.colunas.value = 2;
+                    this.setColunas.call(this.colunas);
+                    //this.infoLetra.style.marginTop = '4vh';
+                }
+
     }
 
     init(){
         this.seletores();
         this.triggers();
-
     }
 
     destroy(){
-
-        
         if(this.menuA.innerHTML){
                 this.menuA.innerHTML ='';
             //remover todos os listeners
         }
-        
     }
     
     seletores(){
@@ -128,18 +110,13 @@ class Letra extends Tela{
          this.btnSetList = document.getElementById('btnSetList');
          this.btnConfig = document.getElementById('btnConfig');
          this.infoLetra = document.getElementById('infoLetra');
-
          this.titulo = document.getElementById('titulo');
-
          this.setList = document.getElementById('setList');
-
   
         //listeners navegacao
         this.btnNextSong = document.getElementById("btnNextSong");
         this.btnLastSong = document.getElementById("btnLastSong");
-
-     
-            
+       
         //config
         this.fonte = document.getElementById('fonte');
         this.colunas = document.getElementById('colunas');
@@ -174,8 +151,14 @@ class Letra extends Tela{
     refresh(){
        
         let lista = this.user.getSetlist();   
+
         
+
+        this.listaCorrente = 'lista';
+
         let obj = {};
+
+        //imprimir lista do usuario, clicada
 
         for(const key in lista){
 
@@ -216,7 +199,7 @@ class Letra extends Tela{
                         
                         <div class="reticent" style="text-align: center">
                             <label for='btnSetList' class="smallText" id="titulo" for="scroll-container" style="text-wrap-mode:nowrap;">
-                            Lista
+                            ${this.listaCorrente ?? ''}
                             </label>
                         </div>
                         
@@ -372,8 +355,6 @@ class Letra extends Tela{
         elem.style.columnCount = this.value;
 
     }
-
-
 }
 
 export default Letra

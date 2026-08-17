@@ -1,93 +1,111 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    overflow: hidden ; /* Impede o scroll horizontal */
-    max-width: 100%; /* Garante que o layout não ultrapasse a largura da tela */
-   
-   
+    overflow: hidden;
+    /* Impede o scroll horizontal */
+    max-width: 100%;
+    /* Garante que o layout não ultrapasse a largura da tela */
+
+
 
     /*travar gestos*/
-    touch-action: none; /* Impede o zoom e arraste */
-    -ms-touch-action: none; /* Para IE/Edge */
-    overflow-x: hidden; /* Para impedir rolagem */
-    user-select: none; /* Impede seleção de texto (opcional) */
-  }
+    touch-action: none;
+    /* Impede o zoom e arraste */
+    -ms-touch-action: none;
+    /* Para IE/Edge */
+    overflow-x: hidden;
+    /* Para impedir rolagem */
+    user-select: none;
+    /* Impede seleção de texto (opcional) */
+}
 
-  main{
+main {
     height: 100vh;
 }
 
-.gap{
-    gap:2vh;
+.gap {
+    gap: 2vh;
 }
 
-.col{
+.col {
     flex-direction: column;
 }
-  
-.wfit{
+
+.wfit {
     width: fit-content;
 }
 
- body {
+body {
 
- height: 100vh;
-  }
-  
-  .justAround{
+    height: 100vh;
+}
+
+.justAround {
     justify-content: space-around;
-  }
+}
 
-  .justBetween{
+.justBetween {
     justify-content: space-between;
-  }
+}
 
-  .justEven{
+.justEven {
     justify-content: space-evenly;
-  }
+}
 
-.w100{
+.w100 {
     width: 100%;
 }
 
-.w75{
+.w75 {
     width: 75%;
 }
 
-.p0{
-    padding:0;
+.p0 {
+    padding: 0;
 }
 
-.p2{
+.p1 {
+    padding: 1vh;
+}
+
+
+.p2 {
     padding: 2vh;
 }
 
-.m0{
-    margin:0;
+.m0 {
+    margin: 0;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-.gap1{
+.row {
+    flex-direction: row;
+}
+
+.gap1 {
     gap: 0.2em;
 }
 
-.gap2{
+.gap2 {
     gap: 0.4em;
 }
 
-.gap3{
-    gap: 0.6em;;
+.gap3 {
+    gap: 0.6em;
+    ;
 }
 
-.grid1{
+.grid1 {
     display: grid;
+    grid-template-rows: max-content;
     gap: 1vh;
 }
 
-.grid2{
+.grid2 {
     display: grid;
     grid-auto-flow: row;
     gap: 1vh;
@@ -95,54 +113,57 @@ html, body {
     place-items: center;
 }
 
-.grid3{
+.grid3 {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     place-items: center;
 }
 
-.alignCenter{
+.alignCenter {
     align-items: center;
 }
 
-.evenly{
+.evenly {
     justify-content: space-evenly;
 }
 
+.justCenter {
+    justify-content: center;
+}
 
-.around{
+.around {
     justify-content: space-around;
 }
 
-.between{
+.between {
     justify-content: space-between;
 }
 
-.grid3one{
+.grid3one {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
 }
 
-.centroGrid3{
+.centroGrid3 {
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
     place-items: center;
 }
 
-.grid{
+.grid {
     display: grid;
 }
 
-.m1{
+.m1 {
     margin: 1vh;
 }
 
-.m2{
-    margin:2vh;
+.m2 {
+    margin: 2vh;
 }
 
-.central{
+.central {
     justify-content: center;
     place-content: center;
     place-items: center;

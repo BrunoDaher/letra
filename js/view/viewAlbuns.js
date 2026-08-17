@@ -51,6 +51,7 @@ export default class viewAlbuns extends Tela {
         this.nomeAlb = document.getElementById('nomeAlb');
 
         this.inputPesquisaArtista = document.getElementById('inputPesquisaArtista');
+        this.listaModal = document.getElementById('listaModal')
         
     }
 
@@ -100,46 +101,40 @@ export default class viewAlbuns extends Tela {
         console.log('refresh album');
     
         Object.entries(this.user.getArts()).map(([nome, artista]) => {
-            
             const img = this.urlArt(nome);
             this.updateListaArtistas(this.modelArtista(nome,img));
         });
-        
     }
 
     //Renders
     renderTemplate(){
 
         return `
-          
-            <section>
-                
+            <section class='flex col'>
                 ${this.renderSecaoPesquisa()}
-                <div class="wrapper grid1">
+                <article id='secaoDiscos' class="wrapper flex col justBetween">
                     ${this.renderPainelDiscog()} 
                     ${this.renderSecaoArtistas()}
                     ${this.renderSecaoDisco()}
                     ${this.renderSecaoFaixas()}
-
-                </div>
-            
+                    ${this.renderModal()}
+                </article>
             </section>   
         `
-    }
+    }   
 
     renderSecaoPesquisa (){
         
         return `
           <section class="box-pesquisa">
-                    <input id='inputPesquisaArtista' target = 'divArtistas' class="inputPesquisa rad2 fundoGradiente" type="text" placeholder="artista">
-                    
+                    <input id='inputPesquisaArtista' target = 'divArtistas' class="inputPesquisa rad2" type="text" placeholder="artista">
                     <input hidden class="inputPesquisa" id="musica" type="text" placeholder="artista musica"> 
             </section>
         `
     }
 
     renderPainelDiscog(){
-        return `<div id="painelDiscog" class="flex justEven p2 gap1">
+        return `<article id="painelDiscog" class="flex justEven p1 gap1">
                
                     <button  class="btnToggle"target="divArtistas" id="btnListaArt">
                         <i class="bi bi-person ">Artistas</i>
@@ -150,12 +145,12 @@ export default class viewAlbuns extends Tela {
                     <button class="btnToggle"target="discoBox" id="btnAlbSongs">
                         <i class="bi bi-music-note ">Faixas</i>
                     </button>
-                  </div>`
+                </article>`
     }
 
     renderSecaoArtistas(){
         return `
-            <article id="divArtistas" class=" accord scrollY p0">
+            <article id="divArtistas" class=" accord  p0">
                 <legend class="off w100 bi sombra bi-magic flex  a1 "> Artistas</legend>
                 <div id="listaArtistas" class="">
 
@@ -167,32 +162,55 @@ export default class viewAlbuns extends Tela {
     renderSecaoDisco() {
      
         return `
-               <div id="listaDiscos" class="accord" >
+               <article id="listaDiscos" class="accord" >
                         <legend class="w100 off  bi bi-vinyl sombra flex gap1 a1" id="labelDiscos"> Discos</legend>
                        <div id="discos" class="p2 rad1">
                        </div>
-                </div>
+                </article>
                 `
     }
 
     renderSecaoFaixas(){
         return `
-                    <article id="discoBox" class=" discoBox accord " >
-
-                        <button id="btnBolt" class="off bi bi-arrow-right-circle-fill gap1 bolt" value=1 target="menuB">
-                            <a class='smallTitle'>letra</a>
-                        </button>
-
-                        <div class="flex justAround scrollY">
-                        <div id="albSongs" class=" discoBox"></div>    
+            <article id="discoBox" class="accord discoBox">
+                <div id='contain' class="flex p2 gap justAround ">
                         <div class='grid central gap' style='height:fit-content'>
                                 <img src="" class="off miniEncarte sombra" id="infoAlb" lazy="loading"/>    
                                 <span id='nomeAlb'><span/>    
-                            </div>
-                            
                         </div>
-                    </article>
+                    <div id="albSongs" class=" discoBox"></div>    
+                        
+                    </div>
+                    
+                </div>
+                
+            </article>
+            
+        `
+    }
+
+    getListas(){
+        
+        let userList = '';
+
+        Object.values(this.user.getListas()).forEach(lista => {
+            const obj = {'nome':lista.nome, 'btnTarget':'', 'fn':''}
+            userList += this.modelBtnLista(obj);
+        });
+
+
+        return userList;
+    }
+
+    renderModal(){
+    
+        const modal = `
+            <article id='listaModal' class='modal justCenter flex '>
+                ${ this.getListas() }
+            </article>
             `
+        return modal;
+        
     }
 
     //Logica
@@ -217,7 +235,7 @@ export default class viewAlbuns extends Tela {
 
             const resultado = await this.api.fecthData(url);   
 
-            let size = window.screen.width > 768 ? 2 : 1;
+            let size = window.screen.width > 768 ? 3 : 2;
 
             
             if(resultado){
@@ -253,11 +271,13 @@ export default class viewAlbuns extends Tela {
     }
 
     modelFaixa(data){
-        
-
         let faixa = document.createElement('li');
-        faixa.innerText = data.name;
-        faixa.classList = 'getLyric bi-file-music';
+        
+        let a = document.createElement('a');
+
+        a.innerText = data.name;
+        faixa.appendChild(a); 
+        faixa.classList = 'getLyric bi-book';
 
         return faixa;
     }
@@ -266,7 +286,6 @@ export default class viewAlbuns extends Tela {
 
         document.getElementById('albSongs').innerHTML = '';
         
-
         lista.forEach(faixa => {
             let el = this.modelFaixa(faixa);
            
@@ -280,7 +299,14 @@ export default class viewAlbuns extends Tela {
             }
             
             el.addEventListener('click',()=>{
-                this.buscaLetra(el,detail)
+                
+                //apresentar modal oferecendo opcao de salvar em lista já existente
+
+                //abrir modal
+                
+                //this.listaModal.classList.remove('off')
+
+                this.buscaLetra(el,detail);
             });
             
             if(el != 'undefined'){
@@ -294,12 +320,12 @@ export default class viewAlbuns extends Tela {
           
         this.inputPesquisaArtista.value = event.target.id;
 
+
+
         //caso nao esteja ativado 
         if(!this.btnDiscog.classList.contains('active')){
             this.actBtn(this.btnDiscog);
         }
-
-        console.log(event.target)
 
         let resultado;
         let string = this.inputPesquisaArtista.value || event.target.id;
@@ -308,26 +334,21 @@ export default class viewAlbuns extends Tela {
         
         //local
          if(this.user.getArts()[string]){
-            console.log('local')
+            
             resultado = this.user.getArts()[string];
             this.updateListaDiscos(this.user.toArray(resultado));
          }
 
         //via api
          else{
-
-            
-             
              resultado = await this.api.fecthData(url);
 
             if(resultado){
 
                  let collection = new Map();
-
-                 console.log(resultado)
                 
                  resultado.album.forEach(item => {
-                        let dados = {album: item.name, foto: item.image[2]['#text']}
+                        let dados = {album: item.name, foto: item.image[3]['#text']}
                         collection.set(item.name, dados);
                         collection.name = string;
                   });
@@ -335,11 +356,21 @@ export default class viewAlbuns extends Tela {
                 this.updateListaDiscos(resultado.album);
                 this.user.updateArtList(collection);
 
+                this.limpaFaixas();
+
              }
     
          }
       
          
+    }
+
+    limpaFaixas(){
+        
+        ['miniEncarte','nomeAlb','albSongs'].forEach( id=>{
+            document.getElementById(id).innerHTML = ''
+        })
+
     }
   
     updateListaDiscos(lista){
@@ -351,8 +382,19 @@ export default class viewAlbuns extends Tela {
 
             let el = this.modelDisco(disco);
 
-            el.addEventListener('click',()=>{this.buscaFaixas(el)});
-            
+            el.addEventListener('click',()=>{
+                const div = el.parentElement;
+                div.classList.toggle('hide');
+                setTimeout(
+                    ()=>{
+                        this.buscaFaixas(el)
+                        div.classList.toggle('hide');
+                    }
+                    ,900
+                )
+            }
+            );
+
             if(el != 'undefined'){
                 document.getElementById('discos').append(el);
             }
@@ -362,7 +404,7 @@ export default class viewAlbuns extends Tela {
     modelDisco(data){
          
         //console.log(data)
-            let urlImg = data.image ? data.image[1]['#text'] : data.foto ;
+            let urlImg = data.image ? data.image[3]['#text'] : data.foto ;
           
                 let img = document.createElement('img');
                 img.src = urlImg;
@@ -505,6 +547,17 @@ export default class viewAlbuns extends Tela {
          }));
 
          document.getElementById('btnmenuA').click();
+    }
+
+    modelBtnLista(item){
+           let html= 
+                `<button btnTarget=${item.btnTarget} name='${item.fn}'  
+                    id='${item.nome}' 
+                    class='flex row btnlista ' type="button">
+                    <i class="bi bi-journal-text a1"></i>
+                    <span>${item.nome}</span>
+                </button>`;
+        return html;
     }
 
    

@@ -39,43 +39,83 @@ export default class viewListas{
     seletores(){
         this.menuC = document.getElementById('menuC');  
         this.menuC.innerHTML = this.renderTemplate();
+
+        this.listas = document.getElementById('listas');
+        this.btnNovaLista = document.getElementById('btnNovaLista');
     }
 
     triggers() {
+        this.refreashListas();
 
-        
-        document.querySelectorAll('.btnlista').forEach((btn )=> {   
-           //ENVIAR PRA O BUSCA ALBUNS
-            btn.addEventListener('click',()=>{
-                 const action = btn.getAttribute('action');
+        this.btnNovaLista.onclick = async ()=>{
+            const nomeDaLista = prompt("Digite um nome pra lista");
 
-                 document.getElementById(action).click();
-                 
-                 document.dispatchEvent(new CustomEvent(`artista`, { 
-                    detail:{
-                        artista: btn.id,
-                        from:'listas'
-                    }
-                }));     
-            });
-        });
-      
+            if(nomeDaLista){
+                const lista = this.renderListas(nomeDaLista);
+                //parametriza um item
+                //modela uma lista
+                
+                await this.user.criaNovaLista(nomeDaLista);
+
+                const listaNova = {"nome":nomeDaLista}
+                localStorage.setItem('listas',JSON.stringify(listaNova));
+                this.updateListas(lista);
+                this.refreashListas();
+            }
+            else{
+                console.log('cagalhelson')
+            }
+
+        }
     } 
 
-    renderTemplate(){
+    refreashListas(){
+         document.querySelectorAll('.btnlista').forEach((btn )=> {   
+           //ENVIAR PRA O BUSCA ALBUNS
+            btn.addEventListener('click',()=>{
+                const action = btn.getAttribute('btnTarget');
+                 document.getElementById(action).click();
+                 //
+            });
+        });
+    }
 
-        
+    renderTemplate(){
       
         return `
-            <article class="" style='overflow-x: scroll '>
-                <section id='listas' class='wfit grid p2 gap2 '>
-                    ${ this.renderListas()}
-                    
+            <article class="m2" style='overflow-x: scroll '>
+                    <button 
+                        id='btnNovaLista' 
+                        class='grid m2 btn1 p2' type="button">
+                        <i class="bi bi-plus-square a1"></i>
+                        <span>Nova Lista</span>
+                    </button>
+                
+                 <section id='listas' class='wfit grid p2 gap2 '>
+                     ${ this.getListas() }
                 </section>
 
             </article>
         `
     } 
+        getListas(){
+            
+            let userList = '';
+            
+            this.user.getListas().forEach(item => {
+                const obj = {'nome':item.nome, 'btnTarget':'', 'fn':''}
+                console.log(obj)
+                userList += this.modelBtnLista(obj);
+            });
+
+            console.log(userList)
+
+        return userList;
+    }
+
+    updateListas(item){
+        this.listas.innerHTML += item;
+    }
 
     renderAlbuns(){
 
@@ -86,29 +126,24 @@ export default class viewListas{
         let div = '';
 
         let list = Object.entries(albuns).map(item => {
-            let param = {nome: item[0], fn: 'album', action: 'btnmenuB'};
-            div +=  this.modelLista(param);
+            let param = {nome: item[0], fn: 'album', btnTarget: 'btnmenuB'};
+            div +=  this.modelBtnLista(param);
         });
 
         return div;
     }
 
-    renderListas(){
-        
-
-        let lista = this.modelLista({nome:'listaLocal',fn:'local','action':'btnmenuA'});
+    renderListas(_nome){
+        let lista = this.modelBtnLista({nome:_nome,fn:'local','btnTarget':'btnmenuA'});
 
         //toDO
         //iterar storage e pra cada um, renderizar
 
         return lista;
-
     }
 
     renderClouds(){
-
         return `
-        
             <article id='clouds' class="m2 p2">
                 <div id="loadCloud" class="iconText flex configContainer ">
                     
@@ -149,18 +184,16 @@ export default class viewListas{
         `
     }
     
-    modelLista(item){
-
+    modelBtnLista(item){
            let html= 
                 `
-                <button action=${item.action} name='${item.fn}'  
+                <button btnTarget=${item.btnTarget} name='${item.fn}'  
                     id='${item.nome}' 
-                    class='grid  btnlista p2' type="button">
-                    <i class="bi bi-music-note-list a1"></i>
+                    class='flex row btnlista p2' type="button">
+                    <i class="bi bi-journal-text a1"></i>
                     <span>${item.nome}</span>
                 </button>
             `;
-         
         return html;
     }
 

@@ -80,6 +80,105 @@ class Dao extends JsonBinService{
         return JSON.parse(sessionStorage.getItem(id));
     }
 
+    // --- Estrutura centralizada para listas ---
+    // Armazena um objeto: { nomeLista1: [...], nomeLista2: [...] }
+    _getAllListsStorage() {
+      try {
+        const raw = localStorage.getItem('listas');
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        console.error('Erro ao ler listas do storage', e);
+        return {};
+      }
+    }
+
+    _saveAllListsStorage(obj) {
+      try {
+        localStorage.setItem('listas', JSON.stringify(obj));
+        return true;
+      } catch (e) {
+        console.error('Erro ao salvar listas no storage', e);
+        return false;
+      }
+    }
+
+    // Cria uma nova lista com nome (substitui se existir quando replace=true)
+    createList(name, items = [], replace = false) {
+      if (!name) throw new Error('Nome de lista inválido');
+      const all = this._getAllListsStorage();
+      if (!replace && all.hasOwnProperty(name)) {
+        throw new Error('Lista já existe');
+      }
+      all[name] = Array.isArray(items) ? items : [items];
+      this._saveAllListsStorage(all);
+      return all[name];
+    }
+
+    // Retorna a lista (array) ou null
+    getList(name) {
+      if (!name) return null;
+      const all = this._getAllListsStorage();
+      return all.hasOwnProperty(name) ? all[name] : null;
+    }
+
+    // Atualiza totalmente a lista
+    updateList(name, items) {
+      if (!name) throw new Error('Nome de lista inválido');
+      const all = this._getAllListsStorage();
+      if (!all.hasOwnProperty(name)) throw new Error('Lista não existe');
+      all[name] = Array.isArray(items) ? items : [items];
+      this._saveAllListsStorage(all);
+      return all[name];
+    }
+
+    // Deleta uma lista
+    deleteList(name) {
+      const all = this._getAllListsStorage();
+      if (all.hasOwnProperty(name)) {
+        delete all[name];
+        this._saveAllListsStorage(all);
+        return true;
+      }
+      return false;
+    }
+
+    // Lista os nomes das listas
+    listNames() {
+      const all = this._getAllListsStorage();
+      return Object.keys(all);
+    }
+
+    // Adiciona um item a uma lista existente
+    addItem(name, item) {
+      const all = this._getAllListsStorage();
+      if (!all.hasOwnProperty(name)) throw new Error('Lista não existe');
+      all[name].push(item);
+      this._saveAllListsStorage(all);
+      return all[name];
+    }
+
+    // Remove item por index ou por predicate função
+    removeItem(name, indexOrPredicate) {
+      const all = this._getAllListsStorage();
+      if (!all.hasOwnProperty(name)) throw new Error('Lista não existe');
+      const arr = all[name];
+      if (typeof indexOrPredicate === 'number') {
+        arr.splice(indexOrPredicate, 1);
+      } else if (typeof indexOrPredicate === 'function') {
+        const idx = arr.findIndex(indexOrPredicate);
+        if (idx >= 0) arr.splice(idx, 1);
+      } else {
+        throw new Error('indexOrPredicate inválido');
+      }
+      this._saveAllListsStorage(all);
+      return arr;
+    }
+
+    // Limpa todas as listas
+    clearAllLists() {
+      localStorage.removeItem('listas');
+    }
+
 
     export() {
         let l =  this.getLocalJSON('listaLocal');
