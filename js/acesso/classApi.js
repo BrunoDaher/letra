@@ -156,6 +156,7 @@ export class Api {
     
    //aux
     normalizeInput(str){
+        console.log(str)
         str = str.toLowerCase();
         str = str.replaceAll(':',''); 
         str = str.replaceAll(' ','-');  

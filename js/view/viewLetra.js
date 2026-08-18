@@ -1,6 +1,8 @@
 import Tela from "../aux/classTela.js";
 class Letra extends Tela{
 
+    
+
     constructor(user){
 
         super();
@@ -14,8 +16,8 @@ class Letra extends Tela{
         this.garbageCollector(classe);
 
         //no evento é enviada a api
-           document.addEventListener('plotaLetra', function(event) { // Nome corrigido aqui
-              classe.buscaLetra(event.detail);
+        document.addEventListener('plotaLetra', function(event) { // Nome corrigido aqui
+            classe.buscaLetra(event.detail);
         });
 
     }
@@ -49,24 +51,28 @@ class Letra extends Tela{
             // 1. Define a fonte de dados (Local ou API) de forma linear
             const song = detail.metodo == 'local' ? 
                 this.user.getFaixa(detail.id)  //local
-                : await detail.api.getArtMusic(detail.artista, detail.musica);//api
-                
+                : await detail.api.getArtMusic(detail.artistName, detail.trackName);//api
+            
             // 2. Desestruturação para extrair o que interessa
-            const { content, trackName } = song;
+            const { content , trackName } = song;
 
             // 3. Atualização única da View (independente da fonte)
             this.infoLetra.innerText = content;
             this.titulo.innerText = trackName;
             song.urlFoto = detail.urlFoto;
-
+            
             // 4. Efeitos colaterais exclusivos para novos dados (API)
-            if (detail.metodo !== 'local') {
+            if (detail.metodo == 'api') {
+                //html
                 this.user.updateList(song);
-                this.updateLista(this.modelMusica(detail));
+                
+                //caso novoId
+                if(!this.user.oldSong(song)){
+                    this.updateLista(this.modelMusica(detail));
+                }
+                
             }
             
-            console.log(this.getSizes())
-
             if(!this.isMobile() && this.getSizes().width > 768)
             {
                 this.autoCol(content);
@@ -152,8 +158,6 @@ class Letra extends Tela{
        
         let lista = this.user.getSetlist();   
 
-        
-
         this.listaCorrente = 'lista';
 
         let obj = {};
@@ -161,14 +165,12 @@ class Letra extends Tela{
         //imprimir lista do usuario, clicada
 
         for(const key in lista){
-
-            let mus = lista[key].trackName;
-            let art = lista[key].artistName;
-            obj.musica = mus;
-            obj.artista = art;
+            obj.artistName  = lista[key].artistName;
+            obj.trackName = lista[key].trackName;
             obj.id = key;
             obj.urlFoto = lista[key].urlFoto;
 
+            console.log(key)
             this.updateLista(this.modelMusica(obj));
         }
  
@@ -269,40 +271,39 @@ class Letra extends Tela{
     }
 
     updateLista(html){
+
+        //verifica se existe html igual antes
         this.setList.append(html);
-     
     }
 
     modelMusica(obj){
-
-        
             const btn = document.createElement('button');
             btn.id = obj.id;
             btn.className = 'setlistItem flex pos-rel justBetween w100 gap3';
             
-
             // 2. Define o conteúdo interno (o visual)
             btn.innerHTML = `
                     <img src='${obj.urlFoto}' class='bw thumb'/>
                     <div class='grid txtend boxtitle'>
-                        <a class="getLyric">${obj.musica}</a>
-                        <a class='artlbl'>${obj.artista}</a>
+                        <a class="getLyric">${obj.trackName}</a>
+                        <a class='artlbl'>${obj.artistName}</a>
                     </div>
             `;
 
             // 3. Atribui as funções diretamente ao evento de clique
             btn.addEventListener('click', () => {
 
-                
+                console.log(obj)
+
+                //interface
                  let detail = {
                     metodo:'local',
                     id:btn.id,
-                    artista:obj.artista,
-                    musica:obj.musica
-
+                    artistName:obj.trackName,
+                    trackName:obj.trackName
                 }
-                // 'item' aqui seria o próprio botão ou o objeto, dependendo da sua lógica
-                this.toggleSib(btn); 
+
+
                 this.buscaLetra(detail);
                  setTimeout(() => {
                      this.btnSetList.click();

@@ -175,6 +175,12 @@ li {
     cursor: pointer;
     display: flex;
     gap: 1vh;
+
+    @media (min-width:600px) {
+        justify-content: center;
+    }
+
+
 }
 
 .lista {
@@ -192,7 +198,21 @@ li {
 .discoBox {
     position: relative;
     overflow-x: hidden;
-    flex: 70vh;
+
+}
+
+#albSongs {
+    height: 85%;
+}
+
+#discoBox {
+    flex: 1 0 60%;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.h75 {
+    height: 75vh;
 }
 
 .accord {
@@ -201,7 +221,7 @@ li {
 
 .accord.active {
     display: flex;
-    flex-direction: column;
+
 }
 
 #listaDiscos.active {
@@ -233,6 +253,13 @@ li {
 
 #discos img {
     max-width: 35svw;
+}
+
+#painelDiscog {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-block: 3vh;
 }
 
 @media (min-width: 620px) {

@@ -9,28 +9,6 @@ export default class viewListas{
 
     }
 
-    observe(obj) {
-        const watchedObj = Object.create(obj);
-        const watch = (propName, oldValue, newValue) => {
-            console.log(`A propriedade '${propName}' foi alterada de '${oldValue}' para '${newValue}'.`);
-        };
-        Object.keys(obj).forEach(key => {
-            Object.defineProperty(watchedObj, key, {
-                set: (newValue) => {
-                    const oldValue = obj[key];
-                    obj[key] = newValue;
-                    watch(key, oldValue, newValue);
-                },
-                get: () => obj[key],
-            });
-        });
-        return watchedObj;
-    }
-
-
-    // Identifica a alteracao de valor de uma variavel
-   
-
     init(){
         this.seletores();
         this.triggers();
@@ -38,6 +16,7 @@ export default class viewListas{
     
     seletores(){
         this.menuC = document.getElementById('menuC');  
+        this.menuB = document.getElementById('menuB');  
         this.menuC.innerHTML = this.renderTemplate();
 
         this.listas = document.getElementById('listas');
@@ -51,7 +30,7 @@ export default class viewListas{
             const nomeDaLista = prompt("Digite um nome pra lista");
 
             if(nomeDaLista){
-                const lista = this.renderListas(nomeDaLista);
+                const lista = this.novaLista(nomeDaLista);
                 //parametriza um item
                 //modela uma lista
                 
@@ -70,12 +49,18 @@ export default class viewListas{
     } 
 
     refreashListas(){
-         document.querySelectorAll('.btnlista').forEach((btn )=> {   
+         document.querySelectorAll('.btnlista').forEach((btn)=> {   
            //ENVIAR PRA O BUSCA ALBUNS
             btn.addEventListener('click',()=>{
-                const action = btn.getAttribute('btnTarget');
-                 document.getElementById(action).click();
-                 //
+                this.user.updateListName(btn.id)
+                document.getElementById('btnmenuB').click();
+                setTimeout(
+                    ()=>{
+                        this.init();
+                    }
+                    ,300
+                )
+                
             });
         });
     }
@@ -92,39 +77,40 @@ export default class viewListas{
                     </button>
                 
                  <section id='listas' class='wfit grid p2 gap2 '>
-                     ${ this.getListas() }
+                    ${this.renderLists()}
                 </section>
-
             </article>
         `
     } 
-        getListas(){
-            
-            let userList = '';
-            
-            this.user.getListas().forEach(item => {
-                const obj = {'nome':item.nome, 'btnTarget':'', 'fn':''}
-                console.log(obj)
-                userList += this.modelBtnLista(obj);
+
+    renderLists(){
+        
+        console.log('renderizando listas')
+
+        let userList = '';
+
+        let result = this.user.getListas();
+                
+                 result.forEach(lista => {
+                        if(lista.nome){
+                            const obj = {'nome':lista.nome, 'btnTarget':'', 'fn':''}
+                            userList += this.modelBtnLista(obj);
+                        }
+                        else{
+                            console.log('sem objeto')
+                        }
             });
-
-            console.log(userList)
-
+        
         return userList;
     }
-
+    
     updateListas(item){
         this.listas.innerHTML += item;
     }
 
     renderAlbuns(){
-
-
         let albuns = this.user.getAlbuns();
-        
-        
         let div = '';
-
         let list = Object.entries(albuns).map(item => {
             let param = {nome: item[0], fn: 'album', btnTarget: 'btnmenuB'};
             div +=  this.modelBtnLista(param);
@@ -133,12 +119,9 @@ export default class viewListas{
         return div;
     }
 
-    renderListas(_nome){
+    novaLista(_nome){
+        
         let lista = this.modelBtnLista({nome:_nome,fn:'local','btnTarget':'btnmenuA'});
-
-        //toDO
-        //iterar storage e pra cada um, renderizar
-
         return lista;
     }
 
@@ -185,11 +168,15 @@ export default class viewListas{
     }
     
     modelBtnLista(item){
+        const css = this.user.getListaAtual() === item.nome ? 'active' :'';
+
+
+
            let html= 
                 `
-                <button btnTarget=${item.btnTarget} name='${item.fn}'  
+                <button   
                     id='${item.nome}' 
-                    class='flex row btnlista p2' type="button">
+                    class='${css} flex row btnlista p2' type="button">
                     <i class="bi bi-journal-text a1"></i>
                     <span>${item.nome}</span>
                 </button>

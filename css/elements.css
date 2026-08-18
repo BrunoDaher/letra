@@ -30,21 +30,29 @@ li>img {
     font-size: 5vw;
 }
 
+#albumDetail {
+    height: 100%;
+}
+
 #listaModal {
     display: none;
+
+    max-width: 100%;
+    overflow-x: scroll;
 }
 
 #secaoDiscos:has(#discoBox.active) {
     #listaModal {
         display: flex;
-        flex-basis: 8vh;
         align-items: center;
+        background-color: var(--fundoE);
+
     }
 }
 
 .btnlista,
 .btn1 {
-    background: linear-gradient(45deg, var(--fundoB), transparent);
+    /*background: linear-gradient(45deg, var(--fundoB), transparent);*/
     border-radius: 0 1vh 0 1vh;
     font-size: 2vh;
     height: fit-content;
@@ -369,6 +377,10 @@ legend {
     align-content: center;
     height: fit-content;
 
+    @media (min-width:600px) {
+        width: 40vh;
+        height: 40vh !important;
+    }
 
     @media (min-width:300px) {
         width: 20vh;
@@ -396,6 +408,7 @@ button:hover {
     a {
         max-width: 20vh;
         text-align: center;
+        text-wrap-mode: nowrap;
     }
 
     &:hover {

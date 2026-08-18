@@ -2,10 +2,11 @@ import Aux from "./aux/classAux.js";
 
 class User extends Aux{
 
-    #minhasListas = {};
+    #minhasListas = [];
     #meusArtistas= {};
     #meusAlbuns = {};
     #imgs=[];
+    #listaAtual = '' //default;
     
     constructor(){
         super();
@@ -14,10 +15,29 @@ class User extends Aux{
     }
 
     init(){
-        this.#minhasListas = this.getUserLists();
+        
+        //nome apenas
+        this.#listaAtual = sessionStorage.getItem('listaAtual') || 'setlist';
+        
+
+        if(!localStorage.getItem('listas')){
+            let listaNova = this.criaNovaLista('setlist').then(
+                res => {
+                    console.log(res)
+                });
+        }
+        else{
+            this.#minhasListas = JSON.parse(localStorage.getItem('listas'))
+        }
+
         this.#meusArtistas = JSON.parse(localStorage.getItem(`artistas`)) || {};
         this.#meusAlbuns = JSON.parse(localStorage.getItem('albuns')) || {};
         this.#imgs = [];
+    }
+
+    updateListName(nome){
+        this.#listaAtual = nome;
+        sessionStorage.setItem('listaAtual',nome);
     }
 
     getLocalArts(){
@@ -36,41 +56,39 @@ class User extends Aux{
         return this.#minhasListas;
     }
 
+    getListaAtual(){
+        return this.#listaAtual;
+    }
+
     async criaNovaLista(_nome){
+
+        //0 lista atual
+        this.updateListName(_nome);
+
        // 1. Cria uma nova cópia ou adiciona diretamente ao array existente
         this.#minhasListas.push({ nome: _nome });
 
+        
         // 2. Converte para JSON de forma segura
         const listasString = JSON.stringify(this.#minhasListas);
-
         // 3. Salva no localStorage (não precisa limpar antes com '', basta sobrescrever)
-        
         setTimeout(
-            ()=>{ localStorage.setItem('listas', listasString); },400
-        )
-        
-
+            ()=>{ 
+                localStorage.setItem('listas', listasString); 
+            },400)
     }
 
     getSetlist(){
         //trazer setlist dentro da lista corrente
-        return JSON.parse(sessionStorage.getItem('setlist')) || {};
+        return JSON.parse(sessionStorage.getItem(this.#listaAtual)) || {};
     }
-
+    
     getArts(){
         return this.isEmpty(this.#meusArtistas) ? false : (this.#meusArtistas);
     }
 
-    getUserLists(){
-        console.log('retrieving lists')
-        //itera objeto do localStorage
-        //cria um array com as listas do usuario
-        
-        return JSON.parse(localStorage.getItem(`listas`)) || [];
-    }
-
     getFaixa(id){
-        
+
         return this.getSetlist()[id];
     }
 
@@ -93,18 +111,25 @@ class User extends Aux{
         this.#imgs[artName] = url;
     }
 
-    updateList(song){
-        
-            let lista = this.getSetlist();
-            let id = this.chavePadrao(song.artistName, song.trackName);
+    oldSong(dado){
+          let list = this.getSetlist();
+            let id = this.chavePadrao(dado.artistName, dado.trackName);
 
-            lista[id] = song;
+            return list[id] ? true:false;
 
-            this.#minhasListas[this.usuario] = lista;
+    }
 
-            //em vez de setlist, salvar na listaCorrente
-            sessionStorage.setItem('setlist',JSON.stringify(lista));
+    updateList(dado){
 
+            let list = this.getSetlist();
+            let id = this.chavePadrao(dado.artistName, dado.trackName);
+
+            setTimeout(
+                ()=>{
+                    list[id] = dado;
+                    sessionStorage.setItem(this.#listaAtual,JSON.stringify(list))
+                },300
+            )
     } 
 
     updateLocalAlbum(resultado) {
@@ -127,11 +152,6 @@ class User extends Aux{
 
         localStorage.setItem('albuns', JSON.stringify(this.#meusAlbuns));
     }
-
-    
-
-  
-    
 }
 
 export default User;

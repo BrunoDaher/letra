@@ -147,9 +147,9 @@ class Tela {
             menu.classList.add('active')
     }
 
-    toggleSib(item){
-            document.querySelectorAll('.setlistItem').forEach(item => {
-            item.classList.remove('active');
+    toggleSib(classe,item){
+            document.querySelectorAll(classe).forEach(node => {
+            node.classList.remove('active');
         })
         item.classList.add('active');
     }
